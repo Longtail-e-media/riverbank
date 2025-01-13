@@ -1,0 +1,4939 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 13, 2025 at 10:06 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `riverbankazusa`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_advertisement`
+--
+
+CREATE TABLE `tbl_advertisement` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `position` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `img_height` int(11) NOT NULL,
+  `img_width` int(11) NOT NULL,
+  `date_from` date NOT NULL,
+  `date_to` date NOT NULL,
+  `url_link` varchar(255) NOT NULL,
+  `notification` int(11) NOT NULL,
+  `notif_status` tinyint(1) NOT NULL DEFAULT 0,
+  `mail_to` mediumtext NOT NULL,
+  `content` text NOT NULL,
+  `remarks` text NOT NULL,
+  `mail_status` tinyint(1) NOT NULL DEFAULT 0,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_articles`
+--
+
+CREATE TABLE `tbl_articles` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `sub_title` text NOT NULL,
+  `content` text NOT NULL,
+  `linktype` tinyint(1) NOT NULL DEFAULT 0,
+  `linksrc` tinytext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `meta_title` tinytext NOT NULL,
+  `meta_keywords` varchar(250) NOT NULL,
+  `meta_description` varchar(250) NOT NULL,
+  `type` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `homepage` int(11) NOT NULL DEFAULT 0,
+  `image` blob NOT NULL,
+  `date` varchar(100) NOT NULL,
+  `category` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_articles`
+--
+
+INSERT INTO `tbl_articles` (`id`, `parent_id`, `slug`, `title`, `sub_title`, `content`, `linktype`, `linksrc`, `status`, `meta_title`, `meta_keywords`, `meta_description`, `type`, `added_date`, `sortorder`, `homepage`, `image`, `date`, `category`) VALUES
+(1, 0, 'about-us', 'About us', '', '<style type=\"text/css\">\r\n@media (max-width:767px){\r\nh2 {\r\n    font-size: 23px;\r\n    margin-bottom: 20px;\r\n}\r\n}</style>\r\n<h5 style=\"line-height: 1.5;\">\r\n	WYNDHAM GARDEN CHITWAN | RIVERBANK JUNGLE RESORT</h5>\r\n<h2 style=\"line-height: 1.5;\">\r\n	Incredibly Hospitality With Natural Wildlife Magnificent Enriching Your Inner Soul</h2>\r\n<p>\r\n	Nestled on the Rapti&rsquo;s edge, Discover Riverbank Jungle Resorts, on idyllic sanctuary perfectly aligned with the grandiose of Chitwan National Park. With its vernacular style design and sophisticated interior ambiance, our resort harmoniously mergers with the forest&rsquo;s edge</p>\r\n<p>\r\n	<br />\r\n	In an elegant and inviting setting exuding sophistication, the meticulously balanced interior design gracefully leads you through the hallway. Beyond, a lavish outdoor swimming pool awaits, providing an opulent oasis. From the vintage deck, you are greeted by the mesmerizing panoramic scene of breezy Rapti River. This opulent experience against the vast Terai grassland enveloped you in the aura of pure luxury and bliss.</p>\r\n<p>\r\n	<br />\r\n	&nbsp;</p>\r\n<div class=\"row\">\r\n	<div class=\"col-md-4\">\r\n		<div class=\"widget-title\">\r\n			<h5>\r\n				WHO WE ARE</h5>\r\n			<h2>\r\n				Our Mission</h2>\r\n			<p>\r\n				Dedicated to providing guests with luxurious and unforgettable experiences by offering exceptional hospitality, world-class amenities, and unparalleled natural beauty momentarily encouraging sustainability and responsible tourism</p>\r\n		</div>\r\n		<br />\r\n		<div class=\"widget-title\">\r\n			<h5>\r\n				WHAT WE DO</h5>\r\n			<h2>\r\n				Our Vision</h2>\r\n			<p>\r\n				We are devoted to crafting unforgettable experiences, and enveloping luxury while championing sustainability and responsible tourism.</p>\r\n		</div>\r\n	</div>\r\n	<div class=\"col-md-8\">\r\n		<img src=\"/assets/userfiles/images/aboutus.png\" /></div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 0, '', 1, 'About Us', 'Incredibly Hospitality With Natural Wildlife MagnificentEnriching Your Inner Soul', 'Nestled on the Rapti’s edge, Discover Riverbank Jungle Resorts, on idyllic sanctuary perfectly aligned with the grandiose of Chitwan National Park. ', 0, '2017-04-23 18:29:11', 4, 0, 0x613a313a7b693a303b733a31353a2272384136522d61626f75742e6a7067223b7d, '', ''),
+(12, 0, 'recreation', 'Recreation', '', '<style type=\"text/css\">\r\n.riverbank_acitivties h4{\r\n  line-height: 1.5\r\n}\r\n@media (max-width:1000px){\r\n	.widget-article-carousel{\r\n	display:none;\r\n	}\r\n	.row.row_flex .col-xs-12:not(:last-child){\r\n	 margin-bottom: 10px !important;\r\n	}\r\n	.row.row_flex .col-xs-12{\r\n	padding-inline: 0;\r\n	}\r\n	.widget-inner .row .col-md-12 .row {\r\n		margin-bottom: 3rem !important;\r\n	}\r\n	}\r\n	@media (min-width:1000px){\r\n	.display_on_device{\r\n	display:none;\r\n	}\r\n	.row.row_flex{\r\n	flex-direction: row;\r\n	}\r\n	}\r\n	.widget-inner .row{\r\n			 display: flex;\r\n			justify-content: center;\r\n			align-items: center;\r\n		}\r\n		@media (max-width:922px){\r\n			.widget-inner .row{\r\n			flex-direction: column;\r\n			}\r\n			.event-page-inner .row:nth-child(even){\r\n		flex-direction: column-reverse;\r\n		}\r\n		.widget-inner h2{\r\n			margin: 2rem 0;\r\n		}\r\n		}\r\n		.widget-inner .riverbank_acitivties{\r\n		  padding-inline: 5rem;\r\n		}\r\n		.widget-inner .row .col-md-12 .row{\r\n		  margin-bottom: 8rem;\r\n		}\r\n	@media (max-width:767px){\r\n		.widget-inner .riverbank_acitivties {\r\n		padding-inline: 0;\r\n	}\r\n	}</style>\r\n<h2 style=\"text-align: center;\">\r\n	<span style=\"color:#008080;\">IN RIVERBANK JUNGLE RESORT<br />\r\n	<br />\r\n	ENJOYMENT, LEISURE, RELAXATION</span></h2>\r\n<p>\r\n	&nbsp;</p>\r\n<div class=\"event-page-inner\">\r\n	<div class=\"row\">\r\n		<div class=\"col-lg-6 col-md-6\">\r\n			<div class=\"widget-article-carousel\">\r\n				<div class=\"widget-carousel owl-carousel owl-theme\">\r\n					<div class=\"testimonials-item\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/pool.jpg\" style=\"width: 100%;\" /></div>\r\n					<div class=\"testimonials-item\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/pool1.jpg\" style=\"width: 100%;\" /></div>\r\n					<div class=\"testimonials-item\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/pool2.jpg\" style=\"width: 100%;\" /></div>\r\n					<div class=\"testimonials-item\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/pool3.jpg\" style=\"width: 100%;\" /></div>\r\n					<div class=\"testimonials-item\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/pool4.jpg\" style=\"width: 100%;\" /></div>\r\n					<div class=\"testimonials-item\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/pool5.jpg\" style=\"width: 100%;\" /></div>\r\n				</div>\r\n			</div>\r\n			<div class=\"display_on_device\">\r\n				<div class=\"row row_flex\">\r\n					<div class=\"col-md-6 col-xs-12\">\r\n						<img alt=\"\" src=\"/assets/userfiles/images/pool5.jpg\" width=\"100%\" /></div>\r\n					<div class=\"col-md-6 col-xs-12\">\r\n						<img alt=\"\" src=\"/assets/userfiles/images/pool.jpg\" width=\"100%\" /></div>\r\n					<div class=\"col-md-6 col-xs-12\">\r\n						<img alt=\"\" src=\"/assets/userfiles/images/pool1.jpg\" width=\"100%\" /></div>\r\n					<div class=\"col-md-6 col-xs-12\">\r\n						<img alt=\"\" src=\"/assets/userfiles/images/pool5.jpg\" width=\"100%\" /></div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"col-lg-6 col-md-6\">\r\n			<div class=\"events\">\r\n				<div class=\"riverbank_acitivties\">\r\n					<h2>\r\n						SWIMMING POOL</h2>\r\n					<h4>\r\n						&quot;Experience the allure of our exquisite swimming pool&quot;</h4>\r\n					<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n						Unwind the negativity at the heart of Chitwan National Park, with your favorite sip of refreshing beverages. Calming the mind, relaxing the body and enriching the soul with the grandeur panoramic Chitwan National Park vistas.</p>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"col-lg-12 col-md-6\">\r\n			<div class=\"events\">\r\n				<div class=\"riverbank_acitivties\">\r\n					<h2>\r\n						YOGA</h2>\r\n					<h4>\r\n						&quot;Breathe in the wild, enrich your soul&quot;</h4>\r\n					<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n						River Bank believe in holistic approach of wellness. Set on the awestruck back drop of Rapti River and vast Chitwan National Park, you find your inner balance and mental peace through Yoga. Breathe in the wild, enrich your soul.</p>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"col-lg-12 col-md-6\">\r\n			<div class=\"events\">\r\n				<div class=\"item\">\r\n					<div class=\"riverbank_img\">\r\n						<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/yoga(1).jpg\" style=\"width: 100%;\" /></div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 0, '', 1, '', '', '', 0, '2024-06-14 15:13:55', 2, 0, 0x613a313a7b693a303b733a32303a2272656c73562d706f6f6c62616e6e65722e6a7067223b7d, '', ''),
+(13, 0, 'homepage-about', 'homepage about', '', '<style type=\"text/css\">\r\n.md_top_margin {\r\n    margin-top: 7rem;\r\n}\r\n.widget-about-promo.hoempage_about_promo {\r\n  position: static;\r\n}\r\n@media(max-width:767px){\r\n.md_top_margin {\r\n    margin-top: 4rem;\r\n}\r\n}</style>\r\n<div class=\"widget-about-promo hoempage_about_promo\">\r\n	<div class=\"widget-inner\">\r\n		<div class=\"row\">\r\n			<div class=\"col-md-12\">\r\n				<p style=\"text-align: center;\">\r\n					Wyndham Graden Chitwan | Riverbank Jungle Resort</p>\r\n				<h2 style=\"text-align: center; margin-bottom:35px\">\r\n					Incredibly Hospitality With Natural Wildlife Magnificent<br />\r\n					Enriching Your Inner Soul</h2>\r\n				<p style=\"text-align: center; font-size:16px;\">\r\n					Nestled on the Rapti&rsquo;s edge, Discover Riverbank Jungle Resorts, on idyllic sanctuary perfectly aligned with the grandiose of Chitwan National Park. With its vernacular style design and sophisticated interior ambiance, our resort harmoniously mergers with the forest&rsquo;s edge</p>\r\n				<p style=\"text-align: center; font-size:16px;\">\r\n					<a class=\"btn\" href=\"/../about-us\">READ MORE</a></p>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n<br />\r\n<div class=\"row md_top_margin\">\r\n	<div class=\"col-md-12\" style=\"padding-inline:0;\">\r\n		<img src=\"/../userfiles/images/facilities-banner.jpg\" style=\"display:block; margin-inline:auto;\" /></div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 0, 'about-us', 1, '', '', '', 0, '2024-07-02 18:15:37', 5, 1, 0x613a303a7b7d, '', ''),
+(8, 0, 'sustainability', 'Sustainability', '', '<style type=\"text/css\">\r\n@media (max-width:922px){\r\n		.sustainability_text_wrapper .go_green {\r\n		color: #fff;\r\n		background-repeat: no-repeat;\r\n		background-color: #2d452d;\r\n		background-image: none;\r\n	}\r\n	.sustainability_text_wrapper .row {\r\n		flex-direction: column;\r\n	}\r\n	\r\n	.go_green .col-md-4 img {\r\n			display: block;\r\n			margin-inline: auto;\r\n		}\r\n		.sustainability .first_row_child {\r\n		background:none;\r\n	}\r\n	.sustainability .first_row_child img {\r\n		filter: none;\r\n	}\r\n	.wrapper, .wrapper-inner {\r\n	 padding: 0;\r\n		}\r\n	}\r\n	@media (max-width:767px){\r\n		.sustainability_text_wrapper .row {\r\n			flex-direction: column;\r\n			padding: 10px;\r\n		}\r\n		.sustainability_text_wrapper .go_green .eco_bg {\r\n		padding: 0rem;\r\n	}\r\n	.go_green_stakeholders .row  .col-sm-2 img{\r\n	margin-bottom: 20px;\r\n	}\r\n	.sustainability .first_row_child img {\r\n			filter: none;\r\n			width: 50%;\r\n			display: block;\r\n			margin-inline: auto;\r\n		}\r\n		.widget-inner h2 {\r\n			margin: 3rem 0;\r\n			font-size: 2rem;\r\n			line-height: 1.6;\r\n		}\r\n	}</style>\r\n<div class=\"container\">\r\n	<div class=\"sustainability\">\r\n		<div class=\"row sustainability_flex\">\r\n			<div class=\"col-md-10\">\r\n				<div class=\"sustainability_text\">\r\n					<h2 class=\"text-uppercase\">\r\n						Commitment To <b> Greener Tomorrow</b></h2>\r\n					<p>\r\n						At River Bank, our commitment to environmental responsibility shines through our organic farming, ensuring a supply of fresh, chef-crafted meals. Explore our gardens, where herbs naturally protect our crops, and seasonal rotations enrich our cuisine. Our dedication extends to efficient waste management and rainwater harvesting, showcasing our commitment to sustainable practices</p>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-md-12\" style=\"padding:0\">\r\n				<img alt=\"\" src=\"/assets/userfiles/images/eco%20system.png\" width=\"100%\" /></div>\r\n		</div>\r\n		<div class=\"sustainability_text_wrapper\">\r\n			<div class=\"row first_row_child\">\r\n				<div class=\"col-md-6\">\r\n					<div class=\"row\">\r\n						<div class=\"col-sm-3\">\r\n							<img alt=\"plant\" src=\"/assets/userfiles/images/9.png\" width=\"100%\" /></div>\r\n						<div class=\"col-sm-9\">\r\n							<p>\r\n								It is not something we do, it is who we are. Believing in Mother Nature and practitioner on the same, we are contributing to the better place to live for everyone.</p>\r\n						</div>\r\n					</div>\r\n				</div>\r\n				<div class=\"col-md-6\">\r\n					<div class=\"row\">\r\n						<div class=\"col-sm-3\">\r\n							<img alt=\"plant\" src=\"/assets/userfiles/images/8.png\" width=\"100%\" /></div>\r\n						<div class=\"col-sm-9\">\r\n							<p>\r\n								Riverbank practice waste reduction, recycling effort ans zero waste initiatives. We supremely trust the process of composting and the use or reuse or biodegradable amenities.</p>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<!-- image with text -->\r\n			<div class=\"row go_green\">\r\n				<div class=\"col-md-4\">\r\n					<img alt=\"\" src=\"/assets/userfiles/images/riverbak.png\" /></div>\r\n				<div class=\"col-md-8  eco_bg\">\r\n					<div class=\"row go_green_stakeholders\">\r\n						<div class=\"col-sm-12\">\r\n							<div class=\"row\">\r\n								<div class=\"col-sm-2\">\r\n									<img alt=\"\" src=\"/assets/userfiles/images/earh.png\" width=\"100px\" /></div>\r\n								<div class=\"col-sm-10\">\r\n									<p>\r\n										We stakeholders, being a naturalist, are the practitioner of trans-formative journey towards responsibility future. Believing in sustainable ecosystem, we make an efforts towards wildlife conservation, such as preserving natural habitat through collaboration with local conservation organizations.</p>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n					<!-- 2nd -->\r\n					<div class=\"row  go_green_stakeholders\">\r\n						<div class=\"col-sm-12\">\r\n							<div class=\"row\">\r\n								<div class=\"col-sm-2\">\r\n									<img alt=\"\" src=\"/assets/userfiles/images/Vector-1.png\" width=\"77px\" /></div>\r\n								<div class=\"col-sm-10\">\r\n									<p>\r\n										Our sustainability journey is anchored by four essential pillars: Environmental Responsibility, Corporate Social Responsibility, Organic Farm, and Rain Water Harvest. We stakeholders, being a naturalist, are the practitioner of trans-formative journey towards responsibility future.</p>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n					<!-- 2nd end --></div>\r\n			</div>\r\n			<!-- image with text end --></div>\r\n	</div>\r\n</div>\r\n', 0, '', 1, '', '', '', 0, '2024-06-11 14:49:35', 1, 0, 0x613a313a7b693a303b733a31363a2258443750652d67617264656e2e6a7067223b7d, '', ''),
+(11, 0, 'experience', 'Experience', '', '<style type=\"text/css\">\r\n	.widget-inner .row{\r\n			 display: flex;\r\n			justify-content: center;\r\n			align-items: center;\r\n		}\r\n	.event-page-inner .row{\r\n		scroll-margin-top: 14rem;\r\n	  }\r\n		@media (max-width:922px){\r\n			.widget-inner .row{\r\n			flex-direction: column;\r\n			}\r\n			.event-page-inner .row:nth-child(even){\r\n		flex-direction: column-reverse;\r\n		}\r\n		.widget-inner h2{\r\n			margin: 2rem 0;\r\n		}\r\n		}\r\n		.widget-inner .riverbank_acitivties{\r\n		  padding-inline: 5rem;\r\n		}\r\n		.widget-inner .row .col-md-12 .row{\r\n		  margin-bottom: 8rem;\r\n		}\r\n		\r\n		@media (max-width:767px){\r\n			.widget-inner .riverbank_acitivties {\r\n			padding-inline: 0;\r\n		}</style>\r\n	<h2 style=\"text-align: center; margin-bottom:50px;\">\r\n		<span style=\"color:#008080;\">RIVERBANK JUNGLE ACTIVITIES<br />\r\n		<br />\r\n		THEIR LAND; YOUR ADVENTURE</span></h2>\r\n	<div class=\"event-page-inner\">\r\n		<div class=\"row\" id=\"sundowner\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/sundowner.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							SUNDOWNER</h2>\r\n						<h4>\r\n							&quot;Golden Hours, Endless Memories&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							As the sun dips below the horizon, our 5-star resort invites you to savor the magic of a sundowner. Picture this: a secluded terrace, soft jazz notes in the air, and your favorite libation in hand. The sky blushes with hues of apricot and lavender, casting a golden glow on the landscape. Whether you choose a classic martini or a tropical elixir, each sip is a celebration of the day&rsquo;s journey.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"canoe_safari\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							CANOEING SAFARI</h2>\r\n						<h4>\r\n							&quot;Paddle into Paradise: Canoeing Adventures Await&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							Commence on a captivating canoeing safari through our pristine waters. Glide silently, surrounded by lush greenery and wildlife. Our expert oarsmen guide you, ensuring a serene and unforgettable experience. Let the rhythmic strokes of your paddle lead you to hidden corners of beauty. Witness sun-kissed reflections, listen to the symphony of birds, and feel the gentle current beneath you. At our 5-star resort, every canoeing adventure is a voyage into serenity.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/canoeing.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"bird_gazing\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/bird.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							BIRD GAZING</h2>\r\n						<h4>\r\n							&quot;Chirps and Whispers: Our Aerial Haven&quot;</h4>\r\n						<div>\r\n							<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n								Welcome to our lush sanctuary in Chitwan, where nature&rsquo;s feathered wonders take center stage. As dawn breaks, witness the rare Bengal florican gracefully dance across the grasslands. Marvel at the vibrant paradise flycatcher, its plumage a living canvas of colors. And listen to the symphony of sunbirds, kingfishers, and jungle fowl &ndash; a chorus that echoes through our pristine habitat. Whether you&rsquo;re an avid birder or simply seeking serenity, our resort invites you to explore the skies and discover the magic of flight.</p>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"crocodile_breeding\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							CROCODILE BREEDING</h2>\r\n						<h4>\r\n							&quot;Jaws of Chitwan: Where Ancient Reptiles Thrive&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							Step into our conservation haven, where the elusive Gharial crocodile finds sanctuary. These endangered creatures, with their distinctive snouts, thrive within our protected park. Our dedicated farm, established in 1978, is a lifeline for their survival. Here, we rescue and nurture wild eggs, releasing the young Gharials back into the river&rsquo;s embrace. And for those seeking an up-close encounter, behold the formidable mugger crocodiles &ndash; ancient sentinels of the waterways. Join us in safeguarding these majestic reptiles and witness their legacy unfold.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/breeding.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"jeep__safari\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/jeep.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							JEEP SAFARI</h2>\r\n						<h4>\r\n							&quot;Off-Road Thrills, Nature Unveiled&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							Welcome to our natural sanctuary, where the pulse of the jungle beats in harmony with life. Here, the legendary one-horned rhino roams freely, its ancient armor a testament to resilience. The elusive Bengal tiger prowls through sun-dappled foliage, while elephants trumpet their majestic presence. Glide along the riverbanks, where gharials bask in the morning sun, and foxes dart through the underbrush. And when dawn paints the sky, embark on a sunrise jungle expedition &ndash; a symphony of sights and sounds.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"village__tour\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							VILLAGE TOUR</h2>\r\n						<h4>\r\n							&quot;Footprints in Time: Explore Our Village Treasures&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							Step into the heart of tradition at our enchanting Tharu village, nestled near Pathihani. Here, the Tharus &ndash; guardians of ancient wisdom &ndash; welcome you with open arms. Accompanied by seasoned naturalists and local guides, immerse yourself in their captivating world. Witness their vibrant dances, hear tales passed down through generations, and taste flavors that echo centuries. Despite their forest-bound heritage, the Tharu community has adapted, embracing agriculture, fishing, and cattle rearing.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/village.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"jungle__walk\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/jungle.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							JUNGLE WALK</h2>\r\n						<h4>\r\n							&quot;Wild Footprints: Explore Chitwan&rsquo;s Untamed Beauty&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							Step into the heart of the wild with our captivating walking safaris. Whether you follow the nature trails in the buffer zone or take a leisurely stroll, prepare for enchanting encounters. Marvel at delicate butterflies, watch diligent dung beetles at work, and immerse yourself in a tapestry of wildflowers. Guided by seasoned naturalists and expert trackers, these safaris lead you through dense jungles, grassy expanses, and serene waterways. Keep your eyes peeled &ndash; from elusive wildlife to vibrant avian species, every step reveals a new chapter in Chitwan&rsquo;s untamed story.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"row\" id=\"tharu_culture\">\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"riverbank_acitivties\">\r\n						<h2>\r\n							THARU CULTURAL DANCE</h2>\r\n						<h4>\r\n							&quot;Tharu Nights: Celebrate Heritage through Dance&quot;</h4>\r\n						<p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(97, 97, 97); font-size: 16px;\">\r\n							Step into the beating heart of Tharu heritage &ndash; a dance that echoes centuries. Adorned in resplendent hues, the tribe sways to ancient rhythms, their movements a canvas of stories and emotions. Feel the pulse of tradition as they invite you to join &ndash; a celebration where boundaries dissolve, and you become part of their vibrant tapestry. Let the music guide your steps, and immerse yourself in the raw beauty of Tharu culture.</p>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-12 col-md-6\">\r\n				<div class=\"events\">\r\n					<div class=\"item\">\r\n						<div class=\"riverbank_img\">\r\n							<img alt=\"Riverbank Experience\" src=\"/assets/userfiles/images/tharudance.jpg\" style=\"width: 100%;\" /></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n	<p>\r\n		&nbsp;</p>\r\n	', 0, '', 1, '', '', '', 0, '2024-06-13 15:04:28', 3, 0, 0x613a313a7b693a303b733a32303a22594b3671472d657870657269656e63652e6a7067223b7d, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_blogcomment`
+--
+
+CREATE TABLE `tbl_blogcomment` (
+  `id` int(11) NOT NULL,
+  `news_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_bookinginfo`
+--
+
+CREATE TABLE `tbl_bookinginfo` (
+  `id` int(11) NOT NULL,
+  `accesskey` varchar(20) NOT NULL,
+  `person_checkin` varchar(50) NOT NULL,
+  `person_first` varchar(200) NOT NULL,
+  `person_last` varchar(200) NOT NULL,
+  `person_email` tinytext NOT NULL,
+  `person_country` varchar(100) NOT NULL,
+  `person_country_code` varchar(100) NOT NULL,
+  `person_city` varchar(200) NOT NULL,
+  `person_address` tinytext NOT NULL,
+  `person_zipcode` varchar(30) NOT NULL,
+  `person_contact` varchar(100) NOT NULL,
+  `person_message` mediumtext NOT NULL,
+  `ip_address` varchar(20) NOT NULL,
+  `pay_type` varchar(50) NOT NULL,
+  `transaction_code` varchar(100) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(20) NOT NULL,
+  `confirm_ip` varchar(20) NOT NULL,
+  `confirm_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_bookinginfo`
+--
+
+INSERT INTO `tbl_bookinginfo` (`id`, `accesskey`, `person_checkin`, `person_first`, `person_last`, `person_email`, `person_country`, `person_country_code`, `person_city`, `person_address`, `person_zipcode`, `person_contact`, `person_message`, `ip_address`, `pay_type`, `transaction_code`, `status`, `sortorder`, `added_date`, `confirm_ip`, `confirm_date`) VALUES
+(1, '1ArPiiKQGa', '2017-03-31', 'amit', 'prajapati', 'amit@longtail.info', 'Nepal', 'NP', 'bhaktapur', 'bhaktapur', '', '9841884840', 'testing', '110.44.121.133', 'Strip', 'ch_1A32YzAkjWYJctHKUxvtkmzt', 1, 1, '2017-03-30 18:22:42', '110.44.121.133', '2017-03-30 18:23:18'),
+(3, 'tJ72chxtDU', '2017-04-12', 'Amit', 'Prajapati', 'amit@longtail.info', 'Nepal', 'NP', 'Bhaktapur', 'Bhaktapur', '', '9841884840', 'This is only for testing payment system process. Please do not re-ply.', '110.44.121.133', 'Inquiry', '', 0, 2, '2017-04-04 11:43:52', '', ''),
+(4, '53Pnof2BOf', '2017-04-05', 'amit', 'prajapati', 'amit@longtail.info', 'Antigua and Barbuda', 'AG', 'bkt', 'bkt', '', '98989', 'teset', '110.44.121.133', 'Inquiry', '', 0, 3, '2017-04-05 15:52:57', '', ''),
+(5, 'vZGrTQWW6Q', '2017-06-16', 'bipin', 'bajracharya', 'bipin@ongtail.info', 'Nepal', 'NP', 'kathmandu', 'patan', '', '9851092983', 'this is tesrt', '110.44.121.133', 'Inquiry', '', 0, 4, '2017-06-15 10:42:12', '', ''),
+(6, 'XyQvN2gJQO', '2018-02-21', 'Amit', 'Prajapati', 'amit@longtail.info', 'Nepal', 'NP', 'Bhaktpaur', 'Bhaktapur', '', '9841884840', 'This is test booking.', '110.44.121.133', 'Inquiry', '', 0, 5, '2018-02-09 17:21:28', '', ''),
+(7, 'SgHoaL2fzb', '2018-02-21', 'Amit', 'Prajapati', 'amit@longtail.info', 'Nepal', 'NP', 'Bhaktpaur', 'Bhaktapur', '', '9841884840', 'test', '110.44.121.133', 'Inquiry', '', 0, 6, '2018-02-09 17:24:14', '', ''),
+(8, 'SgHoaL2fzb', '2018-02-21', 'Amit', 'Prajapati', 'amit@longtail.info', 'Nepal', 'NP', 'Bhaktpaur', 'Bhaktapur', '', '9841884840', 'test', '110.44.121.133', 'Inquiry', '', 0, 7, '2018-02-09 17:25:11', '', ''),
+(9, 'mYlIoc23dm', '2018-02-28', 'Amit', 'Prajapati', 'amit@longtail.info', 'Nepal', 'NP', 'Bhaktpaur', 'Bhaktapur', '', '9841884840', 'Testing', '110.44.121.133', 'Inquiry', '', 0, 8, '2018-02-09 17:26:25', '', ''),
+(10, 'MLmQCDu16E', '2018-02-28', 'fff', 'ddd', 'ef@dd.com', 'Algeria', 'DZ', 'dff', 'ddf', '', 'dffef', 'dfdfsf', '110.44.121.133', 'Inquiry', '', 0, 9, '2018-02-27 18:32:34', '', ''),
+(11, 'PFJFDxYJmF', '2018-02-28', 'dd', 'dd', 'df@aa.com', 'Andorra', 'AD', 'dfd', 'ddd', '', 'fdf', 'dfef', '110.44.121.133', 'Inquiry', '', 0, 10, '2018-02-28 18:04:26', '', ''),
+(12, 'FaLDRawf3l', '2018-03-13', 'dd', 'dd', 'sunita@longtail.info', 'Nepal', 'NP', 'ktm', 'kapan', '', '151', 'Testing', '110.44.121.133', 'Inquiry', '', 0, 11, '2018-03-04 15:25:27', '', ''),
+(13, 'ceeI1p5eP8', '2018-03-05', 'ace', 'sce', 'ace.dluffy@gmail.com', 'Albania', 'AL', 'asdasd', 'acsd', '', '2323', 'asasd', '110.44.121.133', 'Inquiry', '', 0, 12, '2018-03-04 17:21:26', '', ''),
+(14, 'Xu3zkYjk4v', '2018-03-19', 'ac', 'asd', 'ace.dluffy@gmail.com', 'American Samoa', 'DS', 'asd', 'asd', '', 'asd', 'asdasd', '110.44.121.133', 'Inquiry', '', 0, 13, '2018-03-04 17:27:32', '', ''),
+(15, 'hhGtKDsnNq', '2018-03-27', 'a', 'asd', 'asd@gmail.com', 'Albania', 'AL', 'asd', 'asd', '', 'asd', 'asd', '110.44.121.133', 'Inquiry', '', 0, 14, '2018-03-04 17:30:33', '', ''),
+(16, 'kJIXahRzjd', '2018-03-26', 'asd', 'as', 'ace.dluffy@gmail.com', 'Albania', 'AL', 'asd', 'asdads', '', 'asd', 'asdads', '110.44.121.133', 'Inquiry', '', 0, 15, '2018-03-05 10:42:15', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_booking_pkg`
+--
+
+CREATE TABLE `tbl_booking_pkg` (
+  `booking_id` int(11) NOT NULL,
+  `package_id` int(11) NOT NULL,
+  `start_price` int(11) NOT NULL DEFAULT 0,
+  `tot_adult` int(11) NOT NULL,
+  `total_amt` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_booking_pkg`
+--
+
+INSERT INTO `tbl_booking_pkg` (`booking_id`, `package_id`, `start_price`, `tot_adult`, `total_amt`) VALUES
+(1, 1, 200, 1, 200),
+(1, 2, 50, 2, 100),
+(1, 4, 100, 3, 300),
+(1, 5, 250, 2, 500),
+(3, 1, 200, 10, 2000),
+(4, 1, 200, 3, 600),
+(5, 1, 200, 2, 400),
+(5, 2, 50, 1, 50),
+(6, 4, 200, 2, 400),
+(7, 4, 200, 1, 200),
+(8, 4, 200, 1, 200),
+(9, 4, 200, 2, 400),
+(10, 1, 75, 5, 375),
+(11, 2, 100, 11, 1100),
+(12, 1, 75, 10, 750),
+(13, 3, 150, 1, 150),
+(14, 3, 150, 12, 1800),
+(15, 3, 150, 1, 150),
+(16, 3, 150, 1, 150);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_configs`
+--
+
+CREATE TABLE `tbl_configs` (
+  `id` int(11) NOT NULL,
+  `sitetitle` varchar(200) NOT NULL,
+  `icon_upload` varchar(200) NOT NULL,
+  `logo_upload` varchar(200) NOT NULL,
+  `sitename` varchar(50) NOT NULL,
+  `location_type` tinyint(1) NOT NULL DEFAULT 1,
+  `location_map` mediumtext NOT NULL,
+  `location_image` varchar(250) NOT NULL,
+  `fiscal_address` tinytext NOT NULL,
+  `mail_address` tinytext NOT NULL,
+  `contact_info` tinytext NOT NULL,
+  `contact_info2` tinytext NOT NULL,
+  `whatsapp` varchar(255) NOT NULL,
+  `fax` varchar(100) NOT NULL,
+  `email_address` tinytext NOT NULL,
+  `breif` text NOT NULL,
+  `copyright` varchar(200) NOT NULL,
+  `meta_title` varchar(255) NOT NULL,
+  `site_keywords` tinytext NOT NULL,
+  `site_description` tinytext NOT NULL,
+  `google_anlytics` text NOT NULL,
+  `book_type` tinyint(4) NOT NULL DEFAULT 1,
+  `hotel_page` varchar(200) NOT NULL,
+  `hotel_code` tinytext NOT NULL,
+  `template` varchar(100) NOT NULL,
+  `admin_template` varchar(100) NOT NULL,
+  `headers` text DEFAULT NULL,
+  `footer` text DEFAULT NULL,
+  `search_box` text DEFAULT NULL,
+  `search_result` text DEFAULT NULL,
+  `action` tinyint(1) NOT NULL DEFAULT 0,
+  `city_address` varchar(200) NOT NULL,
+  `city_contact_info` varchar(200) NOT NULL,
+  `city_tell_info` varchar(200) NOT NULL,
+  `city_mail_info` varchar(200) NOT NULL,
+  `mobile_info` varchar(200) NOT NULL,
+  `other_upload` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_configs`
+--
+
+INSERT INTO `tbl_configs` (`id`, `sitetitle`, `icon_upload`, `logo_upload`, `sitename`, `location_type`, `location_map`, `location_image`, `fiscal_address`, `mail_address`, `contact_info`, `contact_info2`, `whatsapp`, `fax`, `email_address`, `breif`, `copyright`, `meta_title`, `site_keywords`, `site_description`, `google_anlytics`, `book_type`, `hotel_page`, `hotel_code`, `template`, `admin_template`, `headers`, `footer`, `search_box`, `search_result`, `action`, `city_address`, `city_contact_info`, `city_tell_info`, `city_mail_info`, `mobile_info`, `other_upload`) VALUES
+(1, 'River Bank Jungle Resort', 'HATNs-icons.jpg', 'g64W1-white-logo.png', 'River Bank Jungle Resort', 1, 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7073.745206308308!2d84.352049!3d27.566464!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994f70331bf8635%3A0xffbe72e6d5659a70!2sRiverbank%20Jungle%20Resort%20%7C%7C%20Wyndham%20Garden%20Chitwan!5e0!3m2!1sen!2snp!4v1718095581020!5m2!1sen!2snp', 'aHQyy-map.jpg', 'Bharatpur 22, Pathihani, Chitwan, Nepal', '', '+977 5 6411121', '0', '', '', 'info@riverbankjungleresort.com.np', '<h4>\r\n	<span style=\"color:#00843b;\"><strong>Riverbank Jungle Resort Pvt. Ltd.</strong></span></h4>\r\n<p>\r\n	<strong>Address</strong>: Bharatpur 22, Pathihani, Chitwan, Nepal</p>\r\n<p>\r\n	<strong>Tel</strong>: <a href=\"tel:+97756411121\">+977 5 6411121</a></p>\r\n<p>\r\n	<strong>Mob</strong>: <a href=\"tel:+977 9742834600\">9742834600</a></p>\r\n<p>\r\n	<strong>E-mail</strong>: <a href=\"mailto:info@riverbankjungleresort.com.np\">info@riverbankjungleresort.com.np</a></p>\r\n<ul class=\"contact-social\">\r\n	<li>\r\n		<a href=\"https://www.facebook.com/people/River-Bank-Jungle-Resort/61555768349361/\" target=\"_blank\"><i class=\"fa fa-facebook-square\"></i></a></li>\r\n	<li>\r\n		<a href=\"https://www.instagram.com/river_bank_jungle_resort/\" target=\"_blank\"><i class=\"fa fa-instagram\"></i></a></li>\r\n	<li>\r\n		<a href=\"https://www.tripadvisor.com/Hotel_Review-g2407100-d27121850-Reviews-River_Bank_Jungle_Resort-Bharatpur_Chitwan_District_Narayani_Zone_Central_Region.html\" target=\"_blank\"><i class=\"fa fa-tripadvisor\"></i></a></li>\r\n</ul>\r\n<hr />\r\n<p>\r\n	&nbsp;</p>\r\n<h4>\r\n	<strong style=\"color:#00843b;\">City Office</strong></h4>\r\n<p>\r\n	<strong>Address</strong>: Maharajgunj, Kathmandu, Nepal</p>\r\n<p>\r\n	<strong>Tel</strong>: <a href=\"tel:+977 1 5916478\">+977 1 5916478</a></p>\r\n<p>\r\n	<strong>Mob</strong>: <a href=\"tel:+977 9765959918\">9765959918</a></p>\r\n<p>\r\n	<strong>E-mail</strong>: <a href=\"mailto:sales@riverbankjungleresort.com.np\">sales@riverbankjungleresort.com.np</a></p>\r\n', 'Copyright ©  {year} River Bank Jungle Resort. All Rights Reserved.', 'River Bank Jungle Resort | Wyndham Gardens Chitwan', 'Resort in Nepal, Resort in Chitwan, Best resort in Chitwan, Chitwan Resort, Chitwan, Forest Edge Resort, Chitwan Hospitality, Riverbank, Riverbank Jungle Resort, Jungle Resort, Resort in Jungle ', 'Nestled on the Rapti’s edge, Discover Riverbank Jungle Resorts is an idyllic sanctuary perfectly aligned with the grandiose of Chitwan National Park.', '<!-- Google tag (gtag.js) -->\r\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-6H74VP4276\"></script>\r\n<script>\r\n  window.dataLayer = window.dataLayer || [];\r\n  function gtag(){dataLayer.push(arguments);}\r\n  gtag(\'js\', new Date());\r\n\r\n  gtag(\'config\', \'G-6H74VP4276\');\r\n</script>', 2, 'result.php', '5gU2lD7', 'web', 'blue', '', '', 'Develop By Amit prajapati', 'Develop By Amit prajapati', 0, 'Maharajgunj, Kathmandu, Nepal', ' 9765959918', '+977 1 5916478', 'sales@riverbankjungleresort.com.np', '9742834600', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_countries`
+--
+
+CREATE TABLE `tbl_countries` (
+  `id` int(11) NOT NULL,
+  `country_name` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_countries`
+--
+
+INSERT INTO `tbl_countries` (`id`, `country_name`, `status`) VALUES
+(1, 'United States', 1),
+(2, 'Canada', 1),
+(3, 'Mexico', 1),
+(4, 'Afghanistan', 1),
+(5, 'Albania', 1),
+(6, 'Algeria', 1),
+(7, 'Andorra', 1),
+(8, 'Angola', 1),
+(9, 'Anguilla', 1),
+(10, 'Antarctica', 1),
+(11, 'Antigua and Barbuda', 1),
+(12, 'Argentina', 1),
+(13, 'Armenia', 1),
+(14, 'Aruba', 1),
+(15, 'Ascension Island', 1),
+(16, 'Australia', 1),
+(17, 'Austria', 1),
+(18, 'Azerbaijan', 1),
+(19, 'Bahamas', 1),
+(20, 'Bahrain', 1),
+(21, 'Bangladesh', 1),
+(22, 'Barbados', 1),
+(23, 'Belarus', 1),
+(24, 'Belgium', 1),
+(25, 'Belize', 1),
+(26, 'Benin', 1),
+(27, 'Bermuda', 1),
+(28, 'Bhutan', 1),
+(29, 'Bolivia', 1),
+(30, 'Bophuthatswana', 1),
+(31, 'Bosnia-Herzegovina', 1),
+(32, 'Botswana', 1),
+(33, 'Bouvet Island', 1),
+(34, 'Brazil', 1),
+(35, 'British Indian Ocean', 1),
+(36, 'British Virgin Islands', 1),
+(37, 'Brunei Darussalam', 1),
+(38, 'Bulgaria', 1),
+(39, 'Burkina Faso', 1),
+(40, 'Burundi', 1),
+(41, 'Cambodia', 1),
+(42, 'Cameroon', 1),
+(44, 'Cape Verde Island', 1),
+(45, 'Cayman Islands', 1),
+(46, 'Central Africa', 1),
+(47, 'Chad', 1),
+(48, 'Channel Islands', 1),
+(49, 'Chile', 1),
+(50, 'China, Peoples Republic', 1),
+(51, 'Christmas Island', 1),
+(52, 'Cocos (Keeling) Islands', 1),
+(53, 'Colombia', 1),
+(54, 'Comoros Islands', 1),
+(55, 'Congo', 1),
+(56, 'Cook Islands', 1),
+(57, 'Costa Rica', 1),
+(58, 'Croatia', 1),
+(59, 'Cuba', 1),
+(60, 'Cyprus', 1),
+(61, 'Czech Republic', 1),
+(62, 'Denmark', 1),
+(63, 'Djibouti', 1),
+(64, 'Dominica', 1),
+(65, 'Dominican Republic', 1),
+(66, 'Easter Island', 1),
+(67, 'Ecuador', 1),
+(68, 'Egypt', 1),
+(69, 'El Salvador', 1),
+(70, 'England', 1),
+(71, 'Equatorial Guinea', 1),
+(72, 'Estonia', 1),
+(73, 'Ethiopia', 1),
+(74, 'Falkland Islands', 1),
+(75, 'Faeroe Islands', 1),
+(76, 'Fiji', 1),
+(77, 'Finland', 1),
+(78, 'France', 1),
+(79, 'French Guyana', 1),
+(80, 'French Polynesia', 1),
+(81, 'Gabon', 1),
+(82, 'Gambia', 1),
+(83, 'Georgia Republic', 1),
+(84, 'Germany', 1),
+(85, 'Gibraltar', 1),
+(86, 'Greece', 1),
+(87, 'Greenland', 1),
+(88, 'Grenada', 1),
+(89, 'Guadeloupe (French)', 1),
+(90, 'Guatemala', 1),
+(91, 'Guernsey Island', 1),
+(92, 'Guinea Bissau', 1),
+(93, 'Guinea', 1),
+(94, 'Guyana', 1),
+(95, 'Haiti', 1),
+(96, 'Heard and McDonald Isls', 1),
+(97, 'Honduras', 1),
+(98, 'Hong Kong', 1),
+(99, 'Hungary', 1),
+(100, 'Iceland', 1),
+(101, 'India', 1),
+(102, 'Iran', 1),
+(103, 'Iraq', 1),
+(104, 'Ireland', 1),
+(105, 'Isle of Man', 1),
+(106, 'Israel', 1),
+(107, 'Italy', 1),
+(108, 'Ivory Coast', 1),
+(109, 'Jamaica', 1),
+(110, 'Japan', 1),
+(111, 'Jersey Island', 1),
+(112, 'Jordan', 1),
+(113, 'Kazakhstan', 1),
+(114, 'Kenya', 1),
+(115, 'Kiribati', 1),
+(116, 'Kuwait', 1),
+(117, 'Laos', 1),
+(118, 'Latvia', 1),
+(119, 'Lebanon', 1),
+(120, 'Lesotho', 1),
+(121, 'Liberia', 1),
+(122, 'Libya', 1),
+(123, 'Liechtenstein', 1),
+(124, 'Lithuania', 1),
+(125, 'Luxembourg', 1),
+(126, 'Macao', 1),
+(127, 'Macedonia', 1),
+(128, 'Madagascar', 1),
+(129, 'Malawi', 1),
+(130, 'Malaysia', 1),
+(131, 'Maldives', 1),
+(132, 'Mali', 1),
+(133, 'Malta', 1),
+(134, 'Martinique (French)', 1),
+(135, 'Mauritania', 1),
+(136, 'Mauritius', 1),
+(137, 'Mayotte', 1),
+(139, 'Micronesia', 1),
+(140, 'Moldavia', 1),
+(141, 'Monaco', 1),
+(142, 'Mongolia', 1),
+(143, 'Montenegro', 1),
+(144, 'Montserrat', 1),
+(145, 'Morocco', 1),
+(146, 'Mozambique', 1),
+(147, 'Myanmar', 1),
+(148, 'Namibia', 1),
+(149, 'Nauru', 1),
+(150, 'Nepal', 1),
+(151, 'Netherlands Antilles', 1),
+(152, 'Netherlands', 1),
+(153, 'New Caledonia (French)', 1),
+(154, 'New Zealand', 1),
+(155, 'Nicaragua', 1),
+(156, 'Niger', 1),
+(157, 'Niue', 1),
+(158, 'Norfolk Island', 1),
+(159, 'North Korea', 1),
+(160, 'Northern Ireland', 1),
+(161, 'Norway', 1),
+(162, 'Oman', 1),
+(163, 'Pakistan', 1),
+(164, 'Panama', 1),
+(165, 'Papua New Guinea', 1),
+(166, 'Paraguay', 1),
+(167, 'Peru', 1),
+(168, 'Philippines', 1),
+(169, 'Pitcairn Island', 1),
+(170, 'Poland', 1),
+(171, 'Polynesia (French)', 1),
+(172, 'Portugal', 1),
+(173, 'Qatar', 1),
+(174, 'Reunion Island', 1),
+(175, 'Romania', 1),
+(176, 'Russia', 1),
+(177, 'Rwanda', 1),
+(178, 'S.Georgia Sandwich Isls', 1),
+(179, 'Sao Tome, Principe', 1),
+(180, 'San Marino', 1),
+(181, 'Saudi Arabia', 1),
+(182, 'Scotland', 1),
+(183, 'Senegal', 1),
+(184, 'Serbia', 1),
+(185, 'Seychelles', 1),
+(186, 'Shetland', 1),
+(187, 'Sierra Leone', 1),
+(188, 'Singapore', 1),
+(189, 'Slovak Republic', 1),
+(190, 'Slovenia', 1),
+(191, 'Solomon Islands', 1),
+(192, 'Somalia', 1),
+(193, 'South Africa', 1),
+(194, 'South Korea', 1),
+(195, 'Spain', 1),
+(196, 'Sri Lanka', 1),
+(197, 'St. Helena', 1),
+(198, 'St. Lucia', 1),
+(199, 'St. Pierre Miquelon', 1),
+(200, 'St. Martins', 1),
+(201, 'St. Kitts Nevis Anguilla', 1),
+(202, 'St. Vincent Grenadines', 1),
+(203, 'Sudan', 1),
+(204, 'Suriname', 1),
+(205, 'Svalbard Jan Mayen', 1),
+(206, 'Swaziland', 1),
+(207, 'Sweden', 1),
+(208, 'Switzerland', 1),
+(209, 'Syria', 1),
+(210, 'Tajikistan', 1),
+(211, 'Taiwan', 1),
+(212, 'Tahiti', 1),
+(213, 'Tanzania', 1),
+(214, 'Thailand', 1),
+(215, 'Togo', 1),
+(216, 'Tokelau', 1),
+(217, 'Tonga', 1),
+(218, 'Trinidad and Tobago', 1),
+(219, 'Tunisia', 1),
+(220, 'Turkmenistan', 1),
+(221, 'Turks and Caicos Isls', 1),
+(222, 'Tuvalu', 1),
+(223, 'Uganda', 1),
+(224, 'Ukraine', 1),
+(225, 'United Arab Emirates', 1),
+(226, 'Uruguay', 1),
+(227, 'Uzbekistan', 1),
+(228, 'Vanuatu', 1),
+(229, 'Vatican City State', 1),
+(230, 'Venezuela', 1),
+(231, 'Vietnam', 1),
+(232, 'Virgin Islands (Brit,1)', 1),
+(233, 'Wales', 1),
+(234, 'Wallis Futuna Islands', 1),
+(235, 'Western Sahara', 1),
+(236, 'Western Samoa', 1),
+(237, 'Yemen', 1),
+(238, 'Yugoslavia', 1),
+(239, 'Zaire', 1),
+(240, 'Zambia', 1),
+(241, 'Zimbabwe', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_events`
+--
+
+CREATE TABLE `tbl_events` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(250) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `brief` tinytext NOT NULL,
+  `content` text NOT NULL,
+  `image` mediumtext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `meta_keywords` varchar(250) NOT NULL,
+  `meta_description` varchar(250) NOT NULL,
+  `event_stdate` date NOT NULL,
+  `event_endate` date NOT NULL,
+  `type` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_events`
+--
+
+INSERT INTO `tbl_events` (`id`, `slug`, `title`, `brief`, `content`, `image`, `status`, `sortorder`, `added_date`, `meta_keywords`, `meta_description`, `event_stdate`, `event_endate`, `type`) VALUES
+(1, 'exhibition-at-siddhartha-art-gallery', 'Exhibition at Siddhartha Art-Gallery', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean vel faucibus nunc, et venenatis magna. In hac habitasse platea dictumst. ', '<p>\r\n	The media is going nuts over this one! The Yamazaki 2016 Sherry Cask was released on Monday, February 1st 2016, and people are, in one word, ecstatic! This bottle is officially considered the best whisky on the planet. It made headlines in the press in early 2015 when it was selected by The Whisky Bible in 2015, and consequently sold out exceptionally fast.</p>\r\n<p>\r\n	In total, 5000 bottles were produced of the 2016 version. Bottled at 48%, the difference between this and the 2013 version is mainly the fact that the youngest whisky in the blend has been aged for two more years, and that&#39;s never hurt a blend thus far! Grab it while it&#39;s still here. Please note that the delivery of this bottle may take up to 15 working days.</p>\r\n', 'a:3:{i:0;s:17:\"kEspT-events2.jpg\";i:1;s:16:\"XeFKC-eventn.jpg\";i:2;s:16:\"rpI2s-events.jpg\";}', 1, 1, '2016-06-02 14:50:49', '', '', '2016-06-02', '2016-06-05', 1),
+(2, 'event-at-mulchowk', 'Event at Mulchowk', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean vel faucibus nunc, et venenatis magna. In hac habitasse platea dictumst. ', '<p>\r\n	The media is going nuts over this one! The Yamazaki 2016 Sherry Cask was released on Monday, February 1st 2016, and people are, in one word, ecstatic! This bottle is officially considered the best whisky on the planet. It made headlines in the press in early 2015 when it was selected by The Whisky Bible in 2015, and consequently sold out exceptionally fast.</p>\r\n<p>\r\n	In total, 5000 bottles were produced of the 2016 version. Bottled at 48%, the difference between this and the 2013 version is mainly the fact that the youngest whisky in the blend has been aged for two more years, and that&#39;s never hurt a blend thus far! Grab it while it&#39;s still here. Please note that the delivery of this bottle may take up to 15 working days.</p>\r\n', 'a:2:{i:0;s:17:\"Q7vzA-events3.jpg\";i:1;s:17:\"TAte5-events4.jpg\";}', 1, 2, '2016-06-02 15:00:41', '', '', '2016-06-02', '2016-06-05', 1),
+(3, 'ramalaya-launch', 'Ramalaya Launch', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean vel faucibus nunc, et venenatis magna. In hac habitasse platea dictumst. ', '<p>\r\n	The media is going nuts over this one! The Yamazaki 2016 Sherry Cask was released on Monday, February 1st 2016, and people are, in one word, ecstatic! This bottle is officially considered the best whisky on the planet. It made headlines in the press in early 2015 when it was selected by The Whisky Bible in 2015, and consequently sold out exceptionally fast.</p>\r\n<p>\r\n	In total, 5000 bottles were produced of the 2016 version. Bottled at 48%, the difference between this and the 2013 version is mainly the fact that the youngest whisky in the blend has been aged for two more years, and that&#39;s never hurt a blend thus far! Grab it while it&#39;s still here. Please note that the delivery of this bottle may take up to 15 working days.</p>\r\n', 'a:2:{i:0;s:17:\"2DdS0-events2.jpg\";i:1;s:17:\"YfSPt-events3.jpg\";}', 1, 3, '2016-06-02 15:01:40', '', '', '2016-06-04', '2016-06-07', 2),
+(4, 'bmr-culture-programe', 'BMR Culture programe', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean vel faucibus nunc, et venenatis magna. In hac habitasse platea dictumst. ', '<p>\r\n	The media is going nuts over this one! The Yamazaki 2016 Sherry Cask was released on Monday, February 1st 2016, and people are, in one word, ecstatic! This bottle is officially considered the best whisky on the planet. It made headlines in the press in early 2015 when it was selected by The Whisky Bible in 2015, and consequently sold out exceptionally fast.</p>\r\n<p>\r\n	In total, 5000 bottles were produced of the 2016 version. Bottled at 48%, the difference between this and the 2013 version is mainly the fact that the youngest whisky in the blend has been aged for two more years, and that&#39;s never hurt a blend thus far! Grab it while it&#39;s still here. Please note that the delivery of this bottle may take up to 15 working days.</p>\r\n', 'a:2:{i:0;s:16:\"XZSPM-events.jpg\";i:1;s:17:\"ltGvQ-events3.jpg\";}', 1, 4, '2016-06-02 15:02:37', '', '', '2016-06-02', '2016-06-08', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_faq`
+--
+
+CREATE TABLE `tbl_faq` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `title_gr` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `content_gr` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_faq`
+--
+
+INSERT INTO `tbl_faq` (`id`, `title`, `title_gr`, `content`, `content_gr`, `status`, `sortorder`, `added_date`) VALUES
+(1, 'Collapsible Group Item #1', '', 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.', '', 0, 1, '2024-07-08 15:47:33'),
+(2, 'Collapsible Group Item #2', '', 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS. ', '', 0, 2, '2024-07-08 15:48:08'),
+(3, 'Collapsible Group Item #3', '', 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS. ', '', 0, 3, '2024-07-08 15:49:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_features`
+--
+
+CREATE TABLE `tbl_features` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `parentId` int(11) NOT NULL DEFAULT 0,
+  `image` varchar(255) NOT NULL,
+  `brief` text NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_features`
+--
+
+INSERT INTO `tbl_features` (`id`, `title`, `parentId`, `image`, `brief`, `status`, `sortorder`, `added_date`) VALUES
+(1, 'Features', 0, 'D5Fsf-costumer.png', '', 1, 1, '2016-11-16 12:11:09'),
+(2, 'Balcony: 95 sq.ft', 1, 'EmgEZ-balcony (1).png', '', 1, 24, '2016-11-16 12:11:25'),
+(3, 'Living Room: 538 sq.ft', 1, 'BiGCM-area.png', '', 1, 21, '2016-11-16 12:11:39'),
+(68, 'PA System with Microphone', 66, 'Fx724-micorphone.png', '', 1, 1, '2024-07-07 19:00:14'),
+(5, 'Bed Room: 270 sq.ft', 1, 'VGd0b-area.png', '', 1, 18, '2016-11-16 12:12:04'),
+(69, 'LED TV', 66, 'cZrZG-tv.png', '', 1, 11, '2024-07-07 19:00:31'),
+(7, 'Occupancy: 2 Adult + 1 Child', 1, '0My4N-group.png', '', 1, 15, '2016-11-16 12:12:28'),
+(66, 'Hall Amenities', 0, '', '', 1, 4, '2024-07-07 18:48:56'),
+(67, 'Projector', 66, 'avlgC-projector.png', '', 1, 12, '2024-07-07 18:59:38'),
+(50, 'Regular walk-in Shower', 33, 'theV8-shower.png', '', 1, 6, '2017-05-07 14:37:01'),
+(51, 'Marble Floor', 33, 'cZvV0-floor.png', '', 1, 5, '2017-05-07 14:40:49'),
+(53, 'Walk-in Rain Shower with separate bathtub', 33, 'pAbOi-icon-(1).png', '', 0, 4, '2017-05-07 14:46:55'),
+(54, 'Jungle View', 33, 'frJf8-forest.png', '', 1, 27, '2017-05-07 14:48:27'),
+(55, 'Balcony', 33, 'VABee-balcony.png', '', 1, 2, '2017-05-07 14:59:27'),
+(35, 'Bathrobe', 33, '510Gw-bathrobe.png', '', 1, 25, '2017-02-23 18:12:59'),
+(36, 'LED TV', 33, 'Y0pfa-smart-tv.png', '', 1, 23, '2017-02-23 18:13:39'),
+(37, 'Dental Kit', 33, 'naPLs-medical-kit.png', '', 1, 22, '2017-02-23 18:14:11'),
+(28, 'Balcony: 58 sq.ft', 1, 'hoj5w-balcony (1).png', '', 1, 30, '2017-02-23 17:03:14'),
+(29, 'Room: 418 sq.ft', 1, '4qyqO-area.png', '', 1, 32, '2017-02-23 17:04:14'),
+(30, 'Room: 396 sq.ft', 1, 'lcyP6-area.png', '', 1, 28, '2017-02-23 17:06:19'),
+(31, 'Downstairs: 514 sq.ft', 1, 'hRLI7-area.png', '', 1, 36, '2017-02-23 17:06:43'),
+(32, 'Upstairs: 378 sq.ft', 1, 'yFCuA-area.png', '', 1, 34, '2017-02-23 17:07:04'),
+(33, 'Facilities', 0, '', '', 1, 3, '2017-02-23 18:11:34'),
+(34, 'Instant Hot Water', 33, 'TkdXn-waterdrop.png', '', 1, 26, '2017-02-23 18:12:29'),
+(38, 'Complimentary Toiletries', 33, 'u2PGq-toiletries.png', '', 1, 20, '2017-02-23 18:14:57'),
+(39, 'Room Service', 33, 'tLueR-room-service (1).png', '', 1, 19, '2017-02-23 18:15:25'),
+(40, 'In-room Slippers', 33, '4MVTo-slippers.png', '', 1, 17, '2017-02-23 18:16:05'),
+(41, 'Towels', 33, '7u7A4-towels.png', '', 1, 16, '2017-02-23 18:16:41'),
+(42, 'Complimentary WIFI', 33, 'qH6jp-wifi-router.png', '', 1, 14, '2017-02-23 18:17:14'),
+(43, 'Air Conditioned', 33, 'Dvc6m-air-conditioner.png', '', 1, 13, '2017-02-23 18:17:48'),
+(44, 'Seating Space', 33, '7GEV1-living-room.png', '', 1, 12, '2017-02-23 18:18:30'),
+(45, 'Emergency Torch', 33, 'jchqL-torch.png', '', 1, 11, '2017-02-23 18:18:59'),
+(46, 'Hairdryer', 33, 's7wgg-hairdryer.png', '', 1, 10, '2017-02-23 18:19:31'),
+(47, 'Iron and Ironing Board', 33, 'ChpWm-ironing-board.png', '', 1, 9, '2017-02-23 18:20:05'),
+(48, 'Safety Deposit Box', 33, 'lIDSx-eee.png', '', 1, 8, '2017-04-20 14:15:08'),
+(49, 'Tea / Coffee Maker', 33, '1CuZ6-tea-pot.png', '', 1, 7, '2017-04-20 14:16:26'),
+(59, 'En-Suite Bathroom', 33, '4Js06-sink.png', '', 1, 29, '2019-10-02 17:28:38'),
+(61, 'Washing Machine', 33, 'ZQgUx-washing-machine.png', '', 1, 31, '2019-10-02 17:35:03'),
+(62, 'Wakeup Service', 33, 'B6LFf-alarm-clock.png', '', 1, 33, '2019-10-02 17:35:30'),
+(63, 'Electric Kettle', 33, '0oJuw-kettle.png', '', 1, 35, '2019-10-02 17:36:01'),
+(65, 'Bed: King Bed', 1, '2O3ea-bed.png', '', 1, 37, '2024-07-07 17:59:32'),
+(70, 'Video Conferencing', 66, 'rI3ei-video-call.png', '', 1, 10, '2024-07-07 19:00:53'),
+(71, 'Computer / Laptop', 66, 'TE8uy-laptop.png', '', 1, 9, '2024-07-07 19:01:10'),
+(72, 'White Board', 66, 'VRiXX-whiteboard.png', '', 1, 8, '2024-07-07 19:01:32'),
+(73, 'Flip Chart', 66, 'vce8p-flip-chart.png', '', 1, 7, '2024-07-07 19:01:57'),
+(74, 'Soft (pin) Board', 66, 'YvGPk-thumb-pin.png', '', 1, 6, '2024-07-07 19:02:14'),
+(75, 'Printing Services', 66, 'Ol4EK-print.png', '', 1, 5, '2024-07-07 19:02:34'),
+(76, 'Writing pads with pencils', 66, 'jv23s-note-pad.png', '', 1, 4, '2024-07-07 19:02:49'),
+(77, 'Photography', 66, 'ctqFz-camera.png', '', 1, 3, '2024-07-07 19:03:06'),
+(78, 'Videography', 66, 't2nqQ-camera (1).png', '', 1, 2, '2024-07-07 19:03:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_galleries`
+--
+
+CREATE TABLE `tbl_galleries` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(250) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `detail` varchar(200) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `registered` varchar(50) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_galleries`
+--
+
+INSERT INTO `tbl_galleries` (`id`, `slug`, `title`, `image`, `detail`, `status`, `sortorder`, `registered`, `type`) VALUES
+(1, 'home', 'Home', '0VIP8-logo.png', '', 1, 1, '2017-04-23 17:43:52', 2),
+(2, 'resort', 'Resort', 'CZyfq-1.jpg', '', 1, 2, '2017-04-24 16:04:03', 1),
+(11, 'rooms-suites', 'Rooms & Suites', '64Koq-room8.jpg', '', 1, 3, '2024-07-05 15:47:29', 1),
+(12, 'restaurant-bar', 'Restaurant & Bar', '0tfrv-b9.jpg', '', 1, 4, '2024-07-05 16:17:16', 1),
+(13, 'meeting-events', 'Meeting & Events', '9KO0K-e4.jpg', '', 1, 5, '2024-07-05 16:20:46', 1),
+(14, 'recreation', 'Recreation', 'Tit45-p1.jpg', '', 1, 6, '2024-07-05 16:23:52', 1),
+(15, 'experience', 'Experience', 'bTpsR-j1.jpg', '', 1, 7, '2024-07-05 16:28:30', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gallery_images`
+--
+
+CREATE TABLE `tbl_gallery_images` (
+  `id` int(11) NOT NULL,
+  `galleryid` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `detail` varchar(200) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `registered` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_gallery_images`
+--
+
+INSERT INTO `tbl_gallery_images` (`id`, `galleryid`, `title`, `image`, `status`, `detail`, `sortorder`, `registered`) VALUES
+(159, 2, 'Riverbank Jungle Resort', '451RN-13.jpg', 1, '', 11, '2024-07-05 15:47:01'),
+(123, 1, 'Savor the Flavors ', '1iZh3-gallery4.jpg', 1, '', 2, '2024-06-14 17:05:34'),
+(124, 1, 'Tranquility Hospitality', 'b5Uxw-gallery1.jpg', 1, '', 3, '2024-06-14 17:05:34'),
+(14, 7, 'Deluxe Room', '1Ide7-dr2.jpg', 1, '', 2, '2017-05-07 17:08:35'),
+(158, 2, 'Riverbank Jungle Resort', 'Ut6fg-9.jpg', 1, '', 10, '2024-07-05 15:47:01'),
+(8, 3, 'Room', 'QMW3v-photo-gallery-2.jpg', 1, '', 1, '2017-04-24 16:07:58'),
+(24, 4, 'ARDOR', 'zluT0-sr1.jpg', 1, '', 1, '2017-05-07 17:25:21'),
+(10, 5, 'Facilities', 'rWH1c-photo-gallery-9.jpg', 1, '', 1, '2017-04-24 16:08:46'),
+(13, 7, 'Deluxe Room', 'mVxb6-dr1.jpg', 1, '', 1, '2017-05-07 17:08:35'),
+(15, 7, 'Deluxe Room', 'zJHXS-dr3.jpg', 1, '', 3, '2017-05-07 17:08:35'),
+(16, 7, 'Deluxe Room', 'wubLi-dr4.jpg', 1, '', 4, '2017-05-07 17:08:35'),
+(17, 7, 'Standard Room', 'ipleV-sr1.jpg', 1, '', 6, '2017-05-07 17:08:35'),
+(18, 7, 'Standard Room', 'BlpCE-sr2.jpg', 1, '', 7, '2017-05-07 17:08:35'),
+(19, 7, 'Standard Room', 'RvigM-sr3.jpg', 1, '', 8, '2017-05-07 17:08:35'),
+(20, 7, 'Standard Room', 'qx4GL-sr4.jpg', 1, '', 9, '2017-05-07 17:08:35'),
+(22, 6, 'Delicious Food', 'hqnpI-dh2.jpg', 1, '', 2, '2017-05-07 17:11:57'),
+(23, 6, 'Delicious Food', 'z7lyO-dh3.jpg', 1, '', 3, '2017-05-07 17:11:57'),
+(25, 4, 'TISSAH', 'hjrnK-sr2.jpg', 1, '', 2, '2017-05-07 17:25:21'),
+(26, 4, 'TISSAH', 'aM8ea-sr3.jpg', 1, '', 3, '2017-05-07 17:25:21'),
+(27, 4, 'FLAT IRON', 'FcKhA-sr4.jpg', 1, '', 4, '2017-05-07 17:25:21'),
+(166, 11, 'Rooms & Suites', 'zGbiI-room4.jpg', 1, '', 2, '2024-07-05 15:48:21'),
+(165, 11, 'Rooms & Suites', 'xTuXK-room7.jpg', 1, '', 1, '2024-07-05 15:48:21'),
+(164, 2, 'Riverbank Jungle Resort', 'QDxvH-14.jpg', 1, '', 16, '2024-07-05 15:47:01'),
+(162, 2, 'Riverbank Jungle Resort', 'EZNhN-12.jpg', 1, '', 14, '2024-07-05 15:47:01'),
+(163, 2, 'Riverbank Jungle Resort', 'OYcab-15.jpg', 1, '', 15, '2024-07-05 15:47:01'),
+(41, 7, 'Superior Room', 'bXLdF-5d3_0523.jpg', 1, '', 10, '2017-05-19 16:55:28'),
+(120, 8, 'Interior', '0C9Ty-4.jpg', 1, '', 6, '2018-08-22 14:46:30'),
+(43, 8, 'Interior', '9Cj3F-5d3_0496.jpg', 1, '', 3, '2017-05-19 17:27:06'),
+(44, 8, 'Interior', 'nmOTL-5d3_0497.jpg', 1, '', 4, '2017-05-19 17:27:06'),
+(45, 8, 'Interior', 'Y01mm-sukunda.jpg', 1, '', 5, '2017-05-19 17:27:06'),
+(125, 1, 'Peaceful Retreat', '0xAeI-gallery3.jpg', 1, '', 4, '2024-06-14 17:05:34'),
+(160, 2, 'Riverbank Jungle Resort', 'y47uF-10.jpg', 1, '', 12, '2024-07-05 15:47:01'),
+(161, 2, 'Riverbank Jungle Resort', 'cm4w4-16.jpg', 1, '', 13, '2024-07-05 15:47:01'),
+(51, 6, 'Food', '3JCzD-dining-2.jpg', 1, '', 4, '2017-06-08 13:12:26'),
+(99, 10, 'Food setup', 'SKj7B-f5.jpg', 1, '', 4, '2018-07-04 15:57:33'),
+(53, 6, 'Dining Hall', 'PPZd0-dining-1.jpg', 1, '', 1, '2017-06-08 13:12:26'),
+(54, 6, 'Food', 'zR17W-dining-4.jpg', 1, '', 5, '2017-06-08 13:12:26'),
+(55, 7, 'Deluxe Room', '1GkoC-deluxe-room-gallery.jpg', 1, '', 5, '2017-06-08 14:13:21'),
+(56, 7, 'Superior Room', 'OlYaf-superior-room.jpg', 1, '', 11, '2017-06-08 14:13:21'),
+(57, 7, 'Superior Room', 'yIV2y-superior-room-gallery.jpg', 1, '', 12, '2017-06-08 14:13:21'),
+(58, 4, 'Shop', 'ljf3f-shop.jpg', 0, '', 6, '2017-06-08 14:15:48'),
+(59, 4, 'Shop', 'wN8Na-shop1.jpg', 0, '', 7, '2017-06-08 14:15:48'),
+(60, 8, 'Interior', 'bBq5o-interior.jpg', 1, '', 1, '2017-06-08 14:22:02'),
+(61, 8, 'Reception', 'd37B1-interior-1.jpg', 1, '', 2, '2017-06-08 14:22:02'),
+(121, 8, 'Terrace', 'GquBi-5.jpg', 1, '', 7, '2018-08-22 15:00:04'),
+(167, 11, 'Rooms & Suites', 'tpLAj-room8.jpg', 1, '', 3, '2024-07-05 15:48:21'),
+(64, 4, 'Shop', 'RAgLc-shop-2.jpg', 0, '', 5, '2017-06-08 14:30:43'),
+(154, 2, 'Riverbank Jungle Resort', 'M0XGe-6.jpg', 1, '', 6, '2024-07-05 15:45:59'),
+(155, 2, 'Riverbank Jungle Resort', 'yCkzp-8.jpg', 1, '', 7, '2024-07-05 15:47:01'),
+(156, 2, 'Riverbank Jungle Resort', 'IFDqw-11.jpg', 1, '', 8, '2024-07-05 15:47:01'),
+(157, 2, 'Riverbank Jungle Resort', 'HeanU-7.jpg', 1, '', 9, '2024-07-05 15:47:01'),
+(122, 1, 'Comfort Meets Nature', 'vDS7g-gallery2.jpg', 1, '', 1, '2024-06-14 17:05:34'),
+(75, 6, 'Roasted Chicken', 'qjOgF-3.jpg', 1, '', 6, '2017-08-29 15:06:39'),
+(76, 6, 'Tofu Curry', 'h5342-4.jpg', 1, '', 7, '2017-08-29 15:06:39'),
+(77, 6, 'Pork', '1q9zy-5.jpg', 1, '', 8, '2017-08-29 15:06:39'),
+(78, 6, 'Chicken Curry', 'hBzOi-6.jpg', 1, '', 9, '2017-08-29 15:06:39'),
+(79, 6, 'Cocktail', 'w7IzF-7.jpg', 1, '', 10, '2017-08-29 15:06:39'),
+(80, 6, 'Naan Roti', 'Vp210-8.jpg', 1, '', 11, '2017-08-29 15:06:39'),
+(81, 6, 'Cocktail', 'uvMMh-9.jpg', 1, '', 12, '2017-08-29 15:06:39'),
+(82, 6, 'Cocktail', 'vIRC7-10.jpg', 1, '', 13, '2017-08-29 15:06:39'),
+(83, 6, 'Cocktail', 'mASu5-11.jpg', 1, '', 14, '2017-08-29 15:06:39'),
+(84, 6, 'Fried Rice', 'PK4jS-12.jpg', 1, '', 15, '2017-08-29 15:06:39'),
+(85, 9, 'Meeting hall', '9HLa9-m1.jpg', 1, '', 1, '2018-07-02 18:08:52'),
+(86, 9, 'Meeting hall', 'i7Jnc-m2.jpg', 1, '', 2, '2018-07-02 18:08:52'),
+(87, 9, 'Meeting hall', 'F5Rm8-m3.jpg', 1, '', 3, '2018-07-02 18:08:52'),
+(88, 9, 'Meeting hall', 'KNEV1-m4.jpg', 1, '', 4, '2018-07-02 18:08:52'),
+(98, 10, 'Food', 'RoZgy-f4.jpg', 1, '', 3, '2018-07-04 15:57:33'),
+(95, 6, 'Food', 'RacJd-f4.jpg', 1, '', 16, '2018-07-03 14:51:08'),
+(96, 10, 'Food setup', 'Dg2wJ-f1.jpg', 1, '', 1, '2018-07-04 15:57:33'),
+(97, 10, 'Food setup', '0tDX6-f3.jpg', 1, '', 2, '2018-07-04 15:57:33'),
+(100, 10, 'Food', 'ocl6c-f6.jpg', 1, '', 5, '2018-07-04 15:57:33'),
+(101, 10, 'Food', '8YCLl-f7.jpg', 1, '', 6, '2018-07-04 15:57:33'),
+(102, 10, 'Food', '9hqyZ-f8.jpg', 1, '', 7, '2018-07-04 15:57:33'),
+(103, 10, 'Drink', 'PElH3-f9.jpg', 1, '', 8, '2018-07-04 15:57:33'),
+(104, 10, 'Food', 'W1MJh-f10.jpg', 1, '', 9, '2018-07-04 15:57:33'),
+(105, 10, 'Food', 'lVXSQ-f11.jpg', 1, '', 10, '2018-07-04 15:57:33'),
+(106, 10, 'Drink', 'i3zda-f12.jpg', 1, '', 11, '2018-07-04 15:57:33'),
+(107, 10, 'Food', 'g1odq-f13.jpg', 1, '', 12, '2018-07-04 15:57:33'),
+(108, 10, 'Drink', 'C9hHO-f14.jpg', 1, '', 13, '2018-07-04 15:57:33'),
+(110, 10, 'Food', '5Uhlj-f16.jpg', 1, '', 14, '2018-07-04 15:57:33'),
+(111, 10, 'Dining', 'zBBwh-f17.jpg', 1, '', 15, '2018-07-04 15:57:33'),
+(112, 10, 'Dining', 'kzmiY-f18.jpg', 1, '', 16, '2018-07-04 15:57:33'),
+(113, 10, 'Food', '9FlZv-f19.jpg', 1, '', 17, '2018-07-04 15:57:33'),
+(114, 10, 'Food', 'kStuc-f20.jpg', 1, '', 18, '2018-07-04 15:57:33'),
+(115, 10, 'Dining', 'pojiM-f21.jpg', 1, '', 19, '2018-07-04 15:57:33'),
+(116, 7, 'Ambassador suite', 'QmbX5-rm1.jpg', 1, '', 13, '2018-08-22 12:52:26'),
+(117, 7, 'Consulate suite', 'dORsm-rm3.jpg', 1, '', 14, '2018-08-22 12:58:07'),
+(118, 7, 'Consulate suite', 'l1LU8-rm4.jpg', 1, '', 15, '2018-08-22 12:58:07'),
+(119, 7, 'Consulate suite', '0qvbi-rm5.jpg', 1, '', 16, '2018-08-22 12:58:07'),
+(153, 2, 'Riverbank Jungle Resort', 'WkKS3-3.jpg', 1, '', 5, '2024-07-05 15:45:59'),
+(152, 2, 'Riverbank Jungle Resort', 'eYi4e-5.jpg', 1, '', 4, '2024-07-05 15:45:59'),
+(151, 2, 'Riverbank Jungle Resort', 'eiY47-4.jpg', 1, '', 3, '2024-07-05 15:45:59'),
+(150, 2, 'Riverbank Jungle Resort', 'JxEFc-1.jpg', 1, '', 2, '2024-07-05 15:45:59'),
+(149, 2, 'Riverbank Jungle Resort', 'f8YCP-2.jpg', 1, '', 1, '2024-07-05 15:45:59'),
+(168, 11, 'Rooms & Suites', 'U4688-room1.jpg', 1, '', 4, '2024-07-05 15:48:21'),
+(169, 11, 'Rooms & Suites', 'WC95f-room5.jpg', 1, '', 5, '2024-07-05 15:48:21'),
+(170, 11, 'Rooms & Suites', 'T8yI2-room3.jpg', 1, '', 6, '2024-07-05 15:48:21'),
+(171, 11, 'Rooms & Suites', 'JRTPf-room6.jpg', 1, '', 7, '2024-07-05 15:48:21'),
+(172, 11, 'Rooms & Suites', 'bdX6R-room2.jpg', 1, '', 8, '2024-07-05 15:48:21'),
+(173, 11, 'Rooms & Suites', 'N85kH-room18.jpg', 1, '', 9, '2024-07-05 15:55:25'),
+(174, 11, 'Rooms & Suites', 'bjjOF-room16.jpg', 1, '', 10, '2024-07-05 15:55:25'),
+(175, 11, 'Rooms & Suites', 'rKNGJ-room19.jpg', 1, '', 11, '2024-07-05 15:55:25'),
+(176, 11, 'Rooms & Suites', 'dGtSr-room17.jpg', 1, '', 12, '2024-07-05 15:55:25'),
+(177, 11, 'Rooms & Suites', 'cj0ra-room20.jpg', 1, '', 13, '2024-07-05 15:55:25'),
+(178, 11, 'Rooms & Suites', '3VUOu-room12.jpg', 1, '', 14, '2024-07-05 15:55:25'),
+(179, 11, 'Rooms & Suites', 'oDm9z-room14.jpg', 1, '', 15, '2024-07-05 15:55:25'),
+(180, 11, 'Rooms & Suites', '68ym7-room11.jpg', 1, '', 16, '2024-07-05 15:55:25'),
+(181, 11, 'Rooms & Suites', 'VwuQc-room10.jpg', 1, '', 17, '2024-07-05 15:55:25'),
+(182, 11, 'Rooms & Suites', 'qX5z1-room13.jpg', 1, '', 18, '2024-07-05 15:55:25'),
+(183, 11, 'Rooms & Suites', 'WKpyP-room15.jpg', 1, '', 19, '2024-07-05 15:55:25'),
+(184, 11, 'Rooms & Suites', 'z74h4-room9.jpg', 1, '', 20, '2024-07-05 15:55:25'),
+(185, 2, 'Riverbank Jungle Resort', 'MdwzJ-19.jpg', 1, '', 17, '2024-07-05 16:02:28'),
+(186, 2, 'Riverbank Jungle Resort', 'b7Fm9-20.jpg', 1, '', 18, '2024-07-05 16:02:28'),
+(187, 2, 'Riverbank Jungle Resort', 'Ozli3-18.jpg', 1, '', 19, '2024-07-05 16:02:28'),
+(188, 2, 'Riverbank Jungle Resort', 'RFUqG-17.jpg', 1, '', 20, '2024-07-05 16:02:28'),
+(189, 12, 'Restaurant & Bar', '6cAHx-b1.jpg', 1, '', 1, '2024-07-05 16:17:50'),
+(190, 12, 'Restaurant & Bar', 'GvjP1-b9.jpg', 1, '', 2, '2024-07-05 16:17:50'),
+(191, 12, 'Restaurant & Bar', 'OUsMN-b3.jpg', 1, '', 3, '2024-07-05 16:17:50'),
+(192, 12, 'Restaurant & Bar', 'EY0zW-b5.jpg', 1, '', 4, '2024-07-05 16:17:50'),
+(193, 12, 'Restaurant & Bar', 'Myim8-b6.jpg', 1, '', 5, '2024-07-05 16:17:50'),
+(194, 12, 'Restaurant & Bar', 'zHpBF-b4.jpg', 1, '', 6, '2024-07-05 16:17:50'),
+(195, 12, 'Restaurant & Bar', 'i9DQn-b11.jpg', 1, '', 7, '2024-07-05 16:17:50'),
+(196, 12, 'Restaurant & Bar', 't8N89-b12.jpg', 1, '', 8, '2024-07-05 16:17:50'),
+(197, 12, 'Restaurant & Bar', 'psDum-b2.jpg', 1, '', 9, '2024-07-05 16:17:50'),
+(198, 12, 'Restaurant & Bar', '3YNxh-b7.jpg', 1, '', 10, '2024-07-05 16:17:50'),
+(199, 12, 'Restaurant & Bar', 'O6qTI-b8.jpg', 1, '', 11, '2024-07-05 16:17:50'),
+(200, 12, 'Restaurant & Bar', 'LxW05-b10.jpg', 1, '', 12, '2024-07-05 16:17:50'),
+(201, 13, 'Meeting & Events', 'JFtb7-e3.jpg', 1, '', 1, '2024-07-05 16:21:10'),
+(202, 13, 'Meeting & Events', '1XZoY-e1.jpg', 1, '', 2, '2024-07-05 16:21:10'),
+(203, 13, 'Meeting & Events', 'rkCEu-e4.jpg', 1, '', 3, '2024-07-05 16:21:10'),
+(204, 13, 'Meeting & Events', 'z4tV7-e2.jpg', 1, '', 4, '2024-07-05 16:21:10'),
+(205, 14, 'Swimming Pool', 'wdVZa-p1.jpg', 1, '', 1, '2024-07-05 16:24:20'),
+(206, 14, 'Swimming Pool', 'm5gXS-p2.jpg', 1, '', 2, '2024-07-05 16:24:20'),
+(207, 14, 'Swimming Pool', 'XB0gG-p3.jpg', 1, '', 3, '2024-07-05 16:24:20'),
+(208, 14, 'Swimming Pool', 'Vl3Bw-p4.jpg', 1, '', 4, '2024-07-05 16:24:20'),
+(209, 15, 'Experience', 'VcyQj-j2.jpg', 1, '', 1, '2024-07-05 16:29:01'),
+(215, 15, 'Experience', 'Cdom3-f1.jpg', 1, '', 6, '2024-07-10 16:52:56'),
+(211, 15, 'Experience', 'ji3NA-j6.jpg', 1, '', 2, '2024-07-05 16:29:01'),
+(212, 15, 'Experience', 'aYdD9-j4.jpg', 1, '', 3, '2024-07-05 16:29:01'),
+(213, 15, 'Experience', 'I9d7p-j3.jpg', 1, '', 4, '2024-07-05 16:29:01'),
+(214, 15, 'Experience', '6Lb7a-j1.jpg', 1, '', 5, '2024-07-05 16:29:01'),
+(216, 15, 'Experience', 'wKvT4-f3.jpg', 1, '', 7, '2024-07-10 16:52:56'),
+(217, 15, 'Experience', 'ofrbn-f2.jpg', 1, '', 8, '2024-07-10 16:52:56'),
+(218, 15, 'Experience', 'tbGeT-f4.jpg', 1, '', 9, '2024-07-10 16:52:56'),
+(219, 15, 'Experience', 'jiXVw-f5.jpg', 1, '', 10, '2024-07-10 16:52:56'),
+(220, 15, 'Experience', '6viss-f7.jpg', 1, '', 11, '2024-07-10 16:52:56'),
+(221, 15, 'Experience', 'DYcql-f6.jpg', 1, '', 12, '2024-07-10 16:52:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_group_type`
+--
+
+CREATE TABLE `tbl_group_type` (
+  `id` int(11) NOT NULL,
+  `group_name` varchar(50) NOT NULL,
+  `group_type` varchar(20) NOT NULL,
+  `authority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Frontend,2=>Personality,3=>Backend,4=>Both',
+  `description` tinytext NOT NULL,
+  `status` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_group_type`
+--
+
+INSERT INTO `tbl_group_type` (`id`, `group_name`, `group_type`, `authority`, `description`, `status`) VALUES
+(1, 'Administrator', '1', 1, '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_logs`
+--
+
+CREATE TABLE `tbl_logs` (
+  `id` int(11) NOT NULL,
+  `action` varchar(50) NOT NULL,
+  `registered` varchar(50) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `user_action` int(11) NOT NULL,
+  `ip_track` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_logs`
+--
+
+INSERT INTO `tbl_logs` (`id`, `action`, `registered`, `userid`, `user_action`, `ip_track`) VALUES
+(1, 'Article \'About us\' has added successfully.', '2017-04-23 18:29:11', 1, 3, '::1'),
+(2, 'Login: Potala Guest House   logged in.', '2017-04-24 12:43:56', 1, 1, '::1'),
+(3, 'Menu [Home] CreatedData has added successfully.', '2017-04-24 14:07:49', 1, 3, '::1'),
+(4, 'Menu [About Us] CreatedData has added successfully', '2017-04-24 14:08:02', 1, 3, '::1'),
+(5, 'Menu [Rooms] CreatedData has added successfully.', '2017-04-24 14:08:18', 1, 3, '::1'),
+(6, 'Menu [Facilities] CreatedData has added successful', '2017-04-24 14:08:32', 1, 3, '::1'),
+(7, 'Menu [Gallery] CreatedData has added successfully.', '2017-04-24 14:08:44', 1, 3, '::1'),
+(8, 'Menu [Shops|Restaurant] CreatedData has added succ', '2017-04-24 14:09:14', 1, 3, '::1'),
+(9, 'Menu [Contact] CreatedData has added successfully.', '2017-04-24 14:09:25', 1, 3, '::1'),
+(10, 'Menu [Delux Room] CreatedData has added successful', '2017-04-24 14:09:57', 1, 3, '::1'),
+(11, 'Menu [Superior Room] CreatedData has added success', '2017-04-24 14:10:18', 1, 3, '::1'),
+(12, 'Menu [Standrad Room] CreatedData has added success', '2017-04-24 14:10:36', 1, 3, '::1'),
+(13, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-24 14:31:11', 1, 4, '::1'),
+(14, 'Menu [Home] Edit Successfully', '2017-04-24 14:33:55', 1, 4, '::1'),
+(15, 'Menu [About Us] Edit Successfully', '2017-04-24 14:34:06', 1, 4, '::1'),
+(16, 'Changes on Article \'About us\' has been saved succe', '2017-04-24 14:54:00', 1, 4, '::1'),
+(17, 'Changes on Article \'About us\' has been saved succe', '2017-04-24 14:58:52', 1, 4, '::1'),
+(18, 'Changes on Article \'About us\' has been saved succe', '2017-04-24 15:07:07', 1, 4, '::1'),
+(19, 'Changes on Article \'About us\' has been saved succe', '2017-04-24 15:11:22', 1, 4, '::1'),
+(20, 'Menu [Contact] Edit Successfully', '2017-04-24 15:15:28', 1, 4, '::1'),
+(21, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-24 15:18:53', 1, 4, '::1'),
+(22, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-24 15:57:23', 1, 4, '::1'),
+(23, 'Menu [Gallery] Edit Successfully', '2017-04-24 16:00:29', 1, 4, '::1'),
+(24, 'Menu [Gallery] Edit Successfully', '2017-04-24 16:00:59', 1, 4, '::1'),
+(25, 'Gallery [Specials]Data has added successfully.', '2017-04-24 16:04:03', 1, 3, '::1'),
+(26, 'Gallery [Events]Data has added successfully.', '2017-04-24 16:04:22', 1, 3, '::1'),
+(27, 'Gallery [Shops]Data has added successfully.', '2017-04-24 16:04:37', 1, 3, '::1'),
+(28, 'Gallery [Facilities]Data has added successfully.', '2017-04-24 16:04:52', 1, 3, '::1'),
+(29, 'Gallery [Dining]Data has added successfully.', '2017-04-24 16:05:05', 1, 3, '::1'),
+(30, 'Gallery [Rooms]Data has added successfully.', '2017-04-24 16:05:18', 1, 3, '::1'),
+(31, 'Sub Gallery Image [Gallery]Data has added successf', '2017-04-24 16:07:38', 1, 3, '::1'),
+(32, 'Sub Gallery Image [Room]Data has added successfull', '2017-04-24 16:07:58', 1, 3, '::1'),
+(33, 'Sub Gallery Image [Tissah]Data has added successfu', '2017-04-24 16:08:22', 1, 3, '::1'),
+(34, 'Sub Gallery Image [Facilities]Data has added succe', '2017-04-24 16:08:46', 1, 3, '::1'),
+(35, 'Sub Gallery Image [Dining]Data has added successfu', '2017-04-24 16:09:06', 1, 3, '::1'),
+(36, 'Sub Gallery Image [Room]Data has added successfull', '2017-04-24 16:09:32', 1, 3, '::1'),
+(37, 'Login: Potala Guest House   logged in.', '2017-04-24 17:24:06', 1, 1, '::1'),
+(38, 'Package [Room List]Data has added successfully.', '2017-04-24 17:25:53', 1, 3, '::1'),
+(39, 'Sub Package \'Deluxe Room\' has added successfully.', '2017-04-24 17:34:21', 1, 3, '::1'),
+(40, 'User [Hotel Ambassador  ] Edit Successfully', '2017-04-24 17:36:15', 1, 4, '::1'),
+(41, 'Login: Hotel Ambassador   logged in.', '2017-04-24 17:36:23', 1, 1, '::1'),
+(42, 'Menu [Rooms] Edit Successfully', '2017-04-24 17:36:37', 1, 4, '::1'),
+(43, 'Login: Hotel Ambassador   logged in.', '2017-04-25 10:37:27', 1, 1, '::1'),
+(44, 'Features [Test] Edit Successfully', '2017-04-25 10:39:02', 1, 4, '::1'),
+(45, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-04-25 11:03:17', 1, 4, '::1'),
+(46, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-25 12:16:31', 1, 4, '::1'),
+(47, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-25 12:24:52', 1, 4, '::1'),
+(48, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-25 12:30:39', 1, 4, '::1'),
+(49, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-25 12:32:15', 1, 4, '::1'),
+(50, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-25 12:33:00', 1, 4, '::1'),
+(51, 'Changes on Config \'Potala Guest House\' has been sa', '2017-04-25 12:36:21', 1, 4, '::1'),
+(52, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-04-25 12:50:54', 1, 4, '::1'),
+(53, 'Login: Hotel Ambassador   logged in.', '2017-04-27 11:31:03', 1, 1, '110.44.121.133'),
+(54, 'Menu [Shops | Restaurants] Edit Successfully', '2017-04-27 12:08:17', 1, 4, '110.44.121.133'),
+(55, 'Slideshow [Slide three] Edit Successfully', '2017-04-27 12:09:52', 1, 4, '110.44.121.133'),
+(56, 'Slideshow [Slide one] Edit Successfully', '2017-04-27 12:10:48', 1, 4, '110.44.121.133'),
+(57, 'Slideshow [Slide three] Edit Successfully', '2017-04-27 12:11:41', 1, 4, '110.44.121.133'),
+(58, 'Slideshow [slide four]Data has added successfully.', '2017-04-27 12:41:04', 1, 3, '110.44.121.133'),
+(59, 'Slideshow [Slide five]Data has added successfully.', '2017-04-27 12:47:48', 1, 3, '110.44.121.133'),
+(60, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-04-27 13:32:44', 1, 4, '110.44.121.133'),
+(61, 'Sub Package \'Superior Room\' has added successfully', '2017-04-27 13:33:02', 1, 3, '110.44.121.133'),
+(62, 'Sub Package \'Standard Room\' has added successfully', '2017-04-27 13:34:44', 1, 3, '110.44.121.133'),
+(63, 'Sub Package \'Ambassador Suite\' has added successfu', '2017-04-27 13:38:26', 1, 3, '110.44.121.133'),
+(64, 'Sub Package \'Consulate Suite\' has added successful', '2017-04-27 13:39:26', 1, 3, '110.44.121.133'),
+(65, 'Sub Package \'Deluxe Room with Balcony\' has added s', '2017-04-27 13:40:22', 1, 3, '110.44.121.133'),
+(66, 'Login: Hotel Ambassador   logged in.', '2017-05-04 12:52:26', 1, 1, '110.44.121.133'),
+(67, 'Menu [Deluxe Room] Edit Successfully', '2017-05-04 13:03:51', 1, 4, '110.44.121.133'),
+(68, 'Menu [Consulate Suite] CreatedData has added succe', '2017-05-04 13:04:47', 1, 3, '110.44.121.133'),
+(69, 'Menu [Ambassador Suite] CreatedData has added succ', '2017-05-04 13:05:06', 1, 3, '110.44.121.133'),
+(70, 'Menu [Deluxe Room (With Balcony)] CreatedData has ', '2017-05-04 13:05:40', 1, 3, '110.44.121.133'),
+(71, 'Login: Hotel Ambassador   logged in.', '2017-05-04 15:42:18', 1, 1, '110.44.121.133'),
+(72, 'Slideshow [Slide three] Edit Successfully', '2017-05-04 15:44:01', 1, 4, '110.44.121.133'),
+(73, 'Slideshow [slide four] Edit Successfully', '2017-05-04 15:51:03', 1, 4, '110.44.121.133'),
+(74, 'Slideshow [Slide three] Edit Successfully', '2017-05-04 15:58:00', 1, 4, '110.44.121.133'),
+(75, 'Slideshow [slide four] Edit Successfully', '2017-05-04 16:00:43', 1, 4, '110.44.121.133'),
+(76, 'Slideshow [Slide five] Edit Successfully', '2017-05-04 16:28:16', 1, 4, '110.44.121.133'),
+(77, 'Slideshow [slide six]Data has added successfully.', '2017-05-04 16:58:15', 1, 3, '110.44.121.133'),
+(78, 'Slideshow [slide seven]Data has added successfully', '2017-05-04 17:00:15', 1, 3, '110.44.121.133'),
+(79, 'Slideshow [Slide five] Edit Successfully', '2017-05-04 17:12:55', 1, 4, '110.44.121.133'),
+(80, 'Slideshow [slide four] Edit Successfully', '2017-05-04 17:18:32', 1, 4, '110.44.121.133'),
+(81, 'Slideshow [Slide two] Edit Successfully', '2017-05-04 17:26:24', 1, 4, '110.44.121.133'),
+(82, 'Slideshow [slide six] Edit Successfully', '2017-05-04 17:31:11', 1, 4, '110.44.121.133'),
+(83, 'Login: Hotel Ambassador   logged in.', '2017-05-05 11:19:25', 1, 1, '110.44.121.133'),
+(84, 'Login: Hotel Ambassador   logged in.', '2017-05-05 11:58:54', 1, 1, '110.44.121.133'),
+(85, 'SocialNetworking [Facebook] Edit Successfully', '2017-05-05 11:59:21', 1, 4, '110.44.121.133'),
+(86, 'SocialNetworking [Twitter] Edit Successfully', '2017-05-05 11:59:36', 1, 4, '110.44.121.133'),
+(87, 'SocialNetworking [Google Plus] Edit Successfully', '2017-05-05 11:59:50', 1, 4, '110.44.121.133'),
+(88, 'SocialNetworking [Instagram]Data has added success', '2017-05-05 12:00:04', 1, 3, '110.44.121.133'),
+(89, 'SocialNetworking [Facebook] Edit Successfully', '2017-05-05 12:00:20', 1, 4, '110.44.121.133'),
+(90, 'SocialNetworking [Google Plus] Edit Successfully', '2017-05-05 12:00:36', 1, 4, '110.44.121.133'),
+(91, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-05 12:01:59', 1, 4, '110.44.121.133'),
+(92, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-05 12:03:17', 1, 4, '110.44.121.133'),
+(93, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:25:14', 1, 4, '110.44.121.133'),
+(94, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:25:35', 1, 4, '110.44.121.133'),
+(95, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:26:24', 1, 4, '110.44.121.133'),
+(96, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:26:53', 1, 4, '110.44.121.133'),
+(97, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:27:46', 1, 4, '110.44.121.133'),
+(98, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:28:18', 1, 4, '110.44.121.133'),
+(99, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:28:43', 1, 4, '110.44.121.133'),
+(100, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:29:09', 1, 4, '110.44.121.133'),
+(101, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:38:13', 1, 4, '110.44.121.133'),
+(102, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:40:34', 1, 4, '110.44.121.133'),
+(103, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:44:28', 1, 4, '110.44.121.133'),
+(104, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:46:22', 1, 4, '110.44.121.133'),
+(105, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:47:40', 1, 4, '110.44.121.133'),
+(106, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:52:37', 1, 4, '110.44.121.133'),
+(107, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:54:37', 1, 4, '110.44.121.133'),
+(108, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 12:55:50', 1, 4, '110.44.121.133'),
+(109, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 13:14:12', 1, 4, '110.44.121.133'),
+(110, 'Login: Hotel Ambassador   logged in.', '2017-05-05 17:01:38', 1, 1, '110.44.121.133'),
+(111, 'Sub Gallery Image  [Tissah]Data has deleted succes', '2017-05-05 18:14:14', 1, 6, '110.44.121.133'),
+(112, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 18:17:51', 1, 4, '110.44.121.133'),
+(113, 'Changes on Article \'About us\' has been saved succe', '2017-05-05 18:18:24', 1, 4, '110.44.121.133'),
+(114, 'Features  [Added luxuries]Data has deleted success', '2017-05-05 18:19:59', 1, 6, '110.44.121.133'),
+(115, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-05 18:21:07', 1, 4, '110.44.121.133'),
+(116, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-05 18:26:58', 1, 4, '110.44.121.133'),
+(117, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-05 18:27:44', 1, 4, '110.44.121.133'),
+(118, 'Changes on Sub Package \'Standard Room\' has been sa', '2017-05-05 18:28:26', 1, 4, '110.44.121.133'),
+(119, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-05 18:29:30', 1, 4, '110.44.121.133'),
+(120, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-05 18:29:49', 1, 4, '110.44.121.133'),
+(121, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-05-05 18:30:06', 1, 4, '110.44.121.133'),
+(122, 'Features [Complimentary WIFI] Edit Successfully', '2017-05-05 18:37:25', 1, 4, '110.44.121.133'),
+(123, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-05 18:38:14', 1, 4, '110.44.121.133'),
+(124, 'Features [Mini Bar] Edit Successfully', '2017-05-05 18:42:07', 1, 4, '110.44.121.133'),
+(125, 'Login: Hotel Ambassador   logged in.', '2017-05-07 12:59:30', 1, 1, '110.44.121.133'),
+(126, 'Menu [Deluxe Room] Edit Successfully', '2017-05-07 13:02:40', 1, 4, '110.44.121.133'),
+(127, 'Menu [Superior Room] Edit Successfully', '2017-05-07 13:02:55', 1, 4, '110.44.121.133'),
+(128, 'Menu [Standard Room] Edit Successfully', '2017-05-07 13:03:13', 1, 4, '110.44.121.133'),
+(129, 'Menu [Consulate Suite] Edit Successfully', '2017-05-07 13:03:27', 1, 4, '110.44.121.133'),
+(130, 'Menu [Ambassador Suite] Edit Successfully', '2017-05-07 13:03:40', 1, 4, '110.44.121.133'),
+(131, 'Menu [Deluxe Room (With Balcony)] Edit Successfull', '2017-05-07 13:03:54', 1, 4, '110.44.121.133'),
+(132, 'Features [Tea / Coffee Counter] Edit Successfully', '2017-05-07 13:09:37', 1, 4, '110.44.121.133'),
+(133, 'Features [Safety Deposit Box] Edit Successfully', '2017-05-07 13:11:18', 1, 4, '110.44.121.133'),
+(134, 'Features [Iron and Ironing Board] Edit Successfull', '2017-05-07 13:12:50', 1, 4, '110.44.121.133'),
+(135, 'Features [Emergency Torch] Edit Successfully', '2017-05-07 13:14:51', 1, 4, '110.44.121.133'),
+(136, 'Features [Hairdryer] Edit Successfully', '2017-05-07 13:16:02', 1, 4, '110.44.121.133'),
+(137, 'Features [Vanity Mirror] Edit Successfully', '2017-05-07 13:19:47', 1, 4, '110.44.121.133'),
+(138, 'Features [Vanity Mirror] Edit Successfully', '2017-05-07 13:22:12', 1, 4, '110.44.121.133'),
+(139, 'Features [Air Conditioner] Edit Successfully', '2017-05-07 13:22:46', 1, 4, '110.44.121.133'),
+(140, 'Features [Air Conditioner] Edit Successfully', '2017-05-07 13:22:59', 1, 4, '110.44.121.133'),
+(141, 'Login: Hotel Ambassador   logged in.', '2017-05-07 14:21:29', 1, 1, '110.44.121.133'),
+(142, 'Features [Sound Proof Windows] Edit Successfully', '2017-05-07 14:22:47', 1, 4, '110.44.121.133'),
+(143, 'Features [In-room Slippers] Edit Successfully', '2017-05-07 14:24:57', 1, 4, '110.44.121.133'),
+(144, 'Features [Complimentary Toiletries] Edit Successfu', '2017-05-07 14:26:40', 1, 4, '110.44.121.133'),
+(145, 'Features [Fresh Air Vanity] Edit Successfully', '2017-05-07 14:27:55', 1, 4, '110.44.121.133'),
+(146, 'Features [32\" LED TV] Edit Successfully', '2017-05-07 14:30:00', 1, 4, '110.44.121.133'),
+(147, 'Features [40\" LED TV] Edit Successfully', '2017-05-07 14:31:29', 1, 4, '110.44.121.133'),
+(148, 'Features [42\" LED TV] Edit Successfully', '2017-05-07 14:32:53', 1, 4, '110.44.121.133'),
+(149, 'Features [Regular walk-in Shower]Data has added su', '2017-05-07 14:37:01', 1, 3, '110.44.121.133'),
+(150, 'Features [Walk-in Rain Shower]Data has added succe', '2017-05-07 14:40:49', 1, 3, '110.44.121.133'),
+(151, 'Features [Walk-in Rain Shower with separate bathtu', '2017-05-07 14:41:43', 1, 3, '110.44.121.133'),
+(152, 'Features  [Walk-in Rain Shower with separate batht', '2017-05-07 14:46:28', 1, 6, '110.44.121.133'),
+(153, 'Features [Walk-in Rain Shower with separate bathtu', '2017-05-07 14:46:55', 1, 3, '110.44.121.133'),
+(154, 'Features [Walk-in Rain Shower & separate bathtub (', '2017-05-07 14:48:27', 1, 3, '110.44.121.133'),
+(155, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-07 14:53:28', 1, 4, '110.44.121.133'),
+(156, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-07 14:53:59', 1, 4, '110.44.121.133'),
+(157, 'Changes on Sub Package \'Standard Room\' has been sa', '2017-05-07 14:54:45', 1, 4, '110.44.121.133'),
+(158, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-07 14:55:20', 1, 4, '110.44.121.133'),
+(159, 'Features [Balcony]Data has added successfully.', '2017-05-07 14:59:27', 1, 3, '110.44.121.133'),
+(160, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-07 15:00:02', 1, 4, '110.44.121.133'),
+(161, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-07 15:00:37', 1, 4, '110.44.121.133'),
+(162, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-05-07 15:01:09', 1, 4, '110.44.121.133'),
+(163, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-07 15:02:26', 1, 4, '110.44.121.133'),
+(164, 'SocialNetworking [Facebook] Edit Successfully', '2017-05-07 15:11:00', 1, 4, '110.44.121.133'),
+(165, 'Changes on Sub Package \'Standard Room\' has been sa', '2017-05-07 15:38:37', 1, 4, '110.44.121.133'),
+(166, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-07 15:48:47', 1, 4, '110.44.121.133'),
+(167, 'Testimonial [JOHN FEDERICO] Edit Successfully', '2017-05-07 16:03:35', 1, 4, '110.44.121.133'),
+(168, 'Testimonial [JACK MASON] Edit Successfully', '2017-05-07 16:06:23', 1, 4, '110.44.121.133'),
+(169, 'Article \'Shops and Restaurant\' has added successfu', '2017-05-07 16:30:15', 1, 3, '110.44.121.133'),
+(170, 'Menu [Shops | Restaurants] Edit Successfully', '2017-05-07 16:30:26', 1, 4, '110.44.121.133'),
+(171, 'Changes on Article \'Shops and Restaurant\' has been', '2017-05-07 16:33:24', 1, 4, '110.44.121.133'),
+(172, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-07 16:33:54', 1, 4, '110.44.121.133'),
+(173, 'Changes on Article \'Shops and Restaurant\' has been', '2017-05-07 16:41:14', 1, 4, '110.44.121.133'),
+(174, 'Changes on Article \'Shops and Restaurant\' has been', '2017-05-07 17:04:27', 1, 4, '110.44.121.133'),
+(175, 'Changes on Article \'Shops and Restaurant\' has been', '2017-05-07 17:04:57', 1, 4, '110.44.121.133'),
+(176, 'Changes on Article \'Shops and Restaurant\' has been', '2017-05-07 17:05:52', 1, 4, '110.44.121.133'),
+(177, 'Sub Gallery Image  [Room]Data has deleted successf', '2017-05-07 17:07:33', 1, 6, '110.44.121.133'),
+(178, 'Sub Gallery Image [Deluxe Room]Data has added succ', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(179, 'Sub Gallery Image [Deluxe Room]Data has added succ', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(180, 'Sub Gallery Image [Deluxe Room]Data has added succ', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(181, 'Sub Gallery Image [Deluxe Room]Data has added succ', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(182, 'Sub Gallery Image [Standard Room]Data has added su', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(183, 'Sub Gallery Image [Standard Room]Data has added su', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(184, 'Sub Gallery Image [Standard Room]Data has added su', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(185, 'Sub Gallery Image [Standard Room]Data has added su', '2017-05-07 17:08:35', 1, 3, '110.44.121.133'),
+(186, 'Sub Gallery Image  [Dining]Data has deleted succes', '2017-05-07 17:11:31', 1, 6, '110.44.121.133'),
+(187, 'Sub Gallery Image [Dining Hall]Data has added succ', '2017-05-07 17:11:57', 1, 3, '110.44.121.133'),
+(188, 'Sub Gallery Image [Delicious Food]Data has added s', '2017-05-07 17:11:57', 1, 3, '110.44.121.133'),
+(189, 'Sub Gallery Image [Delicious Food]Data has added s', '2017-05-07 17:11:57', 1, 3, '110.44.121.133'),
+(190, 'Sub Gallery Image  [Tissah]Data has deleted succes', '2017-05-07 17:23:31', 1, 6, '110.44.121.133'),
+(191, 'Sub Gallery Image [ARDOR]Data has added successful', '2017-05-07 17:25:21', 1, 3, '110.44.121.133'),
+(192, 'Sub Gallery Image [TISSAH]Data has added successfu', '2017-05-07 17:25:21', 1, 3, '110.44.121.133'),
+(193, 'Sub Gallery Image [TISSAH]Data has added successfu', '2017-05-07 17:25:21', 1, 3, '110.44.121.133'),
+(194, 'Sub Gallery Image [FLAT IRON]Data has added succes', '2017-05-07 17:25:21', 1, 3, '110.44.121.133'),
+(195, 'Gallery Image  [Events]Data has deleted successful', '2017-05-07 17:27:28', 1, 6, '110.44.121.133'),
+(196, 'Gallery Image [Exterior] Edit Successfully', '2017-05-07 17:27:44', 1, 4, '110.44.121.133'),
+(197, 'Sub Gallery Image  [Gallery]Data has deleted succe', '2017-05-07 17:28:09', 1, 6, '110.44.121.133'),
+(198, 'Sub Gallery Image [Corridor]Data has added success', '2017-05-07 17:28:36', 1, 3, '110.44.121.133'),
+(199, 'Sub Gallery Image [Corridor]Data has added success', '2017-05-07 17:28:36', 1, 3, '110.44.121.133'),
+(200, 'Sub Gallery Image [Standard Room]Data has added su', '2017-05-07 17:31:11', 1, 3, '110.44.121.133'),
+(201, 'Login: Hotel Ambassador   logged in.', '2017-05-07 18:15:41', 1, 1, '110.44.121.133'),
+(202, 'Login: Hotel Ambassador   logged in.', '2017-05-08 14:38:43', 1, 1, '110.44.121.133'),
+(203, 'Slideshow [Slide five] Edit Successfully', '2017-05-08 14:40:02', 1, 4, '110.44.121.133'),
+(204, 'Slideshow [Slide five] Edit Successfully', '2017-05-08 14:41:27', 1, 4, '110.44.121.133'),
+(205, 'Slideshow [Slide five] Edit Successfully', '2017-05-08 14:41:58', 1, 4, '110.44.121.133'),
+(206, 'Slideshow [slide six] Edit Successfully', '2017-05-08 14:47:47', 1, 4, '110.44.121.133'),
+(207, 'Slideshow [slide seven] Edit Successfully', '2017-05-08 14:48:54', 1, 4, '110.44.121.133'),
+(208, 'Slideshow [Slide five] Edit Successfully', '2017-05-08 14:52:17', 1, 4, '110.44.121.133'),
+(209, 'Slideshow [slide four] Edit Successfully', '2017-05-08 14:55:57', 1, 4, '110.44.121.133'),
+(210, 'Changes on Article \'Shops and Restaurant\' has been', '2017-05-08 15:02:25', 1, 4, '110.44.121.133'),
+(211, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-08 15:02:42', 1, 4, '110.44.121.133'),
+(212, 'Menu [Shops | Restaurants] Edit Successfully', '2017-05-08 15:02:54', 1, 4, '110.44.121.133'),
+(213, 'Testimonial [ndjt84] Edit Successfully', '2017-05-08 15:18:34', 1, 4, '110.44.121.133'),
+(214, 'Testimonial [alexander] Edit Successfully', '2017-05-08 15:23:10', 1, 4, '110.44.121.133'),
+(215, 'Testimonial [Nakata Hirooka] Edit Successfully', '2017-05-08 15:28:06', 1, 4, '110.44.121.133'),
+(216, 'Testimonial [Alexander] Edit Successfully', '2017-05-08 15:28:29', 1, 4, '110.44.121.133'),
+(217, 'Testimonial [Annabel Chong] Edit Successfully', '2017-05-08 15:30:05', 1, 4, '110.44.121.133'),
+(218, 'Testimonial [Arthur Sacramento] Edit Successfully', '2017-05-08 15:33:13', 1, 4, '110.44.121.133'),
+(219, 'Testimonial [Annabel Chong] Edit Successfully', '2017-05-08 15:34:46', 1, 4, '110.44.121.133'),
+(220, 'Testimonial [Nakata Hirooka] Edit Successfully', '2017-05-08 15:35:14', 1, 4, '110.44.121.133'),
+(221, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-08 15:36:46', 1, 4, '110.44.121.133'),
+(222, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-08 15:37:17', 1, 4, '110.44.121.133'),
+(223, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-08 16:22:45', 1, 4, '110.44.121.133'),
+(224, 'Testimonial [Alexander] Edit Successfully', '2017-05-08 16:23:20', 1, 4, '110.44.121.133'),
+(225, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-08 16:50:49', 1, 4, '110.44.121.133'),
+(226, 'Login: Hotel Ambassador   logged in.', '2017-05-09 11:35:04', 1, 1, '110.44.121.133'),
+(227, 'Login: Hotel Ambassador   logged in.', '2017-05-09 15:37:04', 1, 1, '110.44.121.133'),
+(228, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 16:00:45', 1, 4, '110.44.121.133'),
+(229, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 16:02:45', 1, 4, '110.44.121.133'),
+(230, 'Login: Hotel Ambassador   logged in.', '2017-05-09 17:03:39', 1, 1, '110.44.121.133'),
+(231, 'Login: Hotel Ambassador   logged in.', '2017-05-09 18:01:07', 1, 1, '110.44.121.133'),
+(232, 'Login: Hotel Ambassador   logged in.', '2017-05-09 18:07:10', 1, 1, '110.44.121.133'),
+(233, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:07:41', 1, 4, '110.44.121.133'),
+(234, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:09:29', 1, 4, '110.44.121.133'),
+(235, 'Login: Hotel Ambassador   logged in.', '2017-05-09 18:12:49', 1, 1, '110.44.121.133'),
+(236, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:12:59', 1, 4, '110.44.121.133'),
+(237, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:15:48', 1, 4, '110.44.121.133'),
+(238, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:17:19', 1, 4, '110.44.121.133'),
+(239, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:19:32', 1, 4, '110.44.121.133'),
+(240, 'Menu [Facilities] Edit Successfully', '2017-05-09 18:24:29', 1, 4, '110.44.121.133'),
+(241, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:30:15', 1, 4, '110.44.121.133'),
+(242, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-09 18:31:10', 1, 4, '110.44.121.133'),
+(243, 'Login: Hotel Ambassador   logged in.', '2017-05-09 23:09:30', 1, 1, '27.34.64.67'),
+(244, 'Slideshow [slide six] Edit Successfully', '2017-05-09 23:10:21', 1, 4, '27.34.64.67'),
+(245, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-09 23:20:04', 1, 4, '27.34.64.67'),
+(246, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-09 23:26:36', 1, 4, '27.34.64.67'),
+(247, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-09 23:35:36', 1, 4, '27.34.64.67'),
+(248, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-09 23:41:42', 1, 4, '27.34.64.67'),
+(249, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-05-09 23:42:57', 1, 4, '27.34.64.67'),
+(250, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-09 23:43:16', 1, 4, '27.34.64.67'),
+(251, 'Changes on Sub Package \'Standard Room\' has been sa', '2017-05-09 23:44:01', 1, 4, '27.34.64.67'),
+(252, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-09 23:44:34', 1, 4, '27.34.64.67'),
+(253, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-09 23:45:14', 1, 4, '27.34.64.67'),
+(254, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-09 23:53:27', 1, 4, '27.34.64.67'),
+(255, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-09 23:54:43', 1, 4, '27.34.64.67'),
+(256, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-09 23:56:44', 1, 4, '27.34.64.67'),
+(257, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-10 00:01:27', 1, 4, '27.34.64.67'),
+(258, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-05-10 00:01:57', 1, 4, '27.34.64.67'),
+(259, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-10 00:02:48', 1, 4, '27.34.64.67'),
+(260, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-10 00:05:21', 1, 4, '27.34.64.67'),
+(261, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:27:31', 1, 4, '27.34.64.67'),
+(262, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:27:50', 1, 4, '27.34.64.67'),
+(263, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:32:09', 1, 4, '27.34.64.67'),
+(264, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:33:17', 1, 4, '27.34.64.67'),
+(265, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:34:38', 1, 4, '27.34.64.67'),
+(266, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:35:15', 1, 4, '27.34.64.67'),
+(267, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:43:30', 1, 4, '27.34.64.67'),
+(268, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:44:20', 1, 4, '27.34.64.67'),
+(269, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:45:15', 1, 4, '27.34.64.67'),
+(270, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:46:00', 1, 4, '27.34.64.67'),
+(271, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:46:36', 1, 4, '27.34.64.67'),
+(272, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:47:14', 1, 4, '27.34.64.67'),
+(273, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:47:57', 1, 4, '27.34.64.67'),
+(274, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:49:46', 1, 4, '27.34.64.67'),
+(275, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:50:26', 1, 4, '27.34.64.67'),
+(276, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:51:13', 1, 4, '27.34.64.67'),
+(277, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:54:32', 1, 4, '27.34.64.67'),
+(278, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:55:30', 1, 4, '27.34.64.67'),
+(279, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-10 00:58:53', 1, 4, '27.34.64.67'),
+(280, 'Login: Hotel Ambassador   logged in.', '2017-05-11 10:57:10', 1, 1, '110.44.121.133'),
+(281, 'Login: Hotel Ambassador   logged in.', '2017-05-11 11:01:09', 1, 1, '110.44.121.133'),
+(282, 'Services [Tea / Coffee Counter]Data has added succ', '2017-05-11 11:01:29', 1, 3, '110.44.121.133'),
+(283, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-11 11:01:51', 1, 4, '110.44.121.133'),
+(284, 'Services [Complimentary WiFi]Data has added succes', '2017-05-11 11:12:19', 1, 3, '110.44.121.133'),
+(285, 'Services [Safety Deposit Box]Data has added succes', '2017-05-11 11:16:59', 1, 3, '110.44.121.133'),
+(286, 'Services [Mini Bar]Data has added successfully.', '2017-05-11 11:26:09', 1, 3, '110.44.121.133'),
+(287, 'Services [Iron and Ironing Board]Data has added su', '2017-05-11 11:26:53', 1, 3, '110.44.121.133'),
+(288, 'Services [Emergency Torch]Data has added successfu', '2017-05-11 11:28:55', 1, 3, '110.44.121.133'),
+(289, 'Services [Hairdryer]Data has added successfully.', '2017-05-11 11:35:09', 1, 3, '110.44.121.133'),
+(290, 'Services [Vanity Mirror]Data has added successfull', '2017-05-11 11:37:49', 1, 3, '110.44.121.133'),
+(291, 'Services [Air Conditioner]Data has added successfu', '2017-05-11 11:42:51', 1, 3, '110.44.121.133'),
+(292, 'Services [Sound Proof Windows]Data has added succe', '2017-05-11 11:44:30', 1, 3, '110.44.121.133'),
+(293, 'Services [In-room Slippers]Data has added successf', '2017-05-11 11:55:09', 1, 3, '110.44.121.133'),
+(294, 'Services [Tea / Coffee Counter] Edit Successfully', '2017-05-11 11:57:05', 1, 4, '110.44.121.133'),
+(295, 'Services [Complimentary Toiletries]Data has added ', '2017-05-11 12:03:30', 1, 3, '110.44.121.133'),
+(296, 'Services [LED TV]Data has added successfully.', '2017-05-11 12:12:15', 1, 3, '110.44.121.133'),
+(297, 'Services [Shower with Bathtube]Data has added succ', '2017-05-11 12:16:33', 1, 3, '110.44.121.133'),
+(298, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-11 12:23:20', 1, 4, '110.44.121.133'),
+(299, 'Login: Hotel Ambassador   logged in.', '2017-05-11 12:25:17', 1, 1, '110.44.121.133'),
+(300, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-11 12:27:37', 1, 4, '110.44.121.133'),
+(301, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-11 12:28:12', 1, 4, '110.44.121.133'),
+(302, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-11 12:28:35', 1, 4, '110.44.121.133'),
+(303, 'Changes on Sub Package \'Standard Room\' has been sa', '2017-05-11 12:28:59', 1, 4, '110.44.121.133'),
+(304, 'Login: Hotel Ambassador   logged in.', '2017-05-11 14:16:35', 1, 1, '110.44.121.133'),
+(305, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:18:50', 1, 4, '110.44.121.133'),
+(306, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:22:08', 1, 4, '110.44.121.133'),
+(307, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:24:04', 1, 4, '110.44.121.133'),
+(308, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:25:32', 1, 4, '110.44.121.133'),
+(309, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:26:55', 1, 4, '110.44.121.133'),
+(310, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:32:58', 1, 4, '110.44.121.133'),
+(311, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:35:24', 1, 4, '110.44.121.133'),
+(312, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 14:36:43', 1, 4, '110.44.121.133'),
+(313, 'Login: Hotel Ambassador   logged in.', '2017-05-11 14:58:27', 1, 1, '110.44.121.133'),
+(314, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-11 15:06:17', 1, 4, '110.44.121.133'),
+(315, 'Login: Hotel Ambassador   logged in.', '2017-05-11 15:10:38', 1, 1, '110.44.121.133'),
+(316, 'Sub Gallery Image [Deluxe Room With Balcony]Data h', '2017-05-11 15:22:36', 1, 3, '110.44.121.133'),
+(317, 'Sub Gallery Image  [Standard Room]Data has deleted', '2017-05-11 15:25:00', 1, 6, '110.44.121.133'),
+(318, 'Sub Gallery Image [Standard Room]Data has added su', '2017-05-11 15:26:22', 1, 3, '110.44.121.133'),
+(319, 'Sub Gallery Image  [Corporate Lunch]Data has delet', '2017-05-11 15:38:05', 1, 6, '110.44.121.133'),
+(320, 'Sub Gallery Image  [Kotetsu Restaurant]Data has de', '2017-05-11 15:38:10', 1, 6, '110.44.121.133'),
+(321, 'Sub Gallery Image  []Data has deleted successfully', '2017-05-11 15:38:11', 1, 6, '110.44.121.133'),
+(322, 'Sub Gallery Image [Flat Iron Grill]Data has added ', '2017-05-11 15:39:04', 1, 3, '110.44.121.133'),
+(323, 'Login: Hotel Ambassador   logged in.', '2017-05-11 15:40:45', 1, 1, '110.44.121.133'),
+(324, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-11 15:41:00', 1, 4, '110.44.121.133'),
+(325, 'Login: Hotel Ambassador   logged in.', '2017-05-11 15:42:59', 1, 1, '110.44.121.133'),
+(326, 'Sub Gallery Image [Ardor]Data has added successful', '2017-05-11 15:46:29', 1, 3, '110.44.121.133'),
+(327, 'Sub Gallery Image [The Diplomat Lounge]Data has ad', '2017-05-11 15:46:29', 1, 3, '110.44.121.133'),
+(328, 'Sub Gallery Image [Kotetsu Restaurant]Data has add', '2017-05-11 15:46:29', 1, 3, '110.44.121.133'),
+(329, 'Sub Gallery Image [Tissah]Data has added successfu', '2017-05-11 15:46:29', 1, 3, '110.44.121.133'),
+(330, 'Login: Hotel Ambassador   logged in.', '2017-05-11 15:53:24', 1, 1, '110.44.121.133'),
+(331, 'Changes on Article \'About us\' has been saved succe', '2017-05-11 16:09:14', 1, 4, '110.44.121.133'),
+(332, 'Changes on Article \'About us\' has been saved succe', '2017-05-11 16:11:08', 1, 4, '110.44.121.133'),
+(333, 'Changes on Article \'About us\' has been saved succe', '2017-05-11 16:13:52', 1, 4, '110.44.121.133'),
+(334, 'Changes on Article \'About us\' has been saved succe', '2017-05-11 16:24:37', 1, 4, '110.44.121.133'),
+(335, 'Login: Hotel Ambassador   logged in.', '2017-05-11 17:25:55', 1, 1, '110.44.121.133'),
+(336, 'Services  [24-hour front desk]Data has deleted suc', '2017-05-11 17:27:34', 1, 6, '110.44.121.133'),
+(337, 'Services  [ Rooftop view of mountain and lake]Data', '2017-05-11 17:27:34', 1, 6, '110.44.121.133'),
+(338, 'Services  [Mini bar in room]Data has deleted succe', '2017-05-11 17:27:34', 1, 6, '110.44.121.133'),
+(339, 'Services  [Daily Housekeeping and Room Service]Dat', '2017-05-11 17:27:34', 1, 6, '110.44.121.133'),
+(340, 'Services [Tea / Coffee Counter] Edit Successfully', '2017-05-11 17:31:07', 1, 4, '110.44.121.133'),
+(341, 'Login: Hotel Ambassador   logged in.', '2017-05-11 17:32:36', 1, 1, '110.44.121.133'),
+(342, 'Services [Iron and Ironing Board] Edit Successfull', '2017-05-11 17:33:21', 1, 4, '110.44.121.133'),
+(343, 'Features [Sound Proof Windows] Edit Successfully', '2017-05-11 17:34:15', 1, 4, '110.44.121.133'),
+(344, 'Services [Emergency Torch] Edit Successfully', '2017-05-11 17:34:58', 1, 4, '110.44.121.133'),
+(345, 'Features [Complimentary Toiletries] Edit Successfu', '2017-05-11 17:35:58', 1, 4, '110.44.121.133'),
+(346, 'Services [Vanity Mirror] Edit Successfully', '2017-05-11 17:37:55', 1, 4, '110.44.121.133'),
+(347, 'Services [Air Conditioner] Edit Successfully', '2017-05-11 17:45:25', 1, 4, '110.44.121.133'),
+(348, 'Services [In-room Slippers] Edit Successfully', '2017-05-11 17:50:51', 1, 4, '110.44.121.133'),
+(349, 'Services [Shower with Bathtub] Edit Successfully', '2017-05-11 17:53:07', 1, 4, '110.44.121.133'),
+(350, 'Login: Hotel Ambassador   logged in.', '2017-05-11 17:57:30', 1, 1, '110.44.121.133'),
+(351, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-11 18:00:07', 1, 4, '110.44.121.133'),
+(352, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-11 18:18:04', 1, 4, '110.44.121.133'),
+(353, 'Login: Hotel Ambassador   logged in.', '2017-05-11 18:28:03', 1, 1, '110.44.121.133'),
+(354, 'SocialNetworking [Google Plus] Edit Successfully', '2017-05-11 18:31:55', 1, 4, '110.44.121.133'),
+(355, 'SocialNetworking [Instagram] Edit Successfully', '2017-05-11 18:32:20', 1, 4, '110.44.121.133'),
+(356, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 18:33:48', 1, 4, '110.44.121.133'),
+(357, 'Login: Hotel Ambassador   logged in.', '2017-05-11 18:33:57', 1, 1, '110.44.121.133'),
+(358, 'Login: Hotel Ambassador   logged in.', '2017-05-11 18:34:11', 1, 1, '110.44.121.133'),
+(359, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-11 18:34:42', 1, 4, '110.44.121.133'),
+(360, 'Login: Hotel Ambassador   logged in.', '2017-05-12 12:37:13', 1, 1, '110.44.121.133'),
+(361, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-12 12:38:11', 1, 4, '110.44.121.133'),
+(362, 'Login: Hotel Ambassador   logged in.', '2017-05-12 12:38:23', 1, 1, '110.44.121.133'),
+(363, 'Login: Hotel Ambassador   logged in.', '2017-05-15 15:37:50', 1, 1, '110.44.121.133'),
+(364, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-15 15:38:22', 1, 4, '110.44.121.133'),
+(365, 'Login: Hotel Ambassador   logged in.', '2017-05-15 15:38:30', 1, 1, '110.44.121.133'),
+(366, 'Login: Hotel Ambassador   logged in.', '2017-05-15 15:49:28', 1, 1, '110.44.121.133'),
+(367, 'User [Hotel Ambassador  ] Edit Successfully', '2017-05-15 15:58:45', 1, 4, '110.44.121.133'),
+(368, 'Login: Hotel Ambassador   logged in.', '2017-05-15 17:07:38', 1, 1, '110.44.121.133'),
+(369, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-05-15 17:10:12', 1, 4, '110.44.121.133'),
+(370, 'Login: Hotel Ambassador   logged in.', '2017-05-15 17:25:44', 1, 1, '110.44.121.133'),
+(371, 'Login: Hotel Ambassador   logged in.', '2017-05-19 16:43:32', 1, 1, '110.44.121.133'),
+(372, 'Sub Gallery Image [Entrance]Data has added success', '2017-05-19 16:54:24', 1, 3, '110.44.121.133'),
+(373, 'Sub Gallery Image [Corridor]Data has added success', '2017-05-19 16:54:24', 1, 3, '110.44.121.133'),
+(374, 'Sub Gallery Image [Corridor]Data has added success', '2017-05-19 16:54:24', 1, 3, '110.44.121.133'),
+(375, 'Sub Gallery Image [Superior Room]Data has added su', '2017-05-19 16:55:28', 1, 3, '110.44.121.133'),
+(376, 'Sub Gallery Image [Superior Room]Data has added su', '2017-05-19 16:58:06', 1, 3, '110.44.121.133'),
+(377, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-19 17:06:08', 1, 4, '110.44.121.133'),
+(378, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-19 17:22:35', 1, 4, '110.44.121.133'),
+(379, 'Gallery [Interior]Data has added successfully.', '2017-05-19 17:25:41', 1, 3, '110.44.121.133'),
+(380, 'Sub Gallery Image [Interior]Data has added success', '2017-05-19 17:27:06', 1, 3, '110.44.121.133'),
+(381, 'Sub Gallery Image [Interior]Data has added success', '2017-05-19 17:27:06', 1, 3, '110.44.121.133'),
+(382, 'Sub Gallery Image [Interior]Data has added success', '2017-05-19 17:27:06', 1, 3, '110.44.121.133'),
+(383, 'Changes on Article \'About us\' has been saved succe', '2017-05-19 17:38:50', 1, 4, '110.44.121.133'),
+(384, 'Package Room List Edit Successfully', '2017-05-19 17:40:19', 1, 4, '110.44.121.133'),
+(385, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-19 17:50:16', 1, 4, '110.44.121.133'),
+(386, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-19 17:53:10', 1, 4, '110.44.121.133'),
+(387, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-05-19 17:55:04', 1, 4, '110.44.121.133'),
+(388, 'Changes on Sub Package \'Deluxe Room with Balcony\' ', '2017-05-19 17:56:26', 1, 4, '110.44.121.133'),
+(389, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-05-19 17:56:58', 1, 4, '110.44.121.133'),
+(390, 'Changes on Sub Package \'Standard Room\' has been sa', '2017-05-19 18:00:13', 1, 4, '110.44.121.133'),
+(391, 'Changes on Sub Package \'Deluxe Room\' has been save', '2017-05-19 18:02:34', 1, 4, '110.44.121.133'),
+(392, 'Changes on Sub Package \'Superior Room\' has been sa', '2017-05-19 18:07:21', 1, 4, '110.44.121.133'),
+(393, 'Login: Hotel Ambassador   logged in.', '2017-05-24 15:16:01', 1, 1, '110.44.121.133'),
+(394, 'Login: Hotel Ambassador   logged in.', '2017-05-26 16:07:07', 1, 1, '110.44.121.133'),
+(395, 'Sub Gallery Image [Hotel Ambassador by ACE Hotels]', '2017-05-26 16:34:12', 1, 3, '110.44.121.133'),
+(396, 'Login: Hotel Ambassador   logged in.', '2017-05-30 23:18:15', 1, 1, '27.34.16.87'),
+(397, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-30 23:20:03', 1, 4, '27.34.16.87'),
+(398, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-05-30 23:22:08', 1, 4, '27.34.16.87'),
+(399, 'Features [Fresh air vent] Edit Successfully', '2017-05-30 23:26:10', 1, 4, '27.34.16.87'),
+(400, 'Login: Hotel Ambassador   logged in.', '2017-06-01 08:50:54', 1, 1, '103.213.127.138'),
+(401, 'Changes on Sub Package \'Standard\' has been saved s', '2017-06-01 08:55:07', 1, 4, '103.213.127.138'),
+(402, 'Changes on Sub Package \'Superior\' has been saved s', '2017-06-01 08:55:29', 1, 4, '103.213.127.138'),
+(403, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2017-06-01 08:55:53', 1, 4, '103.213.127.138'),
+(404, 'Changes on Sub Package \'Deluxe with Balcony\' has b', '2017-06-01 08:56:13', 1, 4, '103.213.127.138'),
+(405, 'Menu [Standard] Edit Successfully', '2017-06-01 08:56:51', 1, 4, '103.213.127.138'),
+(406, 'Menu [Superior] Edit Successfully', '2017-06-01 08:57:24', 1, 4, '103.213.127.138'),
+(407, 'Menu [Deluxe] Edit Successfully', '2017-06-01 08:57:49', 1, 4, '103.213.127.138'),
+(408, 'Menu [Deluxe with Balcony] Edit Successfully', '2017-06-01 08:58:52', 1, 4, '103.213.127.138'),
+(409, 'Login: Hotel Ambassador   logged in.', '2017-06-06 11:00:40', 1, 1, '110.44.121.133'),
+(410, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-06-06 11:01:19', 1, 4, '110.44.121.133'),
+(411, 'Login: Hotel Ambassador   logged in.', '2017-06-06 11:14:10', 1, 1, '110.44.121.133'),
+(412, 'User [Hotel Ambassador  ] Edit Successfully', '2017-06-06 11:15:52', 1, 4, '110.44.121.133'),
+(413, 'Login: Hotel Ambassador   logged in.', '2017-06-06 11:16:22', 1, 1, '110.44.121.133'),
+(414, 'User [Hotel Ambassador  ] Edit Successfully', '2017-06-06 12:15:34', 1, 4, '110.44.121.133'),
+(415, 'Login: Hotel Ambassador   logged in.', '2017-06-06 12:28:15', 1, 1, '110.44.121.133'),
+(416, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-06-06 13:09:20', 1, 4, '110.44.121.133'),
+(417, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-06-06 13:10:24', 1, 4, '110.44.121.133'),
+(418, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-06-06 13:11:07', 1, 4, '110.44.121.133'),
+(419, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-06-06 13:15:33', 1, 4, '110.44.121.133'),
+(420, 'Login: Hotel Ambassador   logged in.', '2017-06-06 18:10:23', 1, 1, '110.44.121.133'),
+(421, 'Login: Hotel Ambassador   logged in.', '2017-06-08 12:37:05', 1, 1, '110.44.121.133'),
+(422, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2017-06-08 12:47:02', 1, 4, '110.44.121.133'),
+(423, 'Changes on Sub Package \'Superior\' has been saved s', '2017-06-08 12:51:02', 1, 4, '110.44.121.133'),
+(424, 'Sub Gallery Image [Corridor]Data has added success', '2017-06-08 12:54:24', 1, 3, '110.44.121.133'),
+(425, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2017-06-08 12:57:59', 1, 4, '110.44.121.133'),
+(426, 'Sub Gallery Image [Entrance]Data has added success', '2017-06-08 13:05:53', 1, 3, '110.44.121.133'),
+(427, 'Sub Gallery Image [Entrance]Data has added success', '2017-06-08 13:05:53', 1, 3, '110.44.121.133'),
+(428, 'Sub Gallery Image [Dining Hall]Data has added succ', '2017-06-08 13:12:26', 1, 3, '110.44.121.133'),
+(429, 'Sub Gallery Image [Food]Data has added successfull', '2017-06-08 13:12:26', 1, 3, '110.44.121.133'),
+(430, 'Sub Gallery Image [Food]Data has added successfull', '2017-06-08 13:12:26', 1, 3, '110.44.121.133'),
+(431, 'Sub Gallery Image [Dining Hall]Data has added succ', '2017-06-08 13:12:26', 1, 3, '110.44.121.133'),
+(432, 'Sub Gallery Image [Food]Data has added successfull', '2017-06-08 13:12:26', 1, 3, '110.44.121.133'),
+(433, 'Login: Hotel Ambassador   logged in.', '2017-06-08 14:11:40', 1, 1, '110.44.121.133'),
+(434, 'Sub Gallery Image [Deluxe Room]Data has added succ', '2017-06-08 14:13:21', 1, 3, '110.44.121.133'),
+(435, 'Sub Gallery Image [Superior Room]Data has added su', '2017-06-08 14:13:21', 1, 3, '110.44.121.133'),
+(436, 'Sub Gallery Image [Superior Room]Data has added su', '2017-06-08 14:13:21', 1, 3, '110.44.121.133'),
+(437, 'Sub Gallery Image [Shop]Data has added successfull', '2017-06-08 14:15:48', 1, 3, '110.44.121.133'),
+(438, 'Sub Gallery Image [Shop]Data has added successfull', '2017-06-08 14:15:48', 1, 3, '110.44.121.133'),
+(439, 'Sub Gallery Image [Interior]Data has added success', '2017-06-08 14:22:02', 1, 3, '110.44.121.133'),
+(440, 'Sub Gallery Image [Reception]Data has added succes', '2017-06-08 14:22:02', 1, 3, '110.44.121.133'),
+(441, 'Sub Gallery Image [Corridor]Data has added success', '2017-06-08 14:22:02', 1, 3, '110.44.121.133'),
+(442, 'Sub Gallery Image [Exterior]Data has added success', '2017-06-08 14:24:28', 1, 3, '110.44.121.133'),
+(443, 'Sub Gallery Image [Shop]Data has added successfull', '2017-06-08 14:30:43', 1, 3, '110.44.121.133'),
+(444, 'Login: Hotel Ambassador   logged in.', '2017-06-18 12:28:12', 1, 1, '::1'),
+(445, 'Changes on Article \'About us\' has been saved succe', '2017-06-18 14:22:41', 1, 4, '::1'),
+(446, 'Changes on Article \'About us2\' has been saved succ', '2017-06-18 14:28:54', 1, 4, '::1'),
+(447, 'Changes on Article \'About us\' has been saved succe', '2017-06-18 14:29:19', 1, 4, '::1'),
+(448, 'Changes on Article \'About us1\' has been saved succ', '2017-06-18 14:33:02', 1, 4, '::1'),
+(449, 'Changes on Article \'About us3\' has been saved succ', '2017-06-18 14:34:40', 1, 4, '::1'),
+(450, 'Changes on Article \'About us\' has been saved succe', '2017-06-18 14:34:58', 1, 4, '::1'),
+(451, 'Changes on Article \'Shops and Restaurantsd\' has be', '2017-06-18 14:35:10', 1, 4, '::1'),
+(452, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-06-18 14:35:19', 1, 4, '::1'),
+(453, 'Package Room Lists Edit Successfully', '2017-06-18 14:41:13', 1, 4, '::1'),
+(454, 'Package Room List Edit Successfully', '2017-06-18 14:41:23', 1, 4, '::1'),
+(455, 'Changes on Sub Package \'Standards\' has been saved ', '2017-06-18 14:41:36', 1, 4, '::1'),
+(456, 'Changes on Sub Package \'Standard\' has been saved s', '2017-06-18 14:41:50', 1, 4, '::1'),
+(457, 'Changes on Article \'About us/abc\' has been saved s', '2017-06-18 15:09:34', 1, 4, '::1'),
+(458, 'Changes on Article \'About us_\' has been saved succ', '2017-06-18 15:11:24', 1, 4, '::1'),
+(459, 'Changes on Article \'About us\' has been saved succe', '2017-06-18 15:11:40', 1, 4, '::1'),
+(460, 'Article \'new page\' has added successfully.', '2017-06-18 16:31:25', 1, 3, '::1'),
+(461, 'Changes on Article \'About uss\' has been saved succ', '2017-06-18 16:31:59', 1, 4, '::1'),
+(462, 'Changes on Article \'About uss\' has been saved succ', '2017-06-18 16:34:27', 1, 4, '::1'),
+(463, 'Changes on Article \'About us\' has been saved succe', '2017-06-18 16:35:50', 1, 4, '::1'),
+(464, 'Changes on Article \'new pages\' has been saved succ', '2017-06-18 16:36:47', 1, 4, '::1'),
+(465, 'Changes on Article \'new page\' has been saved succe', '2017-06-18 17:14:46', 1, 4, '::1'),
+(466, 'Changes on Article \'About uss\' has been saved succ', '2017-06-18 17:26:05', 1, 4, '::1'),
+(467, 'Changes on Article \'About us\' has been saved succe', '2017-06-18 17:26:20', 1, 4, '::1'),
+(468, 'Changes on Article \'Shops and Restaurant\' has been', '2017-06-18 17:26:47', 1, 4, '::1'),
+(469, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-06-18 17:26:57', 1, 4, '::1'),
+(470, 'Package Room Lists Edit Successfully', '2017-06-18 17:34:07', 1, 4, '::1'),
+(471, 'Package Room List Edit Successfully', '2017-06-18 17:34:23', 1, 4, '::1'),
+(472, 'Package Room List Edit Successfully', '2017-06-18 17:35:28', 1, 4, '::1'),
+(473, 'Package Room List Edit Successfully', '2017-06-18 17:35:47', 1, 4, '::1'),
+(474, 'Package Room List Edit Successfully', '2017-06-18 17:36:15', 1, 4, '::1'),
+(475, 'Changes on Sub Package \'Standard\' has been saved s', '2017-06-18 17:51:10', 1, 4, '::1'),
+(476, 'Changes on Sub Package \'Standard\' has been saved s', '2017-06-18 17:51:26', 1, 4, '::1'),
+(477, 'Changes on Sub Package \'Standard\' has been saved s', '2017-06-18 17:51:54', 1, 4, '::1'),
+(478, 'Changes on Sub Package \'Superior\' has been saved s', '2017-06-18 17:52:13', 1, 4, '::1'),
+(479, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2017-06-18 17:52:33', 1, 4, '::1'),
+(480, 'Changes on Sub Package \'Deluxe with Balcony\' has b', '2017-06-18 17:52:48', 1, 4, '::1'),
+(481, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-06-18 17:53:04', 1, 4, '::1'),
+(482, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-06-18 17:53:19', 1, 4, '::1'),
+(483, 'Menu [Rooms] Edit Successfully', '2017-06-18 18:15:29', 1, 4, '::1'),
+(484, 'Menu [Standard] Edit Successfully', '2017-06-18 18:15:43', 1, 4, '::1'),
+(485, 'Menu [Superior] Edit Successfully', '2017-06-18 18:16:07', 1, 4, '::1'),
+(486, 'Menu [Deluxe] Edit Successfully', '2017-06-18 18:16:20', 1, 4, '::1'),
+(487, 'Menu [Deluxe with Balcony] Edit Successfully', '2017-06-18 18:16:35', 1, 4, '::1'),
+(488, 'Menu [Consulate Suite] Edit Successfully', '2017-06-18 18:16:49', 1, 4, '::1'),
+(489, 'Menu [Ambassador Suite] Edit Successfully', '2017-06-18 18:17:05', 1, 4, '::1'),
+(490, 'Menu [About Us] Edit Successfully', '2017-06-18 18:17:57', 1, 4, '::1'),
+(491, 'Menu [Shops | Restaurants] Edit Successfully', '2017-06-18 18:18:09', 1, 4, '::1'),
+(492, 'Menu [Facilities] Edit Successfully', '2017-06-18 18:20:52', 1, 4, '::1'),
+(493, 'Login: Hotel Ambassador   logged in.', '2017-06-19 12:58:09', 1, 1, '110.44.121.133'),
+(494, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-06-19 13:21:07', 1, 4, '110.44.121.133'),
+(495, 'Login: Hotel Ambassador   logged in.', '2017-06-25 13:24:27', 1, 1, '110.44.121.133'),
+(496, 'Login: Hotel Ambassador   logged in.', '2017-06-25 15:08:42', 1, 1, '116.90.229.94'),
+(497, 'Login: Hotel Ambassador   logged in.', '2017-06-25 15:30:05', 1, 1, '116.90.229.94'),
+(498, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-06-25 15:31:37', 1, 4, '116.90.229.94');
+INSERT INTO `tbl_logs` (`id`, `action`, `registered`, `userid`, `user_action`, `ip_track`) VALUES
+(499, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-06-25 15:32:07', 1, 4, '116.90.229.94'),
+(500, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-06-25 15:39:51', 1, 4, '116.90.229.94'),
+(501, 'Login: Hotel Ambassador   logged in.', '2017-07-02 13:05:33', 1, 1, '110.44.121.133'),
+(502, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-07-02 13:06:52', 1, 4, '110.44.121.133'),
+(503, 'Login: Hotel Ambassador   logged in.', '2017-07-02 16:29:09', 1, 1, '110.44.121.133'),
+(504, 'Changes on Sub Package \'Consulate Suite\' has been ', '2017-07-02 16:31:03', 1, 4, '110.44.121.133'),
+(505, 'Changes on Sub Package \'Ambassador Suite\' has been', '2017-07-02 16:31:44', 1, 4, '110.44.121.133'),
+(506, 'Login: Hotel Ambassador   logged in.', '2017-07-02 17:16:22', 1, 1, '110.44.121.133'),
+(507, 'Login: Hotel Ambassador   logged in.', '2017-07-02 18:27:46', 1, 1, '110.44.121.133'),
+(508, 'Changes on Article \'new page\' has been saved succe', '2017-07-02 18:28:21', 1, 4, '110.44.121.133'),
+(509, 'Services [Five on-site dining options]Data has add', '2017-07-02 18:39:30', 1, 3, '110.44.121.133'),
+(510, 'Services [Meeting Hall]Data has added successfully', '2017-07-02 18:40:21', 1, 3, '110.44.121.133'),
+(511, 'Login: Hotel Ambassador   logged in.', '2017-07-03 11:46:31', 1, 1, '110.44.121.133'),
+(512, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-03 11:47:09', 1, 4, '110.44.121.133'),
+(513, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-03 11:47:53', 1, 4, '110.44.121.133'),
+(514, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-03 11:50:59', 1, 4, '110.44.121.133'),
+(515, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-03 11:59:11', 1, 4, '110.44.121.133'),
+(516, 'Login: Hotel Ambassador   logged in.', '2017-07-03 12:58:16', 1, 1, '110.44.121.133'),
+(517, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-03 12:59:09', 1, 4, '110.44.121.133'),
+(518, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-03 13:03:17', 1, 4, '110.44.121.133'),
+(519, 'Login: Hotel Ambassador   logged in.', '2017-07-03 14:20:55', 1, 1, '110.44.121.133'),
+(520, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-07-03 14:48:36', 1, 4, '110.44.121.133'),
+(521, 'Login: Hotel Ambassador   logged in.', '2017-07-04 14:39:36', 1, 1, '110.44.121.133'),
+(522, 'Sub Gallery Image [Hotel Ambassador by ACE Hotels]', '2017-07-04 16:00:14', 1, 3, '110.44.121.133'),
+(523, 'Sub Gallery Image  [Hotel Ambassador by ACE Hotels', '2017-07-04 16:00:26', 1, 6, '110.44.121.133'),
+(524, 'Sub Gallery Image  []Data has deleted successfully', '2017-07-04 16:05:22', 1, 6, '110.44.121.133'),
+(525, 'Sub Gallery Image  [Flat Iron Grill]Data has delet', '2017-07-04 16:05:23', 1, 6, '110.44.121.133'),
+(526, 'Sub Gallery Image [Superior Room]Data has added su', '2017-07-04 16:06:32', 1, 3, '110.44.121.133'),
+(527, 'Sub Gallery Image [MoMo Queen]Data has added succe', '2017-07-04 16:06:32', 1, 3, '110.44.121.133'),
+(528, 'Sub Gallery Image [The Diplomat Lounge]Data has ad', '2017-07-04 16:06:32', 1, 3, '110.44.121.133'),
+(529, 'Sub Gallery Image  [The Diplomat Lounge]Data has d', '2017-07-04 16:07:00', 1, 6, '110.44.121.133'),
+(530, 'Sub Gallery Image  [Ardor]Data has deleted success', '2017-07-04 16:11:44', 1, 6, '110.44.121.133'),
+(531, 'Sub Gallery Image  []Data has deleted successfully', '2017-07-04 16:11:45', 1, 6, '110.44.121.133'),
+(532, 'Changes on Article \'About us\' has been saved succe', '2017-07-04 16:21:29', 1, 4, '110.44.121.133'),
+(533, 'Changes on Article \'About us\' has been saved succe', '2017-07-04 16:24:51', 1, 4, '110.44.121.133'),
+(534, 'Changes on Article \'About us\' has been saved succe', '2017-07-04 16:28:41', 1, 4, '110.44.121.133'),
+(535, 'Changes on Article \'Shops and Restaurants\' has bee', '2017-07-04 16:34:00', 1, 4, '110.44.121.133'),
+(536, 'Login: Hotel Ambassador   logged in.', '2017-07-04 16:40:10', 1, 1, '110.44.121.133'),
+(537, 'Changes on Article \'About us\' has been saved succe', '2017-07-04 16:40:24', 1, 4, '110.44.121.133'),
+(538, 'Sub Gallery Image [as]Data has added successfully.', '2017-07-04 16:40:38', 1, 3, '110.44.121.133'),
+(539, 'Sub Gallery Image  [as]Data has deleted successful', '2017-07-04 16:41:53', 1, 6, '110.44.121.133'),
+(540, 'Sub Gallery Image [blue]Data has added successfull', '2017-07-04 16:55:43', 1, 3, '110.44.121.133'),
+(541, 'Sub Gallery Image  [blue]Data has deleted successf', '2017-07-04 16:56:10', 1, 6, '110.44.121.133'),
+(542, 'Login: Hotel Ambassador   logged in.', '2017-07-10 15:18:02', 1, 1, '110.44.121.133'),
+(543, 'Login: Hotel Ambassador   logged in.', '2017-07-13 15:44:19', 1, 1, '110.44.121.133'),
+(544, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-07-13 15:45:38', 1, 4, '110.44.121.133'),
+(545, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-07-13 15:47:06', 1, 4, '110.44.121.133'),
+(546, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-07-13 15:58:00', 1, 4, '110.44.121.133'),
+(547, 'Login: Hotel Ambassador   logged in.', '2017-07-14 16:07:00', 1, 1, '110.44.121.133'),
+(548, 'Login: Hotel Ambassador   logged in.', '2017-07-27 11:42:54', 1, 1, '110.44.121.133'),
+(549, 'Changes on Config \'Hotel Ambassador\' has been save', '2017-07-27 11:48:37', 1, 4, '110.44.121.133'),
+(550, 'Login: Hotel Ambassador   logged in.', '2017-07-30 12:44:58', 1, 1, '110.44.121.133'),
+(551, 'Sub Gallery Image [Hotel Ambassador by ACE Hotels]', '2017-07-30 12:47:57', 1, 3, '110.44.121.133'),
+(552, 'Sub Gallery Image [Hotel Ambassador by ACE Hotels]', '2017-07-30 12:50:34', 1, 3, '110.44.121.133'),
+(553, 'Login: Hotel Ambassador   logged in.', '2017-08-07 12:57:30', 1, 1, '110.44.121.133'),
+(554, 'Article \'About  Us1\' has added successfully.', '2017-08-07 13:02:05', 1, 3, '110.44.121.133'),
+(555, 'Login: Hotel Ambassador   logged in.', '2017-08-07 15:40:35', 1, 1, '110.44.121.133'),
+(556, 'Package [asads]Data has added successfully.', '2017-08-07 15:51:06', 1, 3, '110.44.121.133'),
+(557, 'Package  [asads]Data has deleted successfully.', '2017-08-07 15:53:13', 1, 6, '110.44.121.133'),
+(558, 'Login: Hotel Ambassador   logged in.', '2017-08-29 14:50:23', 1, 1, '110.44.121.133'),
+(559, 'Sub Gallery Image [Kitchen]Data has added successf', '2017-08-29 14:54:32', 1, 3, '110.44.121.133'),
+(560, 'Sub Gallery Image [Roasted Chiken]Data has added s', '2017-08-29 14:54:32', 1, 3, '110.44.121.133'),
+(561, 'Sub Gallery Image [Roasted Chicken]Data has added ', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(562, 'Sub Gallery Image [Tofu Curry]Data has added succe', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(563, 'Sub Gallery Image [Pork]Data has added successfull', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(564, 'Sub Gallery Image [Chicken Curry]Data has added su', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(565, 'Sub Gallery Image [Cocktail]Data has added success', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(566, 'Sub Gallery Image [Naan Roti]Data has added succes', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(567, 'Sub Gallery Image [Cocktail]Data has added success', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(568, 'Sub Gallery Image [Cocktail]Data has added success', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(569, 'Sub Gallery Image [Cocktail]Data has added success', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(570, 'Sub Gallery Image [Fried Rice]Data has added succe', '2017-08-29 15:06:39', 1, 3, '110.44.121.133'),
+(571, 'Changes on Article \'About us\' has been saved succe', '2017-08-29 15:11:23', 1, 4, '110.44.121.133'),
+(572, 'Changes on Article \'About us\' has been saved succe', '2017-08-29 15:13:32', 1, 4, '110.44.121.133'),
+(573, 'Changes on Article \'About us\' has been saved succe', '2017-08-29 15:16:39', 1, 4, '110.44.121.133'),
+(574, 'Login: Hotel Ambassador   logged in.', '2017-08-29 17:07:45', 1, 1, '110.44.121.133'),
+(575, 'Changes on Article \'About us\' has been saved succe', '2017-08-29 17:12:20', 1, 4, '110.44.121.133'),
+(576, 'Login: Hotel Ambassador   logged in.', '2017-09-07 10:59:30', 1, 1, '110.44.121.133'),
+(577, 'Login: Hotel Ambassador   logged in.', '2017-09-08 18:06:03', 1, 1, '110.44.121.133'),
+(578, 'Login: Hotel Ambassador   logged in.', '2017-10-11 15:11:03', 1, 1, '110.44.121.133'),
+(579, 'Login: Hotel Ambassador   logged in.', '2017-10-11 18:14:19', 1, 1, '110.44.121.133'),
+(580, 'Login: Hotel Ambassador   logged in.', '2017-10-18 16:44:29', 1, 1, '110.44.121.133'),
+(581, 'Changes on Sub Package \'Superior\' has been saved s', '2017-10-18 16:57:05', 1, 4, '110.44.121.133'),
+(582, 'Changes on Sub Package \'Standard\' has been saved s', '2017-10-18 16:58:45', 1, 4, '110.44.121.133'),
+(583, 'Login: Hotel Ambassador   logged in.', '2017-11-03 12:27:16', 1, 1, '110.44.121.133'),
+(584, 'Login: Hotel Ambassador   logged in.', '2017-11-09 15:12:30', 1, 1, '110.44.121.133'),
+(585, 'Login: Hotel Ambassador   logged in.', '2018-01-23 16:51:39', 1, 1, '110.44.121.133'),
+(586, 'Login: Hotel Ambassador   logged in.', '2018-03-23 12:31:10', 1, 1, '110.44.121.133'),
+(587, 'Login: Hotel Ambassador   logged in.', '2018-03-29 12:52:47', 1, 1, '110.44.121.133'),
+(588, 'Login: Hotel Ambassador   logged in.', '2018-04-04 15:00:09', 1, 1, '110.44.121.133'),
+(589, 'Login: Hotel Ambassador   logged in.', '2018-05-14 22:00:13', 1, 1, '27.34.68.175'),
+(590, 'Login: Hotel Ambassador   logged in.', '2018-06-17 14:44:36', 1, 1, '110.44.121.133'),
+(591, 'Login: Hotel Ambassador   logged in.', '2018-07-02 17:51:37', 1, 1, '110.44.121.133'),
+(592, 'Gallery [Meeting Hall]Data has added successfully.', '2018-07-02 17:55:57', 1, 3, '110.44.121.133'),
+(593, 'Sub Gallery Image [Meeting hall]Data has added suc', '2018-07-02 18:08:52', 1, 3, '110.44.121.133'),
+(594, 'Sub Gallery Image [Meeting hall]Data has added suc', '2018-07-02 18:08:52', 1, 3, '110.44.121.133'),
+(595, 'Sub Gallery Image [Meeting hall]Data has added suc', '2018-07-02 18:08:52', 1, 3, '110.44.121.133'),
+(596, 'Sub Gallery Image [Meeting hall]Data has added suc', '2018-07-02 18:08:52', 1, 3, '110.44.121.133'),
+(597, 'Login: Hotel Ambassador   logged in.', '2018-07-03 14:27:12', 1, 1, '110.44.121.133'),
+(598, 'Sub Gallery Image  [Dining Hall]Data has deleted s', '2018-07-03 14:30:40', 1, 6, '110.44.121.133'),
+(599, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:30:47', 1, 6, '110.44.121.133'),
+(600, 'Sub Gallery Image  [Food]Data has deleted successf', '2018-07-03 14:30:48', 1, 6, '110.44.121.133'),
+(601, 'Sub Gallery Image [Food Setup]Data has added succe', '2018-07-03 14:32:36', 1, 3, '110.44.121.133'),
+(602, 'Sub Gallery Image [Food Setup]Data has added succe', '2018-07-03 14:32:36', 1, 3, '110.44.121.133'),
+(603, 'Sub Gallery Image [Food Setup]Data has added succe', '2018-07-03 14:32:36', 1, 3, '110.44.121.133'),
+(604, 'Sub Gallery Image [Food Setup]Data has added succe', '2018-07-03 14:32:36', 1, 3, '110.44.121.133'),
+(605, 'Sub Gallery Image [Food Setup]Data has added succe', '2018-07-03 14:32:36', 1, 3, '110.44.121.133'),
+(606, 'Sub Gallery Image [Conference Hall]Data has added ', '2018-07-03 14:35:37', 1, 3, '110.44.121.133'),
+(607, 'Sub Gallery Image  [Food Setup]Data has deleted su', '2018-07-03 14:49:08', 1, 6, '110.44.121.133'),
+(608, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:12', 1, 6, '110.44.121.133'),
+(609, 'Sub Gallery Image  [Food Setup]Data has deleted su', '2018-07-03 14:49:13', 1, 6, '110.44.121.133'),
+(610, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:15', 1, 6, '110.44.121.133'),
+(611, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:16', 1, 6, '110.44.121.133'),
+(612, 'Sub Gallery Image  [Food Setup]Data has deleted su', '2018-07-03 14:49:16', 1, 6, '110.44.121.133'),
+(613, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:21', 1, 6, '110.44.121.133'),
+(614, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:21', 1, 6, '110.44.121.133'),
+(615, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:22', 1, 6, '110.44.121.133'),
+(616, 'Sub Gallery Image  [Conference Hall]Data has delet', '2018-07-03 14:49:23', 1, 6, '110.44.121.133'),
+(617, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:29', 1, 6, '110.44.121.133'),
+(618, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:29', 1, 6, '110.44.121.133'),
+(619, 'Sub Gallery Image  [Food Setup]Data has deleted su', '2018-07-03 14:49:30', 1, 6, '110.44.121.133'),
+(620, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:30', 1, 6, '110.44.121.133'),
+(621, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:30', 1, 6, '110.44.121.133'),
+(622, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:36', 1, 6, '110.44.121.133'),
+(623, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:37', 1, 6, '110.44.121.133'),
+(624, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:37', 1, 6, '110.44.121.133'),
+(625, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:37', 1, 6, '110.44.121.133'),
+(626, 'Sub Gallery Image  [Food Setup]Data has deleted su', '2018-07-03 14:49:38', 1, 6, '110.44.121.133'),
+(627, 'Sub Gallery Image  []Data has deleted successfully', '2018-07-03 14:49:38', 1, 6, '110.44.121.133'),
+(628, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-03 14:51:08', 1, 3, '110.44.121.133'),
+(629, 'Login: Hotel Ambassador   logged in.', '2018-07-04 15:20:27', 1, 1, '110.44.121.133'),
+(630, 'Gallery Image [Dining1] Edit Successfully', '2018-07-04 15:26:51', 1, 4, '110.44.121.133'),
+(631, 'Gallery [Dining]Data has added successfully.', '2018-07-04 15:27:16', 1, 3, '110.44.121.133'),
+(632, 'Sub Gallery Image [Food setup]Data has added succe', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(633, 'Sub Gallery Image [Food setup]Data has added succe', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(634, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(635, 'Sub Gallery Image [Food setup]Data has added succe', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(636, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(637, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(638, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(639, 'Sub Gallery Image [Drink]Data has added successful', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(640, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(641, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(642, 'Sub Gallery Image [Drink]Data has added successful', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(643, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(644, 'Sub Gallery Image [Drink]Data has added successful', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(645, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(646, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(647, 'Sub Gallery Image [Dining]Data has added successfu', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(648, 'Sub Gallery Image [Dining]Data has added successfu', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(649, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(650, 'Sub Gallery Image [Food]Data has added successfull', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(651, 'Sub Gallery Image [Dining]Data has added successfu', '2018-07-04 15:57:33', 1, 3, '110.44.121.133'),
+(652, 'Login: Hotel Ambassador   logged in.', '2018-07-06 11:31:38', 1, 1, '110.44.121.133'),
+(653, 'Login: Hotel Ambassador   logged in.', '2018-07-08 14:46:40', 1, 1, '110.44.121.133'),
+(654, 'Changes on Article \'About us\' has been saved succe', '2018-07-08 14:47:22', 1, 4, '110.44.121.133'),
+(655, 'Login: Hotel Ambassador   logged in.', '2018-07-26 11:35:34', 1, 1, '110.44.121.133'),
+(656, 'Login: Hotel Ambassador   logged in.', '2018-08-22 11:46:35', 1, 1, '110.44.121.133'),
+(657, 'Changes on Sub Package \'Ambassador Suite\' has been', '2018-08-22 11:58:41', 1, 4, '110.44.121.133'),
+(658, 'Changes on Sub Package \'Ambassador Suite\' has been', '2018-08-22 12:00:45', 1, 4, '110.44.121.133'),
+(659, 'Changes on Sub Package \'Consulate Suite\' has been ', '2018-08-22 12:11:14', 1, 4, '110.44.121.133'),
+(660, 'Changes on Sub Package \'Consulate Suite\' has been ', '2018-08-22 12:19:58', 1, 4, '110.44.121.133'),
+(661, 'Changes on Sub Package \'Ambassador Suite\' has been', '2018-08-22 12:44:16', 1, 4, '110.44.121.133'),
+(662, 'Sub Gallery Image [Ambassador suite]Data has added', '2018-08-22 12:52:26', 1, 3, '110.44.121.133'),
+(663, 'Sub Gallery Image [Consulate suite]Data has added ', '2018-08-22 12:58:07', 1, 3, '110.44.121.133'),
+(664, 'Sub Gallery Image [Consulate suite]Data has added ', '2018-08-22 12:58:07', 1, 3, '110.44.121.133'),
+(665, 'Sub Gallery Image [Consulate suite]Data has added ', '2018-08-22 12:58:07', 1, 3, '110.44.121.133'),
+(666, 'Sub Gallery Image  [Superior Room]Data has deleted', '2018-08-22 13:07:56', 1, 6, '110.44.121.133'),
+(667, 'Login: Hotel Ambassador   logged in.', '2018-08-22 14:44:55', 1, 1, '110.44.121.133'),
+(668, 'Sub Gallery Image [Interior]Data has added success', '2018-08-22 14:46:30', 1, 3, '110.44.121.133'),
+(669, 'Sub Gallery Image  [Corridor]Data has deleted succ', '2018-08-22 14:59:42', 1, 6, '110.44.121.133'),
+(670, 'Sub Gallery Image [Terrace]Data has added successf', '2018-08-22 15:00:04', 1, 3, '110.44.121.133'),
+(671, 'Login: Hotel Ambassador   logged in.', '2018-08-23 15:33:33', 1, 1, '110.44.121.133'),
+(672, 'Login: Hotel Ambassador   logged in.', '2018-08-25 14:20:53', 1, 1, '27.34.16.137'),
+(673, 'Changes on Sub Package \'Consulate Suite\' has been ', '2018-08-25 14:22:31', 1, 4, '27.34.16.137'),
+(674, 'Changes on Sub Package \'Ambassador Suite\' has been', '2018-08-25 14:22:48', 1, 4, '27.34.16.137'),
+(675, 'Changes on Article \'About us\' has been saved succe', '2018-08-25 14:23:48', 1, 4, '27.34.16.137'),
+(676, 'Login: Hotel Ambassador   logged in.', '2019-01-06 12:24:21', 1, 1, '110.44.121.133'),
+(677, 'Login: Hotel Ambassador   logged in.', '2019-02-26 10:54:22', 1, 1, '110.44.121.133'),
+(678, 'Changes on Config \'Hotel Ambassador\' has been save', '2019-02-26 11:00:14', 1, 4, '110.44.121.133'),
+(679, 'Changes on Config \'Hotel Ambassador\' has been save', '2019-02-26 11:01:34', 1, 4, '110.44.121.133'),
+(680, 'Login: Hotel Ambassador   logged in.', '2019-05-03 11:48:10', 1, 1, '110.44.122.138'),
+(681, 'Changes on Config \'Hotel Ambassador\' has been save', '2019-05-03 11:52:22', 1, 4, '110.44.122.138'),
+(682, 'Login: Hotel Ambassador   logged in.', '2019-05-26 12:26:51', 1, 1, '203.78.167.181'),
+(683, 'Login: Hotel Ambassador   logged in.', '2019-09-13 13:23:57', 1, 1, '27.34.68.124'),
+(684, 'Changes on Config \'Hotel Ambassador\' has been save', '2019-09-13 13:24:51', 1, 4, '27.34.68.124'),
+(685, 'Login: Hotel Ambassador   logged in.', '2019-09-16 15:50:42', 1, 1, '110.44.122.138'),
+(686, 'Changes on Article \'About us\' has been saved succe', '2019-09-16 15:51:54', 1, 4, '110.44.122.138'),
+(687, 'Changes on Article \'About us\' has been saved succe', '2019-09-16 15:52:30', 1, 4, '110.44.122.138'),
+(688, 'Login: Hotel Ambassador   logged in.', '2019-10-01 00:37:40', 1, 1, '27.34.20.63'),
+(689, 'Login: Hotel Ambassador   logged in.', '2019-10-01 11:52:54', 1, 1, '110.44.122.138'),
+(690, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-01 11:53:17', 1, 4, '110.44.122.138'),
+(691, 'Login: Hotel Ambassador   logged in.', '2019-10-01 16:38:34', 1, 1, '110.44.122.138'),
+(692, 'Login: Hotel Ambassador   logged in.', '2019-10-01 17:29:20', 1, 1, '110.44.122.138'),
+(693, 'Changes on Sub Package \'Consulate Suite\' has been ', '2019-10-01 17:30:07', 1, 4, '110.44.122.138'),
+(694, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-01 17:31:17', 1, 4, '110.44.122.138'),
+(695, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-01 17:32:57', 1, 4, '110.44.122.138'),
+(696, 'Login: Hotel Ambassador   logged in.', '2019-10-02 16:12:50', 1, 1, '110.44.122.138'),
+(697, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-10-02 16:35:15', 1, 4, '110.44.122.138'),
+(698, 'Login: Hotel Ambassador   logged in.', '2019-10-02 17:15:45', 1, 1, '110.44.122.138'),
+(699, 'Features [Walk in rain shower]Data has added succe', '2019-10-02 17:21:12', 1, 3, '110.44.122.138'),
+(700, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2019-10-02 17:21:57', 1, 4, '110.44.122.138'),
+(701, 'Login: Hotel Ambassador   logged in.', '2019-10-02 17:22:57', 1, 1, '110.44.122.138'),
+(702, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2019-10-02 17:23:31', 1, 4, '110.44.122.138'),
+(703, 'Features  [Walk in rain shower]Data has deleted su', '2019-10-02 17:24:18', 1, 6, '110.44.122.138'),
+(704, 'Features [Separate Bathtub]Data has added successf', '2019-10-02 17:25:40', 1, 3, '110.44.122.138'),
+(705, 'Features  [Separate Bathtub]Data has deleted succe', '2019-10-02 17:26:24', 1, 6, '110.44.122.138'),
+(706, 'Features [Separate Bathtub]Data has added successf', '2019-10-02 17:27:52', 1, 3, '110.44.122.138'),
+(707, 'Features  [Separate Bathtub]Data has deleted succe', '2019-10-02 17:28:20', 1, 6, '110.44.122.138'),
+(708, 'Features [Separate Bathtub]Data has added successf', '2019-10-02 17:28:38', 1, 3, '110.44.122.138'),
+(709, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2019-10-02 17:28:53', 1, 4, '110.44.122.138'),
+(710, 'Features [Bathtub]Data has added successfully.', '2019-10-02 17:30:12', 1, 3, '110.44.122.138'),
+(711, 'Changes on Sub Package \'Deluxe with Balcony\' has b', '2019-10-02 17:30:54', 1, 4, '110.44.122.138'),
+(712, 'Features  [Bathtub]Data has deleted successfully.', '2019-10-02 17:31:03', 1, 6, '110.44.122.138'),
+(713, 'Features [Washing Machine]Data has added successfu', '2019-10-02 17:35:03', 1, 3, '110.44.122.138'),
+(714, 'Features [Refrigerator]Data has added successfully', '2019-10-02 17:35:30', 1, 3, '110.44.122.138'),
+(715, 'Features [Microwave Oven]Data has added successful', '2019-10-02 17:36:01', 1, 3, '110.44.122.138'),
+(716, 'Changes on Sub Package \'Consulate Suite\' has been ', '2019-10-02 17:36:51', 1, 4, '110.44.122.138'),
+(717, 'Changes on Sub Package \'Consulate Suite\' has been ', '2019-10-02 17:37:41', 1, 4, '110.44.122.138'),
+(718, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-02 17:38:15', 1, 4, '110.44.122.138'),
+(719, 'Login: Hotel Ambassador   logged in.', '2019-10-17 12:36:29', 1, 1, '110.44.122.138'),
+(720, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-10-17 12:39:01', 1, 4, '110.44.122.138'),
+(721, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-10-17 12:39:15', 1, 4, '110.44.122.138'),
+(722, 'Login: Hotel Ambassador   logged in.', '2019-10-17 13:51:22', 1, 1, '110.44.122.138'),
+(723, 'Sub Gallery Image  [Food]Data has deleted successf', '2019-10-17 13:52:42', 1, 6, '110.44.122.138'),
+(724, 'Changes on Article \'About us\' has been saved succe', '2019-10-17 13:57:39', 1, 4, '110.44.122.138'),
+(725, 'Login: Hotel Ambassador   logged in.', '2019-10-17 16:20:18', 1, 1, '110.44.122.138'),
+(726, 'Changes on Article \'About us\' has been saved succe', '2019-10-17 16:39:56', 1, 4, '110.44.122.138'),
+(727, 'Login: Hotel Ambassador   logged in.', '2019-10-25 13:17:00', 1, 1, '110.44.122.138'),
+(728, 'Changes on Sub Package \'Standard\' has been saved s', '2019-10-25 14:08:10', 1, 4, '110.44.122.138'),
+(729, 'Changes on Sub Package \'Superior\' has been saved s', '2019-10-25 14:08:42', 1, 4, '110.44.122.138'),
+(730, 'Changes on Sub Package \'Deluxe with Balcony\' has b', '2019-10-25 14:14:45', 1, 4, '110.44.122.138'),
+(731, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-25 14:15:39', 1, 4, '110.44.122.138'),
+(732, 'Changes on Sub Package \'Consulate Suite\' has been ', '2019-10-25 14:16:03', 1, 4, '110.44.122.138'),
+(733, 'Changes on Sub Package \'Deluxe with Balcony\' has b', '2019-10-25 14:16:29', 1, 4, '110.44.122.138'),
+(734, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2019-10-25 14:16:54', 1, 4, '110.44.122.138'),
+(735, 'Article \'Meeting and Events\' has added successfull', '2019-10-25 14:24:21', 1, 3, '110.44.122.138'),
+(736, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 14:31:26', 1, 4, '110.44.122.138'),
+(737, 'Changes on Sub Package \'Consulate Suite\' has been ', '2019-10-25 15:13:11', 1, 4, '110.44.122.138'),
+(738, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-25 15:19:01', 1, 4, '110.44.122.138'),
+(739, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 15:53:01', 1, 4, '110.44.122.138'),
+(740, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 15:54:44', 1, 4, '110.44.122.138'),
+(741, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 15:58:36', 1, 4, '110.44.122.138'),
+(742, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 15:59:09', 1, 4, '110.44.122.138'),
+(743, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 15:59:22', 1, 4, '110.44.122.138'),
+(744, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 16:01:04', 1, 4, '110.44.122.138'),
+(745, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 16:02:26', 1, 4, '110.44.122.138'),
+(746, 'Changes on Article \'Meeting and Events\' has been s', '2019-10-25 16:03:35', 1, 4, '110.44.122.138'),
+(747, 'Login: Hotel Ambassador   logged in.', '2019-10-31 12:48:48', 1, 1, '110.44.122.138'),
+(748, 'Changes on Sub Package \'Deluxe with Balcony\' has b', '2019-10-31 12:49:57', 1, 4, '110.44.122.138'),
+(749, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-10-31 12:50:24', 1, 4, '110.44.122.138'),
+(750, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-31 12:52:27', 1, 4, '110.44.122.138'),
+(751, 'Changes on Sub Package \'Ambassador Suite\' has been', '2019-10-31 12:54:13', 1, 4, '110.44.122.138'),
+(752, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-10-31 12:59:27', 1, 4, '110.44.122.138'),
+(753, 'Login: Hotel Ambassador   logged in.', '2019-10-31 17:23:55', 1, 1, '110.44.122.138'),
+(754, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-10-31 17:26:13', 1, 4, '110.44.122.138'),
+(755, 'Login: Hotel Ambassador   logged in.', '2019-12-22 14:45:48', 1, 1, '110.44.122.138'),
+(756, 'Login: Hotel Ambassador   logged in.', '2019-12-22 14:48:24', 1, 1, '110.44.122.138'),
+(757, 'Login: Hotel Ambassador   logged in.', '2019-12-23 16:14:00', 1, 1, '110.44.122.138'),
+(758, 'Login: Hotel Ambassador   logged in.', '2019-12-24 12:32:24', 1, 1, '110.44.122.138'),
+(759, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 12:33:21', 1, 4, '110.44.122.138'),
+(760, 'Login: Hotel Ambassador   logged in.', '2019-12-24 12:39:49', 1, 1, '110.44.122.138'),
+(761, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 12:48:53', 1, 4, '110.44.122.138'),
+(762, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 12:56:06', 1, 4, '110.44.122.138'),
+(763, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 12:59:36', 1, 4, '110.44.122.138'),
+(764, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 13:04:20', 1, 4, '110.44.122.138'),
+(765, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 13:06:01', 1, 4, '110.44.122.138'),
+(766, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 13:09:52', 1, 4, '110.44.122.138'),
+(767, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 13:19:38', 1, 4, '110.44.122.138'),
+(768, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 13:23:53', 1, 4, '110.44.122.138'),
+(769, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:03:54', 1, 4, '110.44.122.138'),
+(770, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:31:22', 1, 4, '110.44.122.138'),
+(771, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:36:42', 1, 4, '110.44.122.138'),
+(772, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:37:59', 1, 4, '110.44.122.138'),
+(773, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:39:48', 1, 4, '110.44.122.138'),
+(774, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:44:01', 1, 4, '110.44.122.138'),
+(775, 'Login: Hotel Ambassador   logged in.', '2019-12-24 14:48:43', 1, 1, '110.44.122.138'),
+(776, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:48:54', 1, 4, '110.44.122.138'),
+(777, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:52:59', 1, 4, '110.44.122.138'),
+(778, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:56:13', 1, 4, '110.44.122.138'),
+(779, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:57:47', 1, 4, '110.44.122.138'),
+(780, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 14:59:09', 1, 4, '110.44.122.138'),
+(781, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 15:00:41', 1, 4, '110.44.122.138'),
+(782, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 15:08:23', 1, 4, '110.44.122.138'),
+(783, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 15:12:50', 1, 4, '110.44.122.138'),
+(784, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 15:31:16', 1, 4, '110.44.122.138'),
+(785, 'Login: Hotel Ambassador   logged in.', '2019-12-24 15:59:21', 1, 1, '110.44.122.138'),
+(786, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 16:37:26', 1, 4, '110.44.122.138'),
+(787, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 16:50:43', 1, 4, '110.44.122.138'),
+(788, 'Changes on Article \'Shops and Restaurants\' has bee', '2019-12-24 16:52:38', 1, 4, '110.44.122.138'),
+(789, 'Login: Hotel Ambassador   logged in.', '2020-04-30 10:33:07', 1, 1, '212.83.166.62'),
+(790, 'Login: Hotel Ambassador   logged in.', '2020-09-05 10:13:34', 1, 1, '27.34.20.52'),
+(791, 'Login: Hotel Ambassador   logged in.', '2020-09-06 11:34:28', 1, 1, '113.199.248.194'),
+(792, 'Changes on Config \'Hotel Ambassador\' has been save', '2020-09-06 11:35:19', 1, 4, '113.199.248.194'),
+(793, 'Login: Hotel Ambassador   logged in.', '2020-09-09 12:35:42', 1, 1, '27.34.68.32'),
+(794, 'Changes on Config \'Hotel Ambassador\' has been save', '2020-09-09 12:36:52', 1, 4, '27.34.68.32'),
+(795, 'Login: Hotel Ambassador   logged in.', '2020-09-09 12:40:05', 1, 1, '27.34.68.32'),
+(796, 'Login: Hotel Ambassador   logged in.', '2020-09-09 12:41:09', 1, 1, '27.34.68.32'),
+(797, 'Login: Hotel Ambassador   logged in.', '2020-09-09 12:41:16', 1, 1, '113.199.254.8'),
+(798, 'Changes on Config \'Hotel Ambassador\' has been save', '2020-09-09 12:42:30', 1, 4, '113.199.254.8'),
+(799, 'Changes on Config \'Hotel Ambassador\' has been save', '2020-09-09 12:42:37', 1, 4, '27.34.68.32'),
+(800, 'Login: Hotel Ambassador   logged in.', '2020-09-09 12:43:11', 1, 1, '113.199.254.8'),
+(801, 'Changes on Config \'Hotel Ambassador\' has been save', '2020-09-09 12:43:51', 1, 4, '113.199.254.8'),
+(802, 'Login: Hotel Ambassador   logged in.', '2020-09-09 12:44:41', 1, 1, '27.34.68.32'),
+(803, 'Login: Hotel Ambassador   logged in.', '2020-09-10 15:49:33', 1, 1, '27.34.68.65'),
+(804, 'Changes on Config \'Hotel Ambassador\' has been save', '2020-09-10 15:52:38', 1, 4, '27.34.68.65'),
+(805, 'Login: Hotel Ambassador   logged in.', '2020-09-17 12:11:08', 1, 1, '27.34.68.210'),
+(806, 'Login: Hotel Ambassador   logged in.', '2020-10-16 14:05:50', 1, 1, '27.34.19.152'),
+(807, 'Login: Hotel Ambassador   logged in.', '2020-11-10 19:09:27', 1, 1, '27.34.68.248'),
+(808, 'Login: Hotel Ambassador   logged in.', '2020-11-11 18:39:48', 1, 1, '27.34.68.98'),
+(809, 'Login: Hotel Ambassador   logged in.', '2020-11-27 11:11:11', 1, 1, '27.34.18.25'),
+(810, 'Article \'Ace Hotels Introduction\' has added succes', '2020-11-27 11:20:03', 1, 3, '27.34.18.25'),
+(811, 'Changes on Article \'Ace Hotels Introduction\' has b', '2020-11-27 11:22:01', 1, 4, '27.34.18.25'),
+(812, 'Changes on Article \'Ace Hotels Introduction\' has b', '2020-11-27 11:24:43', 1, 4, '27.34.18.25'),
+(813, 'Login: Hotel Ambassador   logged in.', '2021-11-26 10:32:36', 1, 1, '27.34.20.242'),
+(814, 'Login: Hotel Ambassador   logged in.', '2021-11-26 10:33:12', 1, 1, '27.34.22.238'),
+(815, 'Login: Hotel Ambassador   logged in.', '2021-11-26 10:52:34', 1, 1, '27.34.20.242'),
+(816, 'Changes on Article \'Shops and Restaurants\' has bee', '2021-11-26 11:34:14', 1, 4, '27.34.22.238'),
+(817, 'Changes on Article \'Shops and Restaurants\' has bee', '2021-11-26 11:40:01', 1, 4, '27.34.22.238'),
+(818, 'Login: Hotel Ambassador   logged in.', '2022-03-04 12:26:21', 1, 1, '27.34.20.239'),
+(819, 'Changes on Article \'About us\' has been saved succe', '2022-03-04 12:29:17', 1, 4, '27.34.20.239'),
+(820, 'Changes on Article \'About us\' has been saved succe', '2022-03-04 12:29:33', 1, 4, '27.34.20.239'),
+(821, 'Changes on Config \'Hotel Ambassador\' has been save', '2022-03-04 12:31:30', 1, 4, '27.34.20.239'),
+(822, 'Login: Hotel Ambassador   logged in.', '2022-03-04 15:09:16', 1, 1, '27.34.20.239'),
+(823, 'Changes on Article \'About us\' has been saved succe', '2022-03-04 15:20:00', 1, 4, '27.34.20.239'),
+(824, 'Login: Hotel Ambassador   logged in.', '2022-08-22 16:39:21', 1, 1, '116.90.229.94'),
+(825, 'Testimonial  []Data has deleted successfully.', '2022-08-22 16:41:42', 1, 6, '116.90.229.94'),
+(826, 'Login: Hotel Ambassador   logged in.', '2022-08-22 17:38:46', 1, 1, '116.90.229.94'),
+(827, 'Login: Hotel Ambassador   logged in.', '2022-09-22 14:42:46', 1, 1, '103.163.182.169'),
+(828, 'Login: Hotel Ambassador   logged in.', '2023-01-08 12:13:28', 1, 1, '27.34.20.204'),
+(829, 'User [Hotel Ambassador  ] Edit Successfully', '2023-01-08 12:14:10', 1, 4, '27.34.20.204'),
+(830, 'Login: Hotel Ambassador   logged in.', '2023-03-26 15:01:33', 1, 1, '27.34.20.21'),
+(831, 'Login: Hotel Ambassador   logged in.', '2023-06-23 11:25:20', 1, 1, '27.34.20.55'),
+(832, 'Changes on Config \'Hotel Ambassador\' has been save', '2023-06-23 11:27:55', 1, 4, '27.34.20.55'),
+(833, 'Changes on Config \'Hotel Ambassador\' has been save', '2023-06-23 11:28:32', 1, 4, '27.34.20.55'),
+(834, 'Login: Hotel Ambassador   logged in.', '2024-01-19 16:34:07', 1, 1, '122.254.87.33'),
+(835, 'Changes on Article \'About us\' has been saved succe', '2024-01-19 16:35:06', 1, 4, '122.254.87.33'),
+(836, 'Changes on Article \'About us\' has been saved succe', '2024-01-19 16:35:21', 1, 4, '122.254.87.33'),
+(837, 'Login: Hotel Ambassador   logged in.', '2024-01-19 16:39:46', 1, 1, '122.254.87.33'),
+(838, 'Login: Hotel Ambassador   logged in.', '2024-04-01 11:22:12', 1, 1, '103.10.28.199'),
+(839, 'Menu [Rooms] Edit Successfully', '2024-04-01 11:25:28', 1, 4, '103.10.28.199'),
+(840, 'Menu [Rooms] Edit Successfully', '2024-04-01 11:25:49', 1, 4, '103.10.28.199'),
+(841, 'Menu [Rooms] Edit Successfully', '2024-04-01 11:26:30', 1, 4, '103.10.28.199'),
+(842, 'Login: Hotel Ambassador   logged in.', '2024-05-20 12:19:25', 1, 1, '113.199.248.194'),
+(843, 'Login: Hotel Ambassador   logged in.', '2024-05-29 12:05:42', 1, 1, '103.10.28.144'),
+(844, 'Article \'Sustainability\' has added successfully.', '2024-05-29 13:12:04', 1, 3, '103.10.28.144'),
+(845, 'Login: Hotel Ambassador   logged in.', '2024-05-30 16:24:44', 1, 1, '188.253.99.95'),
+(846, 'Login: Hotel Ambassador   logged in.', '2024-05-30 16:45:20', 1, 1, '188.253.99.95'),
+(847, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2024-05-30 17:11:09', 1, 4, '188.253.99.95'),
+(848, 'Changes on Sub Package \'Deluxe\' has been saved suc', '2024-05-30 17:11:20', 1, 4, '188.253.99.95'),
+(849, 'Changes on Sub Package \'Executive Room\' has been s', '2024-05-30 17:13:42', 1, 4, '188.253.99.95'),
+(850, 'Menu [Executive Room] Edit Successfully', '2024-05-30 17:14:22', 1, 4, '188.253.99.95'),
+(851, 'Changes on Sub Package \'Executive Room with Balcon', '2024-05-30 17:14:57', 1, 4, '188.253.99.95'),
+(852, 'Menu [Executive Room with Balcony] Edit Successful', '2024-05-30 17:15:19', 1, 4, '188.253.99.95'),
+(853, 'Changes on Sub Package \'Junior Suite with Balcony\'', '2024-05-30 17:57:01', 1, 4, '188.253.99.95'),
+(854, 'Changes on Sub Package \'Two Bedroom Ambassador Sui', '2024-05-30 17:57:15', 1, 4, '188.253.99.95'),
+(855, 'Menu [Two Bedroom Ambassador Suite] Edit Successfu', '2024-05-30 17:57:36', 1, 4, '188.253.99.95'),
+(856, 'Menu [Junior Suite with Balcony] Edit Successfully', '2024-05-30 17:57:53', 1, 4, '188.253.99.95'),
+(857, 'Changes on Sub Package \'Deluxe Premium\' has been s', '2024-05-30 17:58:21', 1, 4, '188.253.99.95'),
+(858, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-05-30 17:58:38', 1, 4, '188.253.99.95'),
+(859, 'Menu [Deluxe Room] Edit Successfully', '2024-05-30 17:58:55', 1, 4, '188.253.99.95'),
+(860, 'Menu [Deluxe Premium] Edit Successfully', '2024-05-30 17:59:23', 1, 4, '188.253.99.95'),
+(861, 'Login: Hotel Ambassador   logged in.', '2024-06-07 19:35:16', 1, 1, '27.34.66.61'),
+(862, 'Login: Hotel Ambassador   logged in.', '2024-06-07 21:04:53', 1, 1, '27.34.66.61'),
+(863, 'User [River Bank Jungle Resort] Edit Successfully', '2024-06-07 21:05:18', 1, 4, '27.34.66.61'),
+(864, 'Login: River Bank Jungle Resort logged in.', '2024-06-07 21:05:35', 1, 1, '27.34.66.61'),
+(865, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-07 21:06:39', 1, 4, '27.34.66.61'),
+(866, 'Login: River Bank Jungle Resort logged in.', '2024-06-09 13:08:02', 1, 1, '27.34.24.18'),
+(867, 'Login: River Bank Jungle Resort logged in.', '2024-06-09 13:24:06', 1, 1, '27.34.24.18'),
+(868, 'Slideshow [dsaasd]Data has added successfully.', '2024-06-09 14:40:32', 1, 3, '27.34.24.18'),
+(869, 'Slideshows  [dsaasd]Data has deleted successfully.', '2024-06-09 14:40:39', 1, 6, '27.34.24.18'),
+(870, 'Slideshow  [dsaasd]Data has deleted successfully.', '2024-06-09 14:40:39', 1, 6, '27.34.24.18'),
+(871, 'Login: River Bank Jungle Resort logged in.', '2024-06-11 14:13:31', 1, 1, '27.34.66.57'),
+(872, 'Menu [Stay] Edit Successfully', '2024-06-11 14:14:20', 1, 4, '27.34.66.57'),
+(873, 'Menu [Dining] CreatedData has added successfully.', '2024-06-11 14:14:46', 1, 3, '27.34.66.57'),
+(874, 'Menu [Events] CreatedData has added successfully.', '2024-06-11 14:16:48', 1, 3, '27.34.66.57'),
+(875, 'Menu [Experience] Edit Successfully', '2024-06-11 14:17:21', 1, 4, '27.34.66.57'),
+(876, 'Menu [Events] Edit Successfully', '2024-06-11 14:17:48', 1, 4, '27.34.66.57'),
+(877, 'Menu [Recreation] CreatedData has added successful', '2024-06-11 14:23:21', 1, 3, '27.34.66.57'),
+(878, 'Menu [About] Edit Successfully', '2024-06-11 14:24:52', 1, 4, '27.34.66.57'),
+(879, 'Menu [Sustainability] CreatedData has added succes', '2024-06-11 14:25:33', 1, 3, '27.34.66.57'),
+(880, 'Menu [Accommodation] Edit Successfully', '2024-06-11 14:25:46', 1, 4, '27.34.66.57'),
+(881, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:29:34', 1, 4, '27.34.66.57'),
+(882, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:30:01', 1, 4, '27.34.66.57'),
+(883, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:31:44', 1, 4, '27.34.66.57'),
+(884, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:33:39', 1, 4, '27.34.66.57'),
+(885, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:39:48', 1, 4, '27.34.66.57'),
+(886, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:41:31', 1, 4, '27.34.66.57'),
+(887, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:43:25', 1, 4, '27.34.66.57'),
+(888, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-11 14:45:49', 1, 4, '27.34.66.57'),
+(889, 'Article \'Sustainability\' has added successfully.', '2024-06-11 14:49:35', 1, 3, '27.34.66.57'),
+(890, 'Login: River Bank Jungle Resort logged in.', '2024-06-11 15:16:31', 1, 1, '27.34.66.57'),
+(891, 'Login: River Bank Jungle Resort logged in.', '2024-06-12 10:40:46', 1, 1, '110.44.117.198'),
+(892, 'Article \'Gallery\' has added successfully.', '2024-06-12 11:11:54', 1, 3, '110.44.117.198'),
+(893, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:33:07', 1, 4, '110.44.117.198'),
+(894, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:36:02', 1, 4, '110.44.117.198'),
+(895, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:39:27', 1, 4, '110.44.117.198'),
+(896, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:45:47', 1, 4, '110.44.117.198'),
+(897, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:52:04', 1, 4, '110.44.117.198'),
+(898, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:53:59', 1, 4, '110.44.117.198'),
+(899, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 11:58:58', 1, 4, '110.44.117.198'),
+(900, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 12:27:39', 1, 4, '110.44.117.198'),
+(901, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 13:24:53', 1, 4, '110.44.117.198'),
+(902, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 13:25:23', 1, 4, '110.44.117.198'),
+(903, 'Login: River Bank Jungle Resort logged in.', '2024-06-12 14:28:04', 1, 1, '110.44.117.198'),
+(904, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 14:29:43', 1, 4, '110.44.117.198'),
+(905, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-12 14:31:24', 1, 4, '110.44.117.198'),
+(906, 'Login: River Bank Jungle Resort logged in.', '2024-06-12 15:51:29', 1, 1, '110.44.117.198'),
+(907, 'Login: River Bank Jungle Resort logged in.', '2024-06-13 10:25:06', 1, 1, '188.253.99.250'),
+(908, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:25:39', 1, 4, '188.253.99.250'),
+(909, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:27:53', 1, 4, '188.253.99.250'),
+(910, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:28:17', 1, 4, '188.253.99.250'),
+(911, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:29:28', 1, 4, '188.253.99.250'),
+(912, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:47:16', 1, 4, '103.181.227.222'),
+(913, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:48:10', 1, 4, '103.181.227.222'),
+(914, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:49:24', 1, 4, '103.181.227.222'),
+(915, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:51:24', 1, 4, '103.181.227.222'),
+(916, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:51:42', 1, 4, '103.181.227.222'),
+(917, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:52:03', 1, 4, '103.181.227.222'),
+(918, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:52:21', 1, 4, '103.181.227.222'),
+(919, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 10:52:39', 1, 4, '103.181.227.222'),
+(920, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 11:01:40', 1, 4, '188.253.97.173'),
+(921, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 11:45:33', 1, 4, '188.253.97.173'),
+(922, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 11:52:31', 1, 4, '188.253.97.173'),
+(923, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 12:08:12', 1, 4, '188.253.97.173'),
+(924, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 12:21:21', 1, 4, '188.253.97.173'),
+(925, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 12:22:41', 1, 4, '188.253.97.173'),
+(926, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 12:24:50', 1, 4, '188.253.97.173'),
+(927, 'Changes on Article \'Gallery\' has been saved succes', '2024-06-13 12:30:47', 1, 4, '188.253.97.173'),
+(928, 'Package [Events]Data has added successfully.', '2024-06-13 12:35:24', 1, 3, '188.253.97.173'),
+(929, 'Package  [Events]Data has deleted successfully.', '2024-06-13 12:39:55', 1, 6, '188.253.97.173'),
+(930, 'Article \'Events\' has added successfully.', '2024-06-13 12:42:25', 1, 3, '188.253.97.173'),
+(931, 'Login: River Bank Jungle Resort logged in.', '2024-06-13 15:03:41', 1, 1, '188.253.97.173'),
+(932, 'Article \'Experience\' has added successfully.', '2024-06-13 15:04:28', 1, 3, '188.253.97.173'),
+(933, 'Changes on Article \'Events\' has been saved success', '2024-06-13 15:27:09', 1, 4, '188.253.97.173'),
+(934, 'Changes on Article \'Events\' has been saved success', '2024-06-13 15:30:01', 1, 4, '188.253.97.173'),
+(935, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:18:15', 1, 4, '188.253.97.173'),
+(936, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:19:19', 1, 4, '188.253.97.173'),
+(937, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:43:45', 1, 4, '188.253.97.173'),
+(938, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:44:54', 1, 4, '188.253.97.173'),
+(939, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:46:00', 1, 4, '188.253.97.173'),
+(940, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:46:39', 1, 4, '188.253.97.173'),
+(941, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:48:29', 1, 4, '188.253.97.173'),
+(942, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:49:59', 1, 4, '188.253.97.173'),
+(943, 'Changes on Article \'Events\' has been saved success', '2024-06-13 16:51:25', 1, 4, '188.253.97.173'),
+(944, 'Login: River Bank Jungle Resort logged in.', '2024-06-14 10:21:51', 1, 1, '188.253.97.173'),
+(945, 'Changes on Article \'Events\' has been saved success', '2024-06-14 10:38:35', 1, 4, '188.253.97.173'),
+(946, 'Changes on Article \'Events\' has been saved success', '2024-06-14 10:49:42', 1, 4, '188.253.97.173'),
+(947, 'Changes on Article \'Events\' has been saved success', '2024-06-14 10:51:48', 1, 4, '188.253.97.173'),
+(948, 'Changes on Article \'Events\' has been saved success', '2024-06-14 10:53:44', 1, 4, '188.253.97.173'),
+(949, 'Changes on Article \'Events\' has been saved success', '2024-06-14 10:54:00', 1, 4, '188.253.97.173'),
+(950, 'Changes on Article \'Events\' has been saved success', '2024-06-14 10:54:22', 1, 4, '188.253.97.173'),
+(951, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:01:15', 1, 4, '188.253.97.173'),
+(952, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:07:52', 1, 4, '188.253.97.173'),
+(953, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:09:05', 1, 4, '188.253.97.173'),
+(954, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:09:46', 1, 4, '188.253.97.173'),
+(955, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:12:43', 1, 4, '188.253.97.173'),
+(956, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:26:16', 1, 4, '188.253.97.173'),
+(957, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:29:14', 1, 4, '188.253.97.173'),
+(958, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:29:36', 1, 4, '188.253.97.173'),
+(959, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:30:55', 1, 4, '188.253.97.173'),
+(960, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:32:31', 1, 4, '188.253.97.173'),
+(961, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:36:09', 1, 4, '188.253.97.173'),
+(962, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:37:05', 1, 4, '188.253.97.173'),
+(963, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:37:35', 1, 4, '188.253.97.173'),
+(964, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:48:25', 1, 4, '188.253.97.173'),
+(965, 'Changes on Article \'Events\' has been saved success', '2024-06-14 11:50:26', 1, 4, '188.253.97.173'),
+(966, 'Login: River Bank Jungle Resort logged in.', '2024-06-14 14:01:39', 1, 1, '27.34.66.51'),
+(967, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-14 14:02:17', 1, 4, '27.34.66.51'),
+(968, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:04:58', 1, 4, '27.34.66.51'),
+(969, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:06:06', 1, 4, '27.34.66.51'),
+(970, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:07:18', 1, 4, '27.34.66.51'),
+(971, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:08:06', 1, 4, '27.34.66.51'),
+(972, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:09:30', 1, 4, '27.34.66.51'),
+(973, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:10:58', 1, 4, '27.34.66.51'),
+(974, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:13:21', 1, 4, '27.34.66.51'),
+(975, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:13:33', 1, 4, '27.34.66.51'),
+(976, 'Changes on Article \'About us\' has been saved succe', '2024-06-14 14:18:49', 1, 4, '27.34.66.51'),
+(977, 'Package Room List Edit Successfully', '2024-06-14 14:20:42', 1, 4, '27.34.66.51'),
+(978, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-06-14 14:22:14', 1, 4, '27.34.66.51'),
+(979, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-06-14 14:22:48', 1, 4, '27.34.66.51'),
+(980, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-06-14 14:24:17', 1, 4, '27.34.66.51'),
+(981, 'Menu [Stay] Edit Successfully', '2024-06-14 14:24:40', 1, 4, '27.34.66.51'),
+(982, 'Menu [Super Deluxe Room] Edit Successfully', '2024-06-14 14:24:59', 1, 4, '27.34.66.51'),
+(983, 'Changes on Sub Package \'Private Villa with Plunge ', '2024-06-14 14:26:39', 1, 4, '27.34.66.51'),
+(984, 'Menu [Private Villa with Plunge Pool] Edit Success', '2024-06-14 14:26:51', 1, 4, '27.34.66.51');
+INSERT INTO `tbl_logs` (`id`, `action`, `registered`, `userid`, `user_action`, `ip_track`) VALUES
+(985, 'Changes on Sub Package \'Private Villa with Plunge ', '2024-06-14 14:27:14', 1, 4, '27.34.66.51'),
+(986, 'Changes on Sub Package \'Executive Suite with Plung', '2024-06-14 14:28:23', 1, 4, '27.34.66.51'),
+(987, 'Menu [Executive Suite with Plunge Pool] Edit Succe', '2024-06-14 14:28:58', 1, 4, '27.34.66.51'),
+(988, 'Changes on Sub Package \'Presidential Suite with Pl', '2024-06-14 14:30:16', 1, 4, '27.34.66.51'),
+(989, 'Menu [Presidential Suite with Plunge Pool] Edit Su', '2024-06-14 14:30:34', 1, 4, '27.34.66.51'),
+(990, 'Sub Package [Two Bedroom Ambassador Suite]Data has', '2024-06-14 14:30:56', 1, 6, '27.34.66.51'),
+(991, 'Changes on Sub Package \'Presidential Suite with Pl', '2024-06-14 14:31:10', 1, 4, '27.34.66.51'),
+(992, 'Package Our Rooms Edit Successfully', '2024-06-14 14:31:49', 1, 4, '27.34.66.51'),
+(993, 'Package [Dining]Data has added successfully.', '2024-06-14 14:32:24', 1, 3, '27.34.66.51'),
+(994, 'Package Our Rooms Edit Successfully', '2024-06-14 14:32:37', 1, 4, '27.34.66.51'),
+(995, 'Sub Package \'The Signature Restaurant\' has added s', '2024-06-14 14:33:08', 1, 3, '27.34.66.51'),
+(996, 'Sub Package \'Al Fresco Dining\' has added successfu', '2024-06-14 14:33:54', 1, 3, '27.34.66.51'),
+(997, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-06-14 14:34:23', 1, 4, '27.34.66.51'),
+(998, 'Menu [Dining] Edit Successfully', '2024-06-14 14:34:42', 1, 4, '27.34.66.51'),
+(999, 'Menu [Stay] Edit Successfully', '2024-06-14 14:34:53', 1, 4, '27.34.66.51'),
+(1000, 'Menu [The Signature Restaurant] CreatedData has ad', '2024-06-14 14:36:24', 1, 3, '27.34.66.51'),
+(1001, 'Menu [Al Fresco Dining] CreatedData has added succ', '2024-06-14 14:37:00', 1, 3, '27.34.66.51'),
+(1002, 'Menu [Riverside Dinner] CreatedData has added succ', '2024-06-14 14:37:18', 1, 3, '27.34.66.51'),
+(1003, 'Sub Package \'Riverside Dinner\' has added successfu', '2024-06-14 14:38:01', 1, 3, '27.34.66.51'),
+(1004, 'Sub Package \'The Classic Bar\' has added successful', '2024-06-14 14:38:30', 1, 3, '27.34.66.51'),
+(1005, 'Menu [The Classic Bar] CreatedData has added succe', '2024-06-14 14:38:55', 1, 3, '27.34.66.51'),
+(1006, 'Menu [Home] Edit Successfully', '2024-06-14 14:40:11', 1, 4, '27.34.66.51'),
+(1007, 'Changes on Article \'Shops and Restaurants\' has bee', '2024-06-14 14:41:48', 1, 4, '27.34.66.51'),
+(1008, 'Menu [Home] Edit Successfully', '2024-06-14 14:42:28', 1, 4, '27.34.66.51'),
+(1009, 'Package [The Events]Data has added successfully.', '2024-06-14 14:46:01', 1, 3, '27.34.66.51'),
+(1010, 'Sub Package \'Wedding Destination: The Outdoor Blis', '2024-06-14 14:47:13', 1, 3, '27.34.66.51'),
+(1011, 'Sub Package \'Banquet: Regal Ballroom\' has added su', '2024-06-14 14:47:44', 1, 3, '27.34.66.51'),
+(1012, 'Menu [Home] Edit Successfully', '2024-06-14 14:48:34', 1, 4, '27.34.66.51'),
+(1013, 'Changes on Article \'Sustainability\' has been saved', '2024-06-14 14:49:10', 1, 4, '27.34.66.51'),
+(1014, 'Sub Gallery Image  [Hotel Ambassador by ACE Hotels', '2024-06-14 14:59:00', 1, 6, '27.34.66.51'),
+(1015, 'Sub Gallery Image  [Hotel Ambassador by ACE Hotels', '2024-06-14 14:59:03', 1, 6, '27.34.66.51'),
+(1016, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:03', 1, 6, '27.34.66.51'),
+(1017, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:06', 1, 6, '27.34.66.51'),
+(1018, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:06', 1, 6, '27.34.66.51'),
+(1019, 'Sub Gallery Image  [Deluxe Room]Data has deleted s', '2024-06-14 14:59:06', 1, 6, '27.34.66.51'),
+(1020, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:11', 1, 6, '27.34.66.51'),
+(1021, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:11', 1, 6, '27.34.66.51'),
+(1022, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:11', 1, 6, '27.34.66.51'),
+(1023, 'Sub Gallery Image  [Kitchen]Data has deleted succe', '2024-06-14 14:59:11', 1, 6, '27.34.66.51'),
+(1024, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:16', 1, 6, '27.34.66.51'),
+(1025, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:16', 1, 6, '27.34.66.51'),
+(1026, 'Sub Gallery Image  [Ardor]Data has deleted success', '2024-06-14 14:59:16', 1, 6, '27.34.66.51'),
+(1027, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:16', 1, 6, '27.34.66.51'),
+(1028, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:16', 1, 6, '27.34.66.51'),
+(1029, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:18', 1, 6, '27.34.66.51'),
+(1030, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:18', 1, 6, '27.34.66.51'),
+(1031, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:18', 1, 6, '27.34.66.51'),
+(1032, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:18', 1, 6, '27.34.66.51'),
+(1033, 'Sub Gallery Image  [Superior Room]Data has deleted', '2024-06-14 14:59:18', 1, 6, '27.34.66.51'),
+(1034, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:18', 1, 6, '27.34.66.51'),
+(1035, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1036, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1037, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1038, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1039, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1040, 'Sub Gallery Image  [Standard Room]Data has deleted', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1041, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:21', 1, 6, '27.34.66.51'),
+(1042, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1043, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1044, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1045, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1046, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1047, 'Sub Gallery Image  [Deluxe Room With Balcony]Data ', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1048, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1049, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:23', 1, 6, '27.34.66.51'),
+(1050, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1051, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1052, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1053, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1054, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1055, 'Sub Gallery Image  [The Diplomat Lounge]Data has d', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1056, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1057, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1058, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:26', 1, 6, '27.34.66.51'),
+(1059, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1060, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1061, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1062, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1063, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1064, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1065, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1066, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1067, 'Sub Gallery Image  [Kotetsu Restaurant]Data has de', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1068, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:28', 1, 6, '27.34.66.51'),
+(1069, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1070, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1071, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1072, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1073, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1074, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1075, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1076, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1077, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1078, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1079, 'Sub Gallery Image  [MoMo Queen]Data has deleted su', '2024-06-14 14:59:31', 1, 6, '27.34.66.51'),
+(1080, 'Login: River Bank Jungle Resort logged in.', '2024-06-14 15:13:34', 1, 1, '188.253.97.173'),
+(1081, 'Article \'recreation\' has added successfully.', '2024-06-14 15:13:55', 1, 3, '188.253.97.173'),
+(1082, 'Changes on Article \'recreation\' has been saved suc', '2024-06-14 15:16:23', 1, 4, '188.253.97.173'),
+(1083, 'Changes on Article \'recreation\' has been saved suc', '2024-06-14 15:16:56', 1, 4, '188.253.97.173'),
+(1084, 'Changes on Article \'recreation\' has been saved suc', '2024-06-14 15:17:40', 1, 4, '188.253.97.173'),
+(1085, 'Changes on Article \'recreation\' has been saved suc', '2024-06-14 15:19:16', 1, 4, '188.253.97.173'),
+(1086, 'Changes on Article \'recreation\' has been saved suc', '2024-06-14 15:20:50', 1, 4, '188.253.97.173'),
+(1087, 'Changes on Article \'recreation\' has been saved suc', '2024-06-14 15:22:38', 1, 4, '188.253.97.173'),
+(1088, 'Login: River Bank Jungle Resort logged in.', '2024-06-14 16:19:40', 1, 1, '188.253.97.173'),
+(1089, 'Login: River Bank Jungle Resort logged in.', '2024-06-14 16:33:31', 1, 1, '27.34.66.51'),
+(1090, 'Menu [Villa with Private Plunge Pool] Edit Success', '2024-06-14 16:33:57', 1, 4, '27.34.66.51'),
+(1091, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-06-14 16:34:19', 1, 4, '27.34.66.51'),
+(1092, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-06-14 16:34:40', 1, 4, '27.34.66.51'),
+(1093, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-06-14 16:34:54', 1, 4, '27.34.66.51'),
+(1094, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-06-14 16:35:15', 1, 4, '27.34.66.51'),
+(1095, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-06-14 16:35:33', 1, 4, '27.34.66.51'),
+(1096, 'Menu  [Two Bedroom Ambassador Suite]Data has delet', '2024-06-14 16:35:41', 1, 6, '27.34.66.51'),
+(1097, 'Menu [Presidential Suite] Edit Successfully', '2024-06-14 16:35:50', 1, 4, '27.34.66.51'),
+(1098, 'Menu [Executive Suite] Edit Successfully', '2024-06-14 16:36:03', 1, 4, '27.34.66.51'),
+(1099, 'Menu [Villa with Private Plunge Pool] Edit Success', '2024-06-14 16:36:16', 1, 4, '27.34.66.51'),
+(1100, 'Slideshows  [Slide two]Data has deleted successful', '2024-06-14 16:48:13', 1, 6, '27.34.66.51'),
+(1101, 'Slideshow  [Slide two]Data has deleted successfull', '2024-06-14 16:48:13', 1, 6, '27.34.66.51'),
+(1102, 'Slideshow [Reception] Edit Successfully', '2024-06-14 16:49:00', 1, 4, '27.34.66.51'),
+(1103, 'Slideshow [Room] Edit Successfully', '2024-06-14 16:49:32', 1, 4, '27.34.66.51'),
+(1104, 'Slideshow [Dining] Edit Successfully', '2024-06-14 16:50:06', 1, 4, '27.34.66.51'),
+(1105, 'Slideshow [Pool] Edit Successfully', '2024-06-14 16:50:28', 1, 4, '27.34.66.51'),
+(1106, 'Slideshow [Evening View] Edit Successfully', '2024-06-14 16:50:55', 1, 4, '27.34.66.51'),
+(1107, 'Slideshow [Night View] Edit Successfully', '2024-06-14 16:51:13', 1, 4, '27.34.66.51'),
+(1108, 'Sub Gallery Image  [Corridor]Data has deleted succ', '2024-06-14 17:04:20', 1, 6, '27.34.66.51'),
+(1109, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 17:04:24', 1, 6, '27.34.66.51'),
+(1110, 'Sub Gallery Image  [Flat Iron Grill]Data has delet', '2024-06-14 17:04:24', 1, 6, '27.34.66.51'),
+(1111, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 17:04:26', 1, 6, '27.34.66.51'),
+(1112, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 17:04:26', 1, 6, '27.34.66.51'),
+(1113, 'Sub Gallery Image  [Tissah]Data has deleted succes', '2024-06-14 17:04:26', 1, 6, '27.34.66.51'),
+(1114, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 17:04:30', 1, 6, '27.34.66.51'),
+(1115, 'Sub Gallery Image  [Roasted Chiken]Data has delete', '2024-06-14 17:04:30', 1, 6, '27.34.66.51'),
+(1116, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 17:04:30', 1, 6, '27.34.66.51'),
+(1117, 'Sub Gallery Image  []Data has deleted successfully', '2024-06-14 17:04:30', 1, 6, '27.34.66.51'),
+(1118, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-06-14 17:05:34', 1, 3, '27.34.66.51'),
+(1119, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-06-14 17:05:34', 1, 3, '27.34.66.51'),
+(1120, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-06-14 17:05:34', 1, 3, '27.34.66.51'),
+(1121, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-06-14 17:05:34', 1, 3, '27.34.66.51'),
+(1122, 'Slideshow [Reception] Edit Successfully', '2024-06-14 17:08:20', 1, 4, '27.34.66.51'),
+(1123, 'Slideshow [Reception] Edit Successfully', '2024-06-14 17:08:47', 1, 4, '27.34.66.51'),
+(1124, 'Login: River Bank Jungle Resort logged in.', '2024-06-27 11:11:22', 1, 1, '103.181.227.150'),
+(1125, 'Login: River Bank Jungle Resort logged in.', '2024-06-27 11:11:24', 1, 1, '113.199.252.5'),
+(1126, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-27 11:11:51', 1, 4, '113.199.252.5'),
+(1127, 'Login: River Bank Jungle Resort logged in.', '2024-06-27 11:58:03', 1, 1, '113.199.252.5'),
+(1128, 'Slideshow [Dining] Edit Successfully', '2024-06-27 11:59:26', 1, 4, '113.199.252.5'),
+(1129, 'Slideshow [Dining] Edit Successfully', '2024-06-27 12:04:26', 1, 4, '113.199.252.5'),
+(1130, 'Changes on Article \'About us\' has been saved succe', '2024-06-27 12:27:17', 1, 4, '113.199.252.5'),
+(1131, 'Login: River Bank Jungle Resort logged in.', '2024-06-27 16:38:35', 1, 1, '113.199.249.81'),
+(1132, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-06-27 17:38:40', 1, 4, '113.199.249.81'),
+(1133, 'Login: River Bank Jungle Resort logged in.', '2024-06-30 16:28:23', 1, 1, '113.199.248.107'),
+(1134, 'Login: River Bank Jungle Resort logged in.', '2024-07-01 11:14:50', 1, 1, '113.199.252.110'),
+(1135, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-01 11:15:17', 1, 4, '113.199.252.110'),
+(1136, 'Login: River Bank Jungle Resort logged in.', '2024-07-02 10:54:34', 1, 1, '113.199.254.15'),
+(1137, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-02 10:55:04', 1, 4, '113.199.254.15'),
+(1138, 'Menu [Experience] Edit Successfully', '2024-07-02 11:00:50', 1, 4, '113.199.254.15'),
+(1139, 'Menu [Recreation] Edit Successfully', '2024-07-02 11:03:55', 1, 4, '113.199.254.15'),
+(1140, 'Menu [Sustainability] Edit Successfully', '2024-07-02 11:04:13', 1, 4, '113.199.254.15'),
+(1141, 'Menu [Gallery] Edit Successfully', '2024-07-02 11:04:25', 1, 4, '113.199.254.15'),
+(1142, 'Menu [Contact] Edit Successfully', '2024-07-02 11:04:39', 1, 4, '113.199.254.15'),
+(1143, 'Login: River Bank Jungle Resort logged in.', '2024-07-02 12:36:29', 1, 1, '113.199.254.15'),
+(1144, 'SocialNetworking [Facebook] Edit Successfully', '2024-07-02 12:36:42', 1, 4, '113.199.254.15'),
+(1145, 'SocialNetworking [Instagram] Edit Successfully', '2024-07-02 12:36:58', 1, 4, '113.199.254.15'),
+(1146, 'Login: River Bank Jungle Resort logged in.', '2024-07-02 16:04:43', 1, 1, '113.199.255.43'),
+(1147, 'Login: River Bank Jungle Resort logged in.', '2024-07-02 16:36:39', 1, 1, '27.34.24.18'),
+(1148, 'Menu [Gallery] CreatedData has added successfully.', '2024-07-02 16:37:04', 1, 3, '27.34.24.18'),
+(1149, 'Menu [Facilities] CreatedData has added successful', '2024-07-02 16:37:28', 1, 3, '27.34.24.18'),
+(1150, 'Menu [Contact] CreatedData has added successfully.', '2024-07-02 16:37:45', 1, 3, '27.34.24.18'),
+(1151, 'Package Dining Edit Successfully', '2024-07-02 16:42:34', 1, 4, '27.34.24.18'),
+(1152, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-02 17:05:48', 1, 4, '27.34.24.18'),
+(1153, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-02 17:31:22', 1, 4, '27.34.24.18'),
+(1154, 'Changes on Article \'About us\' has been saved succe', '2024-07-02 18:04:47', 1, 4, '27.34.24.18'),
+(1155, 'Changes on Article \'About us\' has been saved succe', '2024-07-02 18:12:15', 1, 4, '27.34.24.18'),
+(1156, 'Changes on Article \'About us\' has been saved succe', '2024-07-02 18:12:26', 1, 4, '27.34.24.18'),
+(1157, 'Article \'homepage about\' has added successfully.', '2024-07-02 18:15:37', 1, 3, '27.34.24.18'),
+(1158, 'Changes on Article \'About us\' has been saved succe', '2024-07-02 18:15:48', 1, 4, '27.34.24.18'),
+(1159, 'Changes on Article \'About us\' has been saved succe', '2024-07-02 18:16:52', 1, 4, '27.34.24.18'),
+(1160, 'Changes on Article \'About us\' has been saved succe', '2024-07-02 18:16:59', 1, 4, '27.34.24.18'),
+(1161, 'Changes on Article \'homepage about\' has been saved', '2024-07-02 18:17:06', 1, 4, '27.34.24.18'),
+(1162, 'Login: River Bank Jungle Resort logged in.', '2024-07-02 18:18:09', 1, 1, '113.199.249.43'),
+(1163, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 11:16:30', 1, 1, '103.10.28.150'),
+(1164, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 11:24:38', 1, 4, '103.10.28.150'),
+(1165, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 11:25:47', 1, 4, '103.10.28.150'),
+(1166, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 13:00:07', 1, 1, '113.199.254.194'),
+(1167, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 13:06:46', 1, 4, '113.199.254.194'),
+(1168, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 13:07:53', 1, 4, '113.199.254.194'),
+(1169, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 13:08:57', 1, 4, '113.199.254.194'),
+(1170, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 15:41:31', 1, 1, '27.34.66.41'),
+(1171, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 15:53:32', 1, 1, '113.199.251.194'),
+(1172, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 15:56:32', 1, 4, '113.199.251.194'),
+(1173, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:02:35', 1, 4, '113.199.251.194'),
+(1174, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:04:31', 1, 4, '113.199.251.194'),
+(1175, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:08:27', 1, 4, '113.199.251.194'),
+(1176, 'Menu [Home] Edit Successfully', '2024-07-03 16:09:46', 1, 4, '27.34.66.41'),
+(1177, 'Menu [About] Edit Successfully', '2024-07-03 16:09:54', 1, 4, '27.34.66.41'),
+(1178, 'Menu [Contact] Edit Successfully', '2024-07-03 16:10:06', 1, 4, '27.34.66.41'),
+(1179, 'Menu  [Gallery]Data has deleted successfully.', '2024-07-03 16:10:12', 1, 6, '27.34.66.41'),
+(1180, 'Menu  [Contact]Data has deleted successfully.', '2024-07-03 16:10:27', 1, 6, '27.34.66.41'),
+(1181, 'Menu  [Facilities]Data has deleted successfully.', '2024-07-03 16:10:43', 1, 6, '27.34.66.41'),
+(1182, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:11:06', 1, 4, '113.199.251.194'),
+(1183, 'Menu [Home] Edit Successfully', '2024-07-03 16:11:07', 1, 4, '27.34.66.41'),
+(1184, 'Menu [Facilities] Edit Successfully', '2024-07-03 16:11:20', 1, 4, '27.34.66.41'),
+(1185, 'Menu [Gallery] Edit Successfully', '2024-07-03 16:11:33', 1, 4, '27.34.66.41'),
+(1186, 'Menu [About us] Edit Successfully', '2024-07-03 16:11:50', 1, 4, '27.34.66.41'),
+(1187, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:12:42', 1, 4, '113.199.251.194'),
+(1188, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 16:13:57', 1, 4, '27.34.66.41'),
+(1189, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:15:24', 1, 4, '113.199.251.194'),
+(1190, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:18:12', 1, 4, '113.199.251.194'),
+(1191, 'Package Rooms & Suites Edit Successfully', '2024-07-03 16:18:46', 1, 4, '27.34.66.41'),
+(1192, 'Package Dining & Bar Edit Successfully', '2024-07-03 16:19:17', 1, 4, '27.34.66.41'),
+(1193, 'Package Meeting & Events Edit Successfully', '2024-07-03 16:19:52', 1, 4, '27.34.66.41'),
+(1194, 'Package Dining & Bar Edit Successfully', '2024-07-03 16:20:10', 1, 4, '27.34.66.41'),
+(1195, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:20:37', 1, 4, '113.199.251.194'),
+(1196, 'Changes on Main service \'Recreation\' has been save', '2024-07-03 16:20:46', 1, 4, '27.34.66.41'),
+(1197, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 16:31:54', 1, 4, '27.34.66.41'),
+(1198, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-03 16:38:21', 1, 4, '27.34.66.41'),
+(1199, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-03 16:41:45', 1, 4, '27.34.66.41'),
+(1200, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-07-03 16:42:04', 1, 4, '27.34.66.41'),
+(1201, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-03 16:42:20', 1, 4, '27.34.66.41'),
+(1202, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 16:43:10', 1, 4, '27.34.66.41'),
+(1203, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 16:44:50', 1, 4, '27.34.66.41'),
+(1204, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 16:45:40', 1, 4, '27.34.66.41'),
+(1205, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 16:46:09', 1, 4, '27.34.66.41'),
+(1206, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-03 16:47:10', 1, 4, '113.199.251.194'),
+(1207, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 17:07:59', 1, 1, '27.34.24.18'),
+(1208, 'Package Rooms & Suites Edit Successfully', '2024-07-03 17:43:07', 1, 4, '27.34.24.18'),
+(1209, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 18:10:49', 1, 4, '113.199.251.194'),
+(1210, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 18:11:46', 1, 4, '113.199.251.194'),
+(1211, 'Changes on Article \'homepage about\' has been saved', '2024-07-03 18:12:18', 1, 4, '113.199.251.194'),
+(1212, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 18:33:15', 1, 1, '27.34.66.41'),
+(1213, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:34:10', 1, 4, '27.34.66.41'),
+(1214, 'Menu [Experience] Edit Successfully', '2024-07-03 18:34:28', 1, 4, '27.34.66.41'),
+(1215, 'Menu [Stay] Edit Successfully', '2024-07-03 18:34:45', 1, 4, '27.34.66.41'),
+(1216, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:36:23', 1, 4, '27.34.66.41'),
+(1217, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:36:59', 1, 4, '27.34.66.41'),
+(1218, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:37:13', 1, 4, '27.34.66.41'),
+(1219, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:38:44', 1, 4, '27.34.66.41'),
+(1220, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:42:41', 1, 4, '27.34.66.41'),
+(1221, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:43:48', 1, 4, '27.34.66.41'),
+(1222, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:44:56', 1, 4, '27.34.66.41'),
+(1223, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:46:21', 1, 4, '27.34.66.41'),
+(1224, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:47:29', 1, 4, '27.34.66.41'),
+(1225, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:47:48', 1, 4, '27.34.66.41'),
+(1226, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:49:38', 1, 4, '27.34.66.41'),
+(1227, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:50:00', 1, 4, '27.34.66.41'),
+(1228, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 18:52:04', 1, 4, '27.34.66.41'),
+(1229, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 18:54:52', 1, 4, '27.34.66.41'),
+(1230, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 18:58:23', 1, 4, '27.34.66.41'),
+(1231, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-03 19:02:59', 1, 4, '27.34.66.41'),
+(1232, 'Changes on Article \'Experience\' has been saved suc', '2024-07-03 19:08:11', 1, 4, '27.34.66.41'),
+(1233, 'Sub Gallery Image [eee]Data has added successfully', '2024-07-03 19:22:19', 1, 3, '27.34.66.41'),
+(1234, 'Sub Gallery Image  [Hotel Ambassador by ACE Hotels', '2024-07-03 19:23:00', 1, 6, '27.34.66.41'),
+(1235, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:03', 1, 6, '27.34.66.41'),
+(1236, 'Sub Gallery Image  [Entrance]Data has deleted succ', '2024-07-03 19:23:03', 1, 6, '27.34.66.41'),
+(1237, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:06', 1, 6, '27.34.66.41'),
+(1238, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:06', 1, 6, '27.34.66.41'),
+(1239, 'Sub Gallery Image  [Entrance]Data has deleted succ', '2024-07-03 19:23:06', 1, 6, '27.34.66.41'),
+(1240, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:09', 1, 6, '27.34.66.41'),
+(1241, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:09', 1, 6, '27.34.66.41'),
+(1242, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:09', 1, 6, '27.34.66.41'),
+(1243, 'Sub Gallery Image  [Entrance]Data has deleted succ', '2024-07-03 19:23:09', 1, 6, '27.34.66.41'),
+(1244, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:12', 1, 6, '27.34.66.41'),
+(1245, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:12', 1, 6, '27.34.66.41'),
+(1246, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:12', 1, 6, '27.34.66.41'),
+(1247, 'Sub Gallery Image  [Corridor]Data has deleted succ', '2024-07-03 19:23:12', 1, 6, '27.34.66.41'),
+(1248, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:12', 1, 6, '27.34.66.41'),
+(1249, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:15', 1, 6, '27.34.66.41'),
+(1250, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:15', 1, 6, '27.34.66.41'),
+(1251, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:15', 1, 6, '27.34.66.41'),
+(1252, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:15', 1, 6, '27.34.66.41'),
+(1253, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:15', 1, 6, '27.34.66.41'),
+(1254, 'Sub Gallery Image  [Corridor]Data has deleted succ', '2024-07-03 19:23:15', 1, 6, '27.34.66.41'),
+(1255, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1256, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1257, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1258, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1259, 'Sub Gallery Image  [Corridor]Data has deleted succ', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1260, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1261, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:18', 1, 6, '27.34.66.41'),
+(1262, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1263, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1264, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1265, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1266, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1267, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1268, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1269, 'Sub Gallery Image  [Corridor]Data has deleted succ', '2024-07-03 19:23:21', 1, 6, '27.34.66.41'),
+(1270, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:24', 1, 6, '27.34.66.41'),
+(1271, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1272, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1273, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1274, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1275, 'Sub Gallery Image  [Exterior]Data has deleted succ', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1276, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1277, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1278, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:25', 1, 6, '27.34.66.41'),
+(1279, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1280, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1281, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1282, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1283, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1284, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1285, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1286, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1287, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1288, 'Sub Gallery Image  [eee]Data has deleted successfu', '2024-07-03 19:23:28', 1, 6, '27.34.66.41'),
+(1289, 'Sub Gallery Image  [Dining Hall]Data has deleted s', '2024-07-03 19:23:37', 1, 6, '27.34.66.41'),
+(1290, 'Gallery Image  [Dining1]Data has deleted successfu', '2024-07-03 19:23:44', 1, 6, '27.34.66.41'),
+(1291, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:23:48', 1, 6, '27.34.66.41'),
+(1292, 'Gallery Image  [Dining]Data has deleted successful', '2024-07-03 19:23:48', 1, 6, '27.34.66.41'),
+(1293, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:23:50', 1, 6, '27.34.66.41'),
+(1294, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:23:50', 1, 6, '27.34.66.41'),
+(1295, 'Gallery Image  [Facilities]Data has deleted succes', '2024-07-03 19:23:50', 1, 6, '27.34.66.41'),
+(1296, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:23:54', 1, 6, '27.34.66.41'),
+(1297, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:23:54', 1, 6, '27.34.66.41'),
+(1298, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:23:54', 1, 6, '27.34.66.41'),
+(1299, 'Gallery Image  [Meeting Hall]Data has deleted succ', '2024-07-03 19:23:54', 1, 6, '27.34.66.41'),
+(1300, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:03', 1, 6, '27.34.66.41'),
+(1301, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:03', 1, 6, '27.34.66.41'),
+(1302, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:03', 1, 6, '27.34.66.41'),
+(1303, 'Gallery Image  [Interior]Data has deleted successf', '2024-07-03 19:24:03', 1, 6, '27.34.66.41'),
+(1304, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:03', 1, 6, '27.34.66.41'),
+(1305, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:06', 1, 6, '27.34.66.41'),
+(1306, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:06', 1, 6, '27.34.66.41'),
+(1307, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:06', 1, 6, '27.34.66.41'),
+(1308, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:06', 1, 6, '27.34.66.41'),
+(1309, 'Gallery Image  []Data has deleted successfully.', '2024-07-03 19:24:06', 1, 6, '27.34.66.41'),
+(1310, 'Gallery Image  [Rooms]Data has deleted successfull', '2024-07-03 19:24:06', 1, 6, '27.34.66.41'),
+(1311, 'Gallery Image  [Shops]Data has deleted successfull', '2024-07-03 19:24:14', 1, 6, '27.34.66.41'),
+(1312, 'Gallery Image [Resort] Edit Successfully', '2024-07-03 19:24:39', 1, 4, '27.34.66.41'),
+(1313, 'Sub Gallery Image [River Bank Jungle Resort]Data h', '2024-07-03 19:25:01', 1, 3, '27.34.66.41'),
+(1314, 'Testimonial [ Kumar D] Edit Successfully', '2024-07-03 20:05:20', 1, 4, '27.34.66.41'),
+(1315, 'Testimonial [ Dinesh S] Edit Successfully', '2024-07-03 20:06:50', 1, 4, '27.34.66.41'),
+(1316, 'Testimonial [Bhupender R] Edit Successfully', '2024-07-03 20:08:04', 1, 4, '27.34.66.41'),
+(1317, 'Testimonial [ Tilak A]Data has added successfully.', '2024-07-03 20:09:16', 1, 3, '27.34.66.41'),
+(1318, 'Login: River Bank Jungle Resort logged in.', '2024-07-03 21:20:54', 1, 1, '27.34.66.41'),
+(1319, 'Menu [Dining] Edit Successfully', '2024-07-03 21:24:17', 1, 4, '27.34.66.41'),
+(1320, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-03 21:25:09', 1, 4, '27.34.66.41'),
+(1321, 'SocialNetworking [Facebook] Edit Successfully', '2024-07-03 21:34:48', 1, 4, '27.34.66.41'),
+(1322, 'SocialNetworking  [Google Plus]Data has deleted su', '2024-07-03 21:34:59', 1, 6, '27.34.66.41'),
+(1323, 'SocialNetworking  [Google Plus]Data has deleted su', '2024-07-03 21:34:59', 1, 6, '27.34.66.41'),
+(1324, 'SocialNetworking  []Data has deleted successfully.', '2024-07-03 21:34:59', 1, 6, '27.34.66.41'),
+(1325, 'SocialNetworking  []Data has deleted successfully.', '2024-07-03 21:34:59', 1, 6, '27.34.66.41'),
+(1326, 'Login: River Bank Jungle Resort logged in.', '2024-07-04 10:48:50', 1, 1, '27.34.66.41'),
+(1327, 'Login: River Bank Jungle Resort logged in.', '2024-07-04 11:08:53', 1, 1, '27.34.24.20'),
+(1328, 'Services [asdsad]Data has added successfully.', '2024-07-04 11:14:07', 1, 3, '27.34.24.20'),
+(1329, 'Servicess  [asdsad]Data has deleted successfully.', '2024-07-04 11:14:16', 1, 6, '27.34.24.20'),
+(1330, 'Services  [asdsad]Data has deleted successfully.', '2024-07-04 11:14:16', 1, 6, '27.34.24.20'),
+(1331, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 11:24:15', 1, 4, '27.34.24.20'),
+(1332, 'Package Rooms & Suites Edit Successfully', '2024-07-04 11:28:20', 1, 4, '27.34.24.20'),
+(1333, 'Package Rooms & Suites Edit Successfully', '2024-07-04 11:28:39', 1, 4, '27.34.24.20'),
+(1334, 'Package Rooms & Suites Edit Successfully', '2024-07-04 11:54:39', 1, 4, '27.34.24.20'),
+(1335, 'Package Dining & Bar Edit Successfully', '2024-07-04 12:00:34', 1, 4, '27.34.24.20'),
+(1336, 'Package Meeting & Events Edit Successfully', '2024-07-04 12:00:45', 1, 4, '27.34.24.20'),
+(1337, 'Package Dining & Bar Edit Successfully', '2024-07-04 12:07:08', 1, 4, '27.34.24.20'),
+(1338, 'Package Dining & Bar Edit Successfully', '2024-07-04 12:07:18', 1, 4, '27.34.24.20'),
+(1339, 'Package Meeting & Events Edit Successfully', '2024-07-04 12:14:25', 1, 4, '27.34.24.20'),
+(1340, 'Package Meeting & Events Edit Successfully', '2024-07-04 12:14:49', 1, 4, '27.34.24.20'),
+(1341, 'Package Rooms & Suites Edit Successfully', '2024-07-04 12:16:16', 1, 4, '27.34.24.20'),
+(1342, 'Package Rooms & Suites Edit Successfully', '2024-07-04 12:16:23', 1, 4, '27.34.24.20'),
+(1343, 'Login: River Bank Jungle Resort logged in.', '2024-07-04 12:18:17', 1, 1, '113.199.255.121'),
+(1344, 'Changes on Article \'homepage about\' has been saved', '2024-07-04 12:25:05', 1, 4, '113.199.255.121'),
+(1345, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 12:26:05', 1, 4, '27.34.24.20'),
+(1346, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 12:27:33', 1, 4, '27.34.24.20'),
+(1347, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 12:28:09', 1, 4, '27.34.24.20'),
+(1348, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 12:28:32', 1, 4, '27.34.24.20'),
+(1349, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 12:29:04', 1, 4, '27.34.24.20'),
+(1350, 'Changes on Article \'About usa\' has been saved succ', '2024-07-04 12:31:28', 1, 4, '27.34.24.20'),
+(1351, 'Changes on Article \'About us\' has been saved succe', '2024-07-04 12:31:31', 1, 4, '27.34.24.20'),
+(1352, 'Changes on Article \'homepage about\' has been saved', '2024-07-04 13:01:38', 1, 4, '113.199.255.121'),
+(1353, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-04 13:32:58', 1, 4, '27.34.24.20'),
+(1354, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-04 13:33:52', 1, 4, '27.34.24.20'),
+(1355, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-04 14:34:36', 1, 4, '27.34.24.20'),
+(1356, 'Changes on Sub Package \'The Classic Bar\' has been ', '2024-07-04 14:42:16', 1, 4, '27.34.24.20'),
+(1357, 'Login: River Bank Jungle Resort logged in.', '2024-07-04 15:22:14', 1, 1, '103.10.28.154'),
+(1358, 'Changes on Sub Package \'The Classic Bar\' has been ', '2024-07-04 15:24:10', 1, 4, '103.10.28.154'),
+(1359, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-04 15:24:58', 1, 4, '103.10.28.154'),
+(1360, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-04 15:26:29', 1, 4, '103.10.28.154'),
+(1361, 'Login: River Bank Jungle Resort logged in.', '2024-07-04 15:28:32', 1, 1, '113.199.251.214'),
+(1362, 'Popup \'asdsad\' has added successfully.', '2024-07-04 16:30:39', 1, 3, '103.10.28.154'),
+(1363, 'Changes on Popup \'asdsad\' has been saved successfu', '2024-07-04 16:31:17', 1, 4, '103.10.28.154'),
+(1364, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-04 16:48:00', 1, 4, '103.10.28.154'),
+(1365, 'Changes on Popup \'asdsad\' has been saved successfu', '2024-07-04 17:06:59', 1, 4, '103.10.28.154'),
+(1366, 'Changes on Popup \'asdsad\' has been saved successfu', '2024-07-04 17:07:04', 1, 4, '103.10.28.154'),
+(1367, 'Login: River Bank Jungle Resort logged in.', '2024-07-05 12:26:40', 1, 1, '27.34.66.41'),
+(1368, 'Slideshow [Reception] Edit Successfully', '2024-07-05 12:31:37', 1, 4, '27.34.66.41'),
+(1369, 'Slideshow [Room] Edit Successfully', '2024-07-05 12:33:12', 1, 4, '27.34.66.41'),
+(1370, 'Slideshow [Dining] Edit Successfully', '2024-07-05 12:34:41', 1, 4, '27.34.66.41'),
+(1371, 'Slideshow [Pool] Edit Successfully', '2024-07-05 12:35:42', 1, 4, '27.34.66.41'),
+(1372, 'Slideshow [Pool] Edit Successfully', '2024-07-05 12:36:07', 1, 4, '27.34.66.41'),
+(1373, 'Slideshow [Evening View] Edit Successfully', '2024-07-05 12:38:37', 1, 4, '27.34.66.41'),
+(1374, 'Slideshow [food]Data has added successfully.', '2024-07-05 12:44:10', 1, 3, '27.34.66.41'),
+(1375, 'Slideshow [Foods] Edit Successfully', '2024-07-05 12:44:36', 1, 4, '27.34.66.41'),
+(1376, 'Slideshow [Evening View] Edit Successfully', '2024-07-05 12:45:51', 1, 4, '27.34.66.41'),
+(1377, 'Slideshow [Evening View] Edit Successfully', '2024-07-05 12:46:14', 1, 4, '27.34.66.41'),
+(1378, 'Slideshow [Night View] Edit Successfully', '2024-07-05 12:47:20', 1, 4, '27.34.66.41'),
+(1379, 'Login: River Bank Jungle Resort logged in.', '2024-07-05 13:01:06', 1, 1, '27.34.24.20'),
+(1380, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-05 13:09:31', 1, 4, '27.34.66.41'),
+(1381, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-05 13:10:24', 1, 4, '27.34.66.41'),
+(1382, 'Services  [Meeting Hall]Data has deleted successfu', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1383, 'Services  [Five on-site dining options]Data has de', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1384, 'Services  [Shower with Bathtub]Data has deleted su', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1385, 'Services  [LED TV]Data has deleted successfully.', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1386, 'Services  [Complimentary Toiletries]Data has delet', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1387, 'Services  [In-room Slippers]Data has deleted succe', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1388, 'Services  [Sound Proof Windows]Data has deleted su', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1389, 'Services  [Air Conditioner]Data has deleted succes', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1390, 'Services  [Vanity Mirror]Data has deleted successf', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1391, 'Services  [Hairdryer]Data has deleted successfully', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1392, 'Services  [Emergency Torch]Data has deleted succes', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1393, 'Services  [Iron and Ironing Board]Data has deleted', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1394, 'Services  [Mini Bar]Data has deleted successfully.', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1395, 'Services  [Safety Deposit Box]Data has deleted suc', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1396, 'Services  [Complimentary WiFi]Data has deleted suc', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1397, 'Services  [Tea / Coffee Counter]Data has deleted s', '2024-07-05 13:11:38', 1, 6, '27.34.66.41'),
+(1398, 'Services [24hr Reception]Data has added successful', '2024-07-05 13:12:36', 1, 3, '27.34.66.41'),
+(1399, 'Services [24hr Room Service]Data has added success', '2024-07-05 13:13:13', 1, 3, '27.34.66.41'),
+(1400, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-05 13:13:51', 1, 4, '27.34.24.20'),
+(1401, 'Login: River Bank Jungle Resort logged in.', '2024-07-05 13:13:59', 1, 1, '27.34.24.20'),
+(1402, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-05 13:14:11', 1, 4, '27.34.24.20'),
+(1403, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-05 13:14:19', 1, 4, '27.34.24.20'),
+(1404, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-05 13:14:27', 1, 4, '27.34.24.20'),
+(1405, 'Services [Concierge Service]Data has added success', '2024-07-05 13:14:41', 1, 3, '27.34.66.41'),
+(1406, 'Services [Free WiFi]Data has added successfully.', '2024-07-05 13:15:36', 1, 3, '27.34.66.41'),
+(1407, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-05 13:16:59', 1, 4, '27.34.24.20'),
+(1408, 'Services [Housekeeping]Data has added successfully', '2024-07-05 13:17:09', 1, 3, '27.34.66.41'),
+(1409, 'Services [Laundry Service]Data has added successfu', '2024-07-05 13:18:34', 1, 3, '27.34.66.41'),
+(1410, 'Services [Security Service]Data has added successf', '2024-07-05 13:18:53', 1, 3, '27.34.66.41'),
+(1411, 'Services [Safety Deport Box]Data has added success', '2024-07-05 13:19:27', 1, 3, '27.34.66.41'),
+(1412, 'Services [Private Plunge Pool ]Data has added succ', '2024-07-05 13:20:42', 1, 3, '27.34.66.41'),
+(1413, 'Services [Parking]Data has added successfully.', '2024-07-05 13:21:03', 1, 3, '27.34.66.41'),
+(1414, 'Services [Power Backup]Data has added successfully', '2024-07-05 13:21:33', 1, 3, '27.34.66.41'),
+(1415, 'Services [Doctor on call]Data has added successful', '2024-07-05 13:24:50', 1, 3, '27.34.66.41'),
+(1416, 'Services [Multicuisine Restaurant]Data has added s', '2024-07-05 13:26:49', 1, 3, '27.34.66.41'),
+(1417, 'Services [Cards Accepted]Data has added successful', '2024-07-05 13:27:27', 1, 3, '27.34.66.41'),
+(1418, 'Services [Parking] Edit Successfully', '2024-07-05 13:27:52', 1, 4, '27.34.66.41'),
+(1419, 'Services [Events Destination]Data has added succes', '2024-07-05 13:28:25', 1, 3, '27.34.66.41'),
+(1420, 'Services [Fire Extinguisher]Data has added success', '2024-07-05 13:36:28', 1, 3, '27.34.66.41'),
+(1421, 'Menu [Events] Edit Successfully', '2024-07-05 13:37:47', 1, 4, '27.34.66.41'),
+(1422, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-05 13:41:24', 1, 4, '27.34.66.41'),
+(1423, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-05 13:42:20', 1, 4, '27.34.66.41'),
+(1424, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-05 13:44:17', 1, 4, '27.34.66.41'),
+(1425, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-05 13:45:29', 1, 4, '27.34.66.41'),
+(1426, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-05 13:45:51', 1, 4, '27.34.66.41'),
+(1427, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-05 13:46:25', 1, 4, '27.34.66.41'),
+(1428, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-05 13:46:51', 1, 4, '27.34.66.41'),
+(1429, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-05 13:50:50', 1, 4, '27.34.66.41'),
+(1430, 'Login: River Bank Jungle Resort logged in.', '2024-07-05 14:31:22', 1, 1, '103.181.227.206'),
+(1431, 'Package Meeting & Events Edit Successfully', '2024-07-05 14:34:44', 1, 4, '103.181.227.206'),
+(1432, 'Package Meeting & Events Edit Successfully', '2024-07-05 14:45:13', 1, 4, '27.34.66.41'),
+(1433, 'Package Rooms & Suites Edit Successfully', '2024-07-05 14:45:43', 1, 4, '27.34.66.41'),
+(1434, 'Package Dining & Bar Edit Successfully', '2024-07-05 14:46:02', 1, 4, '27.34.66.41'),
+(1435, 'Changes on Article \'About us\' has been saved succe', '2024-07-05 14:53:38', 1, 4, '27.34.66.41'),
+(1436, 'Changes on Article \'About us\' has been saved succe', '2024-07-05 14:54:12', 1, 4, '27.34.66.41'),
+(1437, 'Changes on Article \'About us\' has been saved succe', '2024-07-05 14:54:58', 1, 4, '27.34.66.41'),
+(1438, 'Changes on Article \'About us\' has been saved succe', '2024-07-05 14:55:25', 1, 4, '27.34.66.41'),
+(1439, 'Changes on Article \'About us\' has been saved succe', '2024-07-05 14:55:51', 1, 4, '27.34.66.41'),
+(1440, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-05 14:59:27', 1, 4, '27.34.66.41'),
+(1441, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-05 15:00:56', 1, 4, '27.34.66.41'),
+(1442, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-07-05 15:02:06', 1, 4, '27.34.66.41'),
+(1443, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-05 15:02:52', 1, 4, '27.34.66.41'),
+(1444, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-05 15:05:07', 1, 4, '27.34.66.41'),
+(1445, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-05 15:06:10', 1, 4, '27.34.66.41'),
+(1446, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-05 15:07:27', 1, 4, '27.34.66.41'),
+(1447, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-05 15:11:02', 1, 4, '27.34.66.41'),
+(1448, 'Changes on Sub Package \'Riverside Dinner\' has been', '2024-07-05 15:12:33', 1, 4, '27.34.66.41'),
+(1449, 'Changes on Sub Package \'Al Fresco Dining\' has been', '2024-07-05 15:12:53', 1, 4, '27.34.66.41'),
+(1450, 'Changes on Sub Package \'Al Fresco Dining\' has been', '2024-07-05 15:13:35', 1, 4, '27.34.66.41'),
+(1451, 'Changes on Sub Package \'Al Fresco Dining\' has been', '2024-07-05 15:13:48', 1, 4, '27.34.66.41'),
+(1452, 'Changes on Sub Package \'The Classic Bar\' has been ', '2024-07-05 15:14:24', 1, 4, '27.34.66.41'),
+(1453, 'Changes on Sub Package \'The Classic Bar\' has been ', '2024-07-05 15:14:42', 1, 4, '27.34.66.41'),
+(1454, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-05 15:15:15', 1, 4, '27.34.66.41'),
+(1455, 'Package Dining & Bar Edit Successfully', '2024-07-05 15:17:29', 1, 4, '27.34.66.41'),
+(1456, 'Login: River Bank Jungle Resort logged in.', '2024-07-05 15:18:27', 1, 1, '103.181.227.206'),
+(1457, 'Package Rooms & Suites Edit Successfully', '2024-07-05 15:18:43', 1, 4, '103.181.227.206'),
+(1458, 'Package Rooms & Suites Edit Successfully', '2024-07-05 15:18:50', 1, 4, '103.181.227.206'),
+(1459, 'Package Dining & Bar Edit Successfully', '2024-07-05 15:19:32', 1, 4, '103.181.227.206'),
+(1460, 'Package Dining & Bar Edit Successfully', '2024-07-05 15:21:07', 1, 4, '27.34.66.41'),
+(1461, 'Package Dining & Bar Edit Successfully', '2024-07-05 15:22:11', 1, 4, '103.181.227.206'),
+(1462, 'Sub Gallery Image  [River Bank Jungle Resort]Data ', '2024-07-05 15:35:24', 1, 6, '27.34.66.41'),
+(1463, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1464, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1465, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1466, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1467, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1468, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1469, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1470, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1471, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1472, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41');
+INSERT INTO `tbl_logs` (`id`, `action`, `registered`, `userid`, `user_action`, `ip_track`) VALUES
+(1473, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1474, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1475, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1476, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1477, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1478, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:36:07', 1, 3, '27.34.66.41'),
+(1479, 'Login: River Bank Jungle Resort logged in.', '2024-07-05 15:39:44', 1, 1, '27.34.66.41'),
+(1480, 'Gallery Image [Riverbank Jungle Resort asdasd] Edi', '2024-07-05 15:39:55', 1, 4, '103.181.227.206'),
+(1481, 'Gallery Image [Riverbank Jungle Resort] Edit Succe', '2024-07-05 15:40:06', 1, 4, '103.181.227.206'),
+(1482, 'Sub Gallery Image [asdasd]Data has added successfu', '2024-07-05 15:41:13', 1, 3, '103.181.227.206'),
+(1483, 'Sub Gallery Image  [asdasd]Data has deleted succes', '2024-07-05 15:41:18', 1, 6, '103.181.227.206'),
+(1484, 'Sub Gallery Image [test]Data has added successfull', '2024-07-05 15:42:40', 1, 3, '103.181.227.206'),
+(1485, 'Sub Gallery Image [test]Data has added successfull', '2024-07-05 15:42:40', 1, 3, '103.181.227.206'),
+(1486, 'Sub Gallery Image [etset]Data has added successful', '2024-07-05 15:42:40', 1, 3, '103.181.227.206'),
+(1487, 'Sub Gallery Image [estt]Data has added successfull', '2024-07-05 15:42:40', 1, 3, '103.181.227.206'),
+(1488, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:43:42', 1, 6, '103.181.227.206'),
+(1489, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:43:46', 1, 6, '103.181.227.206'),
+(1490, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:43:46', 1, 6, '103.181.227.206'),
+(1491, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:43:51', 1, 6, '103.181.227.206'),
+(1492, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:43:51', 1, 6, '103.181.227.206'),
+(1493, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:43:51', 1, 6, '103.181.227.206'),
+(1494, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:00', 1, 6, '103.181.227.206'),
+(1495, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:00', 1, 6, '103.181.227.206'),
+(1496, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:00', 1, 6, '103.181.227.206'),
+(1497, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:00', 1, 6, '103.181.227.206'),
+(1498, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:03', 1, 6, '103.181.227.206'),
+(1499, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:03', 1, 6, '103.181.227.206'),
+(1500, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:03', 1, 6, '103.181.227.206'),
+(1501, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:03', 1, 6, '103.181.227.206'),
+(1502, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:03', 1, 6, '103.181.227.206'),
+(1503, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:08', 1, 6, '103.181.227.206'),
+(1504, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:08', 1, 6, '103.181.227.206'),
+(1505, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:08', 1, 6, '103.181.227.206'),
+(1506, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:08', 1, 6, '103.181.227.206'),
+(1507, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:08', 1, 6, '103.181.227.206'),
+(1508, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:08', 1, 6, '103.181.227.206'),
+(1509, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1510, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1511, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1512, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1513, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1514, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1515, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:12', 1, 6, '103.181.227.206'),
+(1516, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1517, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1518, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1519, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1520, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1521, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1522, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1523, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:15', 1, 6, '103.181.227.206'),
+(1524, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1525, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1526, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1527, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1528, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1529, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1530, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1531, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1532, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:19', 1, 6, '103.181.227.206'),
+(1533, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1534, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1535, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1536, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1537, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1538, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1539, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1540, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1541, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1542, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:22', 1, 6, '103.181.227.206'),
+(1543, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1544, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1545, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1546, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1547, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1548, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1549, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1550, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1551, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1552, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1553, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:26', 1, 6, '103.181.227.206'),
+(1554, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1555, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1556, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1557, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1558, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1559, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1560, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1561, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1562, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1563, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1564, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1565, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:29', 1, 6, '103.181.227.206'),
+(1566, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1567, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1568, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1569, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1570, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1571, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1572, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1573, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1574, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1575, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1576, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1577, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1578, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:33', 1, 6, '103.181.227.206'),
+(1579, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1580, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1581, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1582, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1583, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1584, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1585, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1586, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1587, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1588, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1589, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1590, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1591, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1592, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:36', 1, 6, '103.181.227.206'),
+(1593, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1594, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1595, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1596, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1597, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1598, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1599, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1600, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1601, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1602, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1603, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1604, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1605, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1606, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1607, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:40', 1, 6, '103.181.227.206'),
+(1608, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:42', 1, 6, '27.34.66.41'),
+(1609, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1610, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1611, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1612, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1613, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1614, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1615, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1616, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1617, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1618, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1619, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1620, 'Sub Gallery Image  [Riverbank Jungle Resort]Data h', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1621, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1622, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1623, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1624, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '103.181.227.206'),
+(1625, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '27.34.66.41'),
+(1626, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:45', 1, 6, '27.34.66.41'),
+(1627, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1628, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1629, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1630, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1631, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1632, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1633, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1634, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1635, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1636, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1637, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1638, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1639, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1640, 'Sub Gallery Image  [test]Data has deleted successf', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1641, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1642, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1643, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:48', 1, 6, '103.181.227.206'),
+(1644, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '27.34.66.41'),
+(1645, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '27.34.66.41'),
+(1646, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '27.34.66.41'),
+(1647, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1648, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1649, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1650, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1651, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1652, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1653, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1654, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1655, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1656, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1657, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1658, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1659, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1660, 'Sub Gallery Image  [test]Data has deleted successf', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1661, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:50', 1, 6, '103.181.227.206'),
+(1662, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:51', 1, 6, '103.181.227.206'),
+(1663, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:51', 1, 6, '103.181.227.206'),
+(1664, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:51', 1, 6, '103.181.227.206'),
+(1665, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1666, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1667, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1668, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1669, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1670, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1671, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1672, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1673, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1674, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1675, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1676, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1677, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1678, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1679, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1680, 'Sub Gallery Image  [etset]Data has deleted success', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1681, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1682, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1683, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:53', 1, 6, '103.181.227.206'),
+(1684, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1685, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1686, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1687, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1688, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1689, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1690, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1691, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1692, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1693, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1694, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1695, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1696, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1697, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1698, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1699, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1700, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1701, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1702, 'Sub Gallery Image  [estt]Data has deleted successf', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1703, 'Sub Gallery Image  []Data has deleted successfully', '2024-07-05 15:44:56', 1, 6, '103.181.227.206'),
+(1704, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:45:59', 1, 3, '27.34.66.41'),
+(1705, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:45:59', 1, 3, '27.34.66.41'),
+(1706, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:45:59', 1, 3, '27.34.66.41'),
+(1707, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:45:59', 1, 3, '27.34.66.41'),
+(1708, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:45:59', 1, 3, '27.34.66.41'),
+(1709, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:45:59', 1, 3, '27.34.66.41'),
+(1710, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1711, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1712, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1713, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1714, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1715, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1716, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1717, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1718, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1719, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 15:47:01', 1, 3, '27.34.66.41'),
+(1720, 'Gallery [Rooms & Suites]Data has added successfull', '2024-07-05 15:47:29', 1, 3, '27.34.66.41'),
+(1721, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1722, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1723, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1724, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1725, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1726, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1727, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1728, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:48:21', 1, 3, '27.34.66.41'),
+(1729, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1730, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1731, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1732, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1733, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1734, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1735, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1736, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1737, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1738, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1739, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1740, 'Sub Gallery Image [Rooms & Suites]Data has added s', '2024-07-05 15:55:25', 1, 3, '27.34.66.41'),
+(1741, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 16:02:28', 1, 3, '27.34.66.41'),
+(1742, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 16:02:28', 1, 3, '27.34.66.41'),
+(1743, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 16:02:28', 1, 3, '27.34.66.41'),
+(1744, 'Sub Gallery Image [Riverbank Jungle Resort]Data ha', '2024-07-05 16:02:28', 1, 3, '27.34.66.41'),
+(1745, 'Gallery [Restaurant & Bar]Data has added successfu', '2024-07-05 16:17:16', 1, 3, '27.34.66.41'),
+(1746, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1747, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1748, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1749, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1750, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1751, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1752, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1753, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1754, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1755, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1756, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1757, 'Sub Gallery Image [Restaurant & Bar]Data has added', '2024-07-05 16:17:50', 1, 3, '27.34.66.41'),
+(1758, 'Gallery [Meeting & Events]Data has added successfu', '2024-07-05 16:20:46', 1, 3, '27.34.66.41'),
+(1759, 'Sub Gallery Image [Meeting & Events]Data has added', '2024-07-05 16:21:10', 1, 3, '27.34.66.41'),
+(1760, 'Sub Gallery Image [Meeting & Events]Data has added', '2024-07-05 16:21:10', 1, 3, '27.34.66.41'),
+(1761, 'Sub Gallery Image [Meeting & Events]Data has added', '2024-07-05 16:21:10', 1, 3, '27.34.66.41'),
+(1762, 'Sub Gallery Image [Meeting & Events]Data has added', '2024-07-05 16:21:10', 1, 3, '27.34.66.41'),
+(1763, 'Gallery [Recreation]Data has added successfully.', '2024-07-05 16:23:52', 1, 3, '27.34.66.41'),
+(1764, 'Sub Gallery Image [Swimming Pool]Data has added su', '2024-07-05 16:24:20', 1, 3, '27.34.66.41'),
+(1765, 'Sub Gallery Image [Swimming Pool]Data has added su', '2024-07-05 16:24:20', 1, 3, '27.34.66.41'),
+(1766, 'Sub Gallery Image [Swimming Pool]Data has added su', '2024-07-05 16:24:20', 1, 3, '27.34.66.41'),
+(1767, 'Sub Gallery Image [Swimming Pool]Data has added su', '2024-07-05 16:24:20', 1, 3, '27.34.66.41'),
+(1768, 'Gallery [Experience]Data has added successfully.', '2024-07-05 16:28:30', 1, 3, '27.34.66.41'),
+(1769, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-05 16:29:01', 1, 3, '27.34.66.41'),
+(1770, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-05 16:29:01', 1, 3, '27.34.66.41'),
+(1771, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-05 16:29:01', 1, 3, '27.34.66.41'),
+(1772, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-05 16:29:01', 1, 3, '27.34.66.41'),
+(1773, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-05 16:29:01', 1, 3, '27.34.66.41'),
+(1774, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-05 16:29:01', 1, 3, '27.34.66.41'),
+(1775, 'Package Meeting & Events Edit Successfully', '2024-07-05 16:39:00', 1, 4, '27.34.66.41'),
+(1776, 'Menu [Sustainability] Edit Successfully', '2024-07-05 16:41:29', 1, 4, '27.34.66.41'),
+(1777, 'Package Meeting & Events Edit Successfully', '2024-07-05 16:41:39', 1, 4, '103.181.227.206'),
+(1778, 'Menu [Recreation] Edit Successfully', '2024-07-05 16:43:03', 1, 4, '27.34.66.41'),
+(1779, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-05 16:45:52', 1, 4, '27.34.66.41'),
+(1780, 'Article \'asdasdasdasdasdas\' has added successfully', '2024-07-05 16:47:54', 1, 3, '103.181.227.206'),
+(1781, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-05 16:57:57', 1, 4, '27.34.66.41'),
+(1782, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-05 16:58:41', 1, 4, '27.34.66.41'),
+(1783, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-05 16:59:33', 1, 4, '27.34.66.41'),
+(1784, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-07-05 17:00:02', 1, 4, '27.34.66.41'),
+(1785, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-05 17:00:28', 1, 4, '27.34.66.41'),
+(1786, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:06:16', 1, 4, '27.34.66.41'),
+(1787, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:07:54', 1, 4, '27.34.66.41'),
+(1788, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:10:05', 1, 4, '27.34.66.41'),
+(1789, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:10:55', 1, 4, '27.34.66.41'),
+(1790, 'Features [sqweqw]Data has added successfully.', '2024-07-05 17:12:40', 1, 3, '103.181.227.206'),
+(1791, 'Features  [sqweqw]Data has deleted successfully.', '2024-07-05 17:12:47', 1, 6, '103.181.227.206'),
+(1792, 'Features [Microwave Oven] Edit Successfully', '2024-07-05 17:13:10', 1, 4, '103.181.227.206'),
+(1793, 'Features [Microwave Oven] Edit Successfully', '2024-07-05 17:13:34', 1, 4, '103.181.227.206'),
+(1794, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:16:32', 1, 4, '27.34.66.41'),
+(1795, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:21:25', 1, 4, '27.34.66.41'),
+(1796, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:24:03', 1, 4, '103.181.227.206'),
+(1797, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:24:37', 1, 4, '27.34.66.41'),
+(1798, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:26:47', 1, 4, '103.181.227.206'),
+(1799, 'Article \'huiviyviyvy\' has added successfully.', '2024-07-05 17:27:25', 1, 3, '103.181.227.206'),
+(1800, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:29:47', 1, 4, '27.34.66.41'),
+(1801, 'Articles  [huiviyviyvy]Data has deleted successful', '2024-07-05 17:30:33', 1, 6, '103.181.227.206'),
+(1802, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:30:42', 1, 4, '27.34.66.41'),
+(1803, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:32:02', 1, 4, '27.34.66.41'),
+(1804, 'Changes on Article \'Experience\' has been saved suc', '2024-07-05 17:32:38', 1, 4, '27.34.66.41'),
+(1805, 'Slideshow [tgyctyctc]Data has added successfully.', '2024-07-05 17:41:18', 1, 3, '103.181.227.206'),
+(1806, 'Slideshows  [tgyctyctc]Data has deleted successful', '2024-07-05 17:41:23', 1, 6, '103.181.227.206'),
+(1807, 'Slideshow  [tgyctyctc]Data has deleted successfull', '2024-07-05 17:41:23', 1, 6, '103.181.227.206'),
+(1808, 'Gallery [jkbjnk]Data has added successfully.', '2024-07-05 17:41:36', 1, 3, '103.181.227.206'),
+(1809, 'Gallery Image  [jkbjnk]Data has deleted successful', '2024-07-05 17:41:42', 1, 6, '103.181.227.206'),
+(1810, 'Main service \'hjvvuyyuv\' has added successfully.', '2024-07-05 17:41:55', 1, 3, '103.181.227.206'),
+(1811, 'Main service  [hjvvuyyuv]Data has deleted successf', '2024-07-05 17:42:04', 1, 6, '103.181.227.206'),
+(1812, 'Package [hjycvyucvyuvy]Data has added successfully', '2024-07-05 17:42:17', 1, 3, '103.181.227.206'),
+(1813, 'Package  [hjycvyucvyuvy]Data has deleted successfu', '2024-07-05 17:42:23', 1, 6, '103.181.227.206'),
+(1814, 'SocialNetworking [kljiuobnuig]Data has added succe', '2024-07-05 17:42:39', 1, 3, '103.181.227.206'),
+(1815, 'SocialNetworking  [kljiuobnuig]Data has deleted su', '2024-07-05 17:42:44', 1, 6, '103.181.227.206'),
+(1816, 'SocialNetworking  [kljiuobnuig]Data has deleted su', '2024-07-05 17:42:44', 1, 6, '103.181.227.206'),
+(1817, 'Testimonial [TDTYDYT]Data has added successfully.', '2024-07-05 17:42:54', 1, 3, '103.181.227.206'),
+(1818, 'Testimonial  []Data has deleted successfully.', '2024-07-05 17:43:01', 1, 6, '103.181.227.206'),
+(1819, 'Login: River Bank Jungle Resort logged in.', '2024-07-07 13:22:34', 1, 1, '27.34.66.41'),
+(1820, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-07 13:23:43', 1, 4, '27.34.66.41'),
+(1821, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-07 13:24:09', 1, 4, '27.34.66.41'),
+(1822, 'Changes on Article \'About us\' has been saved succe', '2024-07-07 13:25:22', 1, 4, '27.34.66.41'),
+(1823, 'Package Meeting & Events Edit Successfully', '2024-07-07 13:36:09', 1, 4, '27.34.66.41'),
+(1824, 'Login: River Bank Jungle Resort logged in.', '2024-07-07 13:49:13', 1, 1, '27.34.24.20'),
+(1825, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 13:52:00', 1, 4, '27.34.66.41'),
+(1826, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 13:52:34', 1, 4, '27.34.66.41'),
+(1827, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 13:53:25', 1, 4, '27.34.66.41'),
+(1828, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 13:56:28', 1, 4, '27.34.66.41'),
+(1829, 'Package Meeting & Events Edit Successfully', '2024-07-07 13:56:32', 1, 4, '27.34.24.20'),
+(1830, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 13:57:06', 1, 4, '27.34.66.41'),
+(1831, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 13:58:02', 1, 4, '27.34.66.41'),
+(1832, 'Package Meeting & Events Edit Successfully', '2024-07-07 14:03:55', 1, 4, '27.34.24.20'),
+(1833, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 14:07:12', 1, 4, '27.34.66.41'),
+(1834, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 14:08:12', 1, 4, '27.34.66.41'),
+(1835, 'Package Dining & Bar Edit Successfully', '2024-07-07 14:09:10', 1, 4, '27.34.24.20'),
+(1836, 'Package Meeting & Events Edit Successfully', '2024-07-07 14:10:02', 1, 4, '27.34.24.20'),
+(1837, 'Package Dining & Bar Edit Successfully', '2024-07-07 14:10:15', 1, 4, '27.34.24.20'),
+(1838, 'Package Rooms & Suites Edit Successfully', '2024-07-07 14:11:00', 1, 4, '27.34.24.20'),
+(1839, 'Articles  [Shops and Restaurants]Data has deleted ', '2024-07-07 14:31:39', 1, 6, '27.34.66.41'),
+(1840, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 14:33:44', 1, 4, '27.34.66.41'),
+(1841, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 14:53:49', 1, 4, '27.34.24.20'),
+(1842, 'Package Meeting & Events Edit Successfully', '2024-07-07 14:56:40', 1, 4, '27.34.66.41'),
+(1843, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 14:57:16', 1, 4, '27.34.24.20'),
+(1844, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 14:58:15', 1, 4, '27.34.24.20'),
+(1845, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:02:29', 1, 4, '27.34.66.41'),
+(1846, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:03:19', 1, 4, '27.34.24.20'),
+(1847, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:03:36', 1, 4, '27.34.24.20'),
+(1848, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:04:40', 1, 4, '27.34.24.20'),
+(1849, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:04:45', 1, 4, '27.34.24.20'),
+(1850, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:05:11', 1, 4, '27.34.24.20'),
+(1851, 'Changes on Sub Package \'Banquet: Regal Ballroom\' h', '2024-07-07 15:05:16', 1, 4, '27.34.66.41'),
+(1852, 'Changes on Sub Package \'Wedding Destination: The O', '2024-07-07 15:07:29', 1, 4, '27.34.66.41'),
+(1853, 'Changes on Article \'Recreations\' has been saved su', '2024-07-07 15:14:29', 1, 4, '27.34.66.41'),
+(1854, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 15:14:39', 1, 4, '27.34.66.41'),
+(1855, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 16:12:32', 1, 4, '27.34.66.41'),
+(1856, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 16:26:10', 1, 4, '27.34.66.41'),
+(1857, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 16:32:10', 1, 4, '27.34.66.41'),
+(1858, 'Login: River Bank Jungle Resort logged in.', '2024-07-07 16:35:54', 1, 1, '103.10.28.149'),
+(1859, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 16:39:46', 1, 4, '27.34.66.41'),
+(1860, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 16:43:48', 1, 4, '27.34.66.41'),
+(1861, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 16:44:50', 1, 4, '103.10.28.149'),
+(1862, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 16:45:17', 1, 4, '103.10.28.149'),
+(1863, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-07 16:52:42', 1, 4, '27.34.66.41'),
+(1864, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-07 16:53:10', 1, 4, '27.34.66.41'),
+(1865, 'Package Rooms & Suites Edit Successfully', '2024-07-07 16:53:39', 1, 4, '27.34.66.41'),
+(1866, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-07 16:54:31', 1, 4, '27.34.66.41'),
+(1867, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-07-07 16:54:52', 1, 4, '27.34.66.41'),
+(1868, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-07 16:55:43', 1, 4, '27.34.66.41'),
+(1869, 'Features [LED TV] Edit Successfully', '2024-07-07 16:57:01', 1, 4, '27.34.66.41'),
+(1870, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-07 16:57:53', 1, 4, '27.34.66.41'),
+(1871, 'Features [Complimentary WIFI] Edit Successfully', '2024-07-07 16:58:49', 1, 4, '27.34.66.41'),
+(1872, 'Features [Air Conditioned] Edit Successfully', '2024-07-07 16:59:16', 1, 4, '27.34.66.41'),
+(1873, 'Features [Regular walk-in Shower] Edit Successfull', '2024-07-07 17:00:07', 1, 4, '27.34.66.41'),
+(1874, 'Features [Mountain View] Edit Successfully', '2024-07-07 17:04:08', 1, 4, '27.34.66.41'),
+(1875, 'Features [Electric Kettle] Edit Successfully', '2024-07-07 17:04:45', 1, 4, '27.34.66.41'),
+(1876, 'Login: River Bank Jungle Resort logged in.', '2024-07-07 17:05:18', 1, 1, '103.10.28.149'),
+(1877, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-07 17:05:51', 1, 4, '103.10.28.149'),
+(1878, 'Features [En-Suite Bathroom] Edit Successfully', '2024-07-07 17:06:34', 1, 4, '27.34.66.41'),
+(1879, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-07 17:06:51', 1, 4, '103.10.28.149'),
+(1880, 'Features [Instant Hot Water] Edit Successfully', '2024-07-07 17:07:10', 1, 4, '27.34.66.41'),
+(1881, 'Features [Wakeup Service] Edit Successfully', '2024-07-07 17:11:09', 1, 4, '27.34.66.41'),
+(1882, 'Features [Bathrobe] Edit Successfully', '2024-07-07 17:12:11', 1, 4, '27.34.66.41'),
+(1883, 'Features [Dental Kit] Edit Successfully', '2024-07-07 17:13:16', 1, 4, '27.34.66.41'),
+(1884, 'Features [Complimentary Toiletries] Edit Successfu', '2024-07-07 17:13:42', 1, 4, '27.34.66.41'),
+(1885, 'Features [In-room Slippers] Edit Successfully', '2024-07-07 17:16:30', 1, 4, '27.34.66.41'),
+(1886, 'Features [Hairdryer] Edit Successfully', '2024-07-07 17:22:33', 1, 4, '27.34.66.41'),
+(1887, 'Features [Tea / Coffee Maker] Edit Successfully', '2024-07-07 17:26:07', 1, 4, '27.34.66.41'),
+(1888, 'Features [Towels] Edit Successfully', '2024-07-07 17:28:28', 1, 4, '27.34.66.41'),
+(1889, 'Features [Seating Space] Edit Successfully', '2024-07-07 17:29:35', 1, 4, '27.34.66.41'),
+(1890, 'Features [Emergency Torch] Edit Successfully', '2024-07-07 17:31:07', 1, 4, '27.34.66.41'),
+(1891, 'Features [Balcony] Edit Successfully', '2024-07-07 17:32:26', 1, 4, '27.34.66.41'),
+(1892, 'Features [Safety Deposit Box] Edit Successfully', '2024-07-07 17:32:56', 1, 4, '27.34.66.41'),
+(1893, 'Features [Iron and Ironing Board] Edit Successfull', '2024-07-07 17:33:20', 1, 4, '27.34.66.41'),
+(1894, 'Features [24hr Room Service] Edit Successfully', '2024-07-07 17:34:11', 1, 4, '27.34.66.41'),
+(1895, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 17:34:34', 1, 4, '103.10.28.149'),
+(1896, 'Features [Marble Floor] Edit Successfully', '2024-07-07 17:35:58', 1, 4, '27.34.66.41'),
+(1897, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 17:39:22', 1, 4, '103.10.28.149'),
+(1898, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 17:39:44', 1, 4, '103.10.28.149'),
+(1899, 'Features [Hairdryer] Edit Successfully', '2024-07-07 17:41:35', 1, 4, '27.34.66.41'),
+(1900, 'Features [Features] Edit Successfully', '2024-07-07 17:43:12', 1, 4, '27.34.66.41'),
+(1901, 'Features [Downstairs: 514 sq.ft] Edit Successfully', '2024-07-07 17:49:21', 1, 4, '27.34.66.41'),
+(1902, 'Features [Upstairs: 378 sq.ft] Edit Successfully', '2024-07-07 17:50:02', 1, 4, '27.34.66.41'),
+(1903, 'Features [Room: 418 sq.ft] Edit Successfully', '2024-07-07 17:50:52', 1, 4, '27.34.66.41'),
+(1904, 'Changes on Article \'Sustainability\' has been saved', '2024-07-07 17:51:40', 1, 4, '103.10.28.149'),
+(1905, 'Features [Balcony: 58 sq.ft] Edit Successfully', '2024-07-07 17:52:06', 1, 4, '27.34.66.41'),
+(1906, 'Features [Room: 396 sq.ft] Edit Successfully', '2024-07-07 17:52:43', 1, 4, '27.34.66.41'),
+(1907, 'Features [Balcony: 95 sq.ft] Edit Successfully', '2024-07-07 17:53:12', 1, 4, '27.34.66.41'),
+(1908, 'Features [Living Room: 538 sq.ft] Edit Successfull', '2024-07-07 17:53:45', 1, 4, '27.34.66.41'),
+(1909, 'Features [Bed Room: 270 sq.ft] Edit Successfully', '2024-07-07 17:54:14', 1, 4, '27.34.66.41'),
+(1910, 'Changes on Article \'Sustainability\' has been saved', '2024-07-07 17:54:23', 1, 4, '103.10.28.149'),
+(1911, 'Changes on Article \'Sustainability\' has been saved', '2024-07-07 17:54:35', 1, 4, '103.10.28.149'),
+(1912, 'Changes on Article \'Sustainability\' has been saved', '2024-07-07 17:55:57', 1, 4, '103.10.28.149'),
+(1913, 'Features [Occupancy: 2 Adult + 1 Child] Edit Succe', '2024-07-07 17:56:19', 1, 4, '27.34.66.41'),
+(1914, 'Features  [Complementing Drinking Water(in public ', '2024-07-07 17:56:50', 1, 6, '27.34.66.41'),
+(1915, 'Changes on Article \'Sustainability\' has been saved', '2024-07-07 17:56:58', 1, 4, '103.10.28.149'),
+(1916, 'Features  []Data has deleted successfully.', '2024-07-07 17:57:00', 1, 6, '27.34.66.41'),
+(1917, 'Features [Bed: King Bed]Data has added successfull', '2024-07-07 17:59:32', 1, 3, '27.34.66.41'),
+(1918, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-07 18:00:13', 1, 4, '27.34.66.41'),
+(1919, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-07 18:01:09', 1, 4, '27.34.66.41'),
+(1920, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-07 18:02:05', 1, 4, '27.34.66.41'),
+(1921, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-07-07 18:02:47', 1, 4, '27.34.66.41'),
+(1922, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-07-07 18:06:16', 1, 4, '27.34.66.41'),
+(1923, 'Gallery Image [Comfort Meets Nature] Edit Successf', '2024-07-07 18:14:34', 1, 4, '27.34.66.41'),
+(1924, 'Gallery Image [Peaceful Retreat] Edit Successfully', '2024-07-07 18:14:51', 1, 4, '27.34.66.41'),
+(1925, 'Gallery Image [Savor the Flavors ] Edit Successful', '2024-07-07 18:15:29', 1, 4, '27.34.66.41'),
+(1926, 'Gallery Image [Tranquility Hospitality] Edit Succe', '2024-07-07 18:16:38', 1, 4, '27.34.66.41'),
+(1927, 'Changes on Main service \'Recreation\' has been save', '2024-07-07 18:23:01', 1, 4, '27.34.66.41'),
+(1928, 'Changes on Main service \'Sundowner\' has been saved', '2024-07-07 18:23:13', 1, 4, '27.34.66.41'),
+(1929, 'Changes on Main service \'Canoeing Safari\' has been', '2024-07-07 18:23:28', 1, 4, '27.34.66.41'),
+(1930, 'Changes on Main service \'Bird Gazing\' has been sav', '2024-07-07 18:23:43', 1, 4, '27.34.66.41'),
+(1931, 'Changes on Main service \'Crocodile Breeding\' has b', '2024-07-07 18:23:54', 1, 4, '27.34.66.41'),
+(1932, 'Changes on Main service \'Tharu Cultural Dance\' has', '2024-07-07 18:24:18', 1, 4, '27.34.66.41'),
+(1933, 'Changes on Main service \'Jungle Walk\' has been sav', '2024-07-07 18:24:32', 1, 4, '27.34.66.41'),
+(1934, 'Changes on Main service \'Village Tour\' has been sa', '2024-07-07 18:24:42', 1, 4, '27.34.66.41'),
+(1935, 'Changes on Main service \'Jeep Safari\' has been sav', '2024-07-07 18:24:52', 1, 4, '27.34.66.41'),
+(1936, 'Changes on Main service \'Recreation\' has been save', '2024-07-07 18:25:25', 1, 4, '27.34.66.41'),
+(1937, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 18:26:36', 1, 4, '27.34.66.41'),
+(1938, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-07 18:40:32', 1, 4, '27.34.66.41'),
+(1939, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-07 18:41:48', 1, 4, '27.34.66.41'),
+(1940, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-07 18:42:22', 1, 4, '27.34.66.41'),
+(1941, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-07 18:44:59', 1, 4, '27.34.66.41'),
+(1942, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-07 18:48:22', 1, 4, '27.34.66.41'),
+(1943, 'Features [Hall Amenities]Data has added successful', '2024-07-07 18:48:56', 1, 3, '27.34.66.41'),
+(1944, 'Features [Projector]Data has added successfully.', '2024-07-07 18:59:38', 1, 3, '27.34.66.41');
+INSERT INTO `tbl_logs` (`id`, `action`, `registered`, `userid`, `user_action`, `ip_track`) VALUES
+(1945, 'Features [PA System with Microphone]Data has added', '2024-07-07 19:00:14', 1, 3, '27.34.66.41'),
+(1946, 'Features [LED TV]Data has added successfully.', '2024-07-07 19:00:31', 1, 3, '27.34.66.41'),
+(1947, 'Features [Video Conferencing]Data has added succes', '2024-07-07 19:00:53', 1, 3, '27.34.66.41'),
+(1948, 'Features [Computer / Laptop]Data has added success', '2024-07-07 19:01:10', 1, 3, '27.34.66.41'),
+(1949, 'Features [White Board]Data has added successfully.', '2024-07-07 19:01:32', 1, 3, '27.34.66.41'),
+(1950, 'Features [Flip Chart]Data has added successfully.', '2024-07-07 19:01:57', 1, 3, '27.34.66.41'),
+(1951, 'Features [Soft (pin) Board]Data has added successf', '2024-07-07 19:02:14', 1, 3, '27.34.66.41'),
+(1952, 'Features [Printing Services]Data has added success', '2024-07-07 19:02:34', 1, 3, '27.34.66.41'),
+(1953, 'Features [Writing pads with pencils]Data has added', '2024-07-07 19:02:49', 1, 3, '27.34.66.41'),
+(1954, 'Features [Photography]Data has added successfully.', '2024-07-07 19:03:06', 1, 3, '27.34.66.41'),
+(1955, 'Features [Videography]Data has added successfully.', '2024-07-07 19:03:23', 1, 3, '27.34.66.41'),
+(1956, 'Changes on Article \'Sustainability\' has been saved', '2024-07-07 19:04:46', 1, 4, '27.34.66.41'),
+(1957, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-07 19:05:34', 1, 4, '27.34.66.41'),
+(1958, 'Changes on Article \'Experience\' has been saved suc', '2024-07-07 19:06:04', 1, 4, '27.34.66.41'),
+(1959, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 10:56:09', 1, 1, '27.34.66.41'),
+(1960, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 11:26:55', 1, 1, '27.34.24.20'),
+(1961, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 11:29:02', 1, 4, '27.34.24.20'),
+(1962, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 11:54:07', 1, 4, '27.34.24.20'),
+(1963, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 11:54:15', 1, 4, '27.34.24.20'),
+(1964, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 12:21:33', 1, 1, '27.34.66.41'),
+(1965, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 12:32:35', 1, 1, '103.10.28.147'),
+(1966, 'Changes on Article \'Sustainability\' has been saved', '2024-07-08 12:33:35', 1, 4, '103.10.28.147'),
+(1967, 'Changes on Article \'Sustainability\' has been saved', '2024-07-08 12:38:16', 1, 4, '103.10.28.147'),
+(1968, 'Changes on Article \'Sustainability\' has been saved', '2024-07-08 12:40:51', 1, 4, '103.181.227.91'),
+(1969, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-08 12:53:28', 1, 4, '27.34.24.20'),
+(1970, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-08 12:58:38', 1, 4, '27.34.66.41'),
+(1971, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-08 12:59:10', 1, 4, '27.34.66.41'),
+(1972, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-08 12:59:45', 1, 4, '27.34.66.41'),
+(1973, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 14:37:32', 1, 1, '103.10.28.144'),
+(1974, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 15:45:43', 1, 1, '103.10.28.144'),
+(1975, 'FAQ \'Collapsible Group Item #1\' has added successf', '2024-07-08 15:47:33', 1, 3, '103.10.28.144'),
+(1976, 'FAQ \'Collapsible Group Item #2\' has added successf', '2024-07-08 15:48:08', 1, 3, '103.10.28.144'),
+(1977, 'FAQ \'Collapsible Group Item #3\' has added successf', '2024-07-08 15:49:17', 1, 3, '103.10.28.144'),
+(1978, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 15:56:55', 1, 4, '103.10.28.144'),
+(1979, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 15:57:03', 1, 4, '103.10.28.144'),
+(1980, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 16:10:34', 1, 4, '103.10.28.144'),
+(1981, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 16:36:54', 1, 4, '103.10.28.144'),
+(1982, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 16:51:45', 1, 1, '27.34.66.41'),
+(1983, 'Changes on Sub Package \'Riverside Dinner\' has been', '2024-07-08 16:52:34', 1, 4, '27.34.66.41'),
+(1984, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 17:03:53', 1, 4, '103.10.28.144'),
+(1985, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 17:04:54', 1, 4, '103.10.28.144'),
+(1986, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-08 17:15:40', 1, 4, '27.34.66.41'),
+(1987, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-08 17:26:10', 1, 4, '27.34.66.41'),
+(1988, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-08 17:26:28', 1, 4, '27.34.66.41'),
+(1989, 'Changes on Sub Package \'Riverside Dinner\' has been', '2024-07-08 17:29:28', 1, 4, '27.34.66.41'),
+(1990, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-08 17:32:20', 1, 4, '27.34.66.41'),
+(1991, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 17:34:02', 1, 4, '103.10.28.144'),
+(1992, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 17:43:58', 1, 4, '103.10.28.144'),
+(1993, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 17:44:45', 1, 4, '103.10.28.144'),
+(1994, 'Login: River Bank Jungle Resort logged in.', '2024-07-08 18:21:04', 1, 1, '27.34.66.41'),
+(1995, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-08 18:21:40', 1, 4, '27.34.66.41'),
+(1996, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-08 18:22:11', 1, 4, '27.34.66.41'),
+(1997, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-08 18:24:22', 1, 4, '27.34.66.41'),
+(1998, 'Package Rooms & Suites Edit Successfully', '2024-07-08 18:30:18', 1, 4, '27.34.66.41'),
+(1999, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-08 18:34:01', 1, 4, '27.34.66.41'),
+(2000, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-08 18:38:48', 1, 4, '27.34.66.41'),
+(2001, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-08 18:39:28', 1, 4, '27.34.66.41'),
+(2002, 'Changes on Sub Package \'The Classic Bar\' has been ', '2024-07-08 18:46:13', 1, 4, '27.34.66.41'),
+(2003, 'Changes on Sub Package \'The Classic Bar\' has been ', '2024-07-08 18:47:15', 1, 4, '27.34.66.41'),
+(2004, 'Menu [Riverside Dinner] Edit Successfully', '2024-07-08 18:47:58', 1, 4, '27.34.66.41'),
+(2005, 'Changes on Sub Package \'Riverside Dinner\' has been', '2024-07-08 18:50:55', 1, 4, '27.34.66.41'),
+(2006, 'Changes on Sub Package \'Al Fresco Dining\' has been', '2024-07-08 18:55:15', 1, 4, '27.34.66.41'),
+(2007, 'Changes on Sub Package \'Al Fresco Dining\' has been', '2024-07-08 18:57:01', 1, 4, '27.34.66.41'),
+(2008, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-07-08 19:00:50', 1, 4, '27.34.66.41'),
+(2009, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-08 19:02:51', 1, 4, '27.34.66.41'),
+(2010, 'Changes on Article \'About us\' has been saved succe', '2024-07-08 19:04:16', 1, 4, '27.34.66.41'),
+(2011, 'Login: River Bank Jungle Resort logged in.', '2024-07-09 15:22:27', 1, 1, '27.34.24.20'),
+(2012, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-09 15:22:44', 1, 4, '27.34.24.20'),
+(2013, 'Login: River Bank Jungle Resort logged in.', '2024-07-09 15:43:28', 1, 1, '103.10.28.198'),
+(2014, 'Article \'aaa\' has added successfully.', '2024-07-09 15:43:52', 1, 3, '103.10.28.198'),
+(2015, 'Articles  [aaa]Data has deleted successfully.', '2024-07-09 15:44:01', 1, 6, '103.10.28.198'),
+(2016, 'Changes on Article \'homepage about\' has been saved', '2024-07-09 15:53:18', 1, 4, '103.10.28.198'),
+(2017, 'Changes on Article \'homepage about\' has been saved', '2024-07-09 15:54:32', 1, 4, '103.10.28.198'),
+(2018, 'Changes on Article \'homepage about\' has been saved', '2024-07-09 17:00:17', 1, 4, '103.10.28.198'),
+(2019, 'Login: River Bank Jungle Resort logged in.', '2024-07-09 17:00:51', 1, 1, '103.10.28.198'),
+(2020, 'Changes on Article \'Experience\' has been saved suc', '2024-07-09 17:01:12', 1, 4, '103.10.28.198'),
+(2021, 'Changes on Article \'Experience\' has been saved suc', '2024-07-09 17:02:02', 1, 4, '103.10.28.198'),
+(2022, 'Changes on Article \'Experience\' has been saved suc', '2024-07-09 17:03:32', 1, 4, '103.10.28.198'),
+(2023, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-09 17:14:38', 1, 4, '103.10.28.198'),
+(2024, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-09 17:21:26', 1, 4, '103.10.28.198'),
+(2025, 'Changes on Article \'Experience\' has been saved suc', '2024-07-09 17:21:42', 1, 4, '103.10.28.198'),
+(2026, 'Package Meeting & Events Edit Successfully', '2024-07-09 17:27:32', 1, 4, '103.10.28.198'),
+(2027, 'Package Meeting & Events Edit Successfully', '2024-07-09 17:31:57', 1, 4, '103.10.28.198'),
+(2028, 'Changes on Article \'About us\' has been saved succe', '2024-07-09 17:44:23', 1, 4, '103.10.28.198'),
+(2029, 'Changes on Article \'About us\' has been saved succe', '2024-07-09 17:48:22', 1, 4, '103.10.28.198'),
+(2030, 'Login: River Bank Jungle Resort logged in.', '2024-07-10 10:01:52', 1, 1, '27.34.66.41'),
+(2031, 'Login: River Bank Jungle Resort logged in.', '2024-07-10 10:52:14', 1, 1, '103.10.28.154'),
+(2032, 'Login: River Bank Jungle Resort logged in.', '2024-07-10 14:30:21', 1, 1, '27.34.66.41'),
+(2033, 'Login: River Bank Jungle Resort logged in.', '2024-07-10 14:35:24', 1, 1, '113.199.248.255'),
+(2034, 'Login: River Bank Jungle Resort logged in.', '2024-07-10 14:36:17', 1, 1, '103.10.28.206'),
+(2035, 'Changes on Article \'homepage about\' has been saved', '2024-07-10 14:37:05', 1, 4, '103.10.28.206'),
+(2036, 'Changes on Article \'homepage about\' has been saved', '2024-07-10 14:37:54', 1, 4, '27.34.66.41'),
+(2037, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-10 14:47:53', 1, 4, '27.34.66.41'),
+(2038, 'Features [Room Service] Edit Successfully', '2024-07-10 14:48:26', 1, 4, '27.34.66.41'),
+(2039, 'Features [Jungle View] Edit Successfully', '2024-07-10 14:48:55', 1, 4, '27.34.66.41'),
+(2040, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-07-10 14:50:07', 1, 4, '27.34.66.41'),
+(2041, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-07-10 14:50:21', 1, 4, '27.34.66.41'),
+(2042, 'Changes on Sub Package \'Riverside Retreat\' has bee', '2024-07-10 14:59:00', 1, 4, '27.34.66.41'),
+(2043, 'Menu [Riverside Retreat] Edit Successfully', '2024-07-10 14:59:20', 1, 4, '27.34.66.41'),
+(2044, 'Changes on Article \'Experience\' has been saved suc', '2024-07-10 15:04:42', 1, 4, '27.34.66.41'),
+(2045, 'Changes on Sub Package \'Regal Ball Room555\' has be', '2024-07-10 15:10:17', 1, 4, '27.34.66.41'),
+(2046, 'Changes on Sub Package \'Regal Ball Room55\' has bee', '2024-07-10 15:11:01', 1, 4, '27.34.66.41'),
+(2047, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-10 15:13:15', 1, 4, '27.34.66.41'),
+(2048, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 15:14:08', 1, 4, '27.34.66.41'),
+(2049, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-10 15:15:38', 1, 4, '27.34.66.41'),
+(2050, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 15:16:03', 1, 4, '27.34.66.41'),
+(2051, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 15:16:23', 1, 4, '27.34.66.41'),
+(2052, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 15:16:42', 1, 4, '27.34.66.41'),
+(2053, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 15:17:06', 1, 4, '27.34.66.41'),
+(2054, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 15:18:09', 1, 4, '27.34.66.41'),
+(2055, 'Sub Gallery Image  [Experience]Data has deleted su', '2024-07-10 15:32:59', 1, 6, '27.34.66.41'),
+(2056, 'Services [Room Service] Edit Successfully', '2024-07-10 15:33:41', 1, 4, '27.34.66.41'),
+(2057, 'Slideshow [Reception] Edit Successfully', '2024-07-10 15:49:06', 1, 4, '27.34.66.41'),
+(2058, 'Slideshow [Reception] Edit Successfully', '2024-07-10 15:50:55', 1, 4, '27.34.66.41'),
+(2059, 'Slideshow [Room] Edit Successfully', '2024-07-10 15:52:13', 1, 4, '27.34.66.41'),
+(2060, 'Slideshow [Dining] Edit Successfully', '2024-07-10 15:52:28', 1, 4, '27.34.66.41'),
+(2061, 'Slideshow [Foods] Edit Successfully', '2024-07-10 15:52:42', 1, 4, '27.34.66.41'),
+(2062, 'Slideshow [Pool] Edit Successfully', '2024-07-10 15:52:57', 1, 4, '27.34.66.41'),
+(2063, 'Slideshow [Evening View] Edit Successfully', '2024-07-10 15:53:11', 1, 4, '27.34.66.41'),
+(2064, 'Slideshow [Night View] Edit Successfully', '2024-07-10 15:53:26', 1, 4, '27.34.66.41'),
+(2065, 'Features [Jungle View] Edit Successfully', '2024-07-10 15:58:26', 1, 4, '27.34.66.41'),
+(2066, 'Slideshow [Drone night view]Data has added success', '2024-07-10 16:12:13', 1, 3, '27.34.66.41'),
+(2067, 'Login: River Bank Jungle Resort logged in.', '2024-07-10 16:14:50', 1, 1, '113.199.250.61'),
+(2068, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-10 16:18:37', 1, 4, '113.199.250.61'),
+(2069, 'Slideshow [Riverside Retreat]Data has added succes', '2024-07-10 16:20:46', 1, 3, '27.34.66.41'),
+(2070, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-10 16:21:22', 1, 4, '113.199.250.61'),
+(2071, 'Slideshow [Night View] Edit Successfully', '2024-07-10 16:22:50', 1, 4, '27.34.66.41'),
+(2072, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-10 16:23:23', 1, 4, '113.199.250.61'),
+(2073, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-10 16:25:53', 1, 4, '113.199.250.61'),
+(2074, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2075, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2076, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2077, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2078, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2079, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2080, 'Sub Gallery Image [Experience]Data has added succe', '2024-07-10 16:52:56', 1, 3, '27.34.66.41'),
+(2081, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-10 16:56:39', 1, 4, '27.34.66.41'),
+(2082, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 16:57:08', 1, 4, '27.34.66.41'),
+(2083, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-10 17:03:21', 1, 4, '27.34.66.41'),
+(2084, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-10 17:09:15', 1, 4, '27.34.66.41'),
+(2085, 'Login: River Bank Jungle Resort logged in.', '2024-07-11 11:07:48', 1, 1, '27.34.66.41'),
+(2086, 'Changes on Article \'homepage about\' has been saved', '2024-07-11 11:08:49', 1, 4, '27.34.66.41'),
+(2087, 'SocialNetworking [Linkedin] Edit Successfully', '2024-07-11 11:23:10', 1, 4, '27.34.66.41'),
+(2088, 'Changes on Article \'About us\' has been saved succe', '2024-07-11 11:27:59', 1, 4, '27.34.66.41'),
+(2089, 'Changes on Article \'About us\' has been saved succe', '2024-07-11 11:30:12', 1, 4, '27.34.66.41'),
+(2090, 'Login: River Bank Jungle Resort logged in.', '2024-07-11 16:16:59', 1, 1, '103.10.28.133'),
+(2091, 'Changes on Article \'Experience\' has been saved suc', '2024-07-11 16:22:06', 1, 4, '103.10.28.133'),
+(2092, 'Changes on Main service \'Sundowner\' has been saved', '2024-07-11 16:27:16', 1, 4, '103.10.28.133'),
+(2093, 'Changes on Main service \'Canoeing Safari\' has been', '2024-07-11 16:28:02', 1, 4, '103.10.28.133'),
+(2094, 'Changes on Main service \'Bird Gazing\' has been sav', '2024-07-11 16:28:22', 1, 4, '103.10.28.133'),
+(2095, 'Changes on Main service \'Crocodile Breeding\' has b', '2024-07-11 16:28:49', 1, 4, '103.10.28.133'),
+(2096, 'Changes on Main service \'Jeep Safari\' has been sav', '2024-07-11 16:29:07', 1, 4, '103.10.28.133'),
+(2097, 'Changes on Main service \'Village Tour\' has been sa', '2024-07-11 16:29:25', 1, 4, '103.10.28.133'),
+(2098, 'Changes on Main service \'Jungle Walk\' has been sav', '2024-07-11 16:29:46', 1, 4, '103.10.28.133'),
+(2099, 'Changes on Main service \'Tharu Cultural Dance\' has', '2024-07-11 16:30:07', 1, 4, '103.10.28.133'),
+(2100, 'Login: River Bank Jungle Resort logged in.', '2024-07-11 20:59:17', 1, 1, '103.156.26.227'),
+(2101, 'Changes on Article \'Experience\' has been saved suc', '2024-07-11 21:00:48', 1, 4, '103.156.26.227'),
+(2102, 'Login: River Bank Jungle Resort logged in.', '2024-07-11 22:42:33', 1, 1, '103.156.26.227'),
+(2103, 'Changes on Article \'Sustainability\' has been saved', '2024-07-11 22:43:10', 1, 4, '103.156.26.227'),
+(2104, 'Login: River Bank Jungle Resort logged in.', '2024-07-12 10:49:40', 1, 1, '103.123.60.201'),
+(2105, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 10:54:16', 1, 4, '103.123.60.201'),
+(2106, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 10:55:13', 1, 4, '103.123.60.201'),
+(2107, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 10:58:02', 1, 4, '103.123.60.201'),
+(2108, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 10:59:05', 1, 4, '103.123.60.201'),
+(2109, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 10:59:46', 1, 4, '103.123.60.201'),
+(2110, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:05:25', 1, 4, '103.123.60.201'),
+(2111, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:11:06', 1, 4, '103.123.60.201'),
+(2112, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:29:56', 1, 4, '103.123.60.201'),
+(2113, 'Login: River Bank Jungle Resort logged in.', '2024-07-12 11:44:53', 1, 1, '27.34.66.41'),
+(2114, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:49:06', 1, 4, '103.123.60.201'),
+(2115, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:49:32', 1, 4, '103.123.60.201'),
+(2116, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:50:06', 1, 4, '103.123.60.201'),
+(2117, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:56:40', 1, 4, '103.10.28.130'),
+(2118, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 11:58:35', 1, 4, '103.10.28.130'),
+(2119, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:00:08', 1, 4, '103.10.28.130'),
+(2120, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:01:48', 1, 4, '103.10.28.130'),
+(2121, 'Login: River Bank Jungle Resort logged in.', '2024-07-12 12:05:39', 1, 1, '27.34.24.20'),
+(2122, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:05:55', 1, 4, '103.10.28.130'),
+(2123, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-12 12:05:57', 1, 4, '27.34.24.20'),
+(2124, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-12 12:06:09', 1, 4, '27.34.24.20'),
+(2125, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-12 12:06:28', 1, 4, '27.34.24.20'),
+(2126, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:06:29', 1, 4, '103.10.28.130'),
+(2127, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:08:13', 1, 4, '103.10.28.130'),
+(2128, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:10:20', 1, 4, '103.10.28.130'),
+(2129, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:11:17', 1, 4, '103.10.28.130'),
+(2130, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 12:11:35', 1, 4, '103.10.28.130'),
+(2131, 'Changes on Sub Package \'Deluxe Room\' has been save', '2024-07-12 12:12:33', 1, 4, '27.34.24.20'),
+(2132, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-07-12 12:19:18', 1, 4, '27.34.66.41'),
+(2133, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-07-12 12:19:48', 1, 4, '27.34.66.41'),
+(2134, 'Login: River Bank Jungle Resort logged in.', '2024-07-12 14:16:43', 1, 1, '103.181.227.91'),
+(2135, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 14:17:41', 1, 4, '103.181.227.91'),
+(2136, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 14:28:33', 1, 4, '103.181.227.91'),
+(2137, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 14:44:24', 1, 4, '103.181.227.91'),
+(2138, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-12 14:45:09', 1, 4, '103.181.227.91'),
+(2139, 'Login: River Bank Jungle Resort logged in.', '2024-07-14 10:37:38', 1, 1, '103.10.28.147'),
+(2140, 'Changes on Article \'Experience\' has been saved suc', '2024-07-14 10:38:31', 1, 4, '103.10.28.147'),
+(2141, 'Changes on Article \'Experience\' has been saved suc', '2024-07-14 10:38:59', 1, 4, '103.10.28.147'),
+(2142, 'Changes on Article \'Experience\' has been saved suc', '2024-07-14 10:39:25', 1, 4, '103.10.28.147'),
+(2143, 'Login: River Bank Jungle Resort logged in.', '2024-07-14 15:16:39', 1, 1, '103.123.60.113'),
+(2144, 'Login: River Bank Jungle Resort logged in.', '2024-07-14 15:20:12', 1, 1, '103.123.60.113'),
+(2145, 'Login: River Bank Jungle Resort logged in.', '2024-07-14 15:25:20', 1, 1, '103.123.60.113'),
+(2146, 'Changes on Article \'homepage about\' has been saved', '2024-07-14 15:38:08', 1, 4, '103.123.60.113'),
+(2147, 'Changes on Article \'Experience\' has been saved suc', '2024-07-14 15:44:31', 1, 4, '103.123.60.113'),
+(2148, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-14 15:45:27', 1, 4, '103.123.60.113'),
+(2149, 'Changes on Article \'Recreation\' has been saved suc', '2024-07-14 15:46:28', 1, 4, '103.123.60.113'),
+(2150, 'Changes on Article \'Sustainability\' has been saved', '2024-07-14 15:47:04', 1, 4, '103.123.60.113'),
+(2151, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 15:31:14', 1, 1, '27.34.66.98'),
+(2152, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-16 15:32:43', 1, 4, '27.34.66.98'),
+(2153, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:10:53', 1, 1, '103.123.60.113'),
+(2154, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:11:05', 1, 1, '103.123.60.113'),
+(2155, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:11:46', 1, 1, '103.123.60.113'),
+(2156, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-16 18:37:09', 1, 4, '27.34.66.98'),
+(2157, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:37:44', 1, 1, '27.34.66.98'),
+(2158, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-16 18:38:44', 1, 4, '27.34.66.98'),
+(2159, 'Changes on Article \'homepage about\' has been saved', '2024-07-16 18:39:10', 1, 4, '27.34.66.98'),
+(2160, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-16 18:41:53', 1, 4, '27.34.66.98'),
+(2161, 'User [River Bank Jungle Resort] Edit Successfully', '2024-07-16 18:43:50', 1, 4, '27.34.66.98'),
+(2162, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:43:58', 1, 1, '27.34.66.98'),
+(2163, 'User [River Bank Jungle Resort] Edit Successfully', '2024-07-16 18:44:21', 1, 4, '27.34.66.98'),
+(2164, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:44:57', 1, 1, '27.34.66.98'),
+(2165, 'User [River Bank Jungle Resort] Edit Successfully', '2024-07-16 18:46:26', 1, 4, '27.34.66.98'),
+(2166, 'Login: River Bank Jungle Resort logged in.', '2024-07-16 18:46:37', 1, 1, '27.34.66.98'),
+(2167, 'Articles  [new page]Data has deleted successfully.', '2024-07-16 18:47:18', 1, 6, '27.34.66.98'),
+(2168, 'Login: River Bank Jungle Resort logged in.', '2024-07-17 09:59:28', 1, 1, '103.123.60.113'),
+(2169, 'Changes on Article \'homepage about\' has been saved', '2024-07-17 10:01:03', 1, 4, '103.123.60.113'),
+(2170, 'Changes on Article \'homepage about\' has been saved', '2024-07-17 10:03:07', 1, 4, '103.123.60.113'),
+(2171, 'Changes on Article \'homepage about\' has been saved', '2024-07-17 10:05:48', 1, 4, '103.123.60.113'),
+(2172, 'Changes on Article \'homepage about\' has been saved', '2024-07-17 10:08:25', 1, 4, '103.123.60.113'),
+(2173, 'Login: River Bank Jungle Resort logged in.', '2024-07-17 13:05:06', 1, 1, '103.10.28.143'),
+(2174, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-07-17 13:05:31', 1, 4, '103.10.28.143'),
+(2175, 'Login: River Bank Jungle Resort logged in.', '2024-07-24 11:22:15', 1, 1, '27.34.66.100'),
+(2176, 'Login: River Bank Jungle Resort logged in.', '2024-07-29 13:58:02', 1, 1, '27.34.66.100'),
+(2177, 'Login: River Bank Jungle Resort logged in.', '2024-10-02 17:17:40', 1, 1, '103.10.28.201'),
+(2178, 'Changes on Article \'Sustainability\' has been saved', '2024-10-02 17:18:05', 1, 4, '103.10.28.201'),
+(2179, 'Login: River Bank Jungle Resort logged in.', '2024-10-04 10:14:59', 1, 1, '103.10.28.208'),
+(2180, 'Login: River Bank Jungle Resort logged in.', '2024-10-04 10:15:25', 1, 1, '27.34.66.73'),
+(2181, 'Changes on Sub Package \'Regal Ball Room\' has been ', '2024-10-04 10:15:33', 1, 4, '103.10.28.208'),
+(2182, 'Changes on Article \'Recreation\' has been saved suc', '2024-10-04 10:16:14', 1, 4, '27.34.66.73'),
+(2183, 'Changes on Sub Package \'Serenity Hall \' has been s', '2024-10-04 10:19:01', 1, 4, '103.10.28.208'),
+(2184, 'Changes on Article \'About us\' has been saved succe', '2024-10-04 10:36:36', 1, 4, '27.34.66.73'),
+(2185, 'Changes on Article \'About us\' has been saved succe', '2024-10-04 10:37:25', 1, 4, '27.34.66.73'),
+(2186, 'Changes on Article \'About us\' has been saved succe', '2024-10-04 10:41:10', 1, 4, '27.34.66.73'),
+(2187, 'Changes on Article \'About us\' has been saved succe', '2024-10-04 10:41:34', 1, 4, '27.34.66.73'),
+(2188, 'Changes on Article \'About us\' has been saved succe', '2024-10-04 10:42:06', 1, 4, '27.34.66.73'),
+(2189, 'Changes on Article \'About us\' has been saved succe', '2024-10-04 10:46:45', 1, 4, '27.34.66.73'),
+(2190, 'Changes on Article \'homepage about\' has been saved', '2024-10-04 10:48:00', 1, 4, '27.34.66.73'),
+(2191, 'Login: River Bank Jungle Resort logged in.', '2024-10-04 13:07:23', 1, 1, '103.10.28.208'),
+(2192, 'Changes on Sub Package \'Super Deluxe Room\' has bee', '2024-10-04 13:07:47', 1, 4, '103.10.28.208'),
+(2193, 'Changes on Sub Package \'Villa with Private Plunge ', '2024-10-04 13:07:57', 1, 4, '103.10.28.208'),
+(2194, 'Changes on Sub Package \'Executive Suite\' has been ', '2024-10-04 13:08:10', 1, 4, '103.10.28.208'),
+(2195, 'Changes on Sub Package \'Presidential Suite\' has be', '2024-10-04 13:08:34', 1, 4, '103.10.28.208'),
+(2196, 'Login: River Bank Jungle Resort logged in.', '2024-10-04 13:35:22', 1, 1, '103.10.28.208'),
+(2197, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-10-04 13:35:54', 1, 4, '103.10.28.208'),
+(2198, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-10-04 14:07:14', 1, 4, '103.10.28.208'),
+(2199, 'Login: River Bank Jungle Resort logged in.', '2024-10-04 16:04:34', 1, 1, '103.10.28.208'),
+(2200, 'Changes on Article \'Recreation\' has been saved suc', '2024-10-04 16:04:57', 1, 4, '103.10.28.208'),
+(2201, 'Login: River Bank Jungle Resort logged in.', '2024-10-04 16:39:32', 1, 1, '103.10.28.208'),
+(2202, 'Changes on Config \'River Bank Jungle Resort\' has b', '2024-10-04 16:42:39', 1, 4, '103.10.28.208'),
+(2203, 'Login: River Bank Jungle Resort logged in.', '2024-10-07 13:39:06', 1, 1, '27.34.66.23'),
+(2204, 'Changes on Sub Package \'The Signature Restaurant\' ', '2024-10-07 13:41:40', 1, 4, '27.34.66.23'),
+(2205, 'Login: River Bank Jungle Resort logged in.', '2024-10-09 11:43:52', 1, 1, '103.10.28.151'),
+(2206, 'Popup \'Dashain Special\' has added successfully.', '2024-10-09 11:47:41', 1, 3, '103.10.28.151'),
+(2207, 'Login: River Bank Jungle Resort logged in.', '2024-12-20 17:00:52', 1, 1, '27.34.66.105'),
+(2208, 'Popup \'Merry Christmas 2024\' has added successfull', '2024-12-20 17:05:06', 1, 3, '27.34.66.105'),
+(2209, 'Login: River Bank Jungle Resort logged in.', '2024-12-20 17:05:43', 1, 1, '103.10.28.149'),
+(2210, 'Popup \'New Year Celebration\' has added successfull', '2024-12-20 17:07:08', 1, 3, '103.10.28.149'),
+(2211, 'Changes on Popup \'Merry Christmas 2024\' has been s', '2024-12-20 17:07:57', 1, 4, '103.10.28.149'),
+(2212, 'Changes on Popup \'New Year Celebration\' has been s', '2024-12-20 17:09:30', 1, 4, '103.10.28.149'),
+(2213, 'Login: River Bank Jungle Resort logged in.', '2024-12-27 15:20:33', 1, 1, '27.34.66.105'),
+(2214, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 12:38:54', 1, 1, '::1'),
+(2215, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 12:42:28', 1, 1, '::1'),
+(2216, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 12:45:15', 1, 1, '::1'),
+(2217, 'Successfully Offers Properties Settings', '2025-01-09 12:54:07', 1, 4, '::1'),
+(2218, 'Successfully Offers Properties Settings', '2025-01-09 12:54:40', 1, 4, '::1'),
+(2219, 'Successfully Offers Properties Settings', '2025-01-09 12:55:16', 1, 4, '::1'),
+(2220, 'Successfully Offers Properties Settings', '2025-01-09 12:58:03', 1, 4, '::1'),
+(2221, 'Successfully Articles Properties Settings', '2025-01-09 13:00:04', 1, 4, '::1'),
+(2222, 'Successfully Articles Properties Settings', '2025-01-09 13:00:19', 1, 4, '::1'),
+(2223, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 13:10:02', 1, 1, '::1'),
+(2224, 'Successfully Articles Properties Settings', '2025-01-09 13:15:19', 1, 4, '::1'),
+(2225, 'Successfully Articles Properties Settings', '2025-01-09 13:15:57', 1, 4, '::1'),
+(2226, 'Successfully Offers Properties Settings', '2025-01-09 13:16:15', 1, 4, '::1'),
+(2227, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 13:19:44', 1, 1, '::1'),
+(2228, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 13:23:30', 1, 1, '::1'),
+(2229, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 13:29:27', 1, 1, '::1'),
+(2230, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 13:31:53', 1, 1, '::1'),
+(2231, 'Offers [Couple Daycation] Edit Successfully', '2025-01-09 14:44:26', 1, 4, '::1'),
+(2232, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 14:48:03', 1, 1, '::1'),
+(2233, 'Offers [offer1] Edit Successfully', '2025-01-09 14:48:21', 1, 4, '::1'),
+(2234, 'Offers [offer 2]Data has added successfully.', '2025-01-09 15:09:11', 1, 3, '::1'),
+(2235, 'Offers [offer 2] Edit Successfully', '2025-01-09 15:09:53', 1, 4, '::1'),
+(2236, 'Offers [offer 3]Data has added successfully.', '2025-01-09 15:10:31', 1, 3, '::1'),
+(2237, 'Offers [Offer 4]Data has added successfully.', '2025-01-09 15:11:46', 1, 3, '::1'),
+(2238, 'Offers [Offer 4] Edit Successfully', '2025-01-09 15:31:19', 1, 4, '::1'),
+(2239, 'Offers [Offer 4] Edit Successfully', '2025-01-09 15:33:37', 1, 4, '::1'),
+(2240, 'Offers [offer 3] Edit Successfully', '2025-01-09 15:34:01', 1, 4, '::1'),
+(2241, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 15:37:49', 1, 1, '::1'),
+(2242, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 16:20:02', 1, 1, '::1'),
+(2243, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 16:21:01', 1, 1, '::1'),
+(2244, 'Offers [offer new]Data has added successfully.', '2025-01-09 16:24:51', 1, 3, '::1'),
+(2245, 'Offerss  [offer new]Data has deleted successfully.', '2025-01-09 16:25:17', 1, 6, '::1'),
+(2246, 'Offers  [offer new]Data has deleted successfully.', '2025-01-09 16:25:17', 1, 6, '::1'),
+(2247, 'Offerss  [Offer 4]Data has deleted successfully.', '2025-01-09 16:25:20', 1, 6, '::1'),
+(2248, 'Offers  [Offer 4]Data has deleted successfully.', '2025-01-09 16:25:20', 1, 6, '::1'),
+(2249, 'Offerss  [offer 3]Data has deleted successfully.', '2025-01-09 16:25:22', 1, 6, '::1'),
+(2250, 'Offers  [offer 3]Data has deleted successfully.', '2025-01-09 16:25:22', 1, 6, '::1'),
+(2251, 'Offerss  [offer 2]Data has deleted successfully.', '2025-01-09 16:25:25', 1, 6, '::1'),
+(2252, 'Offers  [offer 2]Data has deleted successfully.', '2025-01-09 16:25:25', 1, 6, '::1'),
+(2253, 'Offerss  [offer1]Data has deleted successfully.', '2025-01-09 16:25:28', 1, 6, '::1'),
+(2254, 'Offers  [offer1]Data has deleted successfully.', '2025-01-09 16:25:28', 1, 6, '::1'),
+(2255, 'Offers [Fixed offer]Data has added successfully.', '2025-01-09 16:27:40', 1, 3, '::1'),
+(2256, 'Offers [Dynamic Offer]Data has added successfully.', '2025-01-09 16:28:05', 1, 3, '::1'),
+(2257, 'Offers [Fixed offer] Edit Successfully', '2025-01-09 16:28:11', 1, 4, '::1'),
+(2258, 'Offers [Multi offer]Data has added successfully.', '2025-01-09 16:28:49', 1, 3, '::1'),
+(2259, 'Offers [None]Data has added successfully.', '2025-01-09 16:29:05', 1, 3, '::1'),
+(2260, 'Offers [Fixed offer] Edit Successfully', '2025-01-09 16:30:17', 1, 4, '::1'),
+(2261, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 16:55:03', 1, 1, '::1'),
+(2262, 'Offers [Multi offer] Edit Successfully', '2025-01-09 16:55:17', 1, 4, '::1'),
+(2263, 'Offers [Dynamic Offer] Edit Successfully', '2025-01-09 16:57:36', 1, 4, '::1'),
+(2264, 'Offers [dyna]Data has added successfully.', '2025-01-09 16:58:16', 1, 3, '::1'),
+(2265, 'Offers [dyna 2]Data has added successfully.', '2025-01-09 16:58:55', 1, 3, '::1'),
+(2266, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 17:04:01', 1, 1, '::1'),
+(2267, 'Offers [afg]Data has added successfully.', '2025-01-09 17:04:28', 1, 3, '::1'),
+(2268, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 17:19:52', 1, 1, '::1'),
+(2269, 'Offers [jsnfgsn]Data has added successfully.', '2025-01-09 17:24:55', 1, 3, '::1'),
+(2270, 'Offerss  [jsnfgsn]Data has deleted successfully.', '2025-01-09 17:25:23', 1, 6, '::1'),
+(2271, 'Offers  [jsnfgsn]Data has deleted successfully.', '2025-01-09 17:25:23', 1, 6, '::1'),
+(2272, 'Offerss  [sgnsdfgn]Data has deleted successfully.', '2025-01-09 17:25:40', 1, 6, '::1'),
+(2273, 'Offers  [sgnsdfgn]Data has deleted successfully.', '2025-01-09 17:25:40', 1, 6, '::1'),
+(2274, 'Offerss  [afgfsdgSDGsfdbg]Data has deleted success', '2025-01-09 17:25:42', 1, 6, '::1'),
+(2275, 'Offers  [afgfsdgSDGsfdbg]Data has deleted successf', '2025-01-09 17:25:42', 1, 6, '::1'),
+(2276, 'Offerss  [fasd]Data has deleted successfully.', '2025-01-09 17:25:44', 1, 6, '::1'),
+(2277, 'Offers  [fasd]Data has deleted successfully.', '2025-01-09 17:25:44', 1, 6, '::1'),
+(2278, 'Offerss  [gdsnag]Data has deleted successfully.', '2025-01-09 17:25:46', 1, 6, '::1'),
+(2279, 'Offers  [gdsnag]Data has deleted successfully.', '2025-01-09 17:25:46', 1, 6, '::1'),
+(2280, 'Offerss  [afg]Data has deleted successfully.', '2025-01-09 17:25:48', 1, 6, '::1'),
+(2281, 'Offers  [afg]Data has deleted successfully.', '2025-01-09 17:25:48', 1, 6, '::1'),
+(2282, 'Offerss  [dyna 2]Data has deleted successfully.', '2025-01-09 17:25:52', 1, 6, '::1'),
+(2283, 'Offers  [dyna 2]Data has deleted successfully.', '2025-01-09 17:25:52', 1, 6, '::1'),
+(2284, 'Offerss  [dyna]Data has deleted successfully.', '2025-01-09 17:25:54', 1, 6, '::1'),
+(2285, 'Offers  [dyna]Data has deleted successfully.', '2025-01-09 17:25:54', 1, 6, '::1'),
+(2286, 'Offerss  [None]Data has deleted successfully.', '2025-01-09 17:25:56', 1, 6, '::1'),
+(2287, 'Offers  [None]Data has deleted successfully.', '2025-01-09 17:25:56', 1, 6, '::1'),
+(2288, 'Offerss  [Multi offer]Data has deleted successfull', '2025-01-09 17:25:58', 1, 6, '::1'),
+(2289, 'Offers  [Multi offer]Data has deleted successfully', '2025-01-09 17:25:58', 1, 6, '::1'),
+(2290, 'Offerss  [Dynamic Offer]Data has deleted successfu', '2025-01-09 17:26:02', 1, 6, '::1'),
+(2291, 'Offers  [Dynamic Offer]Data has deleted successful', '2025-01-09 17:26:02', 1, 6, '::1'),
+(2292, 'Offers  [Fixed offer]Data has deleted successfully', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2293, 'Offers  [Couple Daycation]Data has deleted success', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2294, 'Offers  [Ring in the New Year 2025]Data has delete', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2295, 'Offers  [May Special On Thali]Data has deleted suc', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2296, 'Offers  [New year Promotion]Data has deleted succe', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2297, 'Offers  [Summer Sips]Data has deleted successfully', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2298, 'Offers  [Get into the groove]Data has deleted succ', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2299, 'Offers  [Indulge in a Symphony of Love and Taste]D', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2300, 'Offers  [Happy Hour Specials]Data has deleted succ', '2025-01-09 17:26:15', 1, 6, '::1'),
+(2301, 'Offers [Dynamic]Data has added successfully.', '2025-01-09 17:26:46', 1, 3, '::1'),
+(2302, 'Offers [Multi]Data has added successfully.', '2025-01-09 17:27:26', 1, 3, '::1'),
+(2303, 'Offers [Multi] Edit Successfully', '2025-01-09 17:29:35', 1, 4, '::1'),
+(2304, 'Menu [Offer] CreatedData has added successfully.', '2025-01-09 17:40:52', 1, 3, '::1'),
+(2305, 'Login: River Bank Jungle Resort logged in.', '2025-01-09 19:05:41', 1, 1, '::1'),
+(2306, 'Offers [Dynamic] Edit Successfully', '2025-01-09 19:05:55', 1, 4, '::1'),
+(2307, 'Successfully Offers Properties Settings', '2025-01-09 19:11:30', 1, 4, '::1'),
+(2308, 'Offers [Multi] Edit Successfully', '2025-01-09 19:41:25', 1, 4, '::1'),
+(2309, 'Successfully Offers Properties Settings', '2025-01-09 19:57:33', 1, 4, '::1'),
+(2310, 'Offers [Multi] Edit Successfully', '2025-01-09 21:02:54', 1, 4, '::1'),
+(2311, 'Login: River Bank Jungle Resort logged in.', '2025-01-10 10:51:41', 1, 1, '::1'),
+(2312, 'Offers [dyna]Data has added successfully.', '2025-01-10 10:53:02', 1, 3, '::1'),
+(2313, 'Offers [Multi] Edit Successfully', '2025-01-10 11:00:14', 1, 4, '::1'),
+(2314, 'Offers [Multi] Edit Successfully', '2025-01-10 11:01:23', 1, 4, '::1'),
+(2315, 'Offers [Multi] Edit Successfully', '2025-01-10 11:01:40', 1, 4, '::1'),
+(2316, 'Offerss  [Multi]Data has deleted successfully.', '2025-01-10 11:01:49', 1, 6, '::1'),
+(2317, 'Offers  [Multi]Data has deleted successfully.', '2025-01-10 11:01:49', 1, 6, '::1'),
+(2318, 'Offers [Dynamic] Edit Successfully', '2025-01-10 11:02:02', 1, 4, '::1'),
+(2319, 'Offers [Dynamica] Edit Successfully', '2025-01-10 11:02:23', 1, 4, '::1'),
+(2320, 'Offers [Dynamic] Edit Successfully', '2025-01-10 11:02:28', 1, 4, '::1'),
+(2321, 'Login: River Bank Jungle Resort logged in.', '2025-01-10 11:20:24', 1, 1, '::1'),
+(2322, 'Offers [dyna] Edit Successfully', '2025-01-10 11:26:45', 1, 4, '::1'),
+(2323, 'Offers [dyna] Edit Successfully', '2025-01-10 11:31:23', 1, 4, '::1'),
+(2324, 'Offers [dyna] Edit Successfully', '2025-01-10 11:35:27', 1, 4, '::1'),
+(2325, 'Offers [dyna] Edit Successfully', '2025-01-10 11:36:47', 1, 4, '::1'),
+(2326, 'Offers [dyna] Edit Successfully', '2025-01-10 11:37:06', 1, 4, '::1'),
+(2327, 'Offers [dyna] Edit Successfully', '2025-01-10 11:42:18', 1, 4, '::1'),
+(2328, 'Offers [dyna] Edit Successfully', '2025-01-10 11:43:00', 1, 4, '::1'),
+(2329, 'Offers [dyna] Edit Successfully', '2025-01-10 11:49:44', 1, 4, '::1'),
+(2330, 'Login: River Bank Jungle Resort logged in.', '2025-01-10 11:49:52', 1, 1, '::1'),
+(2331, 'Offers [dyna] Edit Successfully', '2025-01-10 11:51:45', 1, 4, '::1'),
+(2332, 'Offers [dyna] Edit Successfully', '2025-01-10 11:52:25', 1, 4, '::1'),
+(2333, 'Offers [dyna] Edit Successfully', '2025-01-10 11:55:24', 1, 4, '::1'),
+(2334, 'Offers [dyna] Edit Successfully', '2025-01-10 11:55:43', 1, 4, '::1'),
+(2335, 'Offers [dyna] Edit Successfully', '2025-01-10 11:55:55', 1, 4, '::1'),
+(2336, 'Offers [dyna] Edit Successfully', '2025-01-10 11:56:17', 1, 4, '::1'),
+(2337, 'Offers [dyna] Edit Successfully', '2025-01-10 12:07:52', 1, 4, '::1'),
+(2338, 'Offers [dyna] Edit Successfully', '2025-01-10 12:09:39', 1, 4, '::1'),
+(2339, 'Offers [dyna] Edit Successfully', '2025-01-10 12:09:50', 1, 4, '::1'),
+(2340, 'Offers [dyna] Edit Successfully', '2025-01-10 12:12:30', 1, 4, '::1'),
+(2341, 'Offers [dyna] Edit Successfully', '2025-01-10 12:12:53', 1, 4, '::1'),
+(2342, 'Offers [dyna] Edit Successfully', '2025-01-10 12:13:03', 1, 4, '::1'),
+(2343, 'Offers [dyna] Edit Successfully', '2025-01-10 12:13:15', 1, 4, '::1'),
+(2344, 'Offers [dyna] Edit Successfully', '2025-01-10 12:13:22', 1, 4, '::1'),
+(2345, 'Offers [Mumlti]Data has added successfully.', '2025-01-10 12:16:59', 1, 3, '::1'),
+(2346, 'Offers [None]Data has added successfully.', '2025-01-10 12:17:41', 1, 3, '::1'),
+(2347, 'Offers [None] Edit Successfully', '2025-01-10 12:18:39', 1, 4, '::1'),
+(2348, 'Offers [Fixed]Data has added successfully.', '2025-01-10 12:19:22', 1, 3, '::1'),
+(2349, 'Offers [Fixed] Edit Successfully', '2025-01-10 12:19:41', 1, 4, '::1'),
+(2350, 'Offers [default]Data has added successfully.', '2025-01-10 12:21:25', 1, 3, '::1'),
+(2351, 'Offers [Fixed] Edit Successfully', '2025-01-10 12:22:20', 1, 4, '::1'),
+(2352, 'Offers [Fixed] Edit Successfully', '2025-01-10 12:22:40', 1, 4, '::1'),
+(2353, 'Offers [Fixed] Edit Successfully', '2025-01-10 12:30:20', 1, 4, '::1'),
+(2354, 'Offers [Fixed] Edit Successfully', '2025-01-10 12:39:24', 1, 4, '::1'),
+(2355, 'Offers  [default]Data has deleted successfully.', '2025-01-10 12:50:55', 1, 6, '::1'),
+(2356, 'Offers  [Fixed]Data has deleted successfully.', '2025-01-10 12:50:55', 1, 6, '::1'),
+(2357, 'Offers  [None]Data has deleted successfully.', '2025-01-10 12:50:55', 1, 6, '::1'),
+(2358, 'Offers  [Mumlti]Data has deleted successfully.', '2025-01-10 12:50:55', 1, 6, '::1'),
+(2359, 'Offers  [dyna]Data has deleted successfully.', '2025-01-10 12:50:55', 1, 6, '::1'),
+(2360, 'Offers  [Dynamic]Data has deleted successfully.', '2025-01-10 12:50:55', 1, 6, '::1'),
+(2361, 'Offers [Fixed]Data has added successfully.', '2025-01-10 12:52:25', 1, 3, '::1'),
+(2362, 'Offers [Dynamic]Data has added successfully.', '2025-01-10 12:53:20', 1, 3, '::1'),
+(2363, 'Offers [multi]Data has added successfully.', '2025-01-10 12:53:58', 1, 3, '::1'),
+(2364, 'Offers [expired]Data has added successfully.', '2025-01-10 12:55:06', 1, 3, '::1'),
+(2365, 'Offers [defaut image]Data has added successfully.', '2025-01-10 12:57:36', 1, 3, '::1'),
+(2366, 'Offers [Fixed1]Data has added successfully.', '2025-01-10 13:06:35', 1, 3, '::1'),
+(2367, 'Offers [Dynamic2]Data has added successfully.', '2025-01-10 13:07:45', 1, 3, '::1'),
+(2368, 'Offers [Dynamic2] Edit Successfully', '2025-01-10 13:08:42', 1, 4, '::1'),
+(2369, 'Offers [Muoti]Data has added successfully.', '2025-01-10 13:09:23', 1, 3, '::1'),
+(2370, 'Offers [none2]Data has added successfully.', '2025-01-10 13:10:05', 1, 3, '::1'),
+(2371, 'Offers [fad]Data has added successfully.', '2025-01-10 13:15:55', 1, 3, '::1'),
+(2372, 'Offers [Muoti] Edit Successfully', '2025-01-10 13:16:43', 1, 4, '::1'),
+(2373, 'Offers [Muoti] Edit Successfully', '2025-01-10 13:17:20', 1, 4, '::1'),
+(2374, 'Offers [Muoti] Edit Successfully', '2025-01-10 13:18:01', 1, 4, '::1'),
+(2375, 'Offers [Dynamic2] Edit Successfully', '2025-01-10 13:18:12', 1, 4, '::1'),
+(2376, 'Offers [Dynamic2] Edit Successfully', '2025-01-10 13:18:19', 1, 4, '::1'),
+(2377, 'Offers [Muoti] Edit Successfully', '2025-01-10 13:19:07', 1, 4, '::1'),
+(2378, 'Offers [Dynamic2] Edit Successfully', '2025-01-10 13:19:24', 1, 4, '::1'),
+(2379, 'Offers [Dynamic2] Edit Successfully', '2025-01-10 13:19:54', 1, 4, '::1'),
+(2380, 'Offers [expired] Edit Successfully', '2025-01-10 13:20:38', 1, 4, '::1'),
+(2381, 'Offers [none2] Edit Successfully', '2025-01-10 13:33:06', 1, 4, '::1'),
+(2382, 'Offers [none2] Edit Successfully', '2025-01-10 13:33:29', 1, 4, '::1'),
+(2383, 'Offers [none2] Edit Successfully', '2025-01-10 13:33:42', 1, 4, '::1'),
+(2384, 'Offers [none2] Edit Successfully', '2025-01-10 13:42:36', 1, 4, '::1'),
+(2385, 'Offers [none2] Edit Successfully', '2025-01-10 13:43:20', 1, 4, '::1'),
+(2386, 'Login: River Bank Jungle Resort logged in.', '2025-01-10 14:52:44', 1, 1, '::1'),
+(2387, 'Offers [none22] Edit Successfully', '2025-01-10 14:56:18', 1, 4, '::1'),
+(2388, 'Offers [none22ss] Edit Successfully', '2025-01-10 15:10:11', 1, 4, '::1'),
+(2389, 'Offers [none22ss] Edit Successfully', '2025-01-10 15:11:31', 1, 4, '::1'),
+(2390, 'Offers [none22ssasdsa] Edit Successfully', '2025-01-10 15:11:45', 1, 4, '::1'),
+(2391, 'Login: River Bank Jungle Resort logged in.', '2025-01-13 11:39:46', 1, 1, '::1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_logs_action`
+--
+
+CREATE TABLE `tbl_logs_action` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `icon` varchar(100) NOT NULL,
+  `bgcolor` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_logs_action`
+--
+
+INSERT INTO `tbl_logs_action` (`id`, `title`, `icon`, `bgcolor`) VALUES
+(1, 'Login', 'icon-sign-in', 'bg-blue'),
+(2, 'Logout', 'icon-sign-out', 'primary-bg'),
+(3, 'Add', 'icon-plus-circle', 'bg-green'),
+(4, 'Edit', 'icon-edit', 'bg-blue-alt'),
+(5, 'Copy', 'icon-copy', 'ui-state-default'),
+(6, 'Delete', 'icon-clock-os-circle', 'bg-red');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_mainservices`
+--
+
+CREATE TABLE `tbl_mainservices` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `sub_title` text NOT NULL,
+  `content` text NOT NULL,
+  `linktype` tinyint(1) NOT NULL DEFAULT 0,
+  `linksrc` tinytext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `meta_title` tinytext NOT NULL,
+  `meta_keywords` varchar(250) NOT NULL,
+  `meta_description` varchar(250) NOT NULL,
+  `type` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `modified_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `homepage` int(11) NOT NULL DEFAULT 0,
+  `image` blob NOT NULL,
+  `date` varchar(100) NOT NULL,
+  `category` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_mainservices`
+--
+
+INSERT INTO `tbl_mainservices` (`id`, `parent_id`, `slug`, `title`, `sub_title`, `content`, `linktype`, `linksrc`, `status`, `meta_title`, `meta_keywords`, `meta_description`, `type`, `added_date`, `modified_date`, `sortorder`, `homepage`, `image`, `date`, `category`) VALUES
+(1, 0, '', 'Recreation', ' Swimming Pool & Yoga', '', 0, 'recreation', 1, '', '', '', 0, '2024-07-03 10:39:50', '2024-07-07 18:25:25', 1, 0, 0x613a313a7b693a303b733a32303a2262564542432d72656372656174696f6e2e6a7067223b7d, '', ''),
+(2, 0, '', 'Sundowner', 'A unique experience with the local ecosystem', '', 0, 'experience#sundowner', 1, '', '', '', 0, '2024-07-03 10:41:24', '2024-07-11 16:27:16', 2, 0, 0x613a313a7b693a303b733a31393a223378506f382d73756e646f776e65722e6a7067223b7d, '', ''),
+(3, 0, '', 'Canoeing Safari', 'A unique experience with the local ecosystem', '', 0, 'experience#canoe_safari', 1, '', '', '', 0, '2024-07-03 10:41:37', '2024-07-11 16:28:02', 3, 0, 0x613a313a7b693a303b733a31383a22364172536a2d63616e6f65696e672e6a7067223b7d, '', ''),
+(4, 0, '', 'Bird Gazing', 'A unique experience with the local ecosystem', '', 0, 'experience#bird_gazing', 1, '', '', '', 0, '2024-07-03 10:41:50', '2024-07-11 16:28:22', 4, 0, 0x613a313a7b693a303b733a31343a224e6c5270742d626972642e6a7067223b7d, '', ''),
+(5, 0, '', 'Crocodile Breeding', 'A unique experience with the local ecosystem', '', 0, 'experience#crocodile_breeding', 1, '', '', '', 0, '2024-07-03 10:42:03', '2024-07-11 16:28:49', 5, 0, 0x613a313a7b693a303b733a31383a2230486831532d6272656564696e672e6a7067223b7d, '', ''),
+(6, 0, '', 'Jeep Safari', 'A unique experience with the local ecosystem', '', 0, 'experience#jeep__safari', 1, '', '', '', 0, '2024-07-03 10:43:02', '2024-07-11 16:29:07', 6, 0, 0x613a313a7b693a303b733a32303a2251457752582d6a6565707361666172692e6a7067223b7d, '', ''),
+(7, 0, '', 'Village Tour', 'A unique experience with the local ecosystem', '', 0, 'experience#village__tour', 1, '', '', '', 0, '2024-07-03 10:43:14', '2024-07-11 16:29:25', 7, 0, 0x613a313a7b693a303b733a32313a227a486833332d76696c6c616765746f75722e6a7067223b7d, '', ''),
+(8, 0, '', 'Jungle Walk', 'A unique experience with the local ecosystem', '', 0, 'experience#jungle__walk', 1, '', '', '', 0, '2024-07-03 10:43:30', '2024-07-11 16:29:46', 8, 0, 0x613a313a7b693a303b733a32303a2262356639792d6a756e676c6577616c6b2e6a7067223b7d, '', ''),
+(9, 0, '', 'Tharu Cultural Dance', 'A unique experience with the local ecosystem', '', 0, 'experience#tharu_culture', 1, '', '', '', 0, '2024-07-03 10:43:47', '2024-07-11 16:30:07', 9, 0, 0x613a313a7b693a303b733a31353a2244434a74692d64616e63652e6a7067223b7d, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_menu`
+--
+
+CREATE TABLE `tbl_menu` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `linksrc` varchar(150) NOT NULL,
+  `parentOf` int(11) NOT NULL DEFAULT 0,
+  `linktype` varchar(10) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `type` int(11) NOT NULL,
+  `icon` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_menu`
+--
+
+INSERT INTO `tbl_menu` (`id`, `name`, `linksrc`, `parentOf`, `linktype`, `status`, `sortorder`, `added_date`, `type`, `icon`) VALUES
+(1, 'Home', 'sustainability-greeneray', 0, '0', 1, 1, '2017-04-24 14:07:49', 1, ''),
+(2, 'About us', 'about-us', 0, '0', 1, 8, '2017-04-24 14:08:02', 2, ''),
+(3, 'Stay', 'rooms-suites', 0, '0', 1, 2, '2017-04-24 14:08:18', 1, ''),
+(4, 'Facilities', 'facilities-list', 0, '0', 1, 9, '2017-04-24 14:08:31', 2, ''),
+(5, 'Gallery', 'gallery-list', 0, '0', 1, 10, '2017-04-24 14:08:44', 2, ''),
+(6, 'Experience', 'experience', 0, '0', 1, 4, '2017-04-24 14:09:14', 1, ''),
+(7, 'Contact', 'contact-us', 0, '0', 1, 11, '2017-04-24 14:09:25', 2, ''),
+(8, 'Villa with Private Plunge Pool', 'villa-with-private-plunge-pool', 3, '0', 1, 10, '2017-04-24 14:09:57', 1, ''),
+(9, 'Super Deluxe Room', 'super-deluxe-room', 3, '0', 1, 9, '2017-04-24 14:10:18', 1, ''),
+(10, 'Deluxe Room', 'deluxe-room', 3, '0', 1, 8, '2017-04-24 14:10:36', 1, ''),
+(11, 'Presidential Suite', 'presidential-suite', 3, '0', 0, 12, '2017-05-04 13:04:47', 1, ''),
+(13, 'Executive Suite', 'executive-suite', 3, '0', 0, 11, '2017-05-04 13:05:40', 1, ''),
+(14, 'Dining', 'dining-bar', 0, '0', 1, 3, '2024-06-11 14:14:46', 1, ''),
+(15, 'Events', 'meeting-events', 0, '0', 1, 6, '2024-06-11 14:16:48', 1, ''),
+(16, 'Recreation', 'recreation', 0, '0', 1, 5, '2024-06-11 14:23:21', 1, ''),
+(17, 'Sustainability', 'sustainability', 0, '0', 1, 7, '2024-06-11 14:25:33', 1, ''),
+(18, 'The Signature Restaurant', 'the-signature-restaurant', 14, '0', 1, 1, '2024-06-14 14:36:24', 1, ''),
+(19, 'Al Fresco Dining', 'al-fresco-dining', 14, '0', 1, 2, '2024-06-14 14:37:00', 1, ''),
+(20, 'Riverside Retreat', 'riverside-retreat', 14, '0', 1, 3, '2024-06-14 14:37:18', 1, ''),
+(21, 'The Classic Bar', 'the-classic-bar', 14, '0', 1, 4, '2024-06-14 14:38:55', 1, ''),
+(25, 'Offer', 'offer-list', 0, '0', 1, 12, '2025-01-09 17:40:52', 2, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_mlink`
+--
+
+CREATE TABLE `tbl_mlink` (
+  `mod_class` varchar(50) NOT NULL,
+  `m_url` tinytext NOT NULL,
+  `act_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_mlink`
+--
+
+INSERT INTO `tbl_mlink` (`mod_class`, `m_url`, `act_id`) VALUES
+('Article', 'new-page', 3),
+('Article', 'about-us', 1),
+('Article', 'shops-and-restaurants', 2),
+('Package', 'rooms-suites', 1),
+('Subpackage', 'deluxe-room', 3),
+('Subpackage', 'super-deluxe-room', 2),
+('Subpackage', 'villa-with-private-plunge-pool', 1),
+('Subpackage', 'executive-suite', 6),
+('Subpackage', 'presidential-suite', 5),
+('Subpackage', 'two-bedroom-ambassador-suite', 4),
+('Article', 'about-us-1', 4),
+('Package', 'events', 2),
+('Article', 'meeting-and-events', 5),
+('Article', 'ace-hotels-introduction', 6),
+('Article', 'sustainability', 7),
+('Article', 'sustainability', 8),
+('Article', 'gallery', 9),
+('Article', 'event', 10),
+('Article', 'experience', 11),
+('Package', 'dining-bar', 3),
+('Subpackage', 'the-signature-restaurant', 7),
+('Subpackage', 'al-fresco-dining', 8),
+('Subpackage', 'riverside-retreat', 9),
+('Subpackage', 'the-classic-bar', 10),
+('Package', 'meeting-events', 4),
+('Subpackage', 'serenity-hall', 11),
+('Subpackage', 'regal-ball-room', 12),
+('Article', 'recreation', 12),
+('Article', 'homepage-about', 13),
+('Article', 'asdasdasdasdasdas', 14),
+('Article', 'huiviyviyvy', 15),
+('Package', 'hjycvyucvyuvy', 5),
+('Article', 'aaaaa', 16);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_modules`
+--
+
+CREATE TABLE `tbl_modules` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(50) NOT NULL,
+  `link` varchar(50) NOT NULL DEFAULT 'dashboard',
+  `mode` varchar(20) NOT NULL,
+  `icon_link` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` date NOT NULL,
+  `properties` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_modules`
+--
+
+INSERT INTO `tbl_modules` (`id`, `parent_id`, `name`, `link`, `mode`, `icon_link`, `status`, `sortorder`, `added_date`, `properties`) VALUES
+(1, 0, 'User Mgmt', 'user/list', 'user', 'icon-users', 1, 1, '0000-00-00', ''),
+(2, 0, 'Menu Mgmt', 'menu/list', 'menu', 'icon-list', 1, 2, '0000-00-00', 'a:1:{s:5:\"level\";s:1:\"3\";}'),
+(3, 0, 'Articles Mgmt', 'articles/list', 'articles', 'icon-adn', 1, 3, '0000-00-00', 'a:2:{s:8:\"imgwidth\";s:3:\"400\";s:9:\"imgheight\";s:3:\"350\";}'),
+(4, 0, 'Slideshow Mgmt', 'slideshow/list', 'slideshow', 'icon-film', 1, 5, '0000-00-00', 'a:2:{s:8:\"imgwidth\";s:4:\"1920\";s:9:\"imgheight\";s:3:\"800\";}'),
+(5, 0, 'Gallery Mgmt', 'gallery/list', 'gallery', 'icon-picture-o', 1, 6, '0000-00-00', 'a:4:{s:8:\"imgwidth\";s:3:\"800\";s:9:\"imgheight\";s:3:\"600\";s:9:\"simgwidth\";s:3:\"400\";s:10:\"simgheight\";s:3:\"350\";}'),
+(6, 0, 'News Mgmt', 'news/list', 'news', 'icon-list-alt', 0, 17, '0000-00-00', 'a:2:{s:8:\"imgwidth\";s:3:\"300\";s:9:\"imgheight\";s:3:\"300\";}'),
+(7, 0, 'Event Mgmt', 'events/list', 'events', 'icon-bullhorn', 0, 8, '0000-00-00', ''),
+(8, 0, 'Advertisement Mgmt', 'advertisement/list', 'advertisement', 'icon-indent', 0, 4, '0000-00-00', 'a:8:{s:9:\"limgwidth\";s:3:\"100\";s:10:\"limgheight\";s:3:\"200\";s:9:\"timgwidth\";s:3:\"300\";s:10:\"timgheight\";s:3:\"400\";s:9:\"rimgwidth\";s:3:\"500\";s:10:\"rimgheight\";s:3:\"600\";s:9:\"bimgwidth\";s:3:\"700\";s:10:\"bimgheight\";s:3:\"800\";}'),
+(9, 0, 'Video Mgmt', 'video/list', 'video', 'icon-hdd-o', 0, 11, '0000-00-00', ''),
+(10, 0, 'Poll Mgmt', 'poll/list', 'poll', 'icon-exchange', 0, 19, '0000-00-00', ''),
+(11, 0, 'Social Link Mgmt', 'social/list', 'social', 'icon-google-plus', 1, 9, '0000-00-00', 'a:2:{s:8:\"imgwidth\";s:2:\"14\";s:9:\"imgheight\";s:2:\"13\";}'),
+(12, 0, 'Setting Mgmt', 'setting/list', 'settings', 'icon-gear', 1, 18, '0000-00-00', ''),
+(13, 12, 'Preference Mgmt', 'preference/list', 'preference', 'icon-gear', 1, 1, '0000-00-00', 'a:4:{s:8:\"imgwidth\";s:2:\"50\";s:9:\"imgheight\";s:2:\"50\";s:9:\"simgwidth\";s:3:\"125\";s:10:\"simgheight\";s:2:\"80\";}'),
+(14, 12, 'Office Info/Location', 'location/list', 'location', 'icon-gear', 1, 2, '0000-00-00', ''),
+(15, 12, 'Modules Mgmt', 'module/list', 'module', 'icon-gear', 0, 3, '0000-00-00', ''),
+(16, 12, 'Properties Mgmt', 'properties/list', 'properties', 'icon-gear', 1, 4, '0000-00-00', ''),
+(17, 0, 'Testimonial', 'testimonial/list', 'testimonial', 'icon-list-alt', 1, 10, '0000-00-00', 'a:2:{s:8:\"imgwidth\";s:3:\"100\";s:9:\"imgheight\";s:3:\"100\";}'),
+(18, 0, 'Subscribers Mgmt', 'subscribers/list', 'subscribers', 'icon-comments', 0, 12, '2015-05-17', ''),
+(19, 0, 'Offers Mgmt', 'offers/list', 'offers', 'icon-tags', 1, 16, '2015-05-20', 'a:4:{s:9:\"imgbwidth\";s:4:\"1520\";s:10:\"imgbheight\";s:3:\"440\";s:8:\"imgwidth\";s:3:\"600\";s:9:\"imgheight\";s:3:\"300\";}'),
+(20, 0, 'Services Mgmt', 'services/list', 'services', 'icon-exchange', 1, 14, '2015-08-09', 'a:2:{s:8:\"imgwidth\";s:2:\"48\";s:9:\"imgheight\";s:2:\"48\";}'),
+(21, 0, 'Movies Mgmt', 'movies/list', 'movies', 'icon-list', 0, 13, '2015-10-30', ''),
+(22, 0, 'Theaters', 'theaters/list', 'theaters', 'icon-film', 0, 15, '2015-11-01', ''),
+(23, 25, 'Package Mgmt', 'package/list', 'package', 'icon-exchange', 1, 2, '2016-06-17', 'a:2:{s:8:\"imgwidth\";s:3:\"400\";s:9:\"imgheight\";s:3:\"350\";}'),
+(24, 25, 'Features Mgmt', 'features/list', 'features', 'icon-gear', 1, 1, '2016-11-16', ''),
+(25, 0, 'Package Mgmt', '', '', 'icon-bullhorn', 1, 7, '2016-11-16', ''),
+(26, 0, 'Main service Mgt', 'mservices/list', 'mservice', 'icon-list', 1, 6, '2023-09-01', 'a:2:{s:8:\"imgwidth\";s:2:\"12\";s:9:\"imgheight\";s:2:\"12\";}'),
+(27, 0, 'FAQ', 'faq/list', 'faq', 'icon-list', 0, 8, '2023-08-31', ''),
+(28, 0, 'Popup', 'popup/list', 'popup', 'icon-list', 1, 12, '2020-02-13', 'a:2:{s:8:\"imgwidth\";s:3:\"100\";s:9:\"imgheight\";s:3:\"300\";}'),
+(29, 0, 'Booking Info', 'bookinginfo/list', 'bookinginfo', 'icon-indent', 0, 10, '2025-01-09', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_movies`
+--
+
+CREATE TABLE `tbl_movies` (
+  `id` int(11) NOT NULL,
+  `slug` tinytext NOT NULL,
+  `title` tinytext NOT NULL,
+  `image` varchar(250) NOT NULL,
+  `banner_image` varchar(250) NOT NULL,
+  `release_date` varchar(50) NOT NULL,
+  `server_name` varchar(100) NOT NULL,
+  `dta_service` tinyint(1) NOT NULL DEFAULT 0,
+  `youtube_video` text NOT NULL,
+  `brief` tinytext NOT NULL,
+  `content` text NOT NULL,
+  `movie_type` tinyint(1) NOT NULL DEFAULT 0,
+  `action_type` tinyint(1) NOT NULL DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `meta_keywords` tinytext NOT NULL,
+  `meta_description` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_movies`
+--
+
+INSERT INTO `tbl_movies` (`id`, `slug`, `title`, `image`, `banner_image`, `release_date`, `server_name`, `dta_service`, `youtube_video`, `brief`, `content`, `movie_type`, `action_type`, `status`, `sortorder`, `added_date`, `meta_keywords`, `meta_description`) VALUES
+(1, 'katti-batti', 'Katti Batti', 'nBRNS-1.jpg', 'Pee8o-katti_bate.jpg', '2015-09-18', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=a23GO0NXOtg\";}', 'Katti Batti is an Indian romantic comedy film directed by Nikhil Advan', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE&nbsp;</h4>\r\n	<p class=\"text-justify\">\r\n		Katti Batti is an Indian romantic comedy film directed by Nikhil Advani and produced by Siddharth Roy Kapur under the banner of UTV Motion Pictures. The film stars Kangana Ranaut and Imran Khan in the lead roles. The first look of the movie was revealed on 12 June 2015, and the trailer of the movie was released on 14 June 2015.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;18 September 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 3, 1, 1, 8, '2015-11-01 16:17:59', 'keyword', 'Description'),
+(2, 'everest', 'Everest', 'vtJOH-2.jpg', 'nL4Vh-everest.jpg', '2015-09-18', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=5ZQVpPiOji0\";}', 'movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Everest is a 2015 survival film directed by Baltasar Korm&aacute;kur and written by William Nicholson and Simon Beaufoy. The film stars are Jason Clarke, Josh Brolin, John Hawkes, Robin Wright, Michael Kelly, Sam Worthington, Keira Knightley, Emily Watson, and Jake Gyllenhaal.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:18th September 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Nikhil Upreti, Anu Shah, Nagendra Rijal, Robin Hood Sen, Ratan Daruwalla</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Action</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Ratan Daruwalla</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nikhil Upreti (Debut)</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n', 2, 3, 1, 1, '2015-11-01 16:18:56', '', ''),
+(3, 'singh-is-bling', 'Singh is Bling', '4j70E-4.jpg', 'Es8gp-singh-is-bling-hindi-movie-review-rating.jpg', '2015-10-02', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=J6HIAfNxzQk\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Singh Is Bling is a 2015 Bollywood action comedy film directed by Prabhu Deva and produced by Ashvini Yardi and Jayantilal Gada under the banners Grazing Goat Pictures and Pen India Pvt. Ltd. The film features Akshay Kumar, Amy Jackson, Lara Dutta and Kay Kay Menon in lead roles.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: 2nd October 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 3, 3, 1, 2, '2015-11-01 16:19:33', '', ''),
+(4, 'shaandaar', 'Shaandaar', 'mvssx-5.jpg', '01Krg-shaandaar-movie-trailer-shahid-kapoor-alia-bhatt-0001.jpg', '2015-10-22', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=k99-vMPh3-A\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Shaandaar (English: Fabulous/Grand) is an Indian romantic comedy film, directed by Vikas Bahl and produced by Anurag Kashyap and Vikramaditya Motwane. It stars Alia Bhatt and Shahid Kapoor in lead roles, with Pankaj Kapur and Sanjay Kapoor in supporting roles. The Times of India described Shaandar as &quot;India&#39;s first destination wedding film&quot;. Principal photography began in August 2014 in Leeds, and the film is released on 22 October 2015 and coinciding with Dussehra.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:22nd October 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 3, 1, 1, 5, '2015-11-01 16:20:25', '', ''),
+(5, 'chankhe-shankhe-pankhe', 'Chankhe Shankhe Pankhe', 'EO1Od-3.jpg', 'gsxpz-chankhe-shankhe-pankhe1.jpg', '2015-11-02', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=GTca2iKeajo\";}', 'movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE CHANKHE SANKHE PANKHE</h4>\r\n	<p class=\"text-justify\">\r\n		Chankhe Sankhe Pankhe is yet another new nepali movie of 2015 which will be the 6th movie direction by director Sudarshan Thapa. Sudarshan Thapa&#39;s previous movie include Mero Auta Sathi Chha, Ke Yo Maya Ho, Mero Love Story, Dhanda and Madhumas. The three characters in the movie i.e. Chankhe, Sankhe and Pankhe thinks that they are useless for the country and society and thus they try to commit suicide. The movie focuses on the fact that if given the right counselling to such people, then the suicidal tendency can be reduced.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: 25th September 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 1, 1, 1, 4, '2015-11-01 16:40:50', '', ''),
+(6, 'batman-v-superman-dawn-of-justice', 'Batman v Superman: Dawn of Justice', 'fhDbi-dawn_of_justice_by_jprart-d85mie6.jpg', 'vf8QA-batman-vs-superman.jpg', '2016-03-25', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=0WWzgGyAH6Y\";}', 'Coming soon', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Fearing the actions of a god-like Super Hero left unchecked, Gotham City&#39;s own formidable, forceful vigilante takes on Metropolis&#39; most revered, modern-day savior, while the world wrestles with what sort of hero it really needs. And with Batman and Superman at war with one another, a new threat quickly arises, putting mankind in greater danger than it&#39;s ever known before.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: 25 March 2016</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 2, 1, 1, 6, '2015-11-05 14:47:52', '', ''),
+(7, 'spectre', 'Spectre', 'N65D6-spectre-poster-black-white.jpg', 'ZTWHk-spectre-007-banner-compressed.jpg', '2015-11-06', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=LTDaET-JweU\";}', 'Spectre (2015) is the twenty-fourth James Bond film', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE&nbsp;</h4>\r\n	<p class=\"text-justify\">\r\n		Spectre (2015) is the twenty-fourth James Bond film produced by Eon Productions. It features Daniel Craig in his fourth performance as James Bond, and Christoph Waltz as Ernst Stavro Blofeld, with the film marking the character&#39;s re-introduction into the series.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;6 November 2015&nbsp;</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n', 2, 1, 1, 7, '2015-11-05 15:05:17', '', ''),
+(9, 'kis-kis-ko-pyaar-karoon', 'Kis Kis Ko Pyaar Karoon', 'pkB6u-kis-kisko-pyaar-karoon.jpg', 'qN1gm-maxresdefault.jpg', '2015-09-25', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=Xhmej50EGM8\";}', 'Kis Kis Ko Pyaar Karoon', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE&nbsp;</h4>\r\n	<p class=\"text-justify\">\r\n		Kis Kisko Pyaar Karoon (English translation: &quot;Whom Should I Love&quot;) is an Indian romantic comedy film directed by director Abbas Mustan. Indian stand-up comedian Kapil Sharma will make his Bollywood debut with this movie</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;25 September 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 3, 1, 1, 9, '2015-11-08 15:38:22', '', ''),
+(10, 'adhkatti', 'Adhkatti', '7jHz1-adhkatti.jpg', 'hC6UC-adhkatti-first-poster.jpg', '2015-10-20', 'dcn', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=7lKAbpFgRrs\";}', 'movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Adhkatti is the new nepali movie directed by the debut director and media personality Subrat Acharya. The movie is a comedy where some illiterate youths dream of earning money. The trailer of the movie has been recently released and is just admirable. Actress Namrata Shrestha will have a special appearance in the movie. Other actors/actress in the movie include Gaurav Pahari, Rista Basnet, Ashishma Nakarmi, Wilson Bikram Rai etc. Gaurav Pahari has been known through his previous movies like Manjari (2013) - Debut, Hostel (2013), Utsav (2014) etc.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: October 20 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 1, 1, 1, 10, '2015-11-08 15:49:07', '', ''),
+(11, 'nagarik', 'Nagarik', 'hkK1L-milind-soman-nagrik-movie-poster.jpg', 'KQ8Ff-marathi.jpg', '2015-11-08', 'dcn', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=dCXZT1GxXGI\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<h4 class=\"text-Justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">Nagrik is a very technically sound film; the photography, sound mixing and editing, all are fantastic. The irony of many situations has been beautifully captured and so has everything that goes on in the belly of Mumbai. It exposes corrupt builders helping corrupt politicians and vice-versa, the plight of poor villagers lured to the city in search of work and the fact that everyone knows everything going on but no one wants to talk about it.</span></h4>\r\n	<p>\r\n		&nbsp;</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:12th June 2015 [Jestha 29, 2072 B.S]</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n	\r\n', 3, 1, 1, 11, '2015-11-08 15:51:53', '', ''),
+(12, 'pardeshi', 'Pardeshi', 'TE3J6-pardeshi.jpg', 'DJjkN-4.jpg', '2015-10-13', 'DCN', 0, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=jbTpTIX1En4\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		&lsquo;Pardeshi&rsquo; is a presentation of Oscar Cine Arts &ndash; a group of Oscar. The 1998 release movie is produced by the director Deepak Alok (late).The child artists in the movie are Sanjog Koirala and Wilson Rai.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: Oct 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n\r\n', 1, 1, 1, 12, '2015-11-08 16:30:11', '', ''),
+(13, 'pyar-ka-punchnama-2', 'Pyar ka punchnama 2', 'KArZs-images.jpg', 'Ww0PG-pyaar-ka-punchnama-2-story-movie-cast-wiki-trailer-songs-list.jpg', '2015-10-16', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=tC-HGUhxyyc\";}', 'Pyaar Ka Punchnama 2 is a 2015 Hindi film. It is a sequel to the 2011 film Pyaar Ka Punchnama. ', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Pyaar Ka Punchnama 2 is a 2015 Hindi film. It is a sequel to the 2011 film Pyaar Ka Punchnama. The sequel is directed by Luv Ranjan and produced by Viacom 18 Motion Pictures and Panorama Studios Production. The film stars Kartik Aaryan as gogo, Omkar Kapoor as Thakur, Sunny Nijar as Chauka, Sonnalli Seygall as Supriya, Ishita Raj Sharma as Kusum and Nushrat Bharucha as Chikoo</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: 16 October 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 3, 1, 1, 13, '2015-11-08 16:41:54', '', ''),
+(14, 'wada-no-6', 'wada no 6', 'qFt2x-68396wada-number-6-poster.jpg', 'TmHan-maxresdefault.jpg', '2015-09-18', 'DCN', 0, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=afE0vPVqtjw\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE&nbsp;</h4>\r\n	<p class=\"text-justify\">\r\n		Nepali comedy movie staring Priyanka Karki, Dayahang Rai, Jitu Nepal, Sitaram Kattel and Kedar Ghimire.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: Sep 18, 2072</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Black Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Khagendra Singh Bania</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nischal Basnet</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 1, 1, 1, 14, '2015-11-08 16:50:37', '', ''),
+(15, 'shushree', 'Shushree', 'sg5sT-sushri-nepali-movie-poster.jpg', 'uiQPf-sushri-nepali-movie-poster.jpg', '2015-10-20', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=9MOg5GkzpTk\";}', 'movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Known as Nepali Angelina Jolie - Ashika Tamang is debuting via the new nepali movie Sushree starring Aaryan Sigdel. Sushree is directed by Shivam Adhikari and is made under the actress Ashika&#39;s own home production - Ashika Films. Aaryan Sigdel will be seen in a comedy role in this movie for the first time in his acting career.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: October 20, 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<table>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<strong>Cast </strong></td>\r\n				<td>\r\n					Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Genre </strong></td>\r\n				<td>\r\n					Black Comedy</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Produced By </strong></td>\r\n				<td>\r\n					Khagendra Singh Bania</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Directed By </strong></td>\r\n				<td>\r\n					Nischal Basnet</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>\r\n', 1, 1, 1, 15, '2015-11-08 17:03:22', '', ''),
+(16, 'main-aur-charles', 'Main Aur Charles', 'ooV49-main-aur-charlies-motion-poster.jpg', 'mGvzV-main-aur-charles-poster.jpg', '2015-10-30', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=wOF9MlEOfuE\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Main aur Charles is a 2015 bollywood drama film, written and directed by Prawaal Raman and produced by Cynozure Networkz. This film is a fictitious thriller, inspired by true events and told from the perspective of respected Indian cop, Amod Kanth who handled the notorious case of serial killer, Charles Sobhraj.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: October&nbsp;30,&nbsp;2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<table>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<strong>Cast </strong></td>\r\n				<td>\r\n					Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Genre </strong></td>\r\n				<td>\r\n					Black Comedy</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Produced By </strong></td>\r\n				<td>\r\n					Khagendra Singh Bania</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Directed By </strong></td>\r\n				<td>\r\n					Nischal Basnet</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>\r\n', 3, 1, 1, 3, '2015-11-08 17:11:58', '', ''),
+(19, 'welcome-back', 'Welcome Back', 'EIUKt-welcome-back-movie-posters-6-768x1024.jpg', 'tblDM-welcome-back-poster-review.jpg', '2015-09-04', 'dcn', 0, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=SIKfSPbsuyw\";}', 'Movie', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		Welcome Back is a Indian action comedy film directed by Anees Bazmee and produced by Firoz Nadiadwala, released in 2015. It features an ensemble cast that includes Anil Kapoor, Nana Patekar, John Abraham, Shruti Haasan, Paresh Rawal, Dimple Kapadia and Naseeruddin Shah.While Kapoor, Patekar and Rawal have reprised their roles from the 2007 film Welcome, Abraham and Hassan are new additions to the lead cast.[8] Made on a budget of US$16 million, the film was largely shot in and around Dubai, United Arab Emirates.</p>\r\n	<h4 class=\"text-center\">\r\n		Release Date: 4 September 2015</h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Anil Kapoor, Nana Patekar, John Abraham</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Firoz Nadiadwala</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Anees Bazmee</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n', 3, 1, 0, 16, '2015-11-08 17:51:33', '', ''),
+(20, 'resham-filili', 'Resham Filili', 'AuAwN-resham-filili-poster.jpg', 'XKFHO-nepali-movie-resham-filili-title-song.jpg', '2015-08-28', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=sbxoVp6FVCo\";}', 'Resham filili is a Nepali movie written and directed by Pranab Joshi and produced by Madhav Wagle. The Resham FIlili song title “Jalma” had been viral on various social networks and YouTube. ', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">Resham filili is a Nepali movie written and directed by Pranab Joshi and produced by Madhav Wagle. The Resham FIlili song title &ldquo;Jalma&rdquo; had been viral on various social networks and YouTube. </span></p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">August 28, 2015</span></h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Vinay Shrestha, Kameshwor Chaurasia, Menuka Pradhan, Shishir Bangdel, Karma Arun Regmi</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Comedy</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Madhav Wagle</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Pranab Joshi</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	\r\n</div>\r\n', 1, 1, 1, 17, '2015-11-10 15:20:29', '', ''),
+(21, 'bajrangi-bhaijaan', 'Bajrangi Bhaijaan', '9PQdA-05-bajrang-bhaijaan.jpg', '71kfX-bajrangi-bhaijaan-2015-movie-poster.jpg', '2015-07-15', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=vyX4toD395U\";}', 'A man with a magnanimous spirit tries to take a young mute Pakistani girl back to her homeland to reunite her with her family', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">A man with a magnanimous spirit tries to take a young mute Pakistani girl back to her homeland to reunite her with her family</span></p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">July 17, 2015</span></h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<div class=\"col-lg-4 padd_btm\">\r\n		<table>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<strong>Cast </strong></td>\r\n				<td>\r\n					Salman Khan, Kareena Kapoor, Harshaali Malhotra</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Genre </strong></td>\r\n				<td>\r\n					Indian comedy-drama</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Produced By </strong></td>\r\n				<td>\r\n					Salman Khan, Rockline Venkatesh</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Directed By </strong></td>\r\n				<td>\r\n					Kabir Khan</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>', 3, 2, 1, 18, '2015-11-10 15:27:13', '', ''),
+(22, 'hostel-returns', 'Hostel Returns', 'JnDjm-11011670_952889374745230_9211981824569295012_n_150633.jpg', 'A1PuX-event_305.jpg', '2015-08-21', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=S3GIWlRYyjM\";}', 'Hostel Returns is a 2015 Nepalese teen romance film directed by Suraj Bhusal', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">Hostel Returns is a 2015 Nepalese teen romance film directed by Suraj Bhusal and produced by Sunil Rawal under Durgish Films banner. This film is a sequel to 2013 film Hostel and is based on the hostel life of civil engineering students</span></p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">August 21, 2015</span></h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<table>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<strong>Cast </strong></td>\r\n				<td>\r\n					Swastima Khadka, Sushil Shrestha, Sashi Shrestha</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Genre </strong></td>\r\n				<td>\r\n					Romantic, Comedy</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Produced By </strong></td>\r\n				<td>\r\n					Sunil Raval</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Directed By </strong></td>\r\n				<td>\r\n					Suraj Bhusal</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>', 1, 1, 1, 19, '2015-11-10 15:34:07', '', ''),
+(23, 'baazigar', 'Baazigar', 'sEFXf-baazigar-copy.jpg', 'Fy9ih-baazigar-bhojpurimovieshd.jpg', '2015-11-14', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=cGmx_xUrFmo\";}', ' Its an action love story bhojpuri film, starring Pawan Singh, Ravi Kishan, Subhi Sharma and Ananya Sarkaar in the main lead roles.', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">Tirupati Balaji Motion Pictures presents upcoming bhojpuri movie &#39;Baazigar&#39;, Its an action love story bhojpuri film, starring Pawan Singh, Ravi Kishan, Subhi Sharma and Ananya Sarkaar in the main lead roles. The movie is directed by Sanoj Mishra and produced by Mahendra Pawan Singh.</span></p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">November 14, 2015</span></h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<table>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<strong>Cast </strong></td>\r\n				<td>\r\n					Pawan Singh, Ravi Kishan, Subhi Sharma, Ananya Sarkaar</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Genre </strong></td>\r\n				<td>\r\n					Action, Love story</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Produced By </strong></td>\r\n				<td>\r\n					Mahendra Pawan Singh</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Directed By </strong></td>\r\n				<td>\r\n					Sanoj Mishra</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>', 3, 2, 1, 20, '2015-11-10 15:41:11', '', ''),
+(24, 'talakjung-vs-tulke', 'Talakjung Vs Tulke', 'RO5a4-talakjung-vs-tulke-posters-1.jpg', 'mhnnh-event_261.jpg', '2015-10-31', 'DCN', 1, 'a:2:{i:0;s:43:\"https://www.youtube.com/watch?v=EweSy8ND6Us\";i:1;s:43:\"https://www.youtube.com/watch?v=Zl-JXV0JTzw\";}', 'Tulké is a day-laborer in a Nepalese mountain village. He struggles to reclaim his lost aristocratic identity, while a violent revolution disrupts every aspect of village life.', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">Tulk&eacute; is a day-laborer in a Nepalese mountain village. He struggles to reclaim his lost aristocratic identity, while a violent revolution disrupts every aspect of village life.</span></p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">October 31, 2014</span></h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<table>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<strong>Cast </strong></td>\r\n				<td>\r\n					Khagendra Lamichhane, Dayahang Rai, Reecha Sharma, Prakash Ghimere</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Genre </strong></td>\r\n				<td>\r\n					Black Comedy</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Produced By </strong></td>\r\n				<td>\r\n					Khagendra Singh Bania</td>\r\n			</tr>\r\n			<tr>\r\n				<td>\r\n					<strong>Directed By </strong></td>\r\n				<td>\r\n					Nischal Basnet</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 1, 2, 1, 21, '2015-11-10 16:32:27', '', ''),
+(25, 'bhairab', 'Bhairab', '0VEyx-214x31737870bhairav-nepali-movie-poster.jpg', '842Wj-maxresdefault.jpg', '2015-08-28', 'DCN', 1, 'a:1:{i:0;s:43:\"https://www.youtube.com/watch?v=d2_rTS26hvA\";}', 'The movie is based on the situation that\'s going on in the border area of Nepal and its the story of a policeman. - See more at: http://nepalimovieworld.blogspot.com/2015/05/bhairav.html#sthash.kGoJfozv.dpuf', '<div class=\"row yellowh4\">\r\n	<h4 class=\"text-center\">\r\n		ABOUT THE MOVIE</h4>\r\n	<p class=\"text-justify\">\r\n		<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">Nepali Actor Nikhil Upreti has not been seen in any movies for nearly the past 5 years. Now he is back with the new nepali movie action movie Bhairav with his own direction and production.The movie is based on the situation that&#39;s going on in the border area of Nepal and its the story of a policeman.</span></p>\r\n	<h4 class=\"text-center\">\r\n		Release Date:&nbsp;<span style=\"font-family: arial, sans-serif; font-size: 13px; line-height: 14.6545px;\">August 28, 2015</span></h4>\r\n</div>\r\n<div class=\"row details-list yellowh4\">\r\n	<h4>\r\n		Details</h4>\r\n	<div>\r\n		<table>\r\n			<tbody>\r\n				<tr>\r\n					<td>\r\n						<strong>Cast </strong></td>\r\n					<td>\r\n						Nikhil Upreti, Anu Shah, Nagendra Rijal, Robin Hood Sen, Ratan Daruwalla</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Genre </strong></td>\r\n					<td>\r\n						Action</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Produced By </strong></td>\r\n					<td>\r\n						Ratan Daruwalla</td>\r\n				</tr>\r\n				<tr>\r\n					<td>\r\n						<strong>Directed By </strong></td>\r\n					<td>\r\n						Nikhil Upreti (Debut)</td>\r\n				</tr>\r\n			</tbody>\r\n		</table>\r\n	</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 4, 3, 1, 22, '2015-11-10 16:41:17', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_movie_theaters`
+--
+
+CREATE TABLE `tbl_movie_theaters` (
+  `theaters_id` int(11) NOT NULL,
+  `movies_id` int(11) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_movie_theaters`
+--
+
+INSERT INTO `tbl_movie_theaters` (`theaters_id`, `movies_id`, `type`) VALUES
+(1, 2, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 3, 2),
+(1, 4, 2),
+(3, 2, 1),
+(3, 5, 1),
+(3, 4, 2),
+(4, 1, 1),
+(4, 2, 1),
+(4, 5, 1),
+(4, 3, 2),
+(4, 4, 2),
+(9, 2, 1),
+(9, 3, 2),
+(9, 5, 1),
+(9, 6, 1),
+(10, 2, 1),
+(10, 5, 1),
+(10, 4, 2),
+(11, 2, 1),
+(11, 4, 2),
+(12, 6, 1),
+(12, 3, 2),
+(13, 9, 1),
+(14, 10, 1),
+(14, 11, 1),
+(15, 10, 1),
+(16, 12, 1),
+(17, 11, 1),
+(18, 12, 1),
+(19, 12, 1),
+(20, 12, 1),
+(13, 19, 1),
+(13, 17, 1),
+(13, 16, 1),
+(13, 12, 1),
+(13, 3, 2),
+(23, 12, 1),
+(24, 10, 1),
+(25, 12, 1),
+(26, 12, 1),
+(29, 12, 1),
+(30, 12, 1),
+(31, 12, 1),
+(31, 11, 1),
+(32, 12, 1),
+(33, 11, 1),
+(33, 16, 1),
+(33, 10, 1),
+(34, 16, 1),
+(34, 10, 1),
+(35, 12, 1),
+(36, 10, 1),
+(37, 12, 1),
+(38, 11, 1),
+(39, 12, 1),
+(41, 11, 1),
+(42, 16, 1),
+(44, 12, 1),
+(45, 19, 1),
+(46, 17, 1),
+(48, 16, 1),
+(48, 12, 1),
+(49, 15, 1),
+(49, 11, 1),
+(51, 13, 1),
+(52, 4, 1),
+(53, 12, 1),
+(54, 12, 1),
+(54, 11, 1),
+(55, 16, 1),
+(55, 4, 1),
+(56, 16, 1),
+(57, 16, 1),
+(62, 11, 1),
+(64, 11, 1),
+(67, 12, 1),
+(71, 15, 1),
+(71, 12, 1),
+(71, 11, 1),
+(72, 12, 1),
+(72, 11, 1),
+(73, 4, 1),
+(74, 16, 1),
+(76, 15, 1),
+(77, 12, 1),
+(78, 12, 1),
+(79, 12, 1),
+(80, 14, 1),
+(81, 12, 1),
+(82, 12, 1),
+(87, 16, 1),
+(87, 11, 1),
+(74, 3, 1),
+(13, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_news`
+--
+
+CREATE TABLE `tbl_news` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `brief` text NOT NULL,
+  `content` text NOT NULL,
+  `news_date` date NOT NULL,
+  `archive_date` date DEFAULT NULL,
+  `sortorder` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `image` varchar(50) NOT NULL,
+  `source` mediumtext NOT NULL,
+  `type` int(11) NOT NULL,
+  `viewcount` int(11) NOT NULL DEFAULT 0,
+  `meta_keywords` varchar(250) NOT NULL,
+  `meta_description` varchar(250) NOT NULL,
+  `added_date` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_news`
+--
+
+INSERT INTO `tbl_news` (`id`, `slug`, `title`, `author`, `brief`, `content`, `news_date`, `archive_date`, `sortorder`, `status`, `image`, `source`, `type`, `viewcount`, `meta_keywords`, `meta_description`, `added_date`) VALUES
+(1, 'sanjay-guptas-next-ek-tha-gangster-to-feature-abhishek-bachchan', 'Sanjay Gupta\'s next Ek Tha Gangster to feature Abhishek Bachchan', 'Digital Cinema Nepal', 'We opened the doors to our Santa Monica digs for press from around the world in the days leading up to the League of Legends Season Two World Championship in Los Angeles. Forbes.com\'s Paul Tassi shared his thoughts on the day\'s experiences, saying', '<div class=\"content\">\r\n	<p>\r\n		We opened the doors to our Santa Monica digs for press from around the world in the days leading up to the League of Legends Season Two World Championship in Los Angeles. Forbes.com&#39;s Paul Tassi shared his thoughts on the day&#39;s experiences, saying:</p>\r\n	<p>\r\n		&quot;There&#39;s an almost obsessive drive to keep adding value [for] players, something Riot believes is crucial to their success and, really, is their entire company philosophy.&quot;</p>\r\n	<p>\r\n		Flip over to Forbes.com for the whole story.</p>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', '2015-11-05', '0000-00-00', 1, 0, 'KogKt-565tx-nepal7.jpg', '', 1, 6, '', '', '2015-11-05 12:36:58'),
+(2, 'sanjay-guptas-next-ek-tha-gangster', 'Sanjay Gupta\'s next Ek Tha Gangster', 'Digital Cinema Nepal', 'Over the years maverick director Sanjay Gupta has become synonyms for his gritty gangster flicks like the ‘Shootout’ series. Well after his recent release ‘Jazbaa’ that featured Irrfan Khan and Aishwarya Rai Bachchan we hear that Gupta is all set for his next that will feature Abhishek Bachchan.', '<p style=\"text-align: justify;\">\r\n	Over the years maverick director Sanjay Gupta has become synonyms for his gritty gangster flicks like the &lsquo;Shootout&rsquo; series. Well after his recent release &lsquo;Jazbaa&rsquo; that featured Irrfan Khan and Aishwarya Rai Bachchan we hear that Gupta is all set for his next that will feature Abhishek Bachchan. In fact, the film in question is titled &lsquo;Ek Tha Gangster&rsquo; which will feature Abhishek Bachchan in the role of a gangster.</p>\r\n<p style=\"text-align: justify;\">\r\n	The racy thriller is based on S. Hussain Zaidi&rsquo;s 2014 bestseller, Byculla to Bangkok, a sequel to his 2012 novel, Dongri to Dubai. The story of the film will trace how youngsters were recruited and they went on to become local goons like Arun Gawli, Ashwin Naik and Chhota Rajan. However, despite being a gangster flick we hear that the film won&rsquo;t focus on the dreaded gangster, but instead it will follow the lives of the cops and politicians who are also involved.</p>\r\n<p style=\"text-align: justify;\">\r\n	Apart from this, the film will also feature characters inspired by real-life cops Vijay Salaskar and Pradeep Sharma.</p>\r\n', '2015-11-07', '0000-00-00', 2, 1, 'fUVaY-abhishek-sanjay-759.jpg', '', 1, 20, '', '', '2015-11-05 12:56:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_offers`
+--
+
+CREATE TABLE `tbl_offers` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `list_image` varchar(255) NOT NULL,
+  `adults` int(11) NOT NULL,
+  `children` int(11) NOT NULL,
+  `linksrc` varchar(255) NOT NULL,
+  `linktype` tinyint(1) NOT NULL DEFAULT 0,
+  `rate` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `brief` tinytext NOT NULL,
+  `content` longtext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `offer_date` varchar(255) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT 0,
+  `meta_title` tinytext NOT NULL,
+  `meta_keywords` varchar(255) NOT NULL,
+  `meta_description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_offers`
+--
+
+INSERT INTO `tbl_offers` (`id`, `slug`, `title`, `image`, `list_image`, `adults`, `children`, `linksrc`, `linktype`, `rate`, `discount`, `brief`, `content`, `status`, `offer_date`, `start_date`, `added_date`, `sortorder`, `type`, `meta_title`, `meta_keywords`, `meta_description`) VALUES
+(39, 'fixed', 'Fixed', 'F3CqP-menu.png', 'Efb7I-WhatsApp Image 2025-01-09 at 11.02.39_b9485673.jpg', 5, 0, '', 0, 500, 16, '', '', 1, '2025-01-12', '2025-01-10', '2025-01-10 12:52:25', 1, 1, '', '', ''),
+(40, 'dynamic', 'Dynamic', 'GIzw2-menu.png', 'i8n8K-WhatsApp Image 2025-01-09 at 11.02.31_2bf3e70a.jpg', 0, 0, '', 0, 0, 0, '', '', 1, '2025-01-17', '2025-01-10', '2025-01-10 12:53:20', 2, 0, '', '', ''),
+(41, 'multi', 'multi', 'PvnlM-barpeepal.png', 'Sexdq-NcI7A-bar.png', 0, 0, '', 0, 0, 0, '', '', 1, '2025-01-11', '2025-01-10', '2025-01-10 12:53:58', 3, 2, '', '', ''),
+(42, 'expired', 'expired', 'NkaOF-NcI7A-bar.png', 'WF8rL-menu.png', 0, 0, '', 0, 0, 0, '', '', 1, '2025-01-09', '2024-01-09', '2025-01-10 12:55:06', 4, 3, '', '', ''),
+(43, 'defaut-image', 'defaut image', '', '', 0, 0, '', 0, 0, 0, '', '', 0, '2025-01-20', '2025-01-09', '2025-01-10 12:57:36', 5, 3, '', '', ''),
+(44, 'fixed1', 'Fixed1', '8X4qg-menu.png', 'WsQ8S-bar.png', 4, 0, '', 0, 500, 16, '', '', 0, '2025-01-12', '2025-01-10', '2025-01-10 13:06:35', 6, 1, '', '', ''),
+(45, 'dynamic2', 'Dynamic2', '', '', 0, 0, '', 0, 0, 0, '', '', 0, '2025-01-12', '2025-01-07', '2025-01-10 13:07:45', 7, 0, '', '', ''),
+(46, 'muoti', 'Muoti', '', '', 0, 0, '', 0, 0, 0, '', '', 0, '2025-01-12', '2025-01-08', '2025-01-10 13:09:23', 8, 2, '', '', ''),
+(47, 'none22ssasdsa', 'none22ssasdsa', '', '', 0, 0, '', 0, 0, 0, '', '', 1, '2025-01-12', '2025-01-10', '2025-01-10 13:10:05', 9, 3, '', '', ''),
+(48, 'fad', 'fad', '', '', 0, 0, '', 0, 0, 0, '', '', 0, '2025-01-10', '2025-01-10', '2025-01-10 13:15:55', 10, 3, '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_offer_child`
+--
+
+CREATE TABLE `tbl_offer_child` (
+  `offer_id` int(11) NOT NULL,
+  `offer_pax` varchar(200) NOT NULL,
+  `offer_usd` varchar(10) NOT NULL,
+  `offer_inr` varchar(10) NOT NULL,
+  `offer_npr` varchar(10) NOT NULL,
+  `offer_no` int(11) NOT NULL,
+  `multi_offer_title` varchar(255) NOT NULL,
+  `multi_offer_npr` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_offer_child`
+--
+
+INSERT INTO `tbl_offer_child` (`offer_id`, `offer_pax`, `offer_usd`, `offer_inr`, `offer_npr`, `offer_no`, `multi_offer_title`, `multi_offer_npr`) VALUES
+(40, '4', '600', '', '', 1, '', ''),
+(41, '', '', '', '', 1, 'saasa', '333'),
+(46, '', '', '', '', 1, 'new', '500'),
+(46, '', '', '', '', 2, 'new2', '666'),
+(45, '4', '600', '', '', 1, '', ''),
+(45, '2', '7500', '', '', 2, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_package`
+--
+
+CREATE TABLE `tbl_package` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `sub_title` tinytext NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `header_image` tinytext NOT NULL,
+  `banner_image` text NOT NULL,
+  `detail` mediumtext NOT NULL,
+  `content` text NOT NULL,
+  `meta_title` tinytext NOT NULL,
+  `meta_keywords` tinytext NOT NULL,
+  `meta_description` tinytext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_package`
+--
+
+INSERT INTO `tbl_package` (`id`, `slug`, `title`, `sub_title`, `image`, `header_image`, `banner_image`, `detail`, `content`, `meta_title`, `meta_keywords`, `meta_description`, `status`, `sortorder`, `added_date`, `type`) VALUES
+(1, 'rooms-suites', 'Rooms & Suites', 'Quintessential 5-Star Paradise', 'a:1:{i:0;s:14:\"cnND2-room.jpg\";}', '', 'a:1:{i:0;s:20:\"T6fdV-roombanner.jpg\";}', '', '<p style=\"text-align: center;\">\r\n	<span style=\"color:#008000;\"><span style=\"font-size:20px;\">Your nature hideaway, with panoramic vistas of the river or the picturesque Greenland</span></span></p>\r\n<p style=\"text-align: center;\">\r\n	Interior with wooden architecture and furnishings have a warm and natural feel, creating a friendly and inviting ambiance. The balconies with beautiful views of the surrounding scenery,and mesmerizing sunrise enhancing the beauty of River soothe the heart. These accommodations seek to provide a pleasant and memorable experience in the middle of nature, allowing tourists to fully immerse themselves in the beauty of the national park and the tranquility of the river.</p>\r\n', 'Our Rooms', 'our nature hideaway, with panoramic vistas\r\nof the river or the picturesque Greenland', 'Interior with wooden architecture and furnishings have a warm and natural feel, creating a friendly and inviting ambiance.', 1, 3, '2017-04-24 17:25:53', 1),
+(3, 'dining-bar', 'Dining & Bar', 'Culinary Excellence in Natural Splendor.', 'a:1:{i:0;s:16:\"yoodg-dining.jpg\";}', '', 'a:1:{i:0;s:20:\"iEsdV-restaurant.jpg\";}', '', '<p style=\"text-align: center;\">\r\n	<span style=\"color:#008000;\"><span style=\"font-size:20px;\"><strong>Indulge in Epicurean Excellence: Discover Dining at Its Finest</strong></span></span></p>\r\n<p style=\"text-align: center;\">\r\n	We, at Riverbank, redefine the culinary landscape, offering an array of exquisite dining experiences that promise to delight your palette and creating amazing memories. The instant you enter our dining venues, you will be enveloped in an environment of elegance and luxury, setting the stage for an amazing gourmet encounter.</p>\r\n', '', '', '', 1, 2, '2024-06-14 14:32:24', 0),
+(4, 'meeting-events', 'Meeting & Events', 'Every moment and occasion is exceptional', 'a:1:{i:0;s:14:\"PjgmN-hall.jpg\";}', '', 'a:1:{i:0;s:21:\"QPfWs-meetinghall.jpg\";}', '', '<h1 style=\"text-align: center;\">\r\n	<span style=\"color:#008000;\"><span style=\"font-size:30px; margin-bottom:32px; display: block; line-height: 1.5;\"><strong>Welcome to Our Exquisite Banquet and Wedding Venue</strong></span></span></h1>\r\n<p style=\"text-align: center;\">\r\n	At Hotel River Bank, we hold the belief that every moment and occasion is exceptional. We&#39;re honored to extend a heartfelt invitation to join us for a celebration beyond compare at our stunning banquet and wedding venue. Set against the breathtaking backdrop of National Park Chitwan, our 5-star oasis awaits to infuse your special day with the perfect blend of opulence, charm, and romance.</p>\r\n', '', '', '', 1, 1, '2024-06-14 14:46:01', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_package_old`
+--
+
+CREATE TABLE `tbl_package_old` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `sub_title` varchar(255) NOT NULL,
+  `brief` text NOT NULL,
+  `content` text NOT NULL,
+  `gallery` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `meta_keywords` varchar(250) NOT NULL,
+  `meta_description` varchar(250) NOT NULL,
+  `type` int(11) NOT NULL DEFAULT 1,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `homepage` int(11) NOT NULL DEFAULT 0,
+  `image` blob NOT NULL,
+  `date` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_package_sub`
+--
+
+CREATE TABLE `tbl_package_sub` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `sub_title` varchar(200) NOT NULL,
+  `detail` mediumtext NOT NULL,
+  `image` text NOT NULL,
+  `header_image` tinytext NOT NULL,
+  `image2` varchar(200) NOT NULL,
+  `image3` varchar(255) NOT NULL,
+  `feature` blob NOT NULL,
+  `content` text NOT NULL,
+  `facility_title` varchar(255) NOT NULL,
+  `number_room` int(11) NOT NULL,
+  `currency` varchar(10) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `people_qnty` int(11) NOT NULL,
+  `onep_price` int(11) NOT NULL,
+  `twop_price` int(11) NOT NULL,
+  `threep_price` int(11) NOT NULL,
+  `oneb_price` int(11) NOT NULL,
+  `twob_price` int(11) NOT NULL,
+  `threeb_price` int(11) NOT NULL,
+  `extra_bed` varchar(10) NOT NULL,
+  `meta_title` tinytext NOT NULL,
+  `meta_keywords` tinytext NOT NULL,
+  `meta_description` tinytext NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_package_sub`
+--
+
+INSERT INTO `tbl_package_sub` (`id`, `slug`, `title`, `sub_title`, `detail`, `image`, `header_image`, `image2`, `image3`, `feature`, `content`, `facility_title`, `number_room`, `currency`, `discount`, `people_qnty`, `onep_price`, `twop_price`, `threep_price`, `oneb_price`, `twob_price`, `threeb_price`, `extra_bed`, `meta_title`, `meta_keywords`, `meta_description`, `status`, `sortorder`, `added_date`, `type`) VALUES
+(1, 'villa-with-private-plunge-pool', 'Villa with Private Plunge Pool', '', 'Our Private Villa beckons with exclusivity. Imagine unwinding in your own oasis – a tranquil retreat ', 'a:6:{i:0;s:16:\"MbYxc-villa1.jpg\";i:1;s:16:\"fRfDZ-villa3.jpg\";i:2;s:16:\"W3i4q-villa1.jpg\";i:3;s:16:\"GdLsd-villa2.jpg\";i:4;s:13:\"P3iN5-dv1.jpg\";i:5;s:13:\"ySNVn-dv4.jpg\";}', 'DkCaQ-delxevilla.jpg', 'VN718-villabanner.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a31333a22526f6f6d204665617475726573223b7d693a313b613a343a7b693a303b733a313a2232223b693a313b733a323a223330223b693a323b733a323a223635223b693a333b733a313a2237223b7d7d693a33333b613a323a7b693a303b613a313a7b693a303b733a31343a22526f6f6d20416d656e6974696573223b7d693a313b613a32333a7b693a303b733a323a223535223b693a313b733a323a223531223b693a323b733a323a223530223b693a333b733a323a223439223b693a343b733a323a223438223b693a353b733a323a223437223b693a363b733a323a223436223b693a373b733a323a223435223b693a383b733a323a223434223b693a393b733a323a223433223b693a31303b733a323a223432223b693a31313b733a323a223431223b693a31323b733a323a223430223b693a31333b733a323a223339223b693a31343b733a323a223338223b693a31353b733a323a223337223b693a31363b733a323a223336223b693a31373b733a323a223335223b693a31383b733a323a223334223b693a31393b733a323a223534223b693a32303b733a323a223539223b693a32313b733a323a223632223b693a32323b733a323a223633223b7d7d693a36363b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;Secluded Paradise&quot;</strong></span></span></p>\r\n<p>\r\n	Our Private Villa beckons with exclusivity. Imagine unwinding in your own oasis &ndash; a tranquil retreat where lush greenery surrounds your private plunge pool. Whether you&rsquo;re sipping cocktails by the water&rsquo;s edge or stargazing from your terrace, this villa promises an intimate escape.</p>\r\n<p>\r\n	&nbsp;</p>\r\n', '', 14, '', 0, 1, 0, 0, 0, 0, 0, 0, '', 'Villa with Private Plunge Pool', 'Villa with Private Plunge Pool', 'Villa with Private Plunge Pool', 1, 3, '2017-04-24 17:34:20', 1),
+(2, 'super-deluxe-room', 'Super Deluxe Room', '', 'Our Super Deluxe Room offers an exclusive escape with a private balcony overlooking the vast Terai Grassland. ', 'a:5:{i:0;s:13:\"VPITe-sd2.jpg\";i:1;s:13:\"hRpSu-sd3.jpg\";i:2;s:13:\"tDKXU-sd4.jpg\";i:3;s:13:\"PrBmO-sd1.jpg\";i:4;s:13:\"agwWt-sd5.jpg\";}', 'NY5U6-sdbanner.jpg', 'CKk91-superdeluxetwin.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a31333a22526f6f6d204665617475726573223b7d693a313b613a343a7b693a303b733a323a223238223b693a313b733a323a223239223b693a323b733a323a223635223b693a333b733a313a2237223b7d7d693a33333b613a323a7b693a303b613a313a7b693a303b733a31343a22526f6f6d20416d656e6974696573223b7d693a313b613a32333a7b693a303b733a323a223535223b693a313b733a323a223531223b693a323b733a323a223530223b693a333b733a323a223439223b693a343b733a323a223438223b693a353b733a323a223437223b693a363b733a323a223436223b693a373b733a323a223435223b693a383b733a323a223434223b693a393b733a323a223433223b693a31303b733a323a223432223b693a31313b733a323a223431223b693a31323b733a323a223430223b693a31333b733a323a223339223b693a31343b733a323a223338223b693a31353b733a323a223337223b693a31363b733a323a223336223b693a31373b733a323a223335223b693a31383b733a323a223334223b693a31393b733a323a223534223b693a32303b733a323a223539223b693a32313b733a323a223632223b693a32323b733a323a223633223b7d7d693a36363b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;Riverfront Bliss&quot;</strong></span></span></p>\r\n<p>\r\n	Our Super Deluxe Room offers an exclusive escape with a private balcony overlooking the vast Terai Grassland. Imagine sipping your morning coffee while the river gently meanders below. Whether you&rsquo;re a nature enthusiast or seeking tranquility, this room promises an unforgettable stay.</p>\r\n<p>\r\n	&nbsp;</p>\r\n', '', 17, '', 0, 1, 0, 0, 0, 0, 0, 0, '', 'Super Deluxe Room', 'Super Deluxe Room', 'Super Deluxe Room', 1, 4, '2017-04-27 13:33:02', 1),
+(3, 'deluxe-room', 'Deluxe Room', '', 'Imagine waking up to breathtaking mountain vistas – a symphony of mist-kissed peaks and serene valleys.', 'a:4:{i:0;s:15:\"mvGcb-room1.jpg\";i:1;s:15:\"t1gsy-room2.jpg\";i:2;s:13:\"nltpL-dv2.jpg\";i:3;s:13:\"6VS0l-dv3.jpg\";}', 'jAuSs-deluxebanner.jpg', 'w4659-deluxerooms.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a31333a22526f6f6d204665617475726573223b7d693a313b613a343a7b693a303b733a323a223332223b693a313b733a323a223331223b693a323b733a313a2235223b693a333b733a313a2237223b7d7d693a33333b613a323a7b693a303b613a313a7b693a303b733a31343a22526f6f6d20416d656e6974696573223b7d693a313b613a32333a7b693a303b733a323a223531223b693a313b733a323a223535223b693a323b733a323a223530223b693a333b733a323a223439223b693a343b733a323a223438223b693a353b733a323a223437223b693a363b733a323a223436223b693a373b733a323a223435223b693a383b733a323a223434223b693a393b733a323a223433223b693a31303b733a323a223432223b693a31313b733a323a223431223b693a31323b733a323a223430223b693a31333b733a323a223339223b693a31343b733a323a223338223b693a31353b733a323a223337223b693a31363b733a323a223336223b693a31373b733a323a223335223b693a31383b733a323a223334223b693a31393b733a323a223534223b693a32303b733a323a223539223b693a32313b733a323a223632223b693a32323b733a323a223633223b7d7d693a36363b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;Mountain Magic&quot;</strong></span></span></p>\r\n<p>\r\n	Imagine waking up to breathtaking mountain vistas &ndash; a symphony of mist-kissed peaks and serene valleys. Our deluxe rooms offer this enchanting experience, where every morning feels like a canvas painted by nature itself. Whether you&rsquo;re an adventurer seeking solace or a romantic soul, our mountain retreat awaits.</p>\r\n<p>\r\n	&nbsp;</p>\r\n', '', 34, '', 0, 1, 0, 0, 0, 0, 0, 0, '', 'Deluxe Room', 'Deluxe Room', 'Deluxe Room', 1, 5, '2017-04-27 13:34:44', 1),
+(5, 'presidential-suite', 'Presidential Suite', '', 'Our Presidential Suite redefines opulence. Imagine stepping onto your private terrace, where the plunge pool overlooks the horizon.', 'a:4:{i:0;s:13:\"gdBre-dv1.jpg\";i:1;s:13:\"VCE9f-dv3.jpg\";i:2;s:13:\"DD943-dv2.jpg\";i:3;s:13:\"Di43f-dv4.jpg\";}', 'nxan7-roombanner.jpg', 'Y48Af-superdeluxe.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b613a343a7b693a303b733a313a2235223b693a313b733a313a2233223b693a323b733a323a223635223b693a333b733a313a2237223b7d7d693a33333b613a323a7b693a303b613a313a7b693a303b733a31333a22526f6f6d204665617475726573223b7d693a313b613a32343a7b693a303b733a323a223535223b693a313b733a323a223531223b693a323b733a323a223530223b693a333b733a323a223439223b693a343b733a323a223438223b693a353b733a323a223437223b693a363b733a323a223436223b693a373b733a323a223435223b693a383b733a323a223434223b693a393b733a323a223433223b693a31303b733a323a223432223b693a31313b733a323a223431223b693a31323b733a323a223430223b693a31333b733a323a223339223b693a31343b733a323a223338223b693a31353b733a323a223337223b693a31363b733a323a223336223b693a31373b733a323a223335223b693a31383b733a323a223334223b693a31393b733a323a223534223b693a32303b733a323a223539223b693a32313b733a323a223631223b693a32323b733a323a223632223b693a32333b733a323a223633223b7d7d693a36363b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;Unsurpassed Hospitality&quot;</strong></span></span></p>\r\n<p>\r\n	Unrivaled Luxury: Our Presidential Suite redefines opulence. Imagine stepping onto your private terrace, where the plunge pool overlooks the horizon. With spacious interiors, bespoke furnishings, and personalized service, this suite is where grandeur meets serenity.</p>\r\n<p>\r\n	&nbsp;</p>\r\n', '', 0, '', 0, 1, 0, 0, 0, 0, 0, 0, '', 'Presidential Suite', 'Presidential Suite', 'Presidential Suite', 0, 1, '2017-04-27 13:39:26', 1),
+(6, 'executive-suite', 'Executive Suite', '', 'Indulge in unparalleled luxury in our Executive Suite with Plunge Pool, where sophistication meets nature. \r\n', 'a:4:{i:0;s:13:\"fOHj8-dv1.jpg\";i:1;s:13:\"hVbhA-dv3.jpg\";i:2;s:13:\"BvKOP-dv4.jpg\";i:3;s:13:\"BDsrE-dv2.jpg\";}', 'NSPLo-roombanner.jpg', 'NVlFj-deluxeroom.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b613a343a7b693a303b733a313a2235223b693a313b733a313a2233223b693a323b733a323a223635223b693a333b733a313a2237223b7d7d693a33333b613a323a7b693a303b613a313a7b693a303b733a31333a22526f6f6d204665617475726573223b7d693a313b613a32343a7b693a303b733a323a223535223b693a313b733a323a223531223b693a323b733a323a223530223b693a333b733a323a223439223b693a343b733a323a223438223b693a353b733a323a223437223b693a363b733a323a223436223b693a373b733a323a223435223b693a383b733a323a223434223b693a393b733a323a223433223b693a31303b733a323a223432223b693a31313b733a323a223431223b693a31323b733a323a223430223b693a31333b733a323a223339223b693a31343b733a323a223338223b693a31353b733a323a223337223b693a31363b733a323a223336223b693a31373b733a323a223335223b693a31383b733a323a223334223b693a31393b733a323a223534223b693a32303b733a323a223539223b693a32313b733a323a223631223b693a32323b733a323a223632223b693a32333b733a323a223633223b7d7d693a36363b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;canvas of nature&quot;</strong></span></span></p>\r\n<p>\r\n	Indulge in unparalleled luxury in our Executive Suite with Plunge Pool, where sophistication meets nature. Revel in the elegance of spacious interiors, unwind in your private plunge pool, and soak in breathtaking jungle views. Perfect for those seeking exclusivity and tranquility, this suite promises an extraordinary escape.</p>\r\n<p>\r\n	&nbsp;</p>\r\n', '', 4, '', 0, 1, 0, 0, 0, 0, 0, 0, '', 'Executive Suite', 'Executive Suite', 'Executive Suite', 0, 2, '2017-04-27 13:40:22', 1),
+(7, 'the-signature-restaurant', 'The Signature Restaurant', '', 'Experience culinary mastery at our flagship restaurant, where our chefs conjure up gastronomic marvels. Dive into a realm of flavors, where premium ingredients are transformed into aesthetically pleasing and palatable masterpieces. Ideal for a romantic dinner or a celebratory occasion, our Signature Restaurant is synonymous with an unparalleled dining adventure.', 'a:4:{i:0;s:14:\"APqSf-res1.jpg\";i:1;s:14:\"A5FWZ-res3.jpg\";i:2;s:14:\"XmQMW-res2.jpg\";i:3;s:14:\"6HOtd-res4.jpg\";}', 'qF21J-resbanner.jpg', 'tpGmt-3.jpg', '', 0x613a303a7b7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;Gastronomic Elegance at Riverbank &quot;</strong></span></span></p>\r\n<p>\r\n	Indulge in culinary excellence at The Signature Restaurant. Nestled within our luxurious resort, this gastronomic haven offers a symphony of flavors, artfully crafted dishes, and impeccable service. From candlelit dinners to panoramic views, every moment here is a celebration of fine dining.</p>\r\n<div class=\"restaurant_table\">\r\n	<h3>\r\n		Opening Time and Occupancy</h3>\r\n	<table class=\"table table-bordered\">\r\n		<thead>\r\n			<tr>\r\n				<th>\r\n					Occupancy</th>\r\n				<th>\r\n					Type</th>\r\n				<th>\r\n					Opening Time</th>\r\n				<th>\r\n					Cuisine serve</th>\r\n			</tr>\r\n		</thead>\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					100 pax</td>\r\n				<td>\r\n					&nbsp;All day dining&nbsp;</td>\r\n				<td>\r\n					07:00 AM - 10:00 PM</td>\r\n				<td>\r\n					<div>\r\n						&nbsp;Multicuisine</div>\r\n				</td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, 10, '2024-06-14 14:33:08', 3),
+(8, 'al-fresco-dining', 'Al Fresco Dining', '', 'Our open-air dining beckons you with refreshing breezes and mesmerizing vistas of the Ratpi River and verdant forests. Choose to dine under the starlit sky or soak in the daytime radiance, our al fresco settings offer a charming escape into nature. Savor the freshest flavors, sourced locally and cultivated regionally, for a true taste of the locale.', 'a:3:{i:0;s:13:\"ISNrq-al3.jpg\";i:1;s:13:\"CuJfQ-al1.jpg\";i:2;s:13:\"mym3B-al2.jpg\";}', '6h5Vx-albanner.jpg', 'QvSln-albanner.jpg', '', 0x613a303a7b7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;A Breath of Fresh Air &quot;</strong></span></span></p>\r\n<p>\r\n	Our open-air dining beckons you with refreshing breezes and mesmerizing vistas of the Ratpi River and verdant forests. Choose to dine under the starlit sky or soak in the daytime radiance, our al fresco settings offer a charming escape into nature. Savor the freshest flavors, sourced locally and cultivated regionally, for a true taste of the locale.</p>\r\n', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, 9, '2024-06-14 14:33:54', 3),
+(9, 'riverside-retreat', 'Riverside Retreat', '', 'Dine amidst the natural splendor, where the soft river zephyrs and the majestic National Park provide a tranquil and enchanting backdrop. Indulge in a meal that not only pleases the palate but also enriches the soul with lasting memories. The riverside transforms into a magical dining haven as dusk falls, adding a touch of enchantment to your evening.', 'a:2:{i:0;s:20:\"VTZvA-riverside1.jpg\";i:1;s:20:\"cVMVV-riverside2.jpg\";}', 'S5iRB-riversidebanner.jpg', 'du1lv-riverside.jpg', '', 0x613a303a7b7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;A Soulful Retreat &quot;</strong></span></span></p>\r\n<p>\r\n	Dine amidst the natural splendor, where the soft river zephyrs and the majestic National Park provide a tranquil and enchanting backdrop. Indulge in a meal that not only pleases the palate but also enriches the soul with lasting memories. The riverside transforms into a magical dining haven as dusk falls, adding a touch of enchantment to your evening.</p>\r\n', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, 8, '2024-06-14 14:38:01', 3),
+(10, 'the-classic-bar', 'The Classic Bar', '', 'Step into The Classic Bar, where the legacy of cocktail culture is celebrated with modern flair. This elegant sanctuary within our resort is more than just a bar—it\'s a journey through time. Adorned with polished wood and sumptuous furnishings, our bar is a nod to the golden age of mixology. Our adept mixologists blend timeless recipes with inventive techniques, presenting a selection of classic and custom cocktails.', 'a:4:{i:0;s:14:\"nrVl1-bar2.jpg\";i:1;s:14:\"9FblM-bar1.jpg\";i:2;s:13:\"StcFu-bar.jpg\";i:3;s:14:\"8A2LA-bar3.jpg\";}', 'e3CvD-barbanner.jpg', 'QArb7-2.jpg', '', 0x613a303a7b7d, '<p>\r\n	<span style=\"color:#006699;\"><span style=\"font-size:20px;\"><strong>&ldquo;Where Time-Honored Charm Meets Contemporary Craft &quot;</strong></span></span></p>\r\n<p>\r\n	Step into The Classic Bar, where the legacy of cocktail culture is celebrated with modern flair. This elegant sanctuary within our resort is more than just a bar&mdash;it&#39;s a journey through time. Adorned with polished wood and sumptuous furnishings, our bar is a nod to the golden age of mixology. Our adept mixologists blend timeless recipes with inventive techniques, presenting a selection of classic and custom cocktails.</p>\r\n', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, 7, '2024-06-14 14:38:30', 3),
+(11, 'serenity-hall', 'Serenity Hall ', '', 'A sophisticated oasis for meetings and corporate events. With its sleek design, cutting-edge technology, and serene ambiance, this venue inspires productivity and creativity. Elevate your business gatherings in the lap of luxury.', 'a:3:{i:0;s:15:\"xAAmh-hall1.jpg\";i:1;s:15:\"FBhT9-hall3.jpg\";i:2;s:15:\"Vvmzp-hall2.jpg\";}', 'hV9bS-meetinghall.jpg', 'dQiXo-serenity.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d693a33333b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d693a36363b613a323a7b693a303b613a313a7b693a303b733a31343a2248616c6c20416d656e6974696573223b7d693a313b613a31323a7b693a303b733a323a223637223b693a313b733a323a223639223b693a323b733a323a223730223b693a333b733a323a223731223b693a343b733a323a223732223b693a353b733a323a223733223b693a363b733a323a223734223b693a373b733a323a223735223b693a383b733a323a223738223b693a393b733a323a223737223b693a31303b733a323a223638223b693a31313b733a323a223736223b7d7d7d, '<p>\r\n	<span style=\"font-size:26px;\"><span style=\"color:#008000;\"><strong>Tailored to fit your program perfectly</strong></span></span></p>\r\n<p>\r\n	A sophisticated oasis for meetings and corporate events. With its sleek design, cutting-edge technology, and serene ambiance, this venue inspires productivity and creativity. Elevate your business gatherings in the lap of luxury.</p>\r\n	<div class=\"event_halls\">\r\n		<table class=\"table table-bordered\">\r\n		  <thead>\r\n			<tr>\r\n			  <th>Hall Size</th>\r\n			  <th>U Setup</th>\r\n			  <th>Classroom Setup</th>\r\n			  <th>Theater Setup</th>\r\n			  <th>Round Table Setup</th>\r\n			</tr>\r\n		  </thead>\r\n		  <tbody>\r\n			<tr>\r\n			  <td>1640 sq.ft</td>\r\n			  <td>60 cover</td>\r\n			  <td>50 cover</td>\r\n			  <td>200 cover</td>\r\n			  <td>100 cover</td>\r\n			</tr>\r\n		  </tbody>\r\n		</table>\r\n	  </div>', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, 9, '2024-06-14 14:47:13', 4),
+(12, 'regal-ball-room', 'Regal Ball Room', '', 'Where elegance dances with grandeur. This opulent venue, adorned with crystal chandeliers and silk drapes, sets the stage for unforgettable events. From weddings to galas, every moment in the Regal Ballroom is a symphony of sophistication.\r\n', 'a:4:{i:0;s:15:\"VuXVA-hall4.jpg\";i:1;s:15:\"zmgZ5-hall6.jpg\";i:2;s:15:\"3YlMD-hall5.jpg\";i:3;s:15:\"OJ58l-hall7.jpg\";}', 'YoClY-hall.jpg', 'pQINB-hall.jpg', '', 0x613a333a7b693a313b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d693a33333b613a323a7b693a303b613a313a7b693a303b733a303a22223b7d693a313b733a303a22223b7d693a36363b613a323a7b693a303b613a313a7b693a303b733a31343a2248616c6c20416d656e6974696573223b7d693a313b613a31323a7b693a303b733a323a223637223b693a313b733a323a223639223b693a323b733a323a223730223b693a333b733a323a223731223b693a343b733a323a223737223b693a353b733a323a223732223b693a363b733a323a223733223b693a373b733a323a223734223b693a383b733a323a223738223b693a393b733a323a223735223b693a31303b733a323a223736223b693a31313b733a323a223638223b7d7d7d, '<p>\r\n	<span style=\"font-size:26px;\"><span style=\"color:#008000;\"><strong>Your premium event planning partner</strong></span></span></p>\r\n<p>\r\n	Where elegance dances with grandeur. This opulent venue, adorned with crystal chandeliers and silk drapes, sets the stage for unforgettable events. From weddings to galas, every moment in the Regal Ballroom is a symphony of sophistication.</p>\r\n\r\n<div class=\"event_halls\">\r\n  <table class=\"table table-bordered\">\r\n    <thead>\r\n      <tr>\r\n        <th>Hall Size</th>\r\n        <th>U Setup</th>\r\n        <th>Classroom Setup</th>\r\n        <th>Theater Setup</th>\r\n        <th>Round Table Setup</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr>\r\n        <td>1575 sq.ft</td>\r\n        <td>40-50 cover</td>\r\n        <td>30-40 cover</td>\r\n        <td>160-170 cover</td>\r\n        <td>70-80 cover</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, 10, '2024-06-14 14:47:44', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_permission`
+--
+
+CREATE TABLE `tbl_permission` (
+  `id` int(11) NOT NULL,
+  `type` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `group_id` varchar(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `module_id` varchar(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_polloptions`
+--
+
+CREATE TABLE `tbl_polloptions` (
+  `id` int(11) NOT NULL,
+  `pollid` int(11) NOT NULL COMMENT 'foreign id for tbl_polls.id',
+  `pollOption` varchar(100) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `hits` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_polls`
+--
+
+CREATE TABLE `tbl_polls` (
+  `id` int(11) NOT NULL,
+  `question` varchar(250) NOT NULL,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_popup`
+--
+
+CREATE TABLE `tbl_popup` (
+  `id` int(11) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `date1` date NOT NULL,
+  `date2` date NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `source` varchar(250) NOT NULL,
+  `linktype` varchar(150) NOT NULL,
+  `linksrc` varchar(250) NOT NULL,
+  `position` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `slug` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_popup`
+--
+
+INSERT INTO `tbl_popup` (`id`, `title`, `date1`, `date2`, `image`, `source`, `linktype`, `linksrc`, `position`, `status`, `sortorder`, `type`, `slug`) VALUES
+(1, 'asdsad', '2024-07-01', '2024-07-30', 'a:1:{i:0;s:25:\"jOTQE-EeX42-gallery1.webp\";}', '', '0', '', 1, 0, 1, 1, 'asdsad'),
+(2, 'Dashain Special', '2024-10-09', '2024-10-14', 'a:1:{i:0;s:21:\"twxrr-riverbank1.jpeg\";}', '', '0', '', 1, 0, 2, 1, 'dashain-special'),
+(3, 'Merry Christmas 2024', '2024-12-20', '2024-12-26', 'a:1:{i:0;s:20:\"Sxds9-riverbank.jpeg\";}', '', '0', '', 1, 0, 3, 1, 'merry-christmas-2024'),
+(4, 'New Year Celebration', '2024-12-19', '2025-01-01', 'a:1:{i:0;s:12:\"tVnSP-A.jpeg\";}', '', '0', '', 1, 1, 4, 1, 'new-year-celebration');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_price`
+--
+
+CREATE TABLE `tbl_room_price` (
+  `id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `season_id` int(11) NOT NULL,
+  `one_person` int(11) NOT NULL,
+  `two_person` int(11) NOT NULL,
+  `three_person` int(11) NOT NULL,
+  `registered` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_services`
+--
+
+CREATE TABLE `tbl_services` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `image` text NOT NULL,
+  `linksrc` varchar(255) NOT NULL,
+  `linktype` tinyint(1) NOT NULL DEFAULT 0,
+  `content` longtext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_services`
+--
+
+INSERT INTO `tbl_services` (`id`, `slug`, `title`, `image`, `linksrc`, `linktype`, `content`, `status`, `added_date`, `sortorder`, `type`) VALUES
+(22, '24hr-reception', '24hr Reception', 'a:1:{i:0;s:24:\"eIKAz-reception-desk.png\";}', '', 0, '', 1, '2024-07-05 13:12:36', 1, 0),
+(23, 'room-service', 'Room Service', 'a:1:{i:0;s:26:\"Z07f6-room-service (1).png\";}', '', 0, '', 1, '2024-07-05 13:13:13', 2, 0),
+(24, 'concierge-service', 'Concierge Service', 'a:1:{i:0;s:17:\"hLjQz-luggage.png\";}', '', 0, '', 1, '2024-07-05 13:14:41', 3, 0),
+(25, 'free-wifi', 'Free WiFi', 'a:1:{i:0;s:18:\"5ZIW2-wifi (1).png\";}', '', 0, '', 1, '2024-07-05 13:15:36', 4, 0),
+(26, 'housekeeping', 'Housekeeping', 'a:1:{i:0;s:19:\"MeUEn-household.png\";}', '', 0, '', 1, '2024-07-05 13:17:09', 5, 0),
+(27, 'laundry-service', 'Laundry Service', 'a:1:{i:0;s:25:\"AJc61-washing-machine.png\";}', '', 0, '', 1, '2024-07-05 13:18:34', 5, 0),
+(28, 'security-service', 'Security Service', 'a:1:{i:0;s:21:\"dtAtB-cctv-camera.png\";}', '', 0, '', 1, '2024-07-05 13:18:53', 6, 0),
+(29, 'safety-deport-box', 'Safety Deport Box', 'a:1:{i:0;s:16:\"1ZlEI-locker.png\";}', '', 0, '', 1, '2024-07-05 13:19:27', 7, 0),
+(30, 'private-plunge-pool', 'Private Plunge Pool ', 'a:1:{i:0;s:14:\"UbLbJ-pool.png\";}', '', 0, '', 1, '2024-07-05 13:20:42', 8, 0),
+(31, 'parking', 'Parking', 'a:1:{i:0;s:22:\"XV1k3-parking-area.png\";}', '', 0, '', 1, '2024-07-05 13:21:03', 9, 0),
+(32, 'power-backup', 'Power Backup', 'a:1:{i:0;s:15:\"mWaDo-Elect.png\";}', '', 0, '', 1, '2024-07-05 13:21:33', 10, 0),
+(33, 'doctor-on-call', 'Doctor on call', 'a:1:{i:0;s:25:\"GS6nN-stethoscope (1).png\";}', '', 0, '', 1, '2024-07-05 13:24:50', 11, 0),
+(34, 'multicuisine-restaurant', 'Multicuisine Restaurant', 'a:1:{i:0;s:20:\"ad8tv-restaurant.png\";}', '', 0, '', 1, '2024-07-05 13:26:49', 12, 0),
+(35, 'cards-accepted', 'Cards Accepted', 'a:1:{i:0;s:16:\"90bIi-credit.png\";}', '', 0, '', 1, '2024-07-05 13:27:27', 15, 0),
+(36, 'events-destination', 'Events Destination', 'a:1:{i:0;s:20:\"5jHTJ-red-carpet.png\";}', '', 0, '', 1, '2024-07-05 13:28:25', 14, 0),
+(37, 'fire-extinguisher', 'Fire Extinguisher', 'a:1:{i:0;s:27:\"KrEX9-fire-extinguisher.png\";}', '', 0, '', 1, '2024-07-05 13:36:28', 13, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_slideshow`
+--
+
+CREATE TABLE `tbl_slideshow` (
+  `id` int(11) NOT NULL,
+  `title` tinytext NOT NULL,
+  `image` tinytext NOT NULL,
+  `linksrc` tinytext NOT NULL,
+  `linktype` tinyint(1) NOT NULL DEFAULT 0,
+  `content` longtext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `m_status` tinyint(1) NOT NULL DEFAULT 1,
+  `added_date` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_slideshow`
+--
+
+INSERT INTO `tbl_slideshow` (`id`, `title`, `image`, `linksrc`, `linktype`, `content`, `status`, `m_status`, `added_date`, `sortorder`, `type`) VALUES
+(1, 'Reception', 'A6dCk-slider4.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVERBANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Into the heart of nature</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2017-04-23 16:47:35', 8, 1),
+(11, 'Drone night view', '7By1c-riverbank.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Dream Destination</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2024-07-10 16:12:13', 0, 1),
+(9, 'Foods', 'b9yyx-food.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Multiple Dining Options</h1>\r\n<h2>\r\n	Nepali | Indian | Japanese | Continental</h2>\r\n', 1, 0, '2024-07-05 12:44:10', 4, 1),
+(3, 'Room', 'zqyll-slider6.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Harmonious stay</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2017-04-23 16:48:48', 7, 1),
+(4, 'Pool', 'Inu2b-slider3.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Attention to detail</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2017-04-27 12:41:04', 3, 1),
+(5, 'Evening View', 'IbjCY-slider2.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Peaceful Retreat</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2017-04-27 12:47:48', 2, 1),
+(6, 'Night View', 'lxMzj-slider1.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Picturesque Resort</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2017-05-04 16:58:15', 1, 1),
+(7, 'Dining', 'ROnhC-slider5.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Culinary Delights Amidst Nature</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2017-05-04 17:00:15', 6, 1),
+(12, 'Riverside Retreat', 'lUeTm-retreat.jpg', '', 0, '<h4>\r\n	WELCOME TO RIVER BANK JUNGLE RESORT</h4>\r\n<h1>\r\n	Riverside Ambiance</h1>\r\n<h2>\r\n	Nestled on the banks of Chitwan</h2>\r\n', 1, 0, '2024-07-10 16:20:46', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_slideshows_withouttlist`
+--
+
+CREATE TABLE `tbl_slideshows_withouttlist` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `registered` varchar(50) NOT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_social_networking`
+--
+
+CREATE TABLE `tbl_social_networking` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `linksrc` tinytext NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `sortorder` int(11) NOT NULL,
+  `registered` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_social_networking`
+--
+
+INSERT INTO `tbl_social_networking` (`id`, `title`, `image`, `linksrc`, `status`, `sortorder`, `registered`) VALUES
+(1, 'Facebook', 'fa fa-facebook', 'https://www.facebook.com/profile.php?id=61555768349361', 1, 1, ''),
+(2, 'Linkedin', 'fa fa-linkedin', 'https://www.linkedin.com/company/104239283/admin/feed/posts/', 1, 3, ''),
+(4, 'Instagram', 'fa fa-instagram', 'https://www.instagram.com/river_bank_jungle_resort/', 1, 2, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_subscribers`
+--
+
+CREATE TABLE `tbl_subscribers` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `mailaddress` varchar(250) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_testimonial`
+--
+
+CREATE TABLE `tbl_testimonial` (
+  `id` int(11) NOT NULL,
+  `parentOf` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `image` varchar(225) NOT NULL,
+  `linksrc` tinytext NOT NULL,
+  `content` text NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `country` varchar(100) NOT NULL,
+  `via_type` varchar(200) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_testimonial`
+--
+
+INSERT INTO `tbl_testimonial` (`id`, `parentOf`, `name`, `image`, `linksrc`, `content`, `sortorder`, `status`, `country`, `via_type`, `type`) VALUES
+(1, 0, ' Kumar D', '5bdwZ-user-1.jpg', 'https://www.tripadvisor.com/Hotel_Review-g2407100-d27121850-Reviews-River_Bank_Jungle_Resort-Bharatpur_Chitwan_District_Narayani_Zone_Central_Region.html', 'great ambience , great location of river . delicious food . neat and clean room. Staffs are very helpful and friendly . especially Mr. Babu dai and gayatri is the best always smilling and caring us .thank you very much river bank jungle for your great hospitality . we will back again and recommend our friend and relatives .', 1, 1, 'great memories of river bank jungle', 'Tripadvisor', 0),
+(2, 0, ' Dinesh S', 'pdIc7-user-2.jpg', 'https://www.tripadvisor.com/Hotel_Review-g2407100-d27121850-Reviews-River_Bank_Jungle_Resort-Bharatpur_Chitwan_District_Narayani_Zone_Central_Region.html', 'Our whole family witnessed an amazing cultural performance ‘Tharu Dance’. The coordinator Babu Dai, a naturalist having passion on cultural and natural conservation, is the best at his job. Well done the whole team!\r\nThe location, facilities, services and the taste of local cuisine are highly recommended.', 2, 1, 'Family Trip to River Bank Jungle Resort', 'Tripadvisor', 0),
+(4, 0, 'Bhupender R', '5YN14-user-4.jpg', 'https://www.tripadvisor.com/Hotel_Review-g2407100-d27121850-Reviews-River_Bank_Jungle_Resort-Bharatpur_Chitwan_District_Narayani_Zone_Central_Region.html', 'We enjoyed our 2 nights stay a lot at River bank jungle resort Chitwan. . Senior Naturalist Babu was very helpful. He is very experienced and have a vast knowledge about the nature, flaura and fauna. We would recommend to choose the stay at Riverbank resort and Babu as your Naturalist.', 3, 1, 'Great property with amazing view and facilities', 'Tripadvisor', 0),
+(5, 0, ' Tilak A', '', 'https://www.tripadvisor.com/Hotel_Review-g2407100-d27121850-Reviews-River_Bank_Jungle_Resort-Bharatpur_Chitwan_District_Narayani_Zone_Central_Region.html', 'Wow so nice. Luxurious villa with separate mini swimming pools. Delicious food. Adorable hospitality. Views sun rise and sensate. Jungle safari. Night stay much more enjoyable. Activity and site seen also naturally. Narayani river so quite.', 4, 1, 'Mind blowing hospitality as well as Food', 'Tripadvisor', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_theaters`
+--
+
+CREATE TABLE `tbl_theaters` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `parentOf` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `address` tinytext NOT NULL,
+  `nserver_name` varchar(100) NOT NULL,
+  `ndta_service` tinyint(1) NOT NULL DEFAULT 0,
+  `cserver_name` varchar(100) NOT NULL,
+  `cdta_service` tinyint(1) NOT NULL DEFAULT 0,
+  `showing_date` varchar(20) NOT NULL,
+  `coming_date` varchar(20) NOT NULL,
+  `showing_movies` tinytext NOT NULL,
+  `coming_movies` tinytext NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `meta_keywords` tinytext NOT NULL,
+  `meta_description` tinytext NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_theaters`
+--
+
+INSERT INTO `tbl_theaters` (`id`, `slug`, `parentOf`, `title`, `image`, `address`, `nserver_name`, `ndta_service`, `cserver_name`, `cdta_service`, `showing_date`, `coming_date`, `showing_movies`, `coming_movies`, `status`, `meta_keywords`, `meta_description`, `sortorder`, `added_date`) VALUES
+(19, 'bina-chalchitra-mandir', 0, 'Bina Chalchitra Mandir', '', 'Lalbandi', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 7, '2015-11-08 18:13:14'),
+(20, 'bindabasini-chalchitra-mandir', 0, 'Bindabasini Chalchitra Mandir', '', 'Pokhara', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 8, '2015-11-08 18:14:27'),
+(18, 'bhole-chalchitra-mandir', 0, 'Bhole Chalchitra Mandir', '', 'Bhaluwang', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 6, '2015-11-08 18:06:08'),
+(37, 'shuvalaxmi-chitralaya-ka', 0, 'Shuvalaxmi Chitralaya (Ka)', '', 'Gaighat', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 25, '2015-11-09 14:27:33'),
+(17, 'barahi-movies-kha', 0, 'Barahi Movies (Kha)', '', 'Bhaktapur', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 5, '2015-11-08 18:05:32'),
+(13, 'asha-chalchitra-mandir', 0, 'Asha Chalchitra Mandir', '', 'Janakpur', 'DCN 2K', 1, 'DCN 4K', 0, '2015-11-08', '2015-11-08', 'a:2:{i:0;s:1:\"1\";i:1;s:2:\"16\";}', '', 1, '', '', 1, '2015-11-08 17:58:59'),
+(14, 'barahi-chalchitra-mandir-kha', 0, 'Barahi Chalchitra Mandir (Kha)', '', 'Pokhara', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 2, '2015-11-08 18:01:23'),
+(15, 'barahi-chalchitra-mandir-ka', 0, 'Barahi Chalchitra Mandir (Ka)', '', 'Pokhara', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"10\";}', '', 1, '', '', 3, '2015-11-08 18:03:56'),
+(16, 'barahi-movies-ka', 0, 'Barahi Movies (Ka)', '', 'Bhaktapur', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 4, '2015-11-08 18:04:47'),
+(21, 'baba-chalachitra-mandir', 0, 'Baba Chalachitra Mandir', '', 'Rani,Biratnagar', '', 0, '', 0, '', '', '', '', 1, '', '', 9, '2015-11-09 14:08:41'),
+(22, 'bageshwori-chalachitra-mandir', 0, 'Bageshwori Chalachitra Mandir', '', 'Nepalgunj', '', 0, '', 0, '', '', '', '', 1, '', '', 10, '2015-11-09 14:09:31'),
+(23, 'village-cinema', 0, 'Village Cinema', '', 'Urlabari', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 11, '2015-11-09 14:10:33'),
+(24, 'view-cinema', 0, 'View Cinema', '', 'Butwal', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"10\";}', '', 1, '', '', 12, '2015-11-09 14:10:50'),
+(25, 'uttarshila-chalchitra-mandir', 0, 'Uttarshila Chalchitra Mandir', '', 'Damauli', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 13, '2015-11-09 14:11:11'),
+(26, 'trishna-talkies', 0, 'Trishna Talkies', '', 'Dhulabari', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 14, '2015-11-09 14:11:44'),
+(27, 'trimurti-chalchitra-mandir', 0, 'Trimurti Chalchitra Mandir', '', 'Birjung', '', 0, '', 0, '', '', '', '', 1, '', '', 15, '2015-11-09 14:12:05'),
+(28, 'thanie-movies', 0, 'Thanie Movies', '', 'Vimad', '', 0, '', 0, '', '', '', '', 1, '', '', 16, '2015-11-09 14:12:30'),
+(29, 'sworgadwari-chalchitra-mandir', 0, 'Sworgadwari Chalchitra Mandir', '', 'Ghorai', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 17, '2015-11-09 14:12:48'),
+(30, 'sukuna-chalchitra-mandir', 0, 'Sukuna Chalchitra mandir', '', 'Biratchowk', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 18, '2015-11-09 14:13:06'),
+(31, 'subeksha-chalchitra-mandir', 0, 'Subeksha Chalchitra Mandir', '', 'Sindhuli', '', 0, '', 0, '2015-11-10', '', 'a:2:{i:0;s:2:\"12\";i:1;s:2:\"11\";}', '', 1, '', '', 19, '2015-11-09 14:14:05'),
+(32, 'siddhibinayak-chalchitra-mandir', 0, 'Siddhibinayak Chalchitra Mandir', '', 'Gauriganj', '', 0, '', 0, '2015-11-08', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 20, '2015-11-09 14:15:07'),
+(33, 'siddhartha-chalchitra-mandir-a', 0, 'Siddhartha Chalchitra Mandir (A)', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 21, '2015-11-09 14:20:30'),
+(34, 'siddhartha-chalchitra-mandir-b', 0, 'Siddhartha Chalchitra Mandir (B)', '', 'Bhairawa', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"16\";i:1;s:2:\"10\";}', '', 1, '', '', 22, '2015-11-09 14:22:40'),
+(35, 'siddeshwor-chalchitra-mandir', 0, 'Siddeshwor Chalchitra Mandir', '', 'Kusma', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 23, '2015-11-09 14:23:16'),
+(36, 'shuvalaxmi-chitralaya-kha', 0, 'Shuvalaxmi Chitralaya (Kha)', '', 'Gaighat', '', 0, '', 0, '2015-11-01', '', 'a:1:{i:0;s:2:\"10\";}', '', 1, '', '', 24, '2015-11-09 14:24:24'),
+(38, 'shubhakamana-high-vision-hall', 0, 'Shubhakamana High Vision Hall', '', 'Banepa', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 26, '2015-11-09 14:27:51'),
+(39, 'shree-satya-sai-chalachitra-mandir', 0, 'Shree Satya Sai Chalachitra Mandir', '', 'Lamahi', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 27, '2015-11-09 14:28:22'),
+(40, 'shree-ram-pictures', 0, 'Shree Ram Pictures', '', 'Birjung', '', 0, '', 0, '', '', '', '', 1, '', '', 28, '2015-11-09 14:28:35'),
+(41, 'shree-krishna-chalchitra-mandir-abukhaireni', 0, 'Shree Krishna Chalchitra Mandir (AbuKhaireni)', '', 'AbuKhaireni', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 29, '2015-11-09 14:28:51'),
+(42, 'shree-krishna-chalchitra-mandir-pokhara', 0, 'Shree Krishna Chalchitra Mandir (Pokhara)', '', 'Pokhara', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"16\";}', '', 1, '', '', 30, '2015-11-09 14:29:19'),
+(43, 'shree-ganesh-chalchitra-mandir', 0, 'Shree Ganesh Chalchitra Mandir', '', 'Ghorai', '', 0, '', 0, '', '', '', '', 1, '', '', 31, '2015-11-09 14:29:43'),
+(44, 'shiva-shakti-chalchitra-mandir', 0, 'Shiva Shakti Chalchitra Mandir', '', 'Tamghas, Gulmi', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 32, '2015-11-09 14:29:59'),
+(45, 'shiva-sankar-chalchitra-mandir', 0, 'Shiva Sankar Chalchitra Mandir', '', 'Rajbiraj', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"19\";}', '', 1, '', '', 33, '2015-11-09 14:30:12'),
+(46, 'shiva-parbati-c-mandir', 0, 'Shiva Parbati C.Mandir', '', 'Jitpur', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"17\";}', '', 1, '', '', 34, '2015-11-09 14:30:25'),
+(47, 'shanta-chalchitra-mandir', 0, 'Shanta Chalchitra Mandir', '', 'Gaur', '', 0, '', 0, '', '', '', '', 1, '', '', 35, '2015-11-09 14:30:42'),
+(48, 'santosh-chalchitra-mandir', 0, 'Santosh Chalchitra Mandir', '', 'Palpa', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"16\";i:1;s:2:\"12\";}', '', 1, '', '', 36, '2015-11-09 14:30:55'),
+(49, 'ruchi-chalchitra-mandir', 0, 'Ruchi Chalchitra Mandir', '', 'Beni', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"15\";i:1;s:2:\"11\";}', '', 1, '', '', 37, '2015-11-09 14:31:09'),
+(50, 'ramjanaki-pictures-palace-pvt-ltd', 0, 'Ramjanaki Pictures Palace Pvt.Ltd', '', 'Janakpur', '', 0, '', 0, '', '', '', '', 1, '', '', 38, '2015-11-09 14:31:24'),
+(51, 'qfx-kumari-screen-2', 0, 'QFX Kumari Screen 2', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"13\";}', '', 1, '', '', 39, '2015-11-09 14:31:38'),
+(52, 'qfx-kumari-screen-1', 0, 'QFX Kumari Screen 1', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:1:\"4\";}', '', 1, '', '', 40, '2015-11-09 14:31:56'),
+(53, 'qfx-jalma-cinema-2', 0, 'QFX Jalma Cinema 2', '', 'Narayanghat', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 41, '2015-11-09 14:32:10'),
+(54, 'qfx-jalma-cinema-1', 0, 'QFX Jalma Cinema 1', '', 'Narayanghat', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"12\";i:1;s:2:\"11\";}', '', 1, '', '', 42, '2015-11-09 14:32:26'),
+(55, 'qfx-jai-nepal', 0, 'QFX Jai Nepal', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"16\";i:1;s:1:\"4\";}', '', 1, '', '', 43, '2015-11-09 14:32:38'),
+(56, 'qfx-central-screen-3', 0, 'QFX Central Screen 3', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"16\";}', '', 1, '', '', 44, '2015-11-09 14:32:51'),
+(57, 'qfx-central-screen-2', 0, 'QFX Central Screen 2', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"16\";}', '', 1, '', '', 45, '2015-11-09 14:33:03'),
+(58, 'qfx-central-screen-1', 0, 'QFX Central Screen 1', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 46, '2015-11-09 14:33:16'),
+(63, 'q-s-cinema-audi-1', 0, 'Q S Cinema Audi 1', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 48, '2015-11-09 15:19:30'),
+(62, 'q-s-cinema-audi-2', 0, 'Q S Cinema Audi 2', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 47, '2015-11-09 15:18:58'),
+(64, 'pushpanjali-chalchitra-mandir', 0, 'Pushpanjali Chalchitra Mandir', '', 'Kathmandu', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"11\";}', '', 1, '', '', 49, '2015-11-09 15:20:20'),
+(65, 'purnima-chalchitra-ghar', 0, 'Purnima Chalchitra Ghar', '', 'Pokhara', '', 0, '', 0, '', '', '', '', 1, '', '', 50, '2015-11-09 15:20:37'),
+(66, 'prithivi-chalchitra-mandir', 0, 'Prithivi Chalchitra Mandir', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 51, '2015-11-09 15:20:49'),
+(67, 'pooja-chalchitra-mandir', 0, 'Pooja Chalchitra Mandir', '', 'Baglung', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 52, '2015-11-09 15:21:04'),
+(68, 'pokhara-cineplex-screen-2', 0, 'Pokhara Cineplex Screen 2', '', 'Pokhara', '', 0, '', 0, '', '', '', '', 1, '', '', 53, '2015-11-09 15:21:16'),
+(69, 'pokhara-cineplex-screen-1', 0, 'Pokhara Cineplex Screen 1', '', 'Pokhara', '', 0, '', 0, '', '', '', '', 1, '', '', 54, '2015-11-09 15:21:29'),
+(70, 'pashupati-chalchitra-mandir', 0, 'Pashupati Chalchitra Mandir', '', 'Lahan', '', 0, '', 0, '', '', '', '', 1, '', '', 55, '2015-11-09 15:21:42'),
+(71, 'om-chalchitra-mandir', 0, 'Om Chalchitra Mandir', '', 'Hetauda', '', 0, '', 0, '', '', 'a:3:{i:0;s:2:\"15\";i:1;s:2:\"12\";i:2;s:2:\"11\";}', '', 1, '', '', 56, '2015-11-09 15:21:55'),
+(72, 'o-max-c-mandir', 0, 'O-Max C.Mandir', '', 'Hetauda', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"12\";i:1;s:2:\"11\";}', '', 1, '', '', 57, '2015-11-09 15:22:07'),
+(73, 'ns-cinemas-screen-2', 0, 'NS Cinemas Screen 2', '', 'Hetauda', '', 0, '', 0, '', '', 'a:1:{i:0;s:1:\"4\";}', '', 1, '', '', 58, '2015-11-09 15:22:21'),
+(74, 'ns-cinemas-screen-1', 0, 'NS Cinemas Screen 1', '', 'Hetauda', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"16\";i:1;s:1:\"3\";}', '', 1, '', '', 59, '2015-11-09 15:22:33'),
+(75, 'nilam-chalchitra-mandir', 0, 'Nilam Chalchitra Mandir', '', 'Janakpur', '', 0, '', 0, '', '', '', '', 1, '', '', 60, '2015-11-09 15:22:48'),
+(76, 'new-shiva-cinema', 0, 'New Shiva Cinema', '', 'Gauradha', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"15\";}', '', 1, '', '', 61, '2015-11-09 15:23:02'),
+(77, 'myagdi-chalchitra-mandir', 0, 'Myagdi Chalchitra Mandir', '', 'Beni', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 62, '2015-11-09 15:23:38'),
+(78, 'mohini-chalchitra-mandir', 0, 'Mohini Chalchitra Mandir', '', 'Bardaghat', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 63, '2015-11-09 15:23:55'),
+(79, 'mandip-milan-chalchitra-mandir', 0, 'Mandip Milan Chalchitra Mandir', '', 'Gagangaudha', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 64, '2015-11-09 15:24:08'),
+(80, 'manakamana-chalchitra-mandir', 0, 'Manakamana Chalchitra Mandir', '', 'Damauli', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"14\";}', '', 1, '', '', 65, '2015-11-09 15:24:19'),
+(81, 'mai-manakamana-chalchitra-mandir', 0, 'Mai Manakamana Chalchitra Mandir', '', 'AbuKhaireni', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 66, '2015-11-09 15:24:32'),
+(82, 'mahalaxmi-chalchitra-mandir', 0, 'Mahalaxmi Chalchitra Mandir', '', 'Narayanpur', '', 0, '', 0, '', '', 'a:1:{i:0;s:2:\"12\";}', '', 1, '', '', 67, '2015-11-09 15:24:48'),
+(83, 'luv-kush-chalchitra-mandir', 0, 'Luv-Kush Chalchitra Mandir', '', 'Mahendra Nagar', '', 0, '', 0, '', '', '', '', 1, '', '', 68, '2015-11-09 15:25:02'),
+(84, 'laxmi-chalchitra-mandir', 0, 'Laxmi Chalchitra Mandir', '', 'Nepalgunj', '', 0, '', 0, '', '', '', '', 1, '', '', 69, '2015-11-09 15:25:18'),
+(85, 'krishna-talkies', 0, 'Krishna Talkies', '', 'Britamod', '', 0, '', 0, '', '', '', '', 1, '', '', 70, '2015-11-09 15:25:32'),
+(86, 'kiran-chalchitra-mandir', 0, 'Kiran Chalchitra Mandir', '', 'Jhumka', '', 0, '', 0, '', '', '', '', 1, '', '', 71, '2015-11-09 15:25:43'),
+(87, 'kashi-cineplex', 0, 'Kashi Cineplex', '', 'Bhairawa ', '', 0, '', 0, '', '', 'a:2:{i:0;s:2:\"16\";i:1;s:2:\"11\";}', '', 1, '', '', 72, '2015-11-09 15:25:55'),
+(88, 'kalika-chalchitra-mandir-palmanpur', 0, 'Kalika Chalchitra Mandir (Palmanpur)', '', 'Palmanpur', '', 0, '', 0, '', '', '', '', 1, '', '', 73, '2015-11-09 15:26:13'),
+(89, 'kalika-chalchitra-mandir-butwal', 0, 'Kalika Chalchitra Mandir (Butwal)', '', 'Butwal', '', 0, '', 0, '', '', '', '', 1, '', '', 74, '2015-11-09 15:26:40'),
+(90, 'kaligandaki-chalchitra-mandir', 0, 'Kaligandaki Chalchitra Mandir', '', 'Baglung', '', 0, '', 0, '', '', '', '', 1, '', '', 75, '2015-11-09 15:26:52'),
+(91, 'kalanki-c-mandir-ka', 0, 'Kalanki C.Mandir (Ka)', '', '	Kalanki', '', 0, '', 0, '', '', '', '', 1, '', '', 76, '2015-11-09 15:27:05'),
+(92, 'joshi-talkies', 0, 'Joshi Talkies', '', 'Dhangadi', '', 0, '', 0, '', '', '', '', 1, '', '', 77, '2015-11-09 15:27:17'),
+(93, 'jeevandeep-chalchitra-mandir', 0, 'Jeevandeep Chalchitra Mandir', '', 'Barathawa', '', 0, '', 0, '', '', '', '', 1, '', '', 78, '2015-11-09 15:27:32'),
+(94, 'jawahar-talkies', 0, 'Jawahar Talkies', '', 'Bhadrapur', '', 0, '', 0, '', '', '', '', 1, '', '', 79, '2015-11-09 15:27:45'),
+(95, 'janaki-chalchitra-mandir', 0, 'Janaki Chalchitra Mandir', '', 'Kalaiya', '', 0, '', 0, '', '', '', '', 1, '', '', 80, '2015-11-09 15:27:59'),
+(96, 'jana-jyoti-chalchitra-mandir', 0, 'Jana Jyoti Chalchitra Mandir', '', 'Parsa', '', 0, '', 0, '', '', '', '', 1, '', '', 81, '2015-11-09 15:28:13'),
+(97, 'itahari-cinema-screen-2', 0, 'Itahari Cinema(Screen 2)', '', 'Itahari', '', 0, '', 0, '', '', '', '', 1, '', '', 82, '2015-11-09 15:28:25'),
+(98, 'itahari-cinema-screen-1', 0, 'Itahari Cinema(Screen 1)', '', 'Itahari', '', 0, '', 0, '', '', '', '', 1, '', '', 83, '2015-11-09 15:28:38'),
+(99, 'hiraratna-chalachitra-mandir', 0, 'Hiraratna Chalachitra Mandir', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 84, '2015-11-09 15:28:50'),
+(100, 'guna-chalchitra-mandir-ka', 0, 'Guna Chalchitra Mandir (Ka)', '', 'Lalitpur', '', 0, '', 0, '', '', '', '', 1, '', '', 85, '2015-11-09 15:29:03'),
+(101, 'guna-chalchitra-mandir-cha', 0, 'Guna Chalchitra Mandir (Cha)', '', 'Lalitpur', '', 0, '', 0, '', '', '', '', 1, '', '', 86, '2015-11-09 15:29:17'),
+(102, 'gorkhakali-chalchitra-mandir', 0, 'Gorkhakali Chalchitra Mandir', '', 'Gorkha', '', 0, '', 0, '', '', '', '', 1, '', '', 87, '2015-11-09 15:29:30'),
+(103, 'gopi-cinema', 0, 'Gopi Cinema', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 88, '2015-11-09 15:30:00'),
+(104, 'girija-chalchitra-mandir', 0, 'Girija Chalchitra Mandir', '', 'Janakpur', '', 0, '', 0, '', '', '', '', 1, '', '', 89, '2015-11-09 15:30:10'),
+(105, 'ganga-chalchitra-mandir-kha', 0, 'Ganga Chalchitra Mandir (Kha)', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 90, '2015-11-09 15:30:23'),
+(106, 'ganga-chalchitra-mandir-ka', 0, 'Ganga Chalchitra Mandir (Ka)', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 91, '2015-11-09 15:30:35'),
+(107, 'ganesh-chalchitra-mandir', 0, 'Ganesh Chalchitra Mandir', '', 'Nijgadh', '', 0, '', 0, '', '', '', '', 1, '', '', 92, '2015-11-09 15:30:51'),
+(108, 'fcube-cinema-3', 0, 'Fcube Cinema 3', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 93, '2015-11-09 15:31:26'),
+(109, 'fcube-cinema-2', 0, 'Fcube Cinema 2', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 94, '2015-11-09 15:31:39'),
+(110, 'fcube-cinema-1', 0, 'Fcube Cinema 1', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 95, '2015-11-09 15:31:52'),
+(111, 'damak-chalchitra-mandir', 0, 'Damak Chalchitra Mandir', '', 'Damak', '', 0, '', 0, '', '', '', '', 1, '', '', 96, '2015-11-09 15:32:12'),
+(112, 'city-max-cinema-screen-2', 0, 'City Max Cinema Screen 2', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 97, '2015-11-09 15:32:28'),
+(113, 'city-max-cinema', 0, 'City Max Cinema', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 98, '2015-11-09 15:32:41'),
+(114, 'cinestar-big-movies-3', 0, 'Cinestar Big Movies 3', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 99, '2015-11-09 15:32:53'),
+(115, 'cinestar-big-movies-2', 0, 'Cinestar Big Movies 2', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 100, '2015-11-09 15:33:10'),
+(116, 'cinestar-big-movies-1', 0, 'Cinestar Big Movies 1', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 101, '2015-11-09 15:33:21'),
+(117, 'cine-de-chef-audi-2', 0, 'Cine De Chef Audi 2', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 102, '2015-11-09 15:33:36'),
+(118, 'cine-de-chef-audi-1', 0, 'Cine De Chef Audi 1', '', 'Kathmandu	', '', 0, '', 0, '', '', '', '', 1, '', '', 103, '2015-11-09 15:33:51'),
+(119, 'chandra-talkies', 0, 'Chandra Talkies', '', 'Katari', '', 0, '', 0, '', '', '', '', 1, '', '', 104, '2015-11-09 15:34:02'),
+(120, 'c-max-cinema', 0, 'C-Max Cinema', '', 'Narayanghat', '', 0, '', 0, '', '', '', '', 1, '', '', 105, '2015-11-09 15:34:19'),
+(121, 'buddha-highvision-hall', 0, 'Buddha Highvision Hall', '', 'Bhurtiwang', '', 0, '', 0, '', '', '', '', 1, '', '', 106, '2015-11-09 15:34:33'),
+(122, 'buddha-chalchitra-mandir', 0, 'Buddha Chalchitra Mandir', '', 'Mirchaiya', '', 0, '', 0, '', '', '', '', 1, '', '', 107, '2015-11-09 15:34:47'),
+(123, 'bro-sis-digital-cinema', 0, 'Bro-Sis Digital Cinema', '', 'Chandranigapur', '', 0, '', 0, '', '', '', '', 1, '', '', 108, '2015-11-09 15:35:01'),
+(124, 'bishwojyoti-cinema-bhawan', 0, 'Bishwojyoti Cinema Bhawan', '', 'Kathmandu', '', 0, '', 0, '', '', '', '', 1, '', '', 109, '2015-11-09 15:35:14'),
+(125, 'bishnu-chalchitra-mandir', 0, 'Bishnu Chalchitra Mandir', '', 'Tulsipur', '', 0, '', 0, '', '', '', '', 1, '', '', 110, '2015-11-09 15:35:26'),
+(126, 'bhumi-chalchitra-mandir', 0, 'Bhumi Chalchitra Mandir', '', 'Bhurigaun', '', 0, '', 0, '', '', '', '', 1, '', '', 111, '2015-11-09 15:36:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_users`
+--
+
+CREATE TABLE `tbl_users` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `contact` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `optional_email` mediumtext NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(65) NOT NULL,
+  `accesskey` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `access_code` varchar(255) NOT NULL,
+  `facebook_uid` varchar(255) NOT NULL,
+  `facebook_accesstoken` varchar(255) NOT NULL,
+  `facebook_tokenexpire` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`id`, `first_name`, `middle_name`, `last_name`, `contact`, `email`, `optional_email`, `username`, `password`, `accesskey`, `image`, `group_id`, `access_code`, `facebook_uid`, `facebook_accesstoken`, `facebook_tokenexpire`, `status`, `sortorder`, `added_date`) VALUES
+(1, 'River Bank', 'Jungle', 'Resort', '', 'info@riverbankjungleresort.com.np', 'sales@riverbankjungleresort.com.np', 'admin', '32b9da145699ea9058dd7d6669e6bcc5', 'TPhIr9nSQoCnlCED55MmMiKUS', '', 1, 'rESdJXLOZX', '', '', '2021-11-25 12:47:31', 1, 1, '2014-03-26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_info`
+--
+
+CREATE TABLE `tbl_user_info` (
+  `id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
+  `email2` varchar(100) NOT NULL,
+  `dob` date NOT NULL,
+  `zodic_sign` varchar(100) NOT NULL,
+  `current_city` tinytext NOT NULL,
+  `education` tinytext NOT NULL,
+  `home_town` tinytext NOT NULL,
+  `phone_res` varchar(30) NOT NULL,
+  `phone_office` varchar(30) NOT NULL,
+  `mobile_no` varchar(30) NOT NULL,
+  `mobile_no2` varchar(30) NOT NULL,
+  `children_name` tinytext NOT NULL,
+  `pet_name` tinytext NOT NULL,
+  `nick_name` varchar(255) NOT NULL,
+  `gender` enum('male','female','other') NOT NULL,
+  `birth_place` varchar(100) NOT NULL,
+  `maritial_status` enum('married','single','divorced') NOT NULL,
+  `spouse_name` varchar(100) NOT NULL,
+  `publish_spoush_name` tinyint(1) NOT NULL,
+  `publish_children_name` varchar(255) NOT NULL,
+  `career_start_date` date NOT NULL,
+  `facebook_link` varchar(255) NOT NULL,
+  `facebook_page` tinytext NOT NULL,
+  `twitter_link` tinytext NOT NULL,
+  `google_plus` tinytext NOT NULL,
+  `linkedin` tinytext NOT NULL,
+  `skpye_address` varchar(255) NOT NULL,
+  `short_desc` text NOT NULL,
+  `website` varchar(255) NOT NULL,
+  `other_profession` tinytext NOT NULL,
+  `question_set` int(11) NOT NULL,
+  `answer_status` tinyint(1) NOT NULL COMMENT '0=>Not finished,1=>finised,2=>ongoing review,3=>complete review,',
+  `notification` varchar(50) NOT NULL COMMENT 'notification for answer status complete.'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_video`
+--
+
+CREATE TABLE `tbl_video` (
+  `id` int(11) NOT NULL,
+  `source` varchar(200) NOT NULL,
+  `url_type` varchar(50) NOT NULL,
+  `title` mediumtext NOT NULL,
+  `thumb_image` mediumtext NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `host` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `class` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL,
+  `added_date` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_visitorcounter`
+--
+
+CREATE TABLE `tbl_visitorcounter` (
+  `id` int(11) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `action_id` int(11) NOT NULL,
+  `ip_address` varchar(50) NOT NULL,
+  `added_date` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_visitorcounter`
+--
+
+INSERT INTO `tbl_visitorcounter` (`id`, `action`, `action_id`, `ip_address`, `added_date`) VALUES
+(1, 'news', 1, '192.168.2.121', '2015-11-05'),
+(2, 'news', 2, '192.168.2.130', '2015-11-08'),
+(3, 'news', 2, '192.168.2.121', '2015-11-08'),
+(4, 'news', 2, '192.168.2.2', '2015-11-09'),
+(5, 'news', 2, '192.168.2.111', '2015-11-09'),
+(6, 'news', 2, '192.168.2.141', '2015-11-09'),
+(7, 'news', 2, '192.168.2.114', '2015-11-09'),
+(8, 'news', 2, '192.168.2.80', '2015-11-10'),
+(9, 'news', 1, '192.168.2.141', '2015-11-10'),
+(10, 'news', 2, '192.168.2.141', '2015-11-10'),
+(11, 'news', 2, '192.168.2.130', '2015-11-10'),
+(12, 'news', 2, '192.168.2.121', '2015-11-10'),
+(13, 'news', 2, '192.168.2.14', '2015-11-16'),
+(14, 'news', 2, '192.168.2.121', '2015-11-16'),
+(15, 'news', 1, '192.168.2.121', '2015-11-16'),
+(16, 'news', 1, '192.168.2.141', '2015-11-16'),
+(17, 'news', 2, '192.168.2.17', '2015-11-17'),
+(18, 'news', 2, '192.168.2.80', '2015-11-17'),
+(19, 'news', 2, '192.168.2.113', '2015-11-17'),
+(20, 'news', 2, '192.168.2.121', '2015-11-17'),
+(21, 'news', 1, '192.168.2.80', '2015-11-17'),
+(22, 'news', 2, '192.168.2.14', '2015-11-17'),
+(23, 'news', 2, '192.168.2.130', '2015-11-19'),
+(24, 'news', 2, '192.168.2.19', '2015-11-20'),
+(25, 'news', 1, '192.168.2.130', '2015-11-22'),
+(26, 'news', 2, '192.168.2.130', '2015-11-22');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_advertisement`
+--
+ALTER TABLE `tbl_advertisement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_articles`
+--
+ALTER TABLE `tbl_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_blogcomment`
+--
+ALTER TABLE `tbl_blogcomment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_bookinginfo`
+--
+ALTER TABLE `tbl_bookinginfo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_booking_pkg`
+--
+ALTER TABLE `tbl_booking_pkg`
+  ADD KEY `booking_id` (`booking_id`);
+
+--
+-- Indexes for table `tbl_configs`
+--
+ALTER TABLE `tbl_configs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_countries`
+--
+ALTER TABLE `tbl_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_events`
+--
+ALTER TABLE `tbl_events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_faq`
+--
+ALTER TABLE `tbl_faq`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_features`
+--
+ALTER TABLE `tbl_features`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_galleries`
+--
+ALTER TABLE `tbl_galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_gallery_images`
+--
+ALTER TABLE `tbl_gallery_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_group_type`
+--
+ALTER TABLE `tbl_group_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_logs_action`
+--
+ALTER TABLE `tbl_logs_action`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_mainservices`
+--
+ALTER TABLE `tbl_mainservices`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_modules`
+--
+ALTER TABLE `tbl_modules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_movies`
+--
+ALTER TABLE `tbl_movies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_news`
+--
+ALTER TABLE `tbl_news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_offers`
+--
+ALTER TABLE `tbl_offers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_offer_child`
+--
+ALTER TABLE `tbl_offer_child`
+  ADD KEY `offer_id` (`offer_id`);
+
+--
+-- Indexes for table `tbl_package`
+--
+ALTER TABLE `tbl_package`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_package_old`
+--
+ALTER TABLE `tbl_package_old`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_package_sub`
+--
+ALTER TABLE `tbl_package_sub`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_permission`
+--
+ALTER TABLE `tbl_permission`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_polloptions`
+--
+ALTER TABLE `tbl_polloptions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_polls`
+--
+ALTER TABLE `tbl_polls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_popup`
+--
+ALTER TABLE `tbl_popup`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_room_price`
+--
+ALTER TABLE `tbl_room_price`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_services`
+--
+ALTER TABLE `tbl_services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_slideshow`
+--
+ALTER TABLE `tbl_slideshow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_slideshows_withouttlist`
+--
+ALTER TABLE `tbl_slideshows_withouttlist`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_social_networking`
+--
+ALTER TABLE `tbl_social_networking`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_subscribers`
+--
+ALTER TABLE `tbl_subscribers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_testimonial`
+--
+ALTER TABLE `tbl_testimonial`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_theaters`
+--
+ALTER TABLE `tbl_theaters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_user_info`
+--
+ALTER TABLE `tbl_user_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_video`
+--
+ALTER TABLE `tbl_video`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_visitorcounter`
+--
+ALTER TABLE `tbl_visitorcounter`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_advertisement`
+--
+ALTER TABLE `tbl_advertisement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_articles`
+--
+ALTER TABLE `tbl_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_blogcomment`
+--
+ALTER TABLE `tbl_blogcomment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_bookinginfo`
+--
+ALTER TABLE `tbl_bookinginfo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_configs`
+--
+ALTER TABLE `tbl_configs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_countries`
+--
+ALTER TABLE `tbl_countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+
+--
+-- AUTO_INCREMENT for table `tbl_events`
+--
+ALTER TABLE `tbl_events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_faq`
+--
+ALTER TABLE `tbl_faq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_features`
+--
+ALTER TABLE `tbl_features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
+--
+-- AUTO_INCREMENT for table `tbl_galleries`
+--
+ALTER TABLE `tbl_galleries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_gallery_images`
+--
+ALTER TABLE `tbl_gallery_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+
+--
+-- AUTO_INCREMENT for table `tbl_group_type`
+--
+ALTER TABLE `tbl_group_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2392;
+
+--
+-- AUTO_INCREMENT for table `tbl_logs_action`
+--
+ALTER TABLE `tbl_logs_action`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_mainservices`
+--
+ALTER TABLE `tbl_mainservices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `tbl_modules`
+--
+ALTER TABLE `tbl_modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tbl_movies`
+--
+ALTER TABLE `tbl_movies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `tbl_news`
+--
+ALTER TABLE `tbl_news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_offers`
+--
+ALTER TABLE `tbl_offers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `tbl_package`
+--
+ALTER TABLE `tbl_package`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_package_old`
+--
+ALTER TABLE `tbl_package_old`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_package_sub`
+--
+ALTER TABLE `tbl_package_sub`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_permission`
+--
+ALTER TABLE `tbl_permission`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_polloptions`
+--
+ALTER TABLE `tbl_polloptions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_polls`
+--
+ALTER TABLE `tbl_polls`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_popup`
+--
+ALTER TABLE `tbl_popup`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_price`
+--
+ALTER TABLE `tbl_room_price`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_services`
+--
+ALTER TABLE `tbl_services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `tbl_slideshow`
+--
+ALTER TABLE `tbl_slideshow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_slideshows_withouttlist`
+--
+ALTER TABLE `tbl_slideshows_withouttlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_social_networking`
+--
+ALTER TABLE `tbl_social_networking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_subscribers`
+--
+ALTER TABLE `tbl_subscribers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_testimonial`
+--
+ALTER TABLE `tbl_testimonial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_theaters`
+--
+ALTER TABLE `tbl_theaters`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+
+--
+-- AUTO_INCREMENT for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_info`
+--
+ALTER TABLE `tbl_user_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_video`
+--
+ALTER TABLE `tbl_video`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_visitorcounter`
+--
+ALTER TABLE `tbl_visitorcounter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_booking_pkg`
+--
+ALTER TABLE `tbl_booking_pkg`
+  ADD CONSTRAINT `fk_booking_id` FOREIGN KEY (`booking_id`) REFERENCES `tbl_bookinginfo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
