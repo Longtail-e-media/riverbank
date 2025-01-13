@@ -1,0 +1,8 @@
+[05-Jul-2024 17:14:26 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/theanfac/mayurstay.com/riverbank/apanel/articles/uploaded_image.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/theanfac/mayurstay.com/riverbank/apanel/articles/uploaded_image.php on line 4
+[05-Jul-2024 17:14:35 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/theanfac/mayurstay.com/riverbank/apanel/articles/uploaded_image.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/theanfac/mayurstay.com/riverbank/apanel/articles/uploaded_image.php on line 4

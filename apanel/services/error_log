@@ -1,0 +1,19 @@
+[03-Jul-2024 20:01:49 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 4
+[03-Jul-2024 20:02:01 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 4
+[04-Jul-2024 11:09:03 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 4
+[04-Jul-2024 11:09:18 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 4
+[04-Jul-2024 11:12:04 Asia/Kathmandu] PHP Warning:  Invalid argument supplied for foreach() in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 8
+[04-Jul-2024 11:12:04 Asia/Kathmandu] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 23
+[04-Jul-2024 11:12:04 Asia/Kathmandu] PHP Warning:  Invalid argument supplied for foreach() in /home/theanfac/mayurstay.com/riverbank/apanel/services/uploaded_image.php on line 24

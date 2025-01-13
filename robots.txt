@@ -1,0 +1,4 @@
+# robots.txt# Presence of this file eliminiates error logs of code 404 for robots.txt# We allow all possible files avialable to the crawlers, sipers and bots.# Contents are restricted by enforced login wherever necessary.
+
+User-agent: *
+Allow:
