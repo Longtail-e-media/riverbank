@@ -1,7 +1,0 @@
-.idea
-/images
-/includes/config.php
-/includes/initialize.php
-*.zip
-error_log
-.htaccess

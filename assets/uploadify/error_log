@@ -1,6 +1,0 @@
-[08-Jul-2024 10:25:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function pr() in /home/theanfac/mayurstay.com/riverbank/assets/uploadify/uplodifyemail.php:100
-Stack trace:
-#0 {main}
-  thrown in /home/theanfac/mayurstay.com/riverbank/assets/uploadify/uplodifyemail.php on line 100
-[08-Jul-2024 10:34:32 UTC] PHP Warning:  Use of undefined constant zip - assumed 'zip' (this will throw an Error in a future version of PHP) in /home/theanfac/mayurstay.com/riverbank/assets/uploadify/uplodifyemail.php on line 102
-[08-Jul-2024 10:51:39 UTC] PHP Warning:  Use of undefined constant zip - assumed 'zip' (this will throw an Error in a future version of PHP) in /home/theanfac/mayurstay.com/riverbank/assets/uploadify/uplodifyemail.php on line 102
