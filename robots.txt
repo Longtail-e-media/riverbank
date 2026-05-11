@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /apanel/
+Disallow: /cgi-bin/
+Disallow: /includes/
+Sitemap: https://www.riverbankjungleresort.com.np/sitemap.xml

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+    <loc>https://www.riverbankjungleresort.com.np/</loc>
+    <lastmod>2026-05-11T15:59:45+05:45</lastmod>
+    <priority>1</priority>
+</url>
+
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/contact-us</loc>
+            <lastmod>2026-05-11T15:59:45+05:45</lastmod>
+            <priority>0.9</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/facilities-list</loc>
+            <lastmod>2026-05-11T15:59:45+05:45</lastmod>
+            <priority>0.9</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/gallery-list</loc>
+            <lastmod>2026-05-11T15:59:45+05:45</lastmod>
+            <priority>0.9</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/sustainability</loc>
+            <lastmod>2024-06-11T14:49:35+05:45</lastmod>
+            <priority>0.75</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/recreation</loc>
+            <lastmod>2024-06-14T15:13:55+05:45</lastmod>
+            <priority>0.75</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/experience</loc>
+            <lastmod>2024-06-13T15:04:28+05:45</lastmod>
+            <priority>0.75</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/about-us</loc>
+            <lastmod>2017-04-23T18:29:11+05:45</lastmod>
+            <priority>0.75</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/riverbank-jungle-resort</loc>
+            <lastmod>2024-07-02T18:15:37+05:45</lastmod>
+            <priority>0.75</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/rooms-suites</loc>
+            <lastmod>2017-04-24T17:25:53+05:45</lastmod>
+            <priority>0.8</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/dining-bar</loc>
+            <lastmod>2024-06-14T14:32:24+05:45</lastmod>
+            <priority>0.8</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/meeting-events</loc>
+            <lastmod>2024-06-14T14:46:01+05:45</lastmod>
+            <priority>0.8</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/the-signature-restaurant</loc>
+            <lastmod>2024-06-14T14:33:08+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/regal-ball-room</loc>
+            <lastmod>2024-06-14T14:47:44+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/al-fresco-dining</loc>
+            <lastmod>2024-06-14T14:33:54+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/serenity-hall</loc>
+            <lastmod>2024-06-14T14:47:13+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/riverside-retreat</loc>
+            <lastmod>2024-06-14T14:38:01+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/the-classic-bar</loc>
+            <lastmod>2024-06-14T14:38:30+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/deluxe-room</loc>
+            <lastmod>2017-04-27T13:34:44+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/super-deluxe-room</loc>
+            <lastmod>2017-04-27T13:33:02+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    
+        <url>
+            <loc>https://www.riverbankjungleresort.com.np/villa-with-private-plunge-pool</loc>
+            <lastmod>2017-04-24T17:34:20+05:45</lastmod>
+            <priority>0.85</priority>
+        </url>
+    </urlset>

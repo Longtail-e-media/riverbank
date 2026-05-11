@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>Hotel Ambassador</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Metrophobic|Roboto" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="images/logo.png">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style type="text/css">
+body{
+	font-size: 12px;
+	font-family: 'Roboto', sans-serif;
+}
+	.body-structure{
+		margin:auto;
+		max-width: 1400px;
+		height:100vh;
+		overflow: hidden;
+	}
+	.body-structure h1{
+		font-size: 3em;
+		color: #fff;
+		font-family: 'Cinzel Decorative', cursive;
+		line-height: 0px;
+	}
+	.body-structure h2{
+		font-size: 2em;
+		color: #fff;
+		font-family: 'Metrophobic', sans-serif;
+	}
+	.body-structure p{
+		color:#000;
+		line-height: 2em;
+	}
+	.body-structure span{
+		color:#111;
+		font-size:1.5em;
+	}
+	.body-structure span i{
+		color:#000;
+		font-size:.7em;
+	}
+
+		.bg-class1{
+			background: url('images/bg-amb.jpg');
+			background-repeat: repeat;
+			background-size: cover;
+			width: 50%;
+			height:100vh;
+			float: left;
+		}
+		.bg-class1:hover .amb-apart, .bg-class2:hover .amb-laz{
+			height: 100%;
+		    padding: 200px 30px 30px;
+		    background: rgba(255, 255, 255, 0.81);
+		}
+		
+		.bg-class1 .amb-apart p, .bg-class2 .amb-laz p{
+		display:none;
+		}
+		
+		.bg-class1:hover .amb-apart p, .bg-class2:hover .amb-laz p{
+		display:block;
+		}
+		
+			.bg-class1:hover .amb-apart h1, .bg-class2:hover .amb-laz h1, .bg-class1:hover .amb-apart h2, .bg-class2:hover .amb-laz h2{
+			color:#000;
+			}
+		/*.bg-class1:hover 
+			.bg-class1:hover{opacity: 1;transition: all 1s ease-in-out;background-color: rgba(255,255,255,0.4)
+			}*/
+		.amb-laz p{
+			width: 70%;
+		    float: right;
+		    }
+
+		    .amb-apart p{
+			width: 70%;
+		    float: left;
+		    }
+
+	/*	.bg-class1::before{
+		background: rgba(255, 255, 255, 0.33);
+	    content: '';
+	    display: block;
+	    height: 100%;
+	    position: absolute;
+	    z-index: 0;
+	    width: 100%;
+		}*/
+		.bg-class2{
+			background: url('images/bg-amb2.jpg');
+			background-repeat: repeat;
+			background-size: cover;
+			width: 50%;
+			height:100vh;
+			float: left;
+		}
+		/*.bg-class2:hover {opacity: 1;transition: all 1s ease-in-out;background: #fff}
+		.bg-class2::before{
+			background: rgba(255, 255, 255, 0.33);
+		    content: '';
+		    display: block;
+		    height: 100%;
+		    position: absolute;
+		    width: 100%;
+		}*/
+		.amb-laz, 
+		.amb-apart{
+			transition: all 1s ease-in-out;
+			height:100%;
+			padding: 300px 30px 30px;
+			
+		}
+		.amb-logo img{
+			width: 182px;
+		    position: absolute;
+		    left: 0;
+		    top: 50px;
+		    right: 0;
+		    margin: auto;
+		    z-index: 999;
+		}
+		.ace-logo img{
+			width: 80px;
+		    position: absolute;
+		    left: 0;
+		    bottom: 0%;
+		    right: 0;
+		    margin: auto;
+		    z-index: 999;
+		}
+
+@media (max-width: 767px) {
+	.bg-class2:hover,.bg-class1:hover { transform: scale(1);background: #fff}
+	.body-structure{
+		margin:auto;
+		max-width: 100%;
+		height:auto;
+		/*overflow: auto;*/
+	}
+	.amb-laz{
+		/*margin-top: 180px;*/
+	}
+	.amb-apart{
+		/*	margin-top:15px ;
+			padding: 30px;*/
+			
+		}
+	.bg-class2,.bg-class1{
+		width: 100%;
+		height: auto;
+	}
+	.amb-laz p{
+		width: 100%;
+		text-align: justify;
+	}
+	.amb-apart p{
+		width: 100%;
+		text-align: justify;
+	}
+
+	.body-structure h1{
+		font-size:2em;
+	}
+
+	.body-structure h2{
+		font-size:1.5em;
+	}
+
+}
+</style>
+</head>
+<body>
+<div class="body-structure">
+	<div class="amb-logo">
+		<img alt="Hotel Ambassador" src="http://www.ambassadornepal.com/images/preference/7jXD7-logo2.png">
+	</div>
+	<div class="row ">
+		<div class="">
+		<div class="bg-class2">
+			<div class="text-right amb-laz">
+			<h1>Ambassador</h1>
+			<h2>Apartments by ACE Hotels</h2>
+			<p>Ambassador Apartments caters to those looking for short or long term, full or semi furnished apartments.  It is an ideal choice for those looking for a spacious, comfortable & safe living in the heart of Kathmandu. Six apartment units, comes with separate kitchen, bright living area, spacious rooms & a sunny balcony. <br><br>
+			<a href="http://ambassadorchauni.com" target="blank"> <span> Get In &nbsp; &nbsp;<i class="fa fa-arrow-right"></i></span></a>
+			</p>
+			
+			
+			</div>
+		</div>
+		<div class="bg-class1">
+			<div class="text-left amb-apart">
+			<h1>Ambassador</h1>
+			
+			
+			<h2>Lazimpat by ACE Hotels</h2>
+			<p>The Ambassador is a four-star hotel at the heart of Kathmandu. Located in one the most vibrant areas of Kathmandu (Lazimpat), it is an ideal choice for guests who want to experience everything great that the city has to offer, without having to venture too far. Within walking distance of the buzzing alleys of Thamel and the upmarket shopping boulevard, otherwise known as Durbar Marg, the hotel offers a diverse range of accommodations designed to suit the varying needs of our guest.<br><br>
+			<a href="http://www.ambassadornepal.com/home"  target="blank"><span><i class="fa fa-arrow-left"></i> &nbsp;&nbsp; Get In</span></a>
+			</p>
+			</div>
+			
+			</div>
+			<!-- <div class="ace-logo">
+			<img src="http://longtail.com.np/acegroup/wp-content/uploads/2016/05/logo-new.jpg" ></div> -->
+		
+		
+		</div>
+	</div>
+</div>
+</body>
+</html>

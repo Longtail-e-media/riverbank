@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="generator" content="MediaWiki 1.18.2">
+<link rel="shortcut icon" href="http://a.cksource.com/e/1/gfx/icon.png">
+<link rel="search" type="application/opensearchdescription+xml" href="http://docs.cksource.com/opensearch_desc.php" title="CKSource Docs (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://docs.cksource.com/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="CKSource Docs Atom feed" href="http://docs.cksource.com/index.php?title=Special:RecentChanges&amp;feed=atom">		<title>CKEditor 3.x/Developers Guide/File Browser (Uploader) - CKSource Docs</title>
+		<link type="text/css" rel="stylesheet" media="all" href="File_Browser_%28Uploader%29_files/reset.css">
+		<link type="text/css" rel="stylesheet" media="all" href="File_Browser_%28Uploader%29_files/default.css">
+                <script type="text/javascript" src="File_Browser_%28Uploader%29_files/jquery.js"></script>
+                <script type="text/javascript" src="File_Browser_%28Uploader%29_files/bar.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("a.hidinglink").each(function(){
+				$("#" + $(this).show().attr("rel")).hide();
+			});
+			$("a.hidinglink").click(function() {
+					$("#" + $(this).attr("rel")).slideToggle();
+					return false;
+			});
+		});
+		</script>
+		<link rel="stylesheet" href="File_Browser_%28Uploader%29_files/load.css">
+<link rel="stylesheet" href="File_Browser_%28Uploader%29_files/main.css" media="screen">
+<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins/cksource/IE50Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 5.5000]><link rel="stylesheet" href="/skins/cksource/IE55Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" href="/skins/cksource/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/cksource/IE70Fixes.css?303" media="screen" /><![endif]--><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: fckedit_cksourcedocs:resourceloader:filter:minify-css:4:c88e2bcd56513749bec09a7e29cb3ffa */
+</style>
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js?303"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		<script>if(window.mw){
+	mw.config.set({"wgCanonicalNamespace": "", "wgCanonicalSpecialPageName": false, "wgNamespaceNumber": 0, "wgPageName": "CKEditor_3.x/Developers_Guide/File_Browser_(Uploader)", "wgTitle": "CKEditor 3.x/Developers Guide/File Browser (Uploader)", "wgCurRevisionId": 5809, "wgArticleId": 759, "wgIsArticle": true, "wgAction": "view", "wgUserName": null, "wgUserGroups": ["*"], "wgCategories": [], "wgBreakFrames": false, "wgRestrictionEdit": [], "wgRestrictionMove": []});
+}
+</script>
+		<script type="text/javascript" src="File_Browser_%28Uploader%29_files/wikibits.js"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+<style type="text/css">/*<![CDATA[*/
+.source-javascript {line-height: normal;}
+.source-javascript li, .source-javascript pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for javascript
+ * CSS class: source-javascript, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.javascript.source-javascript .de1, .javascript.source-javascript .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.javascript.source-javascript  {font-family:monospace;}
+.javascript.source-javascript .imp {font-weight: bold; color: red;}
+.javascript.source-javascript li, .javascript.source-javascript .li1 {font-weight: normal; vertical-align:top;}
+.javascript.source-javascript .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.javascript.source-javascript .li2 {font-weight: bold; vertical-align:top;}
+.javascript.source-javascript .kw1 {color: #000066; font-weight: bold;}
+.javascript.source-javascript .kw2 {color: #003366; font-weight: bold;}
+.javascript.source-javascript .kw3 {color: #000066;}
+.javascript.source-javascript .co1 {color: #006600; font-style: italic;}
+.javascript.source-javascript .co2 {color: #009966; font-style: italic;}
+.javascript.source-javascript .coMULTI {color: #006600; font-style: italic;}
+.javascript.source-javascript .es0 {color: #000099; font-weight: bold;}
+.javascript.source-javascript .br0 {color: #009900;}
+.javascript.source-javascript .sy0 {color: #339933;}
+.javascript.source-javascript .st0 {color: #3366CC;}
+.javascript.source-javascript .nu0 {color: #CC0000;}
+.javascript.source-javascript .me1 {color: #660066;}
+.javascript.source-javascript .ln-xtra, .javascript.source-javascript li.ln-xtra, .javascript.source-javascript div.ln-xtra {background-color: #ffc;}
+.javascript.source-javascript span.xtra { display:block; }
+
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Geshi.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+/*]]>*/
+</style>		<script type="text/javascript" src="File_Browser_%28Uploader%29_files/index.php"><!-- site js --></script>
+
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-CKEditor_3_x_Developers_Guide_File_Browser_Uploader action-view skin-cksource">
+<div id="mintbar">
+        <ul>
+            <li class="item1">The future of web editing has arrived! Check the new <a href="http://ckeditor.com/ckeditor-4-beta"><span class="promo">CKEditor 4</span> Beta</a>.</li>
+            <li class="item2">Win <a href="http://ckeditor.com/blog/ckeditor-4-skin-contest"><span class="promo">$1000</span> in the Skin Contest!</a></li>
+            <li class="item3"><button id="closebtn"><span>Close</span></button></li>
+        </ul>
+</div>
+<div id="mint" style="display:none;position:absolute;top:0;right:10px;">
+        <img src="File_Browser_%28Uploader%29_files/ribbon1.png" alt="ribbon">
+</div>
+
+	<div id="container">
+		<div id="header">
+
+			<h1><a href="http://docs.cksource.com/">CKSource</a></h1>
+
+			<ul id="mainnav">
+				<li class="menu-228 active first home"><a href="http://docs.cksource.com/" title=""><span>Home</span></a></li>
+				<li class="menu-225 about_us"><a href="http://cksource.com/about" title="About us"><span>About us</span></a></li>
+				<li class="menu-222 products"><a href="http://cksource.com/products" title="Products"><span>Products</span></a><div>
+					<ul>
+						<li class="ckeditor first active"><a href="http://cksource.com/ckeditor">CKEditor</a></li>
+						<li class="ckfinder"><a href="http://cksource.com/ckfinder">CKFinder</a></li>
+					</ul>
+					</div></li>
+				<li class="menu-224 customers"><a href="http://cksource.com/customers" title="Customers"><span>Customers</span></a></li>
+				<li class="menu-303 news"><a href="http://cksource.com/blog" title=""><span>News</span></a></li>
+				<li class="menu-227 community"><a href="http://cksource.com/forums/" title=""><span>Community</span></a></li>
+				<li class="menu-221 career"><a href="http://cksource.com/career" title="Jobs"><span>Career</span></a></li>
+				<li class="menu-230 last contact"><a href="http://cksource.com/contact" title="Contact Us"><span>Contact</span></a></li>
+			</ul>
+
+			<form action="/index.php" method="post" id="search-theme-form">
+				<div>
+					<span class="inp"><input maxlength="128" name="search" id="edit-search-theme-form-1" size="25" value="Search Docs..." onblur="if (this.value == '') {this.value = 'Search Docs...';}" onfocus="if (this.value == 'Search Docs...') {this.value = '';}" class="form-text text" type="text"></span>
+					<input name="op" value="Search" id="edit-submit" class="form-submit image" src="File_Browser_%28Uploader%29_files/btn-search.gif" type="image">
+					<input name="title" value="Special:Search" type="hidden">
+					<input name="form_id" id="edit-search-theme-form" value="search_theme_form" type="hidden">
+				</div>
+			</form>
+			<div id="personaltools">
+					<h5><a href="http://docs.cksource.com/index.php?title=Special:UserLogin&amp;returnto=CKEditor+3.x%2FDevelopers+Guide%2FFile+Browser+%28Uploader%29">Login / Create Account</a></h5>
+							
+			</div>
+
+		</div><!--/header-->
+
+		<div id="content">
+			<div id="main">
+				<div id="mainInside">
+					<div id="mainInsideInside">
+						<div id="breadcrumbs"><span class="subpages">&lt; <a href="http://docs.cksource.com/CKEditor_3.x" title="CKEditor 3.x">CKEditor 3.x</a> | <a href="http://docs.cksource.com/CKEditor_3.x/Developers_Guide" title="CKEditor 3.x/Developers Guide">Developers Guide</a></span></div>
+						<h1 id="mainHeader">File Browser (Uploader)</h1>
+						<div id="mainCol">
+							<div class="post">
+								<div dir="ltr" class="mw-content-ltr" lang="en"><table id="toc" class="toc"><tbody><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Basic_Configuration"><span class="tocnumber">1</span> <span class="toctext">Basic Configuration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Example_1"><span class="tocnumber">1.1</span> <span class="toctext">Example 1</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Example_2"><span class="tocnumber">1.2</span> <span class="toctext">Example 2</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#File_Browser_Window_Size"><span class="tocnumber">2</span> <span class="toctext">File Browser Window Size</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Example_3"><span class="tocnumber">2.1</span> <span class="toctext">Example 3</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Example_4"><span class="tocnumber">2.2</span> <span class="toctext">Example 4</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Using_CKFinder"><span class="tocnumber">3</span> <span class="toctext">Using CKFinder</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Example_5"><span class="tocnumber">3.1</span> <span class="toctext">Example 5</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Example_6"><span class="tocnumber">3.2</span> <span class="toctext">Example 6</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#PHP_API"><span class="tocnumber">3.3</span> <span class="toctext">PHP API</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="#Other_Resources"><span class="tocnumber">4</span> <span class="toctext">Other Resources</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<p>CKEditor can be easily integrated with an external file browser/uploader. 
+</p><p>Once properly set up, all file browser features will automatically become available. This includes the <b>Upload</b> tab<sup>(1)</sup> in the <b>Link</b>, <b>Image</b>, and <b>Flash Properties</b> dialog windows as well as the <b>Browse Server</b> button<sup>(2)</sup>.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:464px;"><a href="http://docs.cksource.com/File:CKEditor_Image_Dialog.png" class="image"><img alt="" src="File_Browser_%28Uploader%29_files/CKEditor_Image_Dialog.png" class="thumbimage" height="471" width="462"></a>  <div class="thumbcaption">File browser features available for images in CKEditor</div></div></div></div>
+<p><br>
+</p>
+<h2> <span class="mw-headline" id="Basic_Configuration"> Basic Configuration </span></h2>
+<p>The <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserBrowseUrl">filebrowserBrowseUrl</a></code> setting contains the location of an external file browser that should be launched when the <b>Browse Server</b> button is pressed.
+</p><p>The <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserUploadUrl">filebrowserUploadUrl</a></code> setting contains the location of a script that handles file uploads. If set, the <b>Upload</b> tab will appear in some dialog windows — the ones where such functionality is available, i.e. <b>Link</b>, <b>Image</b> and <b>Flash Properties</b>.
+</p>
+<h3> <span class="mw-headline" id="Example_1"> Example 1 </span></h3>
+<p>The sample below shows basic configuration code that can be used to insert a CKEditor instance with the file browser configured.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1">CKEDITOR.<span class="me1">replace</span><span class="br0">(</span> <span class="st0">'editor1'</span><span class="sy0">,</span>
+    <span class="br0">{</span>
+        filebrowserBrowseUrl <span class="sy0">:</span> <span class="st0">'/browser/browse.php'</span><span class="sy0">,</span>
+        filebrowserUploadUrl <span class="sy0">:</span> <span class="st0">'/uploader/upload.php'</span>
+    <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span></pre></div></div>
+<h3> <span class="mw-headline" id="Example_2"> Example 2 </span></h3>
+<p>It is also possible to set a separate URL for a selected dialog window by using the dialog window name in file browser settings:
+<code>filebrowser<i>[dialogWindowName]</i>BrowseUrl</code> and <code>filebrowser<i>[dialogWindowName]</i>UploadUrl</code>.
+</p><p>For example to set a special upload URL for the image dialog window, use the <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserImageUploadUrl">filebrowser<b>Image</b>UploadUrl</a></code> property.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1">CKEDITOR.<span class="me1">replace</span><span class="br0">(</span> <span class="st0">'editor1'</span><span class="sy0">,</span>
+    <span class="br0">{</span>
+        filebrowserBrowseUrl <span class="sy0">:</span> <span class="st0">'/browser/browse.php'</span><span class="sy0">,</span>
+        filebrowserImageBrowseUrl <span class="sy0">:</span> <span class="st0">'/browser/browse.php?type=Images'</span><span class="sy0">,</span>
+        filebrowserUploadUrl <span class="sy0">:</span> <span class="st0">'/uploader/upload.php'</span><span class="sy0">,</span>
+        filebrowserImageUploadUrl <span class="sy0">:</span> <span class="st0">'/uploader/upload.php?type=Images'</span>
+    <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span></pre></div></div>
+<p>In the example above, the <code>filebrowserBrowseUrl</code> and <code>filebrowserUploadUrl</code> settings will be used by default. In the <b>Image Properties</b> dialog window CKEditor will use the <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserImageBrowseUrl">filebrowserImageBrowseUrl</a></code> and <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserImageUploadUrl">filebrowserImageUploadUrl</a></code> configuration settings instead.
+</p>
+<h2> <span class="mw-headline" id="File_Browser_Window_Size"> File Browser Window Size </span></h2>
+<p>The default width of the file browser window in CKEditor is set to 
+80% of the screen width, while the default height is set to 70% of the 
+screen height.
+</p><p>If for any reasons the default values are not suitable for you, you can adjust them to your needs by using the  <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserWindowWidth">filebrowserWindowWidth</a></code> to change the width and <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.filebrowserWindowHeight">filebrowserWindowHeight</a></code> to change the height of the window.
+</p><p>To specify the size of the file browser window in pixels, set it to a number (e.g. <code>"800"</code>).
+ If you prefer to set the height and width of the window as a percentage
+ value of the screen, do not forget to add the percent sign after the 
+number (e.g. <code>"60%"</code>).
+</p>
+<h3> <span class="mw-headline" id="Example_3"> Example 3 </span></h3>
+<p>The sample below shows basic configuration code that can be used to 
+insert a CKEditor instance with the file browser paths and window size 
+configured. 
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1">CKEDITOR.<span class="me1">replace</span><span class="br0">(</span> <span class="st0">'editor1'</span><span class="sy0">,</span>
+    <span class="br0">{</span>
+        filebrowserBrowseUrl <span class="sy0">:</span> <span class="st0">'/browser/browse.php'</span><span class="sy0">,</span>
+        filebrowserUploadUrl <span class="sy0">:</span> <span class="st0">'/uploader/upload.php'</span><span class="sy0">,</span>
+        filebrowserWindowWidth <span class="sy0">:</span> <span class="st0">'640'</span><span class="sy0">,</span>
+        filebrowserWindowHeight <span class="sy0">:</span> <span class="st0">'480'</span>
+    <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span></pre></div></div>
+<p>To set the window size of the file browser for a specific dialog window, use the <code>filebrowser<i>[dialogWindowName]</i>WindowWidth</code> and <code>filebrowser<i>[dialogWindowName]</i>WindowHeight</code> settings.
+</p><p>For example, to change the file browser window size only in "Image" dialog box, change set the <code>filebrowser<b>Image</b>WindowWidth</code> and <code>filebrowser<b>Image</b>WindowHeight</code> settings.
+</p>
+<h3> <span class="mw-headline" id="Example_4"> Example 4 </span></h3>
+<p>The sample below shows basic configuration code that can be used to 
+insert a CKEditor instance with the file browser paths configured. It 
+also changes the default dimensions of the file browser window, but only
+ when opened from the <b>Image Properties</b> dialog window. 
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1">CKEDITOR.<span class="me1">replace</span><span class="br0">(</span> <span class="st0">'editor1'</span><span class="sy0">,</span>
+    <span class="br0">{</span>
+        filebrowserBrowseUrl <span class="sy0">:</span> <span class="st0">'/browser/browse.php'</span><span class="sy0">,</span>
+        filebrowserUploadUrl <span class="sy0">:</span> <span class="st0">'/uploader/upload.php'</span><span class="sy0">,</span>
+        filebrowserImageWindowWidth <span class="sy0">:</span> <span class="st0">'640'</span><span class="sy0">,</span>
+        filebrowserImageWindowHeight <span class="sy0">:</span> <span class="st0">'480'</span>
+    <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span></pre></div></div>
+<h2> <span class="mw-headline" id="Using_CKFinder"> Using CKFinder </span></h2>
+<p>CKEditor may easily be integrated with <a rel="nofollow" class="external text" href="http://ckfinder.com/">CKFinder</a>, an advanced Ajax file browser. For a live demonstration, see <a rel="nofollow" class="external text" href="http://ckfinder.com/demo">here</a>.
+</p><p>The integration may be conducted in two ways: by setting CKEditor configuration options (example below) or by using the <code><a rel="nofollow" class="external text" href="http://docs.cksource.com/ckfinder_2.x_api/symbols/CKFinder.html#.setupCKEditor">CKFinder.SetupCKEditor()</a></code> method available in the <a rel="nofollow" class="external text" href="http://docs.cksource.com/ckfinder_2.x_api/">CKFinder API</a>.
+</p>
+<h3> <span class="mw-headline" id="Example_5"> Example 5 </span></h3>
+<p>The sample below shows the configuration code that can be used to 
+insert a CKEditor instance with CKFinder integrated. The browse and 
+upload paths for images and Flash objects are configured separately from
+ CKFinder default paths.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1">CKEDITOR.<span class="me1">replace</span><span class="br0">(</span> <span class="st0">'editor1'</span><span class="sy0">,</span>
+    <span class="br0">{</span>
+        filebrowserBrowseUrl <span class="sy0">:</span> <span class="st0">'/ckfinder/ckfinder.html'</span><span class="sy0">,</span>
+        filebrowserImageBrowseUrl <span class="sy0">:</span> <span class="st0">'/ckfinder/ckfinder.html?Type=Images'</span><span class="sy0">,</span>
+        filebrowserFlashBrowseUrl <span class="sy0">:</span> <span class="st0">'/ckfinder/ckfinder.html?Type=Flash'</span><span class="sy0">,</span>
+        filebrowserUploadUrl <span class="sy0">:</span> <span class="st0">'/ckfinder/core/connector/php/connector.php?command=QuickUpload&amp;type=Files'</span><span class="sy0">,</span>
+        filebrowserImageUploadUrl <span class="sy0">:</span> <span class="st0">'/ckfinder/core/connector/php/connector.php?command=QuickUpload&amp;type=Images'</span><span class="sy0">,</span>
+        filebrowserFlashUploadUrl <span class="sy0">:</span> <span class="st0">'/ckfinder/core/connector/php/connector.php?command=QuickUpload&amp;type=Flash'</span>
+    <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span></pre></div></div>
+<p>The example above is valid for PHP environment. Note that <code>/ckfinder/</code> is a base path to the CKFinder installation directory.
+</p><p>If you are using CKFinder for ASP, ASP.NET, or ColdFusion, remember to change <code>php</code> above to the right extension:
+</p>
+<ul><li> <code>asp</code> – <a href="http://docs.cksource.com/CKFinder/Developers_Guide/ASP/CKEditor_Integration" title="CKFinder/Developers Guide/ASP/CKEditor Integration" class="mw-redirect">CKFinder for ASP</a>
+</li><li> <code>aspx</code> – <a href="http://docs.cksource.com/CKFinder/Developers_Guide/ASP.NET/CKEditor_Integration" title="CKFinder/Developers Guide/ASP.NET/CKEditor Integration" class="mw-redirect">CKFinder for ASP.NET</a>
+</li><li> <code>cfm</code> – <a href="http://docs.cksource.com/CKFinder/Developers_Guide/ColdFusion/CKEditor_Integration" title="CKFinder/Developers Guide/ColdFusion/CKEditor Integration" class="mw-redirect">CKFinder for ColdFusion</a>
+</li><li> <code>php</code> – <a href="http://docs.cksource.com/CKFinder/Developers_Guide/PHP/CKEditor_Integration" title="CKFinder/Developers Guide/PHP/CKEditor Integration" class="mw-redirect">CKFinder for PHP</a>
+</li></ul>
+<h3> <span class="mw-headline" id="Example_6"> Example 6 </span></h3>
+<p>The sample below shows the use of the <code>CKFinder.SetupCKEditor()</code> to insert a CKEditor instance with CKFinder integrated.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1"><span class="kw2">var</span> editor <span class="sy0">=</span> CKEDITOR.<span class="me1">replace</span><span class="br0">(</span> <span class="st0">'editor1'</span> <span class="br0">)</span><span class="sy0">;</span>
+CKFinder.<span class="me1">SetupCKEditor</span><span class="br0">(</span> editor<span class="sy0">,</span> <span class="st0">'/ckfinder/'</span> <span class="br0">)</span><span class="sy0">;</span></pre></div></div>
+<p>The second parameter of the <code>SetupCKEditor()</code> method is the path to the CKFinder installation.
+</p><p>Please check the <code>_samples/js/ckeditor.html</code> sample distributed with CKFinder to see the full working example of this integration method.
+</p>
+<div class="thumb tleft"><div class="thumbinner" style="width:802px;"><a href="http://docs.cksource.com/File:CKEditor_and_CKFinder.png" title="File:CKEditor and CKFinder.png"><img alt="" src="File_Browser_%28Uploader%29_files/800px-CKEditor_and_CKFinder.png" class="thumbimage" height="559" width="800"></a>  <div class="thumbcaption"><div class="magnify"><a href="http://docs.cksource.com/File:CKEditor_and_CKFinder.png" class="internal" title="Enlarge"><img src="File_Browser_%28Uploader%29_files/magnify-clip.png" alt="" height="11" width="15"></a></div>CKFinder integrated with CKEditor</div></div></div>
+<div style="clear:both"></div>
+<h3> <span class="mw-headline" id="PHP_API"> PHP API </span></h3>
+<p>As of CKFinder 1.4.2 and CKEditor 3.1 it is possible to integrate CKFinder with CKEditor using the PHP API.
+</p><p>See <a href="http://docs.cksource.com/CKFinder/Developers_Guide/PHP/CKEditor_Integration#PHP" title="CKFinder/Developers Guide/PHP/CKEditor Integration" class="mw-redirect">CKFinder for PHP</a> documentation for more details.
+</p>
+<h2> <span class="mw-headline" id="Other_Resources"> Other Resources </span></h2>
+<p>For more advanced information on integrating CKEditor with a file browser refer to the following articles:
+</p>
+<ul><li> <a href="http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29/Custom_File_Browser" title="CKEditor 3.x/Developers Guide/File Browser (Uploader)/Custom File Browser">Creating a Custom File Browser</a>
+</li><li> <a href="http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29/Dialogs_-_Adding_File_Browser" title="CKEditor 3.x/Developers Guide/File Browser (Uploader)/Dialogs - Adding File Browser">Adding the File Browser to Dialog Windows</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 98/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key fckedit_cksourcedocs:pcache:idhash:759-0!*!0!!en!2!* and timestamp 20120824124239 -->
+</div><div class="printfooter">
+Retrieved from "<a href="http://docs.cksource.com/index.php?title=CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29&amp;oldid=5809">http://docs.cksource.com/index.php?title=CKEditor_3.x/Developers_Guide/File_Browser_(Uploader)&amp;oldid=5809</a>"</div>
+							</div>
+							<div class="clear"> </div>
+						</div>
+
+						<div id="contentfooter">
+								 This page was last modified on 16 February 2011, at 14:25.						</div>
+					</div>
+				</div>
+
+			</div>
+			
+			<div id="pagetools" class="">
+				<h5>Page Tools</h5>
+				<div class="pagetoolslist">
+					<ul>
+			
+						 <li id="ca-nstab-main" class="selected"><a href="http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29" array="">Page</a></li>
+						 <li id="ca-talk"><a href="http://docs.cksource.com/Talk:CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29" array="">Discussion</a></li>
+						 <li id="ca-viewsource"><a href="http://docs.cksource.com/index.php?title=CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29&amp;action=edit" array="">View source</a></li>
+						 <li id="ca-history"><a href="http://docs.cksource.com/index.php?title=CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29&amp;action=history" array="">History</a></li>					</ul>
+				</div>
+			</div>
+			
+		</div><!--/content-->
+
+		<div id="footer">
+
+			<p>© 2003 - 2012 CKSource - Frederico Knabben. All rights reserved.</p>
+
+			<ul>
+				<li><a href="http://cksource.com/terms">Terms of use</a></li>
+				<li><a href="http://cksource.com/privacy">Privacy policy</a></li>
+			</ul>
+
+		</div><!--/footer-->
+
+	</div><!--/container-->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="File_Browser_%28Uploader%29_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-271067-3");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+
+
+</body></html>
