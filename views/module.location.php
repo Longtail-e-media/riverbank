@@ -72,9 +72,7 @@ $tpres .= '
         </div>
       </div>
        <div class="popup-messages"><ul>
-        <li>hi,</li>
-        <li>For More Information</li>
-        <li>For Hotel Booking</li>
+        <li>Hi River Bank, I would like to enquire about...</li>
     </ul></div>
       <div class="chatArea">
 
