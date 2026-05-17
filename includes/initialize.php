@@ -25,7 +25,7 @@ if(!defined('SITE_FOLDER')){
 */
 defined('DS') 		  	? NULL : define('DS', DIRECTORY_SEPARATOR);
 /*
-| SITE_ROOT - 
+| SITE_ROOT -
 */
 if($online)
 {
@@ -33,10 +33,10 @@ if($online)
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {$base_protocol .= 's';}
 	defined('SITE_ROOT')  		? NULL : define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS);
 	defined('BASE_URL')   		? NULL : define('BASE_URL', $base_protocol.'://'.$_SERVER['HTTP_HOST'].'/');
-	
+
 } else {
-	defined('SITE_ROOT')  		? NULL : define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.str_replace('::','/',SITE_STR).DS);
-	defined('BASE_URL')   		? NULL : define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST'].str_replace('::','/',SITE_STR).'/');
+	defined('SITE_ROOT')  		? NULL : define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.str_replace('::','/',SITE_STR).DS.SITE_FOLDER.DS);
+	defined('BASE_URL')   		? NULL : define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST'].str_replace('::','/',SITE_STR).'/'.SITE_FOLDER.'/');
 }
 
 /* Common path constant */

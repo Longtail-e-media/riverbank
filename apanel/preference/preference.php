@@ -269,6 +269,29 @@ clearImages($moduleTablename, "preference/other/thumbnails", "other_upload");
                     <textarea placeholder="Schema.org" name="headers" id="headers" class=""><?php echo !empty($PrefeRow->headers)?$PrefeRow->headers:"";?></textarea>
                 </div>                
             </div>
+            
+                        <!--custom css  -->
+                        <div class="form-row">
+                <div class="form-label col-md-2">
+                    <label for="">
+                        Custom css
+                    </label>
+                </div>
+        <div class="form-input col-md-6">
+                 <textarea placeholder="global css" name="global_css" id="global_css" class=""><?php
+                $cssFile = $_SERVER['DOCUMENT_ROOT']."/".SITE_FOLDER."/template/web/assets/css/custom-themes.css";
+
+                echo file_exists($cssFile)
+                    ? htmlspecialchars(file_get_contents($cssFile))
+                    : "";
+            ?>
+                </textarea>
+            </div>
+            </div>
+
+            <!--custom css  -->
+            
+            
 
             <div class="form-row">
                 <div class="form-label col-md-2">

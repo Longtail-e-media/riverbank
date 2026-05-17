@@ -17,6 +17,11 @@ function className_metatags()
         return $className;
         exit;
     endif;
+        if ($fileName == 'blog-detail'):
+        $className = 'CombinedNews';
+        return $className;
+        exit;
+    endif;
 
     if ($fileName == 'subpkgdetail'):
         $className = 'Subpackage';
@@ -43,7 +48,7 @@ function className_metatags()
 		$className = 'Offers';
 		return $className;
 		exit;
-	endif;	
+	endif;
 
     if ($fileName != 'index'):
         $className = ucfirst(strtolower($fileName));
@@ -228,7 +233,7 @@ function MetaTagsFor_SEO()
 
     // 5) Determine image URL
     $imageUrl = IMAGE_PATH . 'preference/' . ($config->fb_upload ?: $config->logo_upload);
-    
+
     if (!empty($rec->fb_upload)) {
 
         //Article
@@ -343,8 +348,8 @@ function MetaTagsFor_SEO()
     //Facebook and twitter sharing
     $seoSources .= '<meta property="og:title" content="' . $sitetitle . '">' . "\n";
     $seoSources .= '<meta property="og:description" content="' . $description . '">' . "\n";
-    
-    
+
+
     /**
      * Generate Open Graph and Twitter image meta tags
      *

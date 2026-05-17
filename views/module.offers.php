@@ -2,11 +2,27 @@
 $resoffr=$socialshare='';
 $expired='';
 $enquiry='';
-$resrandoffr=$hmresoffr=$resinndetail=$offbredd='';
+$resrandoffr=$hmresoffr=$resinndetail= $offbredd='';
 $offrRec = Offers::get_offer_by();
+$dataUrl = $breadcumb_offer = '';
+
+$current_url = $_SERVER["REQUEST_URI"];
+$data = explode('/', $current_url);
+$last = trim(end($data), '/');
+$last = strtok($last, '?');
+$dataUrl .= $last;
+
+$breadcumb_offer.= '<ol class="breadcrumb text-center">
+  <li><a href="'.BASE_URL.'">Home</a></li>
+  <li class="active"><a href="'.BASE_URL.''.$dataUrl.'">Offer</a></li>
+</ol>';
+
+
+
+
 
 if(defined('OFFERS_PAGE') and isset($_REQUEST['slug'])) {
-    
+
     $slug = addslashes($_REQUEST['slug']);
     $recRow = Offers::find_by_slug($slug);
 
@@ -97,24 +113,24 @@ else{
          foreach ($offList as $offer) {
 
              $currentdate = date("Y-m-d") ;
-             
+
              $linkstart='href="'.BASE_URL.'offer/'.$offer->slug.'"';
                  $expired .='';
                  $hide = "d-block";
              $linkend='</a>';
-             
+
             //  pr($expired);
             $imglink = IMAGE_PATH . 'static/offer.jpg';
-            
+
             if (!empty($offer->list_image)) {
-                
+
                 $file_path = SITE_ROOT . 'images/offers/listimage/' . $offer->list_image;
                 // pr($file_path);
                 if(file_exists($file_path)){
                     $imglink = IMAGE_PATH . 'offers/listimage/' . $offer->list_image;
-                    
+
                 }
-                
+
             }
             $resinndetail.='<div class="col-sm-6 col-lg-4">
                                 <div class="offer offer-item position-relative">
@@ -128,21 +144,21 @@ else{
                                 '.$expired.'
                             </div>';
          $expired='';
-         
+
          }
         }else{
-            $resinndetail='<h1 class="row text-center">No Offer Available</h1>'; 
+            $resinndetail='<h1 class="row text-center">No Offer Available</h1>';
         }
-       
+
          $resinndetail.='</div>';
 }
 
-//new home offer listing 
+//new home offer listing
 $homelisting='';
 
 if(defined('HOME_PAGE')) {
 
-   
+
        $homeoffLists= Offers::get_offer_date(3);
        if(!empty($homeoffLists)){
        $homelisting.='<section class="wrapper-inner offer__list">
@@ -160,24 +176,24 @@ if(defined('HOME_PAGE')) {
        foreach ($homeoffLists as $homeoffList) {
 
            $currentdate = date("Y-m-d") ;
-           
+
            $linkstart='href="'.BASE_URL.'offer/'.$homeoffList->slug.'"';
                $expired .='';
                $hide = "d-block";
            $linkend='</a>';
-           
+
           //  pr($expired);
           $imglink = IMAGE_PATH . 'static/offer.jpg';
-          
+
           if (!empty($homeoffList->list_image)) {
-              
+
               $file_path = SITE_ROOT . 'images/offers/listimage/' . $homeoffList->list_image;
               // pr($file_path);
               if(file_exists($file_path)){
                   $imglink = IMAGE_PATH . 'offers/listimage/' . $homeoffList->list_image;
-                  
+
               }
-              
+
           }
           $homelisting.='<div class="col-sm-4">
                               <div class="offer offer-item position-relative">
@@ -192,12 +208,12 @@ if(defined('HOME_PAGE')) {
                               '.$expired.'
                           </div>';
        $expired='';
-       
+
        }
        $homelisting.='
        </div>
        <div class="row text-center">
-       <a class="btn" href="'.BASE_URL.'offer-list" bis_skin_checked="1">View all</a>   
+       <a class="btn" href="'.BASE_URL.'offer-list" bis_skin_checked="1">View all</a>
        </div>
        </div>
        </section>
@@ -280,7 +296,7 @@ if (!empty($homepopupdatas)) {
     //modal img
     $count = 1;
     $active = '';
-    $homepopup = ' 
+    $homepopup = '
      <div class="col-sm-10 center-block center-text">
         <div class="modal fade" id="modal-popup-image-1">
             <div class="modal-dialog ">
@@ -291,7 +307,7 @@ if (!empty($homepopupdatas)) {
                     <div class="modal-body">
 					<!--CAROUSEL CODE GOES HERE-->
                         <div id="myCarousel1" class="carousel slide">
-                            <div class="carousel-inner">		
+                            <div class="carousel-inner">
                             ';
     foreach ($homepopupdatas as $popr) {
         if (!empty($popr->list_image)) {
@@ -305,7 +321,7 @@ if (!empty($homepopupdatas)) {
             $active = ($count == 1) ? 'active' : '';
             $linkhref = ($popr->linktype == 1) ? $popr->linksrc : BASE_URL . $popr->linksrc;
             $target = ($popr->linktype == 1) ? 'target="_blank" rel="noopener noreferrer"' : '';
-            $homepopup .= '  
+            $homepopup .= '
                 <div class="item ' . $active . '">
                     <a href="'.BASE_URL.'offer/'.$popr->slug.'" ><img src="' . $imglink . '" alt="' . $popr->title . '"></a>
                 </div>
@@ -325,11 +341,11 @@ if (!empty($homepopupdatas)) {
 </a>
 <a class="right carousel-control" href="#myCarousel1" data-slide="next" style="background: none;">
     <span class="glyphicon glyphicon-chevron-right"></span>
-</a>  
+</a>
         ';
     }
     $homepopup .='
-                        
+
                         </div>
                         <!--end carousel-->
                     </div>
@@ -341,9 +357,10 @@ if (!empty($homepopupdatas)) {
         </div>
         <!--end myModal-->
     </div>
-    <!--end col-->					
+    <!--end col-->
 ';
 }
 }
 
 $jVars['module:offer_homepopup'] = $homepopup;
+ $jVars['module:breadcumb_offer'] = $breadcumb_offer;

@@ -3,7 +3,7 @@ class Package extends DatabaseObject {
 
 	protected static $table_name = "tbl_package";
 	protected static $db_fields = array('id', 'slug', 'image', 'header_image', 'fb_upload','banner_image', 'title', 'sub_title', 'status', 'sortorder', 'detail', 'content', 'meta_title', 'meta_keywords', 'meta_description', 'type', 'added_date');
-	
+
 	var $id;
 	var $slug;
 	var $image;
@@ -38,7 +38,7 @@ class Package extends DatabaseObject {
 		$result_array = self::find_by_sql($sql);
 		return !empty($result_array) ? array_shift($result_array) : false;
 	}
-	
+
 	// view package Front.
 	static function getPackage($limit=''){
 		global $db;
@@ -46,7 +46,7 @@ class Package extends DatabaseObject {
 		$sql = "SELECT * FROM ".self::$table_name." WHERE status=1 ORDER BY sortorder DESC $cond";
 		return self::find_by_sql($sql);
 	}
-		
+
 	public static function checkDupliTitle($title='')
 	{
 		global $db;
@@ -54,7 +54,7 @@ class Package extends DatabaseObject {
 		$result= $db->num_rows($query);
 		if($result>0) {return true;}
 	}
-	
+
 	static function getTotalImages($id=0){
 		global $db;
 		$sql = "SELECT id FROM ".self::$table_name." WHERE status=1";
@@ -64,12 +64,12 @@ class Package extends DatabaseObject {
 	/************************** Package link  by me ***************************/
 	public static function get_internal_link($Lsel='',$LType=0)
 	{
-		global $db;		
+		global $db;
 		$sql = "SELECT id, slug, title, type FROM ".self::$table_name." WHERE status='1' ORDER BY sortorder ASC";
-		$pages = self::find_by_sql($sql);		
+		$pages = self::find_by_sql($sql);
 		$linkpageDis = ($Lsel==1)?'hide':'';
-		
-		$result='';		
+
+		$result='';
 		if($pages):
 		$result.='<optgroup label="Package">';
 			foreach($pages as $pageRow):
@@ -87,17 +87,17 @@ class Package extends DatabaseObject {
 				}
 
 			endforeach;
-		$result.='</optgroup>';	
+		$result.='</optgroup>';
 		endif;
 		return $result;
 	}
-	
+
 	// view package of the nos provided.
 	static function getPackageList($total=5, $offset=0){
 		global $db;
 		return self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE status=1 ORDER BY sortorder ASC LIMIT {$total} OFFSET {$offset}");
 	}
-	
+
 	//FIND THE HIGHEST MAX NUMBER.
 	static function find_maximum($field="sortorder"){
 		global $db;
@@ -105,7 +105,7 @@ class Package extends DatabaseObject {
 		$return = $db->fetch_array($result);
 		return ($return) ? ($return['maximum']+1) : 1 ;
 	}
-	
+
 	// get the package name from it's id
 	static function getPackageName($id=0){
 		global $db;
@@ -113,7 +113,7 @@ class Package extends DatabaseObject {
 		$return = $db->fetch_array($result);
 		return ($return) ? $return['title'] : '' ;
 	}
-	
+
 	//Find all the rows in the current database table.
 	static function find_all(){
 		global $db;
@@ -128,7 +128,7 @@ class Package extends DatabaseObject {
 	}
 
 	public static function getTotalparent(){
-		global $db;		
+		global $db;
 		$query = "SELECT COUNT(id) AS tot FROM ".self::$table_name." WHERE status=1 ";
 		$sql = $db->query($query);
 		$ret = $db->fetch_array($sql);
@@ -157,7 +157,7 @@ class Package extends DatabaseObject {
 		$return = $db->fetch_array($result);
 		return ($return)? $return['id'] : 0;
 	}
-	
+
 	//Find rows from the database provided the SQL statement.
 	static function find_by_sql($sql=""){
 		global $db;
@@ -168,7 +168,7 @@ class Package extends DatabaseObject {
 		}
 		return $object_array;
 	}
-	
+
 	//Instantiate all the attributes of the Class.
 	static function instantiate($record){
 		$object  = new self;
@@ -179,13 +179,13 @@ class Package extends DatabaseObject {
 		}
 		return $object;
 	}
-	
+
 	//Check if the attribute exists in the class.
 	function has_attribute($attribute){
 		$object_vars = $this->attributes();
 		return array_key_exists($attribute, $object_vars);
 	}
-	
+
 	//Return an array of attribute keys and thier values.
 	protected function attributes(){
 		$attributes = array();
@@ -196,7 +196,7 @@ class Package extends DatabaseObject {
 		endforeach;
 		return $attributes;
 	}
-	
+
 	//Prepare attributes for database.
 	protected function sanitized_attributes(){
 		global $db;
@@ -206,12 +206,12 @@ class Package extends DatabaseObject {
 		endforeach;
 		return $clean_attributes;
 	}
-	
+
 	//Save the changes.
 	function save(){
 		return isset($this->id) ? $this->update() : $this->create();
 	}
-	
+
 	//Add  New Row to the database
 	function create(){
 		global $db;
@@ -228,17 +228,17 @@ class Package extends DatabaseObject {
 			return false;
 		}
 	}
-	
+
 	//Update a row in the database.
 	function update(){
 		global $db;
 		$attributes = $this->sanitized_attributes();
 		$attribute_pairs = array();
-		
+
 		foreach($attributes as $key=>$value):
 			$attribute_pairs[] = "{$key}='{$value}'";
 		endforeach;
-		
+
 		$sql = "UPDATE ".self::$table_name." SET ";
 		$sql.= join(", ", array_values($attribute_pairs));
 		$sql.= " WHERE id=".$db->escape_value($this->id);

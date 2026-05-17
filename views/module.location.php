@@ -17,7 +17,7 @@ foreach ($telno as $tel) {
     }
     $tellinkedp .= '</a>';
 }
-$tellinked .= '<p><i class="fa fa-phone i-class-custom-footer"></i>' . $tellinkedp . '</p>';
+$tellinked .= '<i class="fa fa-phone i-class-custom-footer"></i>' . $tellinkedp . '';
 
 $mob_linked = $mob_linkedp = '';
 $telno = explode(",", $siteRegulars->mobile_info);
@@ -29,7 +29,7 @@ foreach ($telno as $tel) {
     }
     $mob_linkedp .= '</a>';
 }
-$mob_linked .= '<p><i class="fa fa-mobile i-class-custom-footer"></i>' . $mob_linkedp . '</p>';
+$mob_linked .= '<i class="fa fa-phone i-class-custom-footer"></i>' . $mob_linkedp . '';
 
 $ktmtellinked = '';
 $ktmtelno = explode("/", $siteRegulars->city_contact_info);
@@ -41,9 +41,10 @@ foreach ($ktmtelno as $ktmktmtel) {
         $ktmtellinked .= '/';
     }
 }
+$classhide = (empty($configRec->whatsapp)) ? "hide" : "";
 
 $tpres .= '
-<style>
+<!-- <style>
     .d-inline{display: inline !important;}
     .i-class-custom-footer {
         color: #ffffff;
@@ -51,12 +52,70 @@ $tpres .= '
         font-size: 20px;
         width: 20px;
     }
-</style>
-<div class="floating-buttons right-buttons">
+</style> -->
+<!-- <div class="floating-buttons right-buttons">
     <a href="https://virtualtour.airliftventures.com/riverbank-jungle-resort/" class="btn" target="_blank" rel="noopener noreferrer" title="Virtual Tour">
         <img src="template/web/assets/img/360-virutal.png" height="50" width="50" alt="Virtual Tour">
     </a>
+</div> -->
+
+<!--whatsapp -->
+     <div id="chatbot" class="'.$classhide.'">
+  <div class="popup-box chat-popup">
+    <div class="chatbot-wrapper">
+      <div class="popup-head">
+        <div class="botInfo-wrapper">
+          <img src="'.BASE_URL.'template/web/assets/img/whatsapp.png" alt="WhatsApp" class="botImage" />
+          <div class="AIBotInfo">
+            <div class="title">WhatsApp Message</div>
+          </div>
+        </div>
+      </div>
+       <div class="popup-messages"><ul>
+        <li>hi,</li>
+        <li>For More Information</li>
+        <li>For Hotel Booking</li>
+    </ul></div>
+      <div class="chatArea">
+
+<div class="popup-footer">
+    <textarea
+        id="textInput"
+        class="input-box"
+        name="msg"
+        required
+        placeholder=""
+        rows="1"></textarea>
+
+    <i id="chat-icon" onclick="sendWhatsApp();" style="color: #333;" class="fa fa-fw fa-send"></i>
 </div>
+      </div>
+    </div>
+  </div>
+  <div class="floating-logo" id="floating-button">
+    <div></div>
+  </div>
+</div>
+<script>
+        function sendWhatsApp(){
+    let phoneNumber = "'.$configRec->whatsapp.'";
+    let message = document.getElementById("textInput").value;
+        if(message !== ""){
+            let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            window.open(url, "_blank");
+        }else{
+            alert("Message is required before sending!");
+
+        }
+
+}
+</script>
+
+<!--whatsapp end-->
+
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -64,16 +123,44 @@ $tpres .= '
             <div class="footer-contact">
                 <ul>
                     <li><a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/zGQW2VfhALDefCGf8"><i class="fa fa-map-marker"></i> ' . strtoupper($configRec->fiscal_address) . '</a></li>
-                    <li>' . $tellinked . '</li>
-                    <li>' . $mob_linked . '</li>
-                    <li class="text-lowercase"><a href="mailto:' . $emlAddress . '"><i class="fa fa-envelope"></i> ' . strtoupper($emlAddress) . '</a></li>
+                    <li class="d-flex gap-3 align-items-center">' . $tellinked . '</li>
+                    <li class="d-flex gap-3 align-items-center">' . $mob_linked . '</li>
+                    <li class="text-lowercase d-flex gap-3 align-items-center"><a href="mailto:' . $emlAddress . '"><i class="fa-envelope fa i-class-custom-footer"></i> ' . strtoupper($emlAddress) . '</a></li>
                 </ul>
             </div>
             ' . $jVars['module:socilaLinkbtm'] . '
+
+          <!-- Newsletter Subscribe Form -->
+        <div class="newsletter-form mt-5">
+            <h4 class="mb-20">Subscribe for Newsletter</h4>
+        <form action="https://riverbankjungleresort.us19.list-manage.com/subscribe/post?u=5b5bc5738b6946540eac13de5&amp;id=67a8b5ef77&amp;f_id=008c1de7f0" method="post" target="_blank" id="subscribe-form">
+                <div class="input-group bg-white p-2 rounded-3">
+                  <input type="email" name="EMAIL" class="form-control rounded-start-2" placeholder="Enter your email" id="mce-EMAIL" value="" required>
+                   <span class="input-group-btn"> <button class="btn btn--rocket" type="submit" aria-label="Subscribe" >
+                    Submit
+                  </button></span>
+                </div>
+              </form>
         </div>
 
-        <div class="col-md-4">
-            <h4>Online Reservations</h4>
+
+        </div>
+
+
+        <div class="col-md-5 d-flex justify-content-center">
+            <div class="sales__office">
+                            <h4>Sales Office</h4>
+            <div class="footer-contact">
+                <ul>
+                    <li><a><i class="fa fa-map-marker"></i> ' . strtoupper($configRec->city_address) . '</a></li>
+                    <li>' . $ktmtellinked . '</li>
+                    <li class="text-lowercase"><a href="mailto:' . $emlAddresscty . '"><i class="fa fa-envelope"></i> ' . strtoupper($emlAddresscty) . '</a></li>
+                </ul>
+            </div>
+
+
+        <div class="online-reservation mt-5">
+            <h4 class="mb-20">Online Reservations</h4>
             <div class="row">
                 <div class="col-md-12">
                     <div class="footer-contact ota__footer">
@@ -84,50 +171,25 @@ $tpres .= '
                         </ul>
                     </div>
                 </div>
-
-                <!--<div class="col-md-6">
-                    <div class="footer-contact">
-                        <ul>
-
-
-                        </ul>
-                    </div>
-                </div> -->
             </div>
         </div>
 
-        <div class="col-md-4">
-            <h4>Sales Office</h4>
-            <div class="footer-contact">
-                <ul>
-                    <li><a><i class="fa fa-map-marker"></i> ' . strtoupper($configRec->city_address) . '</a></li>
-                    <li>' . $ktmtellinked . '</li>
-                    <li class="text-lowercase"><a href="mailto:' . $emlAddresscty . '"><i class="fa fa-envelope"></i> ' . strtoupper($emlAddresscty) . '</a></li>
-                </ul>
+
             </div>
+
         </div>
 
-        <!--<div class="col-md-12">
-            <div class="booking-engines">
-                <ul class="card1">
-                    <li>Booking Engines</li>
-                    <li><img src="template/web/assets/img/icons/bo.webp" alt="booking"></li>
-                    <li><img src="template/web/img/icon/american.webp" alt="american"></li>
-                    <li><img src="template/web/img/icon/mastercard.webp" alt="mastercard"></li>
-                    <li><img src="template/web/img/icon/union.webp" alt="union"></li>
-                </ul>
-            </div>
-        </div>-->
+        <div class="col-md-3">
+     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61555768349361&tabs=timeline&width=250&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1651547328419060" frameborder="0" scrolling="yes" style="border: white; overflow: hidden; height: 350px; width: 250px; max-width:100%;background:#fafafa;color:000;" class="fb-iframe pull-right"  ></iframe>
 
-        <div class="col-md-12">
-            <div class="award-book-mobile">
-                <a href="' . BASE_URL . 'template/web/assets/img/award/Professional-Printed-Award-TRA-2025.pdf" target="_blank" rel="noopener noreferrer">
-                    <img src="' . BASE_URL . 'template/web/assets/img/award/Digital-Award-TRA-2025.png" alt="award_external">
-                </a>
-            </div>
+
+
+
         </div>
 
-        <div class="col-md-12">
+
+
+        <div class="col-md-12 mt-5">
             <div class="devBy">
                 <p>' . $jVars['site:copyright'] . ' Developed By <a target="blank" rel="noopener noreferrer" href="http://longtail.info/">Longtail e-media</a></p>
             </div>
@@ -148,6 +210,8 @@ $tpres .= '
         </div>-->
     </div>
 </div>
+
+
 ';
 
 $jVars['module:footer-location'] = $tpres;

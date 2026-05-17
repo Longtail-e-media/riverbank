@@ -4,8 +4,8 @@
 Options +SymLinksIfOwnerMatch
 RewriteEngine on
 
-RewriteCond %{HTTP_HOST} !^www\.
-RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/apanel/$1 [R=301,L]
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/apanel/$1 [R=301,L]
 
 RewriteRule ^rojai/([a-zA-Z0-9]+)?$ hotel.php?hotel_id=$1 [L]
 RewriteRule ^switch/([a-zA-Z0-9]+)?$ _switch.php?_token=$1 [L]

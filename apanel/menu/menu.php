@@ -3,9 +3,9 @@ $moduleTablename  = "tbl_menu"; // Database table name
 $moduleId 		  = 2;				// module id >>>>> tbl_modules
 $moduleFoldername = "";		// Image folder name
 $menuLevel = Module::get_properties($moduleId,'level');
-$position = array(1=>'Top Main Menu', 2=>'Top Menu');
+$position = array(1=>'Top Main Menu');
 
-if(isset($_GET['page']) && $_GET['page'] == "menu" && isset($_GET['mode']) && $_GET['mode']=="list"):	
+if(isset($_GET['page']) && $_GET['page'] == "menu" && isset($_GET['mode']) && $_GET['mode']=="list"):
 ?>
 <h3>
 List Menu
@@ -18,7 +18,7 @@ List Menu
 </h3>
 <div class="my-msg"></div>
 <div class="example-box">
-    <div class="example-code">        
+    <div class="example-code">
     <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
         <thead>
             <tr>
@@ -28,32 +28,32 @@ List Menu
                <th class="text-center">Position</th>
                <th class="text-center"><?php echo $GLOBALS['basic']['action'];?></th>
             </tr>
-        </thead> 
-            
+        </thead>
+
         <tbody>
-            <?php $records = Menu::find_by_sql("SELECT * FROM ".$moduleTablename." WHERE parentOf='0' ORDER BY sortorder ASC ");	
-				  foreach($records as $record): ?>    
+            <?php $records = Menu::find_by_sql("SELECT * FROM ".$moduleTablename." WHERE parentOf='0' ORDER BY sortorder ASC ");
+				  foreach($records as $record): ?>
             <tr id="<?php echo $record->id;?>">
-                <td class="text-center"><?php echo $record->sortorder;?></td>               
+                <td class="text-center"><?php echo $record->sortorder;?></td>
                 <td>
-                	<?php 
-						$submenu = Menu::countSubMenu($record->id); 
+                	<?php
+						$submenu = Menu::countSubMenu($record->id);
 						if($submenu):
 					?>
                 	<a href="javascript:void(0);" title="title" onClick="displaySubMenu(<?php echo $record->id;?>,'<?php echo $record->name;?>')" id="" name="<?php echo $record->name;?>">
 						<?php echo $record->name;?> <i>[<?php echo $submenu;?>]</i>
                		</a>
-                    <?php else: 
-						echo $record->name;		
+                    <?php else:
+						echo $record->name;
 					endif;?>
                 </td>
-                <td><?php echo $record->linksrc;?></td>        
-                <td class="text-center"><?php echo ($record->type)?$position[$record->type]:'N/A';?></td>       
-                <td class="text-center">    
-                    <?php	
-                        $statusImage = ($record->status == 1) ? "bg-green" : "bg-red" ; 
-                        $statusText = ($record->status == 1) ? $GLOBALS['basic']['clickUnpub'] : $GLOBALS['basic']['clickPub'] ; 
-                    ?>                          
+                <td><?php echo $record->linksrc;?></td>
+                <td class="text-center"><?php echo ($record->type)?$position[$record->type]:'N/A';?></td>
+                <td class="text-center">
+                    <?php
+                        $statusImage = ($record->status == 1) ? "bg-green" : "bg-red" ;
+                        $statusText = ($record->status == 1) ? $GLOBALS['basic']['clickUnpub'] : $GLOBALS['basic']['clickPub'] ;
+                    ?>
                    <a href="javascript:void(0);" class="btn small <?php echo $statusImage;?> tooltip-button statusToggler" data-placement="top" title="<?php echo $statusText;?>" status="<?php echo $record->status;?>" id="imgHolder_<?php echo $record->id;?>" moduleId="<?php echo $record->id;?>">
                         <i class="glyph-icon icon-flag"></i>
                     </a>
@@ -70,7 +70,7 @@ List Menu
         </tbody>
     </table>
     </div>
-</div>    
+</div>
 
 <!-- First Submenu -->
 <div class="submenu1"></div>
@@ -81,16 +81,16 @@ List Menu
 <!-- Fourth Submenu -->
 <div class="submenu4"></div>
 
-<?php elseif(isset($_GET['mode']) && $_GET['mode'] == "addEdit"): 
+<?php elseif(isset($_GET['mode']) && $_GET['mode'] == "addEdit"):
 if(isset($_GET['id']) && !empty($_GET['id'])):
 	$menuId = addslashes($_REQUEST['id']);
 	$menu = Menu::find_by_id($menuId);
 	$status    = ($menu->status==1)?"checked":"";
 	$unstatus  = ($menu->status==0)?"checked":"";
-	
+
 	$external = ($menu->linktype==1)?"checked":"";
 	$internal = ($menu->linktype==0)?"checked":"";
-endif;	
+endif;
 ?>
 <h3>
 <?php echo (isset($_GET['id']))?'Edit Menu':'Add Menu';?>
@@ -105,16 +105,16 @@ endif;
 <div class="my-msg"></div>
 <div class="example-box">
     <div class="example-code">
-        <form action="" class="col-md-10 center-margin" id="menu_frm">            
+        <form action="" class="col-md-10 center-margin" id="menu_frm">
     		<div class="form-row">
                 <div class="form-label col-md-2">
                     <label for="">
                         Menu Name :
                     </label>
-                </div>                
+                </div>
                 <div class="form-input col-md-10">
                     <input  placeholder="Menu Name" class="col-md-4 validate[required,length[0,50]]" type="text" name="name" id="name" value="<?php echo !empty($menu->name)?$menu->name:"";?>">
-                </div>                
+                </div>
             </div>
             <div class="form-row">
             	<div class="form-label col-md-2">
@@ -123,7 +123,7 @@ endif;
                     </label>
                 </div>
                 <div class="form-input col-md-4">
-                    <?php 
+                    <?php
 						$Parentview = !empty($menu->parentOf)?$menu->parentOf:0;
 						echo Menu::get_parentList_bylevel($menuLevel,$Parentview);
 					?>
@@ -134,7 +134,7 @@ endif;
                     <label for="">
                         Menu Position :
                     </label>
-                </div>                
+                </div>
                 <div class="form-input col-md-4">
                     <select data-placeholder="None" class="chosen-select validate[required]" id="type" name="type">
                         <option value="">Choose Position</option>
@@ -142,8 +142,8 @@ endif;
                            $sel = (!empty($menu->type) and $menu->type==$key)?'selected':'';
                            echo '<option value="'.$key.'" '.$sel.'>'.$val.'</option>' ;
                         }?>
-                    </select>    
-                </div>                
+                    </select>
+                </div>
             </div>
             <div class="form-row">
             	<div class="form-label col-md-2">
@@ -166,37 +166,37 @@ endif;
                 </div>
                 <div class="form-input col-md-8">
                 	<div class="col-md-4" style="padding-left:0px !important;">
-                    	<input  placeholder="Menu Link" class="validate[required,length[0,50]]" type="text" name="linksrc" id="linksrc" value="<?php echo !empty($menu->linksrc)?$menu->linksrc:"";?>">                    
+                    	<input  placeholder="Menu Link" class="validate[required,length[0,50]]" type="text" name="linksrc" id="linksrc" value="<?php echo !empty($menu->linksrc)?$menu->linksrc:"";?>">
                     </div>
                 	<div class="col-md-6" style="padding-left:0px !important;">
 						<select data-placeholder="Select Link Page" class="col-md-4 chosen-select" id="linkPage">
                             <option value=""></option>
-                            <?php 
+                            <?php
                                 $Lpageview = !empty($menu->linksrc)?$menu->linksrc:"";
                                 $LinkTypeview = !empty($menu->linktype)?$menu->linktype:"";
                                 // Article Page Link
-                                echo Article::get_internal_link($Lpageview,$LinkTypeview);     
+                                echo Article::get_internal_link($Lpageview,$LinkTypeview);
                                 // Package Page Link
-                                echo Package::get_internal_link($Lpageview,$LinkTypeview);                           
+                                echo Package::get_internal_link($Lpageview,$LinkTypeview);
                             ?>
-                        </select>  
-                    </div>                    
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="form-row"> 
+            <div class="form-row">
             	<div class="form-label col-md-2">
                     <label for="">
                         Published :
                     </label>
-                </div>               
+                </div>
                 <div class="form-checkbox-radio col-md-9">
                     <input type="radio" class="custom-radio" name="status" id="check1" value="1" <?php echo !empty($status)?$status:"checked";?>>
                     <label for="">Published</label>
                     <input type="radio" class="custom-radio" name="status" id="check0" value="0" <?php echo !empty($unstatus)?$unstatus:"";?>>
                     <label for="">Un-Published</label>
-                </div>                
-            </div>            
-              
+                </div>
+            </div>
+
             <button btn-action='0' type="submit" name="submit" class="btn-submit btn large primary-bg text-transform-upr font-bold font-size-11 radius-all-4" id="btn-submit" title="Save">
                 <span class="button-content">
                     Save
@@ -215,6 +215,6 @@ endif;
             <input myaction='0' type="hidden" name="idValue" id="idValue" value="<?php echo !empty($menu->id)?$menu->id:0;?>" />
         </form>
     </div>
-</div>  
+</div>
 
-<?php endif;?> 
+<?php endif;?>

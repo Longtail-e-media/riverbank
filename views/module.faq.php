@@ -2,6 +2,19 @@
 
 $faq_details = '';
 
+$dataUrl = $breadcumbfaq = '';
+$current_url = $_SERVER["REQUEST_URI"];
+$data = explode('/', $current_url);
+$last = trim(end($data), '/');
+$last = strtok($last, '?');
+$dataUrl .= $last;
+
+
+$breadcumbfaq .= '<ol class="breadcrumb text-center">
+  <li><a href="'.BASE_URL.'">Home</a></li>
+  <li class="active"><a href="'.BASE_URL.''.$dataUrl.'">FAQ</a></li>
+</ol>';
+
 if (defined('FAQ_PAGE')) {
 
     $faqs = Faq::find_all();
@@ -77,3 +90,4 @@ if (defined('HOME_PAGE')) {
 $jVars['module:faq:details-homepage'] = $faq_details;
 
 $jVars['module:faqlink'] = BASE_URL . 'faq';
+$jVars['module:faqbreadcumb'] = $breadcumbfaq;

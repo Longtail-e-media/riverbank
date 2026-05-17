@@ -2,7 +2,12 @@
 /*
 * Home accmodation list
 */
-$reshmpkg = '';
+$reshmpkg = $breadcumb_package = '';
+
+
+
+
+
 $booking_code = Config::getField('hotel_code', true);
 if (defined('HOME_PAGE')) {
     $acid = Package::get_accommodationId();
@@ -112,6 +117,9 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
     $slug = !empty($_REQUEST['slug']) ? addslashes($_REQUEST['slug']) : '';
     $pkgRec = Package::find_by_slug($slug);
     if (!empty($pkgRec) && isset($pkgRec->status) && $pkgRec->status == 1) {
+
+
+
         $imglink = '';
         $pkgRowImg = $pkgRec->banner_image;
         if ($pkgRowImg != "a:0:{}") {
@@ -124,6 +132,12 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                 $imglink = BASE_URL . 'images/static/subpackage-banner.jpg';
             }
         }
+
+              $breadcumb_package.= '<ol class="breadcrumb text-center">
+            <li><a href="'.BASE_URL.'">Home</a></li>
+            <li><a href="'.BASE_URL.''.$pkgRec->slug.'">'.$pkgRec->title.'</a></li>
+            <li class="active"><a href="'.BASE_URL.''.$pkgRec->slug.'">' . $pkgRec->title . '</a></li>
+            </ol>';
         // Package detail
         $respkgDetail .= '<!-- Section Page Title -->
 	    <!--<div class="section d-none">
@@ -150,6 +164,8 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                 </div>
             </div>
         </div>
+        '. $breadcumb_package.'
+
 
 	    <!-- Section Rooms -->
 	    <div class="section">
@@ -247,6 +263,8 @@ $resubpkgDetailScript = $resubpkgDetailScriptOnload = $resubpkgDetailScriptVar =
 if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
     $slug = !empty($_REQUEST['slug']) ? addslashes($_REQUEST['slug']) : '';
     $subpkgRec = Subpackage::find_by_slug($slug);
+        $pkgRec = Package::find_by_id($subpkgRec->type);
+
     if (!empty($subpkgRec) && $subpkgRec->status ==1) {
         $pkgRec = Package::find_by_id($subpkgRec->type);
         $imglink = BASE_URL . 'images/static/subpackage-banner.jpg';
@@ -260,6 +278,13 @@ if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                 $imglink = BASE_URL . 'images/static/subpackage-banner.jpg';
             }
         }
+
+                    $breadcumb_package.= '<ol class="breadcrumb text-center">
+            <li><a href="'.BASE_URL.'">Home</a></li>
+            <li><a href="'.BASE_URL.''.$pkgRec->slug.'">'.$pkgRec->title.'</a></li>
+            <li class="active"><a href="'.BASE_URL.''.$subpkgRec->slug.'">' . $subpkgRec->title . '</a></li>
+            </ol>';
+
         $resubpkgDetail .= '<!-- Section Page Title -->
 	    <!--<div class="section d-none">
 	        <div class="widget-page-title">
@@ -277,14 +302,16 @@ if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
 	        </div>
 	    </div>-->
 	     <div class="banner-header section-padding valign bg-img innerpage2" data-background="' . $imglink . '">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 caption">
-                    <h1>' . $subpkgRec->title . '</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 caption">
+                            <h1>' . $subpkgRec->title . '</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+                    '.$breadcumb_package.'
+
 	    <!-- Section Rooms Detail -->
 	    <div class="section">
 	    <div class="container">
@@ -490,7 +517,7 @@ if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
 
 	                                </div>
 	                            </div></div>-->
-	                            ' . $jVars['module:booking-form'] . '
+
 	                            ';
         }
         $resubpkgDetail .= '   <div class="col-md-12">';

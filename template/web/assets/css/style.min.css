@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap);
-
+@import url(./custom-themes.css);
 :root {
     --font-heading: "Oxygen", sans-serif;
     --font-text: "Inter", sans-serif
@@ -49,6 +49,30 @@ body {
     color: #fff;
     font-size: 14px
 }
+.pt-0 {
+  padding-top: 0 ;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+.pt-3 {
+  padding-top: 1rem;
+}
+
+.pt-4 {
+  padding-top: 1.5rem;
+}
+
+.pt-5 {
+  padding-top: 3rem;
+}
+
 
 h5,
 h6,
@@ -137,6 +161,30 @@ iframe {
     overflow: hidden
 }
 
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
 .btn,
 input,
 select,
@@ -188,6 +236,11 @@ io {
     margin-bottom: min(3rem, 3.8vw);
     line-height: 1.5
 }
+
+.justify-content-center {
+  justify-content: center ;
+}
+
 
 .clearfix:after,
 .clearfix:before,
@@ -277,6 +330,11 @@ io {
     -o-border-radius: 0;
     border-radius: 0;
     font-size: 12px
+}
+.riverbank-booknow{
+      background: #d1a625;
+    padding: 1rem 2rem;
+    display: block;
 }
 
 .btn:active,
@@ -499,27 +557,14 @@ io {
     margin-top: 30px
 }
 
-.widget-social-icons ul li {
-    float: left;
-    margin-right: 10px
-}
 
-.widget-social-icons ul li a {
-    display: block;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    text-align: center;
-    color: #fff;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%
-}
+
 
 .widget-social-icons {
     margin-bottom: 30px
+}
+.widget-social-icons ul >li>a{
+    font-size: 14px;
 }
 
 .widget-social-icons ul li:last-child {
@@ -3453,10 +3498,10 @@ io {
 
 .site-header .header-bottom .header-nav ul li a {
     display: block;
-    line-height: 65px;
+    line-height: 55px;
     font-size: 15px;
     text-transform: capitalize;
-    color: #fff
+    color: #fff;
 }
 
 .site-header .header-bottom .header-nav ul li:hover>a {
@@ -3489,7 +3534,7 @@ io {
     font-size: 14px;
     white-space: nowrap;
     text-align: left;
-    background-color: #1caae0;
+    background-color: #191a1aa1;
     line-height: 12px;
     height: auto;
     padding: 15px;
@@ -3619,9 +3664,11 @@ io {
 .site-footer .footer-bottom {
     padding-top: 47px;
     padding-bottom: 20px;
-    font-size: 11px;
-    color: #b7866f;
+    font-size: 16px;
     position: relative
+}
+.i-class-custom-footer{
+    color:#fff;
 }
 
 .site-footer .footer-bottom h4 {
@@ -3631,24 +3678,21 @@ io {
 }
 
 .site-footer .footer-bottom a {
-    color: #fff;
-    margin-bottom: 14px;
-    font-size: 13px
+color: #fff;
+    font-size: 13px;
+
+}
+.widget-social-icons li a{
+    font-size: 15px;
+
 }
 
 .site-footer .footer-bottom a i {
-    font-size: 20px;
     width: 20px
 }
 
 .site-footer .footer-bottom .footer-logo {
     display: inline-block
-}
-
-.site-footer .footer-bottom .footer-contact,
-.site-footer .footer-bottom .footer-copyright,
-.site-footer .footer-bottom .footer-nav {
-    margin-top: 30px
 }
 
 .site-footer .footer-bottom .footer-contact ul,
@@ -3679,13 +3723,10 @@ io {
 
 .footer-contact ul>li>a {
     display: flex !important;
-    gap: 10px
+    gap: 10px;
+    align-items: center;
 }
 
-.site-footer .footer-bottom .footer-contact ul {
-    margin-left: -10px;
-    margin-bottom: 20px
-}
 
 .disclaim {
     margin-bottom: 15px
@@ -3699,16 +3740,11 @@ io {
     color: #f58147
 }
 
-.site-footer .footer-bottom .footer-contact ul li,
-.site-footer .footer-bottom .footer-nav ul li {
-    float: left;
-    margin: 0 10px
-}
-
+/*
 .site-footer .footer-bottom .footer-contact ul li a,
 .site-footer .footer-bottom .footer-nav ul li a {
     display: block
-}
+} */
 
 .site-footer .footer-bottom .footer-contact ul li a:hover {
     color: #fff
@@ -4219,7 +4255,7 @@ img.form-control {
 
 .site-header.scroll-fixed {
     position: fixed;
-  background: #d1a625 !important;
+  background: #191a1aa1 !important;
   top: 0;
     /* position: fixed;
     background-color: #20292d87;
@@ -4228,16 +4264,18 @@ img.form-control {
 }
 
 .header-logo a {
-    width: 136px
+    width: 136px;
+
 }
 
 .site-header.scroll-fixed .header-bottom .header-logo img {
-    width: 150px
+ width: 100%;
+ aspect-ratio: 1 / 1;
 }
 
 .site-header.scroll-fixed .header-bottom {
     position: relative;
-    min-height: 65px
+    min-height: 35px
 }
 
 .datepicker-days,
@@ -4370,15 +4408,9 @@ img.form-control {
     background: #fff
 }
 
-.award-book {
-    position: fixed;
-    left: 20px;
-    bottom: 30px;
-    z-index: 1
-}
-
-.award-book img {
-    width: 175px
+.award-book > img {
+  height: 98px;
+    margin-top: 10px;
 }
 
 .promo1 {
@@ -4390,12 +4422,12 @@ img.form-control {
     z-index: 1
 }
 
-.promo1-inner {
+.promo1.glow-offer {
     position: fixed;
     background: #d1a625;
     width: 206px;
     height: 108px;
-    z-index: 1;
+    z-index: 3;
     bottom: 180px;
     border-radius: 4px;
     left: 20px;
@@ -4540,7 +4572,7 @@ img.form-control {
 @media (min-width:1200px) {
     .header-logo {
         position: absolute;
-        top: -18px
+        top: -35px
     }
 
     .sustainability_text_wrapper .row .sustainability-bg-white {
@@ -4798,4 +4830,462 @@ img.form-control {
 
 .offer__list h1 {
     font-size: clamp(1.125rem, 0.3214rem + 4.2857vw, 3rem);
+}
+
+/* whatsapp */
+#chatbot {
+  .floating-logo {
+    box-shadow: 4px 4px 8px 0 rgb(0 0 0 / 20%), 4px 6px 20px 0 rgb(0 0 0 / 19%);
+        height: 50px;
+        width: 50px;
+        bottom: 58px;
+        right: 39px;
+    position: fixed;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #fff;
+    z-index: 1;
+
+    div {
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      height: 50px;
+      width: 50px;
+      display: block;
+      vertical-align: middle;
+      background-image: url('./../img/whatsapp.png');
+      background-size: cover;
+      animation: rotateLeft 0.5s linear;
+    }
+
+    &.active > div {
+      background-image: url(https://chatwidget.dashboard-visor.com/public/images/close_icon.svg);
+      background-size: 50%;
+      animation: rotateRight 0.5s linear;
+    }
+  }
+
+  .popup-box {
+    box-shadow: 4px 4px 8px 0 rgb(0 0 0 / 20%), 4px 6px 20px 0 rgb(0 0 0 / 19%);
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    bottom: 111px;
+    height: 40px;
+    display: none;
+    position: fixed;
+    right: 50px;
+    width: 200px;
+
+    &.chat-popup {
+      display: block !important;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 5;
+      overflow: hidden;
+      width: 0;
+      transition: width 0.5s, height 0.5s, all 250ms linear;
+    }
+    &.popup-box-on {
+      pointer-events: all;
+      opacity: 1;
+      width: 280px;
+      height: 280px;
+    }
+    .chatArea {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      scroll-behavior: smooth;
+      hyphens: auto;
+      width: 100%;
+      .popup-messages{
+        padding-left:10px;
+      }
+    }
+    .popup-head {
+        background-color: #376934;
+        height: 65px;
+        color: #fff;
+        font-size: 16px;
+        width: 100%;
+        align-items: center;
+        cursor: pointer;
+      .botInfo-wrapper {
+        display: flex;
+        padding: 10px 15px;
+        align-items: center;
+        .botImage {
+        height: 33px;
+        aspect-ratio: 1 / 1;
+          border-radius: 50%;
+          border: 2px solid #fff;
+          object-fit: cover;
+          margin: 5px 10px 10px 0;
+        }
+        .AIBotInfo {
+          margin: 10px 0;
+          .title {
+            font-weight: 600;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    .popup-footer {
+      display: flex;
+      float: left;
+      box-sizing: border-box;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      background-color: rgb(235, 235, 235);
+      border-radius: 10px 10px 0px 0px;
+      padding: 10px 0px 10px 10px;
+      .input-box {
+        width: 90%;
+        float: left;
+        border: none;
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 12px;
+        color: #545050;
+        background-color: white;
+        outline: none;
+        min-height: 40px;
+      }
+      #chat-icon {
+        width: 10%;
+        text-align: center;
+        padding: 0 5px;
+        cursor: pointer;
+        transition: 0.5s ease;
+        &:hover {
+          color: #e54e8c !important;
+          transform: scale(1.3);
+        }
+      }
+    }
+  }
+}
+.popup-messages {
+    padding-left:14px;
+    margin-top:10px;
+    ul li{
+        font-size: 15px;
+        line-height: 1.8;
+    }
+}
+
+@keyframes rotateLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateRight {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* whatsapp end */
+
+.footer-contact ul li {
+    margin-bottom: 1.3rem;
+}
+.footer-contact ul li:not(:last-child){
+       margin-right: 10px;
+}
+.widget-social-icons ul {
+    display: flex;
+}
+.widget-social-icons ul li {
+    margin-right: 13px;
+}
+.widget-social-icons ul li a {
+    width: 100%;
+    font-size: 18px !important;
+}
+.newsletter-form input {
+    height: 4rem;
+}
+.newsletter-form  button {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.newsletter-form s button.btn-blue:focus {
+    outline: none;
+}
+/* news letter */
+.blog-section{
+   padding-block: 7rem 5rem;
+    background-color: #f5f5f5;
+    .image-blog{
+        overflow: hidden;
+        position:relative;
+        img{
+            aspect-ratio:1/1;
+            scale:1;
+            height: 400px;
+            object-fit: cover;
+            transition: all .5s ease-in-out;
+            &:hover{
+                scale: 1.2;
+                transition: all .5s ease-in-out;
+            }
+        }
+        .author-date{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-size: 14px;
+            font-weight: 600;
+            background: #00000085;
+            color: #fff;
+            padding: 5px 17px 5px 10px;
+            border-top-right-radius: 10px;
+            small{
+                display: block;
+                a{
+                    color: #fff;
+                }
+            }
+        }
+    }
+    h2{
+        font-size: 20px;
+        border-bottom: 1px solid rgb(224,215,215);
+        padding-bottom:1.5rem;
+
+    }
+    p.excerpt{
+           display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    text-overflow: ellipsis;
+    }
+    .blog-card{
+        margin-bottom: 2rem;
+    }
+
+}
+.btn-blog:focus{
+    border:none !important;
+    outline:none !important;
+}
+/* news letter end */
+/* blog details page */
+.blog-details-wrapper{
+            padding: 60px 0;
+        }
+
+        .blog-details-wrapper .blog-main{
+            background: #fff;
+            padding: 30px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .blog-details-wrapper .blog-image{
+            overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .blog-details-wrapper .blog-image img{
+            width: 100%;
+            display: block;
+        }
+
+        .blog-details-wrapper .blog-meta{
+            margin-bottom: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .blog-details-wrapper .blog-meta span{
+            margin-right: 20px;
+        }
+
+        .blog-details-wrapper .blog-title{
+            font-size: 34px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-details-wrapper .blog-content p{
+            font-size: 16px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .blog-details-wrapper .blockquote-custom{
+            background: #f8f8f8;
+            border-left: 4px solid #337ab7;
+            padding: 25px;
+            margin: 30px 0;
+            font-size: 18px;
+            font-style: italic;
+            color: #444;
+        }
+
+        .blog-details-wrapper .social-share{
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .blog-details-wrapper .social-share h4{
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .blog-details-wrapper .social-share ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .blog-details-wrapper .social-share ul li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .blog-details-wrapper .social-share ul li a{
+            width: 45px;
+            height: 45px;
+            background: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #333;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .blog-details-wrapper .social-share ul li a:hover{
+            background: #337ab7;
+            color: #fff;
+        }
+
+        .blog-details-wrapper .sidebar{
+            background: #fff;
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .blog-details-wrapper .sidebar-title{
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .blog-details-wrapper .recent-post{
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .blog-details-wrapper .recent-post:last-child{
+            margin-bottom: 0;
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .blog-details-wrapper .recent-post-image{
+            width: 90px;
+            flex-shrink: 0;
+            margin-right: 15px;
+            img{
+              height: 90px;
+             object-fit: cover;
+            }
+        }
+
+        .blog-details-wrapper .recent-post-image img{
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .blog-details-wrapper .recent-post-content h4{
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .blog-details-wrapper .recent-post-content h4 a{
+            color: #222;
+            text-decoration: none;
+        }
+
+        .blog-details-wrapper .recent-post-content h4 a:hover{
+            color: #337ab7;
+        }
+
+        .blog-details-wrapper .recent-post-content span{
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media(max-width: 991px){
+
+            .blog-details-wrapper .sidebar{
+                margin-top: 30px;
+            }
+
+        }
+/* blog details page end */
+/* testimonial list */
+.testimonial--list {
+ margin-block: 9rem;
+}
+
+.testimonial--list .testimonial--card {
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform .2s ease-in-out;
+}
+
+.testimonial--list .testimonial--card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial--list .testimonial--card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.testimonial--list .testimonial--person {
+    margin-top: 22px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.testimonial--list .testimonial--person h5 {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.testimonial--list .testimonial--person a {
+  text-decoration: none;
+  color: rgb(3, 153, 212);
+  font-weight: 600;
+}
+.logo-section{
+    margin-block:10rem;
 }

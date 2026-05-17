@@ -1,3 +1,34 @@
+// $(document).ready(function(){
+//             $('#subscribe-form').validate({
+//             errorElement: 'span',
+//             errorClass: 'validate-has-error text-danger',
+//             rules: {
+//                 email: {
+//                     required: true,
+//                     email: true
+//                 }
+//             },
+//             messages: {},
+//             submitHandler: function (form) {
+//                 form.submit();
+//             }
+//         })
+// })
+
+
+       let button = document.getElementById("floating-button");
+        button.addEventListener("click", function () {
+        let  textclear = document.getElementById("textInput");
+        textclear.value = "";
+
+        this.classList.toggle("active");
+        var content = this.previousElementSibling;
+        content.classList.toggle("popup-box-on");
+        });
+
+
+
+
 
       const checkbox = document.querySelector("#menuArea > input");
 
@@ -222,7 +253,7 @@ var base_url = jQuery('base').attr('url');
             navText: ["", ""],
             mouseDrag: !1,
             autoplay: !0
-       }), 
+       }),
           e(".widget-testimonials-carousel").length && e(".widget-testimonials-carousel .widget-carousel").owlCarousel({
             margin: 40,
             responsive: {
@@ -285,7 +316,7 @@ var base_url = jQuery('base').attr('url');
                 }
             }
         }), e(".widget-google-map").length) try {
-        
+
     } catch (d) {
         console.log(d)
     }
@@ -297,7 +328,7 @@ var base_url = jQuery('base').attr('url');
         l = e(window).innerWidth(), o = e(window).innerHeight()
     })
 
-    
+
     $(document).on('click', '.map-google', function() {
         $('.full-map').removeClass('point-block');
     });
@@ -312,7 +343,7 @@ var base_url = jQuery('base').attr('url');
                 fullname: { required: true },
                 mailaddress: { required: true, email: true },
                 phoneno: { required: true },
-                message: { required: true },             
+                message: { required: true },
                 userstring:{
                     required:true,
                     minlength:5,
@@ -322,25 +353,25 @@ var base_url = jQuery('base').attr('url');
                     }
                 }
             },
-            messages:{  
-                fullname: { required: "Enter your Fullname", },            
+            messages:{
+                fullname: { required: "Enter your Fullname", },
                 mailaddress: { required: "Enter your email address", email: "Enter a VALID email address" },
                 phoneno: { required: "Enter your Phone No." },
                 message: { required: "Enter your Message" },
                 userstring:{
                     required: 'Enter Security Code',
                     minlength: 'Security Code must be at least 5 characters',
-                    remote: "Security Code Not match"     
-                }                       
-            },      
-            submitHandler:function(form){    
+                    remote: "Security Code Not match"
+                }
+            },
+            submitHandler:function(form){
                    var recaptcha = $("#g-recaptcha-response").val();
                 if (recaptcha === "") {
                     event.preventDefault();
                     alert("Please check the recaptcha");
                     return false;
                 }
-                var Frmval = jQuery("#frm-contact").serialize();  
+                var Frmval = jQuery("#frm-contact").serialize();
                 jQuery("#btn-contact").attr("disabled","true").val('Processing... <i class="icon ion-ios-arrow-right"></i>');
                 jQuery.ajax({
                     type: "POST",
@@ -348,11 +379,11 @@ var base_url = jQuery('base').attr('url');
                     url: base_url+"enquery_mail.php",
                     data:"action=forcoment&"+Frmval,
                     success:function(data){
-                        var msg=eval(data); 
-                        jQuery("#btn-booking").removeAttr("disabled").val('Send us Enquiry <i class="icon ion-ios-arrow-right"></i>');    
+                        var msg=eval(data);
+                        jQuery("#btn-booking").removeAttr("disabled").val('Send us Enquiry <i class="icon ion-ios-arrow-right"></i>');
                         alert(msg.message);
                         jQuery("#frm-contact")[0].reset();
-                    }               
+                    }
                 });
                 return false;
             }
@@ -372,10 +403,10 @@ var base_url = jQuery('base').attr('url');
     //             var d1 = jQuery(this).datepicker("getDate");
     //             d1.setDate(d1.getDate() + 1); // change to + 1 if necessary
     //             var d2 = jQuery(this).datepicker("getDate");
-    //             d2.setDate(d2.getDate() + 180); // change to + 180 if necessary   
+    //             d2.setDate(d2.getDate() + 180); // change to + 180 if necessary
     //             jQuery("#checkout").datepicker("option", "minDate", d1);
     //             jQuery("#checkout").datepicker("option", "maxDate", d2);
-    //             var start = jQuery("#checkin").datepicker("getDate");                
+    //             var start = jQuery("#checkin").datepicker("getDate");
     //             var end   = jQuery("#checkout").datepicker("getDate");
     //             var days   = (end - start)/1000/60/60/24;
     //             if(end!=null)
@@ -399,11 +430,11 @@ var base_url = jQuery('base').attr('url');
     //             check_in: { required: true, },
     //             check_out: { required: true }
     //         },
-    //         messages:{              
+    //         messages:{
     //             check_in: { required: '', },
     //             check_out: { required: '' }
-    //         },      
-    //         submitHandler:function(form){    
+    //         },
+    //         submitHandler:function(form){
     //             form.submit();
     //             return false;
     //         }
@@ -422,10 +453,10 @@ var base_url = jQuery('base').attr('url');
                 var d1 = jQuery(this).datepicker("getDate");
                 d1.setDate(d1.getDate() + 1); // change to + 1 if necessary
                 var d2 = jQuery(this).datepicker("getDate");
-                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary   
+                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary
                 jQuery("#checkout").datepicker("option", "minDate", d1);
                 jQuery("#checkout").datepicker("option", "maxDate", d2);
-                var start = jQuery("#checkin").datepicker("getDate");                
+                var start = jQuery("#checkin").datepicker("getDate");
                 var end   = jQuery("#checkout").datepicker("getDate");
                 var days   = (end - start)/1000/60/60/24;
                 if(end!=null)
@@ -450,12 +481,12 @@ var base_url = jQuery('base').attr('url');
                 nepalhotel_check_out: { required: true },
                 nepalhotel_code: { required: true }
             },
-            messages:{              
+            messages:{
                 nepalhotel_check_in: { required: '', },
                 nepalhotel_check_out: { required: '' },
                 nepalhotel_code: { required: '' }
-            },      
-            submitHandler:function(form){    
+            },
+            submitHandler:function(form){
                 form.submit();
                 // window.open('about:blank', 'booking_popup', 'width=1000,height=800');
                 return false;
@@ -475,10 +506,10 @@ var base_url = jQuery('base').attr('url');
                 var d1 = jQuery(this).datepicker("getDate");
                 d1.setDate(d1.getDate() + 1); // change to + 1 if necessary
                 var d2 = jQuery(this).datepicker("getDate");
-                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary   
+                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary
                 jQuery("#checkout").datepicker("option", "minDate", d1);
                 jQuery("#checkout").datepicker("option", "maxDate", d2);
-                var start = jQuery("#checkin").datepicker("getDate");                
+                var start = jQuery("#checkin").datepicker("getDate");
                 var end   = jQuery("#checkout").datepicker("getDate");
                 var days   = (end - start)/1000/60/60/24;
                 if(end!=null)
@@ -504,12 +535,12 @@ var base_url = jQuery('base').attr('url');
                 Clusternames: { required: true },
                 Hotelnames: { required: true }
             },
-            messages:{              
+            messages:{
                 arrival: { required: '', },
                 departure: { required: '' },
                 Clusternames: { required: '' },
                 Hotelnames: { required: '' }
-            },      
+            },
             submitHandler:function(form){
                 hhotelDispoprice(form);
                 return false;
@@ -529,10 +560,10 @@ var base_url = jQuery('base').attr('url');
                 var d1 = jQuery(this).datepicker("getDate");
                 d1.setDate(d1.getDate() + 1); // change to + 1 if necessary
                 var d2 = jQuery(this).datepicker("getDate");
-                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary   
+                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary
                 jQuery("#checkout").datepicker("option", "minDate", d1);
                 jQuery("#checkout").datepicker("option", "maxDate", d2);
-                var start = jQuery("#checkin").datepicker("getDate");                
+                var start = jQuery("#checkin").datepicker("getDate");
                 var end   = jQuery("#checkout").datepicker("getDate");
                 var days   = (end - start)/1000/60/60/24;
                 if(end!=null)
@@ -572,12 +603,12 @@ var base_url = jQuery('base').attr('url');
                 check_out: { required: true },
                 hotel_id: { required: true }
             },
-            messages:{              
+            messages:{
                 check_in: { required: '', },
                 check_out: { required: '' },
                 hotel_id: { required: '' }
-            },      
-            submitHandler:function(form){    
+            },
+            submitHandler:function(form){
                 form.submit();
                 window.open('about:blank', 'booking_popup', 'width=1000,height=800');
                 return false;
@@ -587,7 +618,7 @@ var base_url = jQuery('base').attr('url');
 
 
     // Room reservation
-    if(jQuery('#roombooking')[0]) {        
+    if(jQuery('#roombooking')[0]) {
 
         jQuery('#checkin').datepicker({
             changeMonth: true,
@@ -599,10 +630,10 @@ var base_url = jQuery('base').attr('url');
                 var d1 = jQuery(this).datepicker("getDate");
                 d1.setDate(d1.getDate() + 1); // change to + 1 if necessary
                 var d2 = jQuery(this).datepicker("getDate");
-                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary   
+                d2.setDate(d2.getDate() + 180); // change to + 180 if necessary
                 jQuery("#checkout").datepicker("option", "minDate", d1);
                 jQuery("#checkout").datepicker("option", "maxDate", d2);
-                var start = jQuery("#checkin").datepicker("getDate");                
+                var start = jQuery("#checkin").datepicker("getDate");
                 var end   = jQuery("#checkout").datepicker("getDate");
                 var days   = (end - start)/1000/60/60/24;
                 if(end!=null)
@@ -618,7 +649,7 @@ var base_url = jQuery('base').attr('url');
             minDate: jQuery("#checkin").datepicker("getDate"),
             maxDate: '+2Y'
         });
-        
+
         jQuery("#roombooking")[0].reset();
         jQuery("#roombooking").validate({
             errorElement: 'span',
@@ -630,7 +661,7 @@ var base_url = jQuery('base').attr('url');
                 address: { required: true },
                 country: { required: true },
                 checkin: { required: true, date:true },
-                checkout: { required: true, date:true },               
+                checkout: { required: true, date:true },
                 userstring:{
                     required:true,
                     minlength:5,
@@ -640,22 +671,22 @@ var base_url = jQuery('base').attr('url');
                     }
                 }
             },
-            messages:{  
-                fullname: { required: "Enter your Fullname", },            
+            messages:{
+                fullname: { required: "Enter your Fullname", },
                 mailaddress: { required: "Enter your email address", email: "Enter a VALID email address" },
                 phone: { required: "Enter your Phone No." },
                 address: { required: "Enter your Address" },
                 country: { required: "Choose your Country" },
                 checkin: { required: "Choose your Check-In Date", date:"Date Format Not Match (yy-mm-dd)" },
-                checkout: { required: "Choose your Check-Out Date", date:"Date Format Not Match (yy-mm-dd)" },               
+                checkout: { required: "Choose your Check-Out Date", date:"Date Format Not Match (yy-mm-dd)" },
                 userstring:{
                     required: 'Enter Security Code',
                     minlength: 'Security Code must be at least 5 characters',
-                    remote: "Security Code Not match"     
-                }                       
-            },      
-            submitHandler:function(form){               
-                var Frmval = jQuery("#roombooking").serialize();  
+                    remote: "Security Code Not match"
+                }
+            },
+            submitHandler:function(form){
+                var Frmval = jQuery("#roombooking").serialize();
                 jQuery("#btn-booking").attr("disabled","true").val('Processing...');
                 jQuery.ajax({
                     type: "POST",
@@ -663,17 +694,17 @@ var base_url = jQuery('base').attr('url');
                     url: base_url+"booking_action.php",
                     data:"action=forbooking&"+Frmval,
                     success:function(data){
-                        var msg=eval(data); 
-                        jQuery("#btn-booking").removeAttr("disabled").val('Send');    
+                        var msg=eval(data);
+                        jQuery("#btn-booking").removeAttr("disabled").val('Send');
                         alert(msg.message);
                         jQuery("#roombooking")[0].reset();
-                    }               
+                    }
                 });
                 return false;
             }
         });
     }
-    
+
 }(jQuery);
 
 // captcha
@@ -689,8 +720,8 @@ function updateCaptcha(c){
     dots: false,
     nav:false,
   });
-  
-  
+
+
 //=== Switcher panal slide function	=====================//
 
 	jQuery(window).load(function(){
@@ -699,9 +730,9 @@ function updateCaptcha(c){
 				});
 		jQuery('.switch-btn').addClass('closed');
 	});
-	
-	jQuery(document).ready(function () {		
-		jQuery('.switch-btn').on('click', function () {	
+
+	jQuery(document).ready(function () {
+		jQuery('.switch-btn').on('click', function () {
 			if (jQuery(this).hasClass('open')) {
 				jQuery(this).addClass('closed');
 				jQuery(this).removeClass('open');
@@ -716,15 +747,15 @@ function updateCaptcha(c){
 					'right': '0'
 				});
 				}
-			}	
+			}
 		});
 	});
-// 	
+//
 
  $(document).ready(function() {
         var checkinDate = $('#checkin');
         var checkoutDate = $('#checkout');
-  
+
         // Initialize the datepickers
         checkinDate.datepicker({
           format: 'yyyy-mm-dd',
@@ -732,20 +763,20 @@ function updateCaptcha(c){
           autoclose: true,
           todayHighlight: true
         }).datepicker('setDate', 'today');
-  
+
         checkoutDate.datepicker({
-          format: 'yyyy-mm-dd',   
+          format: 'yyyy-mm-dd',
                  startDate: 'tomorrow',
           autoclose: true,
           todayHighlight: true
         }).datepicker('setDate', '+1d');
-  
+
         // Set the minimum date for checkout based on the selected check-in date
         checkinDate.on('changeDate', function() {
           var selectedDate = new Date(checkinDate.datepicker('getDate'));
           selectedDate.setDate(selectedDate.getDate() + 1); // Add one day
           checkoutDate.datepicker('setStartDate', selectedDate);
-  
+
           // Check if the current selected date in checkout is before the new minimum date
           var checkoutSelectedDate = new Date(checkoutDate.datepicker('getDate'));
           if (checkoutSelectedDate < selectedDate) {

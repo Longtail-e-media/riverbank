@@ -1,9 +1,22 @@
-<?php 
+<?php
 /*
-* Services 
+* Services
 */
 $ressimg='';
 $resrvs='';
+$dataUrl = $breadcumb_facilities = '';
+
+$current_url = $_SERVER["REQUEST_URI"];
+$data = explode('/', $current_url);
+$last = trim(end($data), '/');
+$last = strtok($last, '?');
+$dataUrl .= $last;
+$breadcumb_facilities.= '<ol class="breadcrumb text-center">
+  <li><a href="'.BASE_URL.'">Home</a></li>
+  <li class="active"><a href="'.BASE_URL.''.$dataUrl.'">Facilities</a></li>
+</ol>';
+
+
 
 if(defined('SERVICES_PAGE')) {
     $ressimg.=IMAGE_PATH.'service-img.jpg';
@@ -16,7 +29,7 @@ if(defined('SERVICES_PAGE')) {
         $record = Services::getservice_list();
         if(!empty($record)) {
             foreach($record as $recRow) {
-                if($recRow->image != "a:0:{}") { 
+                if($recRow->image != "a:0:{}") {
                     $imageList = unserialize($recRow->image);
                     $imgno = array_rand($imageList);
                     $file_path = SITE_ROOT.'images/services/'.$imageList[$imgno];
@@ -37,3 +50,4 @@ if(defined('SERVICES_PAGE')) {
 
 $jVars['module:service_img'] = $ressimg;
 $jVars['module:service-list'] = $rescont;
+ $jVars['module:breadcumb_facilities'] = $breadcumb_facilities;

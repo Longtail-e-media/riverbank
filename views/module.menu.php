@@ -1,10 +1,12 @@
 <?php
-$resml=$resmr='';
+$resml=$resmr=$breadcumb='';
 
 $lmenuRec = Menu::getMenuByParent(0, 1);
 $rmenuRec = Menu::getMenuByParent(0, 2);
 $current_url = $_SERVER["REQUEST_URI"];
 $data = explode('/',$current_url);
+
+
 
 if(!empty($lmenuRec)) {
 	$resml.='<ul class="nav-left">';
@@ -14,7 +16,7 @@ if(!empty($lmenuRec)) {
 		$tot = strlen(SITE_FOLDER)+$n;
 		$data = substr($_SERVER['REQUEST_URI'], $tot);
 
-		if(!empty($data)):	
+		if(!empty($data)):
 			$linkActive = ($lmenuRow->linksrc==$data)?" active":"";
 			$parentInfo	= Menu::find_by_linksrc($data);
 			if($parentInfo):
@@ -22,7 +24,7 @@ if(!empty($lmenuRec)) {
 			endif;
 		endif;
 
-		$lmenusubRec = Menu::getMenuByParent($lmenuRow->id, 1);	
+		$lmenusubRec = Menu::getMenuByParent($lmenuRow->id, 1);
 		$ldrop1 = !empty($lmenusubRec)?'class="sub"':'';
         $resml.='<li '.$ldrop1.'>';
         	$resml.= getMenuList($lmenuRow->name, $lmenuRow->linksrc, $lmenuRow->linktype, $linkActive.$PlinkActive);
@@ -41,42 +43,44 @@ if(!empty($lmenuRec)) {
 
 }
 
-if(!empty($rmenuRec)) {
-	$resmr.='<ul class="nav-right">';
-	foreach($rmenuRec as $rmenuRow) {
-		$linkActive=$PlinkActive='';
-		$n = !empty(SITE_FOLDER)?2:1;
-		$tot = strlen(SITE_FOLDER)+$n;
-		$data = substr($_SERVER['REQUEST_URI'], $tot);
+// if(!empty($rmenuRec)) {
+// 	$resmr.='<ul class="nav-right">';
+// 	foreach($rmenuRec as $rmenuRow) {
+// 		$linkActive=$PlinkActive='';
+// 		$n = !empty(SITE_FOLDER)?2:1;
+// 		$tot = strlen(SITE_FOLDER)+$n;
+// 		$data = substr($_SERVER['REQUEST_URI'], $tot);
 
-		if(!empty($data)):	
-			$linkActive = ($rmenuRow->linksrc==$data)?" active":"";
-			$parentInfo	= Menu::find_by_linksrc($data);
-			if($parentInfo):
-				$PlinkActive = ($rmenuRow->id==$parentInfo->parentOf)?" active":"";
-			endif;
-		endif;
+// 		if(!empty($data)):
+// 			$linkActive = ($rmenuRow->linksrc==$data)?" active":"";
+// 			$parentInfo	= Menu::find_by_linksrc($data);
+// 			if($parentInfo):
+// 				$PlinkActive = ($rmenuRow->id==$parentInfo->parentOf)?" active":"";
+// 			endif;
+// 		endif;
 
-		$rmenusubRec = Menu::getMenuByParent($rmenuRow->id, 1);	
-		$rdrop1 = !empty($rmenusubRec)?'class="sub"':'';
-        $resmr.='<li '.$rdrop1.'>';
-        	$menuLink = ($rmenuRow->linktype == 1) ? $rmenuRow->linksrc : BASE_URL . $rmenuRow->linksrc;
-            $target   = ($rmenuRow->linktype == 1) ? ' target="_blank"' : '';
-            $resmr.= '<a href="' . $menuLink . '" class="' . $linkActive.$PlinkActive . '"' . $target . '>' . $rmenuRow->name . '</a>';
-        	if(!empty($rmenusubRec)) {
-        		$resmr.='<ul>';
-        		foreach($rmenusubRec as $rmenusubRow) {
-	                $resmr.='<li>';
-	                	$resmr.= getMenuList($rmenusubRow->name, $rmenusubRow->linksrc, $rmenusubRow->linktype);
-	                $resmr.='</li>';
-	            }
-	            $resmr.='</ul>';
-        	}
-        $resmr.='</li>';
-    }
-    $resmr.='</ul>';
-}
-
+// 		$rmenusubRec = Menu::getMenuByParent($rmenuRow->id, 1);
+// 		$rdrop1 = !empty($rmenusubRec)?'class="sub"':'';
+//         $resmr.='<li '.$rdrop1.'>';
+//         	$menuLink = ($rmenuRow->linktype == 1) ? $rmenuRow->linksrc : BASE_URL . $rmenuRow->linksrc;
+//             $target   = ($rmenuRow->linktype == 1) ? ' target="_blank"' : '';
+//             $resmr.= '<a href="' . $menuLink . '" class="' . $linkActive.$PlinkActive . '"' . $target . '>' . $rmenuRow->name . '</a>';
+//         	if(!empty($rmenusubRec)) {
+//         		$resmr.='<ul>';
+//         		foreach($rmenusubRec as $rmenusubRow) {
+// 	                $resmr.='<li>';
+// 	                	$resmr.= getMenuList($rmenusubRow->name, $rmenusubRow->linksrc, $rmenusubRow->linktype);
+// 	                $resmr.='</li>';
+// 	            }
+// 	            $resmr.='</ul>';
+//         	}
+//         $resmr.='</li>';
+//     }
+//     $resmr.='</ul>';
+// }
+$resmr.='<div class="pull-right">';
+$resmr .= $resbking;
+$resmr .= '</div>';
 $jVars['module:menu-left'] = $resml;
 $jVars['module:menu-right'] = $resmr;
 
@@ -91,29 +95,29 @@ $current_url = $_SERVER["REQUEST_URI"];
 $data = explode('/',$current_url);
 
 if($menuRec):
-	$result.='<ul>'; 	
-	$main.='<ul  id="main-menu" class="md-menu">'; 	
-		foreach($menuRec as $menuRow):	
+	$result.='<ul>';
+	$main.='<ul  id="main-menu" class="md-menu">';
+		foreach($menuRec as $menuRow):
 			$linkActive=$PlinkActive='';
 			$tot = strlen(SITE_FOLDER)+2;
 			$data = substr($_SERVER['REQUEST_URI'], $tot);
 
-			if(!empty($data)):	
+			if(!empty($data)):
 				$linkActive = ($menuRow->linksrc==$data)?" active":"";
 				$parentInfo	= Menu::find_by_linksrc($data);
 				if($parentInfo):
 					$PlinkActive = ($menuRow->id==$parentInfo->parentOf)?" active":"";
 				endif;
 			endif;
-			$menusubRec = Menu::getMenuByParent($menuRow->id, 1);	
+			$menusubRec = Menu::getMenuByParent($menuRow->id, 1);
 			$drop1 = !empty($menusubRec)?'class="dropdown"':'';
 			$result.='<li '.$drop1.'>';
 			$result.= getMenuList($menuRow->name, $menuRow->linksrc, $menuRow->linktype, $linkActive.$PlinkActive, $drop1);
 				/* Second Level Menu */
-				if($menusubRec):		
-				$result.='<ul class="dropdown-menu">';	
-				foreach($menusubRec as $menusubRow): 
-				   $menusub2Rec = Menu::getMenuByParent($menusubRow->id,1);	
+				if($menusubRec):
+				$result.='<ul class="dropdown-menu">';
+				foreach($menusubRec as $menusubRow):
+				   $menusub2Rec = Menu::getMenuByParent($menusubRow->id,1);
 				   $chkparent2 = (!empty($menusub2Rec))?1:0;
 				   $drop2 = !empty($menusub2Rec)?'class="have-submenu"':'';
 				   $result.='<li id="menu-item-'.$menusubRow->id.'" '.$drop2.'>';
@@ -123,7 +127,7 @@ if($menuRec):
 				   			$result.='<div class="sub-menu">
 				   			<ul class="sub-menu-inner">';
 				   			foreach ($menusub2Rec as $menusub2Row):
-				   				$menusub3Rec = Menu::getMenuByParent($menusub2Row->id,1);	
+				   				$menusub3Rec = Menu::getMenuByParent($menusub2Row->id,1);
 				   				$chkparent3 = (!empty($menusub3Rec))?1:0;
 				   				$drop3 = !empty($menusub3Rec)?'class="have-submenu"':'';
 				   				$result.='<li id="menu-item-'.$menusub2Row->id.'" '.$drop3.'>';
@@ -148,7 +152,7 @@ if($menuRec):
 				   									$result.='</ul>';
 				   								endif;
 				   							$result.='</li>';
-				   						endforeach;			   							
+				   						endforeach;
 				   						$result.='</ul>
 				   						</div>';
 				   					endif;
@@ -157,14 +161,14 @@ if($menuRec):
 				   			$result.='</ul>
 				   			</div>';
 				   	    endif;
-				   	$result.='</li>';    
+				   	$result.='</li>';
 				endforeach;
 				$result.='</ul>';
 				endif;
 			$result.='</li>';
 		endforeach;
 	$result.='</ul>';
-endif;			
+endif;
 
 $jVars['module:menu']= $main.$result;
 $jVars['module:menu-responsive']= $responsive.$result;
@@ -174,7 +178,7 @@ $jVars['module:menu-responsive']= $responsive.$result;
 $detect = new Mobile_Detect;
 
 $ret='';
- 
+
 // Any mobile device.
 
             $ret.='<div id="menuArea">
@@ -207,7 +211,7 @@ $result1.='<ul id="main-menu" class="md-menu">';
 	foreach($FmenuRec as $FmenuRow):
 	   $result1.='<li>';
 	   $result1.= getMenuList($FmenuRow->name, $FmenuRow->linksrc, $FmenuRow->linktype,'');
-		   $subRec = Menu::getMenuByParent($FmenuRow->id,2);	
+		   $subRec = Menu::getMenuByParent($FmenuRow->id,2);
 		   /*if($subRec):
 			   $result1.='<ul>';
 				foreach($subRec as $subRow):

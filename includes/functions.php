@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set("Asia/Kathmandu"); 
+date_default_timezone_set("Asia/Kathmandu");
 //changes dd/mm/yyyy to yyyy-mm-dd
 function getDateFormat($date=""){
 	if($date!=""){
@@ -23,8 +23,8 @@ function getDisplayFormat($date=""){
 
 // Remove the  marked zeros from date.
 function strip_zeros_from_date($marked_string=""){
-	$no_zeros = str_replace('*0', '', $marked_string); 
-	$cleaned_string = str_replace('*', '', $no_zeros); 
+	$no_zeros = str_replace('*0', '', $marked_string);
+	$cleaned_string = str_replace('*', '', $no_zeros);
 	return $cleaned_string;
 }
 
@@ -64,7 +64,7 @@ function my_autoload($class_name){
 }
 spl_autoload_register('my_autoload');
 
-function visitcounter($actId='', $action=''){	
+function visitcounter($actId='', $action=''){
 	if(!empty($actId) and !empty($action)){
 		$hitRes = Visitorcounter::check_currDate_ip($actId, $action);
 		if($hitRes=='0'){
@@ -156,7 +156,7 @@ function check_slug($aid=0, $mUrl='', $sUrl='') {
 // Store slug
 function storeSlug($mod_class='', $m_url='', $act_id=0) {
 	global $db;
-	$murl = check_url($m_url); 
+	$murl = check_url($m_url);
 	$query = $db->query("SELECT act_id FROM tbl_mlink WHERE act_id='$act_id' AND mod_class='$mod_class'");
 	$mtot = $db->num_rows($query);
 	if($mtot>0) {
@@ -200,20 +200,20 @@ function getIcon($name=""){
 }
 
 function uploadImage($field_name, $maxSize, $file_folder){
-	
+
 	$image		= trim($_FILES[$field_name]['name']);
 	$imagesize	= $_FILES[$field_name]['size'];
 	$maxfilesize= ($maxSize==0) ? 1000000 : $maxSize;
-	
+
 	$imgparts = explode(".", $_FILES[$field_name]['name']);
 	$image	=	time().rand(1, 50000).".".$imgparts[1];//ADDING TIME BEFORE THE FILE NAME
-	
+
 	//LIMIT FILE SIZE
 	if($imagesize>=$maxfilesize) {
 		return "";
 		exit();
 	}
-		
+
 	if(!copy($_FILES[$field_name]['tmp_name'],"../{$file_folder}/".$image)) {
 		return "";
 	} else {
@@ -238,7 +238,7 @@ function backup_tables($host,$user,$pass,$name,$tables = '*'){
 	$return = "";
 	$link = mysql_connect($host,$user,$pass);
 	mysql_select_db($name,$link);
-	
+
 	//get all of the tables
 	if($tables == '*'){
 		$tables = array();
@@ -249,16 +249,16 @@ function backup_tables($host,$user,$pass,$name,$tables = '*'){
 	} else {
 		$tables = is_array($tables) ? $tables : explode(',',$tables);
 	}
-	
+
 	//cycle through
 	foreach($tables as $table){
 		$result = mysql_query('SELECT * FROM '.$table);
 		$num_fields = mysql_num_fields($result);
-		
+
 		$return.= 'DROP TABLE '.$table.';';
 		$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
 		$return.= "\n\n".$row2[1].";\n\n";
-		
+
 		for ($i = 0; $i < $num_fields; $i++){
 			while($row = mysql_fetch_row($result)){
 				$return.= 'INSERT INTO '.$table.' VALUES(';
@@ -289,22 +289,22 @@ function delteMenuSubs($id) {
 	foreach($menuRec as $menuRow):
 		delteMenuSubs($menuRow->id);
 	endforeach;
-	
-	$db->query("DELETE FROM tbl_menu WHERE id='{$id}'");    
+
+	$db->query("DELETE FROM tbl_menu WHERE id='{$id}'");
 }
 
 // Clear the images not stored in database
 function clearImages($tablename="", $folder="", $field="image"){
 	global $db;
-	
+
 	$DirHandle = @opendir("../images/".$folder."/") or die($folder." could not be opened.");
-	
+
 	while($filename = readdir($DirHandle)) {
 		if($filename=="." || $filename==".." || $filename == ".htaccess") {continue;}
-		
+
 		$sql = $db->query("SELECT {$field} FROM {$tablename} WHERE {$field}='".$filename."'");
 		$result = $db->num_rows($sql);
-		
+
 		if($result == 0){
 			@unlink("../images/{$folder}/".$filename);
 		}
@@ -314,28 +314,28 @@ function clearImages($tablename="", $folder="", $field="image"){
 // Clear the images not stored in database
 function SerclearImages($tablename="", $folder="", $field="image"){
 	global $db;
-	
+
 	$DirHandle = @opendir("../images/".$folder."/") or die($folder." could not be opened.");
-	
+
 	$FolderArr = $dbArr = array();
 
 	while($filename = readdir($DirHandle)) {
-		if($filename=="." || $filename==".." || $filename == ".htaccess") {continue;}		
+		if($filename=="." || $filename==".." || $filename == ".htaccess") {continue;}
 		$FolderArr[] = $filename;
-	}      	
+	}
 
 	$sql = "SELECT {$field} FROM {$tablename}";
 	//$result = Subpackage::find_by_sql($query);
 	$query = $db->query($sql);
 	while($row = $db->fetch_array($query)){
-		$record = unserialize($row['image']);
-		if($record){
-			foreach($record as $imgName){
-				$dbArr[] = $imgName;				
-			}
-		}
+		// $record = unserialize($row['image']);
+		// if($record){
+		// 	foreach($record as $imgName){
+		// 		$dbArr[] = $imgName;
+		// 	}
+		// }
 	}
-	
+
 	$final = array_diff($FolderArr,$dbArr);
 	foreach($final as $k=>$v):
 		@unlink("../images/{$folder}/".$v);
@@ -354,12 +354,12 @@ function template($filename, $vars, $current="orion")
 			$output = preg_replace('/<jcms:'.$key.'\/>/', $value, $output);
 		endforeach;
 		echo $output;
-	} 
+	}
 	else
 	{
 		echo "<h1>** Template Not Found **</h1>";
 		echo "<br />{$filename} is missing.";
-	}	
+	}
 }
 
 //UPLOADING TEMPLATES
@@ -378,7 +378,7 @@ function getScripts($filename) {
 	$expFile 	= explode(".", $filename);
 	$totaldot	= count($expFile);
 	$return 	= '';
-	
+
 	if($totaldot >= 1)
 	{
 		$type = $expFile[$totaldot-1];
@@ -386,10 +386,10 @@ function getScripts($filename) {
 			case "js":
 				$return = "<script type=\"text/javascript\" src=\"".JS_PATH.$filename."\"></script>\n";
 				break;
-				
+
 			case "css":
 				$return = "<link rel=\"stylesheet\" href=\"".CSS_PATH.$filename."\" type=\"text/css\" media=\"screen\">\n";
-				break;	
+				break;
 		}
 	}
 	return $return;
@@ -399,14 +399,14 @@ function getFrontCss($filename) {
 	$expFile 	= explode(".", $filename);
 	$totaldot	= count($expFile);
 	$return 	= '';
-	
+
 	if($totaldot >= 1)
 	{
 		$type = $expFile[$totaldot-1];
 		switch($type){
 			case "css":
 				$return = "<link rel=\"stylesheet\" href=\"".$filename."\" type=\"text/css\" media=\"screen\">\n";
-				break;	
+				break;
 		}
 	}
 	return $return;
@@ -416,7 +416,7 @@ function getFrontJs($filename) {
 	$expFile 	= explode(".", $filename);
 	$totaldot	= count($expFile);
 	$return 	= '';
-	
+
 	if($totaldot >= 1)
 	{
 		$type = $expFile[$totaldot-1];
@@ -429,7 +429,7 @@ function getFrontJs($filename) {
 	return $return;
 }
 
-// returns the parts of the date .. 
+// returns the parts of the date ..
 // break date of format 2010-05-09 05:53:17 to  parts.. and pass as per required
 function getMyDate($date="2010-05-09 05:53:17", $part=1){
 	$myDate = explode(" ", $date, 2);
@@ -442,24 +442,24 @@ function getMenuList($caption="", $link="", $type=0, $class="",$nicon=""){
 	$linkhref	= ($link == '') ? '#' : $link;
 	$nicon = !empty($nicon)?'<span class="caret"></span>':'';
 	$dropclass = !empty($nicon)?" data-toggle='dropdown' ":" ";
-	
+
 	$escArray	= array(" ","@","!","#","$","%","^","&","*","(",")",",",".","\\","+","=");
 	$captionStr = str_replace($escArray,"_",strtolower($caption));
 	$id 		= "id_".$captionStr;
-	
+
 	$idLink 	= ($id == '') ? '' : ' id="'.$id.'"';
 	$linkType	= ($type == 0) ? '' : ' target="_blank"';
-	return "<a href=\"".BASE_URL.$linkhref."\" ".$classLink.$idLink.$linkType.$dropclass." >".$caption.$nicon."</a>";
+	return "<a href=\"".$linkhref."\" ".$classLink.$idLink.$linkType.$dropclass." >".$caption.$nicon."</a>";
 }
 
 function getResMenuList($caption="", $link="", $type=0, $class="",$dash=''){
 	$classLink 	= ($class == '') ? '' : 'class="'.$class.'"';
 	$linkhref	= ($link == '') ? '#' : $link;
-	
+
 	$escArray	= array(" ","@","!","#","$","%","^","&","*","(",")",",",".","\\","+","=");
 	$captionStr = str_replace($escArray,"_",strtolower($caption));
 	$id 		= "id_".$captionStr;
-	
+
 	$idLink 	= ($id == '') ? '' : ' id="'.$id.'"';
 	$linkType	= ($type == 0) ? '' : ' target="_blank"';
 	return "<a href=\"".$linkhref."\" ".$classLink.$idLink.$linkType.">".$dash.$caption."</a>";
@@ -491,14 +491,14 @@ function getPercent($total=1, $share=0){
 /*****************************************  Add by Amit  ****************************************/
 function getYoutubeImage($e){
 	//GET THE URL
-	$url = $e;	
-	$queryString = parse_url($url, PHP_URL_QUERY);	
-	parse_str($queryString, $params);	
-	$v = $params['v'];  
-	
-	// get video ID from $_GET 
+	$url = $e;
+	$queryString = parse_url($url, PHP_URL_QUERY);
+	parse_str($queryString, $params);
+	$v = $params['v'];
+
+	// get video ID from $_GET
 	if (!isset($v)) {
-	  die ('ERROR: Missing video ID');  
+	  die ('ERROR: Missing video ID');
 	} else {
 	  $vid = $v;
 	}
@@ -511,14 +511,14 @@ function getYoutubeImage($e){
 
 	// parse video entry
 	$video = parseVideoEntry($entry);
-	
+
 	$video_details = array("vTitle"=>$video->title,"vImg"=>$v,"vLength"=>$video->length);
-	
+
 	return $video_details;
-} 
+}
 
 // function to parse a video <entry>
-function parseVideoEntry($entry) {      
+function parseVideoEntry($entry) {
   $obj= new stdClass;
 
   // get nodes in media: namespace for media information
@@ -531,12 +531,12 @@ function parseVideoEntry($entry) {
   // get <yt:duration> node for video length
   $yt = $media->children('http://gdata.youtube.com/schemas/2007');
   $attrs = $yt->duration->attributes();
-  $obj->length = $attrs['seconds']; 
+  $obj->length = $attrs['seconds'];
 
 
-  // return object to caller  
-  return $obj;      
-} 
+  // return object to caller
+  return $obj;
+}
 
 //By Amit For youtube video play
 function embedYoutube($text, $weight='', $height='')
@@ -599,14 +599,14 @@ function getSiteNavigationLinks($link="")
 					"Gallery Page"			=> "gallery",
 					"Videos"				=> "video"
 				 );
-	
+
 	// check if the module is available.
 	if(Module::modulePublish(5) == 0){unset($linkArray['Gallery Page']);}	// news module >> module_id = 6
 	if(Module::modulePublish(6) == 0){unset($linkArray['News Detail Page']);}	// news module >> module_id = 6
 	if(Module::modulePublish(8) == 0){unset($linkArray['Notice Detail Page']);}	// notice module >> module_id = 8
 	if(Module::modulePublish(7) == 0){unset($linkArray['Events']);}				// event module >> module_id = 7
 	if(Module::modulePublish(9) == 0){unset($linkArray['Videos']);}				// video module >> module_id = 9
-				 	
+
 	foreach($linkArray as $key=>$val):
 		$selected = ($link == $val) ? "selected='selected'" : '';
 		echo "<option value=\"".$val."\" {$selected}>".$key."</option>";
@@ -620,7 +620,7 @@ function codegenerate($mStretch, $iLength = 2)
 	return sprintf($sPrintfString, $mStretch);
 }
 
-// Display file size 
+// Display file size
 function getFileFormattedSize($size=0){
 	$formattedSize = $size;
 	if($size > 0)
@@ -643,7 +643,7 @@ if(!function_exists("pr")){
 	{
 	   echo "<pre>";
 	   echo print_r($arr);
-	   echo "</pre>";	
+	   echo "</pre>";
 	  if($exit) die();
 	}
 }
@@ -655,7 +655,7 @@ if(!function_exists("randomKeys")){
 		$add     = "";
 		$strLength  = 0;
 	   if(empty($pattern)){
-		$pattern  =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";   
+		$pattern  =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	   }
 	   $i = 0;
 	   $strLength  =  strlen($pattern);
@@ -663,10 +663,10 @@ if(!function_exists("randomKeys")){
 		   $add     =  $pattern[rand(0,$strLength)];
 		   if(empty($add)){
 		   $add     =  $pattern[rand(0,$strLength)];
-		   $key   .= $add; 
+		   $key   .= $add;
 		   }else{
-			 $key   .= $add;   
-		   }		  
+			 $key   .= $add;
+		   }
 	   }
 	   return $key;
 	}
@@ -678,7 +678,7 @@ function set_na($arg){
 
 function PureUrl($title='', $linksrc='', $target=1,$text='Read More',$class=''){
 	$splitSRC 	= explode("http://", $linksrc);
-	$linkTarget = ($target == 1) 			? ' target="_blank" ' 	: '';	
+	$linkTarget = ($target == 1) 			? ' target="_blank" ' 	: '';
 	$linksrc 	= (count($splitSRC) == 1) 	? BASE_URL.$linksrc 	: $linksrc;
 	$linkstart  = ($linksrc!='') 			? '<a href="'.$linksrc.'" '.$linkTarget.' class="'.$class.'">' : '' ;
 	$linkend	= ($linksrc!='') 			? '</a>' : '' ;
@@ -687,12 +687,12 @@ function PureUrl($title='', $linksrc='', $target=1,$text='Read More',$class=''){
 
 function videos_source($string) {
 	$rules = array(
-	    '#http://(www\.)?youtube\.com/watch\?v=([^ &\n]+)(&.*?(\n|\s))?#i' => '<object width="425" height="350"><param name="movie" value="http://www.youtube.com/v/$2"></param><embed src="http://www.youtube.com/v/$2" type="application/x-shockwave-flash" width="425" height="350"></embed></object>', 
+	    '#http://(www\.)?youtube\.com/watch\?v=([^ &\n]+)(&.*?(\n|\s))?#i' => '<object width="425" height="350"><param name="movie" value="http://www.youtube.com/v/$2"></param><embed src="http://www.youtube.com/v/$2" type="application/x-shockwave-flash" width="425" height="350"></embed></object>',
 	    '#http://(www\.)?vimeo\.com/([^ ?\n/]+)((\?|/).*?(\n|\s))?#i' => '<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object>'
 	);
 
 	foreach ($rules as $link => $player)
-		$string = preg_replace($link, $player, $string); 
+		$string = preg_replace($link, $player, $string);
 	return $string;
 }
 
@@ -710,19 +710,19 @@ function sanitize_titlesite( $title ) {
 function create_slug( $source )
 {
     // return false if $source is empty
-    if (!$source) { return false; } 
+    if (!$source) { return false; }
     // convert to lowercase
-    $slug = strtolower( $source ); 
+    $slug = strtolower( $source );
     // replace special characters with acceptable alternatives
-    $slug = str_replace('&amp;','and',$slug); 
+    $slug = str_replace('&amp;','and',$slug);
     // remove other special characters completely (e.g. percentages, apostrophes)
-    $slug = preg_replace('/[%\'"``]/', '', $slug); 
+    $slug = preg_replace('/[%\'"``]/', '', $slug);
     // replace all other non-alphanumeric characters with a hyphen
-    $slug = preg_replace('/[^a-zA-Z0-9-]/','-',$slug); 
+    $slug = preg_replace('/[^a-zA-Z0-9-]/','-',$slug);
     // replace multiple hyphens with one
-    $slug = preg_replace("/[-]+/", "-", $slug); 
+    $slug = preg_replace("/[-]+/", "-", $slug);
     // remove un-needed hyphens from the start and end
-    $slug = trim($slug, '-'); 
+    $slug = trim($slug, '-');
     return $slug;
 }
 
@@ -739,7 +739,7 @@ function file_get_contents_curl($url)
 
     $data = curl_exec($ch);
 	$info = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-	
+
 	//checking mime types
 	if(strstr($info,'text/html')) {
 		curl_close($ch);
@@ -752,7 +752,7 @@ function file_get_contents_curl($url)
 function check_url($value)
 {
   $value = trim($value);
-  if (get_magic_quotes_gpc()) 
+  if (get_magic_quotes_gpc())
   {
 	$value = stripslashes($value);
   }
@@ -775,10 +775,10 @@ function get_youtube_code($url)
 		}
 }
 
-function getHost($Address) 
-{ 
-   $parseUrl = parse_url(trim($Address)); 
-   return trim($parseUrl['host'] ? $parseUrl['host'] : array_shift(explode('/', $parseUrl['path'], 2))); 
+function getHost($Address)
+{
+   $parseUrl = parse_url(trim($Address));
+   return trim($parseUrl['host'] ? $parseUrl['host'] : array_shift(explode('/', $parseUrl['path'], 2)));
 }
 
 function get_youtube_thumbnail($url)
@@ -791,7 +791,7 @@ function get_youtube_thumbnail($url)
 	//to get basename
 	$info = pathinfo($url);
 	$id = $info['basename'];
-	}	
+	}
 	$img = "http://img.youtube.com/vi/$id/0.jpg";
 	return $img;
 }
@@ -799,9 +799,9 @@ function get_youtube_thumbnail($url)
 function get_metacafe_thumbnail($id, $title, $size='large'){
     if($id && $title){
         if($size=='large'){
-            return "http://s4.mcstatic.com/thumb/{$id}/0/6/videos/0/6/{$title}.jpg";    
+            return "http://s4.mcstatic.com/thumb/{$id}/0/6/videos/0/6/{$title}.jpg";
         }elseif($size=='small'){
-            return "http://s4.mcstatic.com/thumb/{$id}/0/4/directors_cut/0/1/{$title}.jpg";    
+            return "http://s4.mcstatic.com/thumb/{$id}/0/4/directors_cut/0/1/{$title}.jpg";
         }
     }
     return false;
@@ -821,15 +821,15 @@ function dailymotion_video_details($url)
 // Clear the images not stored in database
 function JsonclearImages($tablename="", $folder="", $field="image"){
 	global $db;
-	
+
 	$DirHandle = @opendir("../images/".$folder."/") or die($folder." could not be opened.");
-	
+
 	$FolderArr = $dbArr = array();
 
 	while($filename = readdir($DirHandle)) {
-		if($filename=="." || $filename==".." || $filename == ".htaccess") {continue;}		
+		if($filename=="." || $filename==".." || $filename == ".htaccess") {continue;}
 		$FolderArr[] = $filename;
-	}      	
+	}
 
 	$sql = "SELECT {$field} FROM {$tablename}";
 	//$result = Subpackage::find_by_sql($query);
@@ -838,11 +838,11 @@ function JsonclearImages($tablename="", $folder="", $field="image"){
 		$record = unserialize($row['image']);
 		if($record){
 			foreach($record as $imgName){
-				$dbArr[] = $imgName;				
+				$dbArr[] = $imgName;
 			}
 		}
 	}
-	
+
 	$final = array_diff($FolderArr,$dbArr);
 	foreach($final as $k=>$v):
 		@unlink("../images/{$folder}/".$v);
@@ -880,7 +880,7 @@ function parse_vimeo($link)
             (?:[^>]*></iframe>)?        # Match the end of the iframe
             (?:<p>.*</p>)?              # Match any title information stuff
             ~ix';
- 
+
         preg_match($regexstr, $link, $matches);
         return $matches[1];
 }
@@ -908,7 +908,7 @@ function getMyvideo($v_url='',$v_type=''){
 	    $doc = new DOMDocument();
 	    @$doc->loadHTML($html);
 	    $nodes = $doc->getElementsByTagName('title');
-	    
+
 	    //get and display what you need:
 	    $title = $nodes->item(0)->nodeValue;
 	    $metas = $doc->getElementsByTagName('meta');
@@ -947,60 +947,60 @@ function getMyvideo($v_url='',$v_type=''){
         /*$myArr = array("title"   	 => $title,
         			   "thumb_image" => $thumbnail,
         			   "url"     	 => $v_url,
-        			   "host"   	 => getHost($v_url), 
+        			   "host"   	 => getHost($v_url),
         			   "content" 	 => $description,
         			   "class"		 => $class
         			   );*/
-       return $thumbnail; 
+       return $thumbnail;
     }
 }
 
 // New pagination Front End
 function get_front_pagination($total='', $per_page='2',$page='1', $url='')
-{	
+{
 	$total = !empty($total)?$total:'0';
-	$adjacents = "2"; 
-	$page = ($page == 0 ? 1 : $page);  
-	$start = ($page - 1) * $per_page;								
+	$adjacents = "2";
+	$page = ($page == 0 ? 1 : $page);
+	$start = ($page - 1) * $per_page;
 
-	$prev = $page - 1;							
+	$prev = $page - 1;
 	$next = $page + 1;
 	$lastpage = ceil($total/$per_page);
 	$lpm1 = $lastpage - 1;
 
 	$pagination = "";
 	if($lastpage > 1)
-	{   
+	{
 		$pagination .= "
   			<ul class='pagination'>";
 				if ($page > 1)
 					$pagination.= "<li><a href='".$url.'/page/'.$prev."'><span aria-hidden='true'>&larr;</span> Previous</a></li>";
 				else
-					$pagination.= "<li><a href='javascript:void(0);'><span aria-hidden='true'>&larr;</span> Previous</a></li>";   
+					$pagination.= "<li><a href='javascript:void(0);'><span aria-hidden='true'>&larr;</span> Previous</a></li>";
 				if ($lastpage < 7 + ($adjacents * 2))
-				{   
+				{
 					for ($counter = 1; $counter <= $lastpage; $counter++)
 					{
 						if ($counter == $page)
 							$pagination.= "<li><a href='javascript:void(0);' class='current'>$counter</a></li>";
 						else
-							$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";                   
+							$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";
 					}
 				}
 				elseif($lastpage > 5 + ($adjacents * 2))
 				{
-					if($page < 1 + ($adjacents * 2))       
+					if($page < 1 + ($adjacents * 2))
 					{
 						for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++)
 						{
 							if ($counter == $page)
 								$pagination.= "<li><a href='javascript:void(0);' class='current'>$counter</a></li>";
 							else
-								$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";                   
+								$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";
 						}
 						$pagination.= "<li><a>...</a></li>";
 						$pagination.= "<li><a href='".$url.'/page/'.$lpm1."'>$lpm1</a></li>";
-						$pagination.= "<li><a href='".$url.'/page/'.$lastpage."'>$lastpage</a></li>";       
+						$pagination.= "<li><a href='".$url.'/page/'.$lastpage."'>$lastpage</a></li>";
 					}
 					elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
 					{
@@ -1012,11 +1012,11 @@ function get_front_pagination($total='', $per_page='2',$page='1', $url='')
 							if ($counter == $page)
 								$pagination.= "<li><a href='javascript:void(0);' class='current'>$counter</a></li>";
 							else
-								$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";                   
+								$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";
 						}
 						$pagination.= "<li><a>...</a></li>";
 						$pagination.= "<li><a href='".$url.'/page/'.$lpm1."'>$lpm1</a></li>";
-						$pagination.= "<li><a href='".$url.'/page/'.$lastpage."'>$lastpage</a></li>";       
+						$pagination.= "<li><a href='".$url.'/page/'.$lastpage."'>$lastpage</a></li>";
 					}
 					else
 					{
@@ -1028,7 +1028,7 @@ function get_front_pagination($total='', $per_page='2',$page='1', $url='')
 							if ($counter == $page)
 								$pagination.= "<li><a class='current'>$counter</a></li>";
 							else
-								$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";                   
+								$pagination.= "<li><a href='".$url.'/page/'.$counter."'>$counter</a></li>";
 						}
 					}
 				}
@@ -1036,7 +1036,7 @@ function get_front_pagination($total='', $per_page='2',$page='1', $url='')
 					$pagination.= "<li><a href='".$url.'/page/'.$next."'>Next <span aria-hidden='true'>&rarr;</span></a></li>";
 				else
 					$pagination.= "<li><a href='javascript:void(0);'>Next <span aria-hidden='true'>&rarr;</span></a></li>";
-			$pagination.= "</ul>\n";       
+			$pagination.= "</ul>\n";
 	}
 
 	return $pagination;
@@ -1049,7 +1049,7 @@ function curPageURL(){
 	$pageURL .= "://";
 // 		if ($_SERVER["SERVER_PORT"] != "80") {
 // 		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-// 	} 
+// 	}
 // 	else {
 		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 // 	}

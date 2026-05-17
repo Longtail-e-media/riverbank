@@ -1,12 +1,13 @@
 <?php
-$resinndetail=$imageList='';
+$resinndetail=$imageList= $breacumb_article='';
+
 
 if(defined('INNER_PAGE') and isset($_REQUEST['slug'])) {
 	$slug = addslashes($_REQUEST['slug']);
 	$recRow = Article::find_by_slug($slug);
 	if(!empty($recRow) && $recRow->status == 1) {
 		$imglink='';
-		if($recRow->image != "a:0:{}") { 
+		if($recRow->image != "a:0:{}") {
 			$imageList = unserialize($recRow->image);
 			$file_path = SITE_ROOT . 'images/articles/' . $imageList[0];
         if (file_exists($file_path) and !empty($imageList[0])) {
@@ -15,14 +16,21 @@ if(defined('INNER_PAGE') and isset($_REQUEST['slug'])) {
         else{
             $imglink = BASE_URL . 'images/static/inner-banner.jpg';
         }
-        
-		
-			$imgcount=count($imageList);	
+
+
+			$imgcount=count($imageList);
 		}
 		else { $imglink = BASE_URL . 'images/static/inner-banner.jpg'; }
 // pr($imageList);
-		$rescontent = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', trim($recRow->content));	
-		$content = !empty($rescontent[1])?$rescontent[1] : $rescontent[0]; 
+		            $breacumb_article.= '<ol class="breadcrumb text-center">
+            <li><a href="'.BASE_URL.'">Home</a></li>
+            <li class="active"><a href="'.BASE_URL.''.$recRow ->slug.'">' . $recRow ->title . '</a></li>
+            </ol>';
+
+
+
+		$rescontent = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', trim($recRow->content));
+		$content = !empty($rescontent[1])?$rescontent[1] : $rescontent[0];
 
 		$resinndetail.='<!-- Section Page Title -->
 
@@ -35,6 +43,7 @@ if(defined('INNER_PAGE') and isset($_REQUEST['slug'])) {
                 </div>
             </div>
         </div>
+		'.$breacumb_article.'
 
 	    <!-- Section About Promo -->
 	    <div class="section">
@@ -50,15 +59,15 @@ if(defined('INNER_PAGE') and isset($_REQUEST['slug'])) {
 	                        </div>';
 	                       	//if($imageList!=''){
 	                         //$resinndetail.='<div class="col-md-6 main-carousel ">';
-	                       		
+
 		                       // foreach($imageList as $image) {
 		                        	//$resinndetail.='<!--<div class="carousel-cell">
 		                        //	<img  src="'.BASE_URL.'images/articles/'.$image.'">
 		                       // 	</div>-->
-		                        
+
 		                        //	';
 		                        //}
-		                       
+
 		                  //      $resinndetail.='</div>';
 	                       //}
 	                    $resinndetail.='</div>
@@ -72,7 +81,7 @@ if(defined('INNER_PAGE') and isset($_REQUEST['slug'])) {
 				<div class="widget-history-timeline">
 					<div class="wrapper-inner">
 						'.$recRow->sub_title.'
-						
+
 					</div>
 				</div>
 			</div>';
@@ -80,14 +89,14 @@ if(defined('INNER_PAGE') and isset($_REQUEST['slug'])) {
 	}
     else {
         redirect_to(BASE_URL.'404');
-    }   
+    }
 }
 
 $jVars['module:inner_detail']= $resinndetail;
 
 
 /*
-* Home page 
+* Home page
 */
 $resinnh='';
 
@@ -96,7 +105,7 @@ if(defined('HOME_PAGE')) {
 	if(!empty($recInn)) {
 		foreach($recInn as $innRow) {
 			$imglink='';
-			if($innRow->image != "a:0:{}") { 
+			if($innRow->image != "a:0:{}") {
 				$imageList = unserialize($innRow->image);
 				$imgno = array_rand($imageList);
 				$file_path = SITE_ROOT.'images/articles/'.$imageList[$imgno];
@@ -108,11 +117,11 @@ if(defined('HOME_PAGE')) {
 				}
 			}
 			else { $imglink = IMAGE_PATH.'static/inner-img.jpg'; }
-			
-			$content = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;"/>', trim($innRow->content));   
+
+			$content = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;"/>', trim($innRow->content));
     		$readmore='';
     		if(!empty($innRow->linksrc)) {
-    			$linkTarget = ($innRow->linktype == 1)? ' target="_blank" ' : ''; 
+    			$linkTarget = ($innRow->linktype == 1)? ' target="_blank" ' : '';
     			$linksrc  = ($innRow->linktype == 1)? $innRow->linksrc : BASE_URL.$innRow->linksrc;
     			$readmore = '<a class="btn" href="'.$linksrc.'">READ MORE</a>';
     		}
@@ -124,15 +133,15 @@ if(defined('HOME_PAGE')) {
     		<div class="section section_bg_color">
     		    <div class="container">
     		        <div class="wrapper-inner">
-		            
+
 		                                '.$content[0].'
-		                            
+
 		            </div>
 		        </div>
-		    </div>';					
+		    </div>';
 		}
 	}
-	
+
 }
 
 $jVars['module:home_article'] = $resinnh;
@@ -142,10 +151,10 @@ $restyp='';
 
 $typRow = Article::get_by_type();
 if(!empty($typRow)) {
-	$content = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', trim($typRow->content));   
+	$content = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', trim($typRow->content));
 	$readmore='';
 	if(!empty($typRow->linksrc)) {
-		$linkTarget = ($typRow->linktype == 1)? ' target="_blank" ' : ''; 
+		$linkTarget = ($typRow->linktype == 1)? ' target="_blank" ' : '';
 		$linksrc  = ($typRow->linktype == 1)? $typRow->linksrc : BASE_URL.$typRow->linksrc;
 		$readmore = '<a class="text-link link-direct" href="'.$linksrc.'">see more</a>';
 	}
@@ -155,7 +164,7 @@ if(!empty($typRow)) {
 	$restyp.='<h3 class="h3 header-sidebar">'.$typRow->title.'</h3>
 	<div class="home-content">
 		'.$content[0].' '.$readmore.'
-	</div>';	
+	</div>';
 
 }
 

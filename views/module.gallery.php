@@ -1,5 +1,18 @@
-<?php 
-$reslgall='';
+<?php
+$reslgall=$dataUrl =$breadcumb_gallery= '';
+$current_url = $_SERVER["REQUEST_URI"];
+$data = explode('/', $current_url);
+$last = trim(end($data), '/');
+$last = strtok($last, '?');
+$dataUrl .= $last;
+
+
+$breadcumb_gallery .= '<ol class="breadcrumb text-center">
+  <li><a href="'.BASE_URL.'">Home</a></li>
+  <li class="active"><a href="'.BASE_URL.''.$dataUrl.'">Gallery</a></li>
+</ol>';
+
+
 
 $gallRec = Gallery::getParentgallery(2);
 if(!empty($gallRec)) {
@@ -11,10 +24,10 @@ if(!empty($gallRec)) {
 				$file_path = SITE_ROOT.'images/gallery/galleryimages/'.$childRow->image;
 				if(file_exists($file_path) and !empty($childRow->image)) {
 					$reslgall.='<div class="gallery-item">
-                        <a href="'.IMAGE_PATH.'gallery/galleryimages/'.$childRow->image.'" 
-                        
-                            data-src="'.resizeUrl('gallery/galleryimages/'.$childRow->image, 600).'" 
-                            
+                        <a href="'.IMAGE_PATH.'gallery/galleryimages/'.$childRow->image.'"
+
+                            data-src="'.resizeUrl('gallery/galleryimages/'.$childRow->image, 600).'"
+
                             title="'.$childRow->title.'" class="popup-gallery owl-lazy">
                             <span class="item-text">'.$childRow->title.'</span>
                         </a>
@@ -76,4 +89,5 @@ if(defined('GALLERY_PAGE')) {
 }
 
 $jVars['module:allgallery'] = $resgall;
+ $jVars['module:breadcumb_gallery'] = $breadcumb_gallery;
 ?>

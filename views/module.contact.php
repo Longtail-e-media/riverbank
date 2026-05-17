@@ -4,6 +4,12 @@
 */
 $configRec = Config::find_by_id(1);
 // pr($configRec);
+$dataUrl = $breadcumbContact = '';
+$current_url = $_SERVER["REQUEST_URI"];
+$data = explode('/', $current_url);
+$last = trim(end($data), '/');
+$last = strtok($last, '?');
+$dataUrl .= $last;
 
 $tellinked = '';
 $telno = explode(",", $siteRegulars->contact_info);
@@ -49,6 +55,12 @@ foreach ($ktmtelno as $ktmktmtel) {
 }
 
 $rescont = '';
+
+$breadcumbContact .= '<ol class="breadcrumb text-center">
+  <li><a href="'.BASE_URL.'">Home</a></li>
+  <li class="active"><a href="'.BASE_URL.''.$dataUrl.'">Contact</a></li>
+</ol>';
+
 
 if (defined('CONTACT_PAGE')) {
     $rescont .= '
@@ -135,3 +147,4 @@ if (defined('CONTACT_PAGE')) {
 }
 
 $jVars['module:conatact-us'] = $rescont;
+ $jVars['module:breadcumbContact'] = $breadcumbContact;

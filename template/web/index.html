@@ -20,19 +20,22 @@
     <link rel="stylesheet" href="assets/css/popup.min.css">
     <link rel="stylesheet" href="assets/js/bootstrap-date.css">
     <meta name="google-site-verification" content="RkvmiRes2x7nn0CrFRAw2iZkwYyc6m6sDnjLz0ZiQFc" />
-    
+
     <style>
 		#more {display: none;}
-		
+
 	  @media (min-width:767px){	#modal-popup-image-1 .modal-dialog{ width: 500px;}}
-	  
-	  @font-face { font-family: 'FontAwesome'; 
-	  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), 
-	  url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'), 
-	  url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont.ttf?v=4.5.0') format('truetype'); 
+
+	  @font-face { font-family: 'FontAwesome';
+	  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont.woff2?v=4.5.0') format('woff2'),
+	  url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'),
+	  url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont.ttf?v=4.5.0') format('truetype');
 	  font-weight: normal; font-style: normal; font-display: swap;}
-	  
-	  
+#CDSWIDFRR{
+    scale: 2.3;
+    transform-origin: left top;
+}
+
 	</style>
 </head>
 <body>
@@ -51,7 +54,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            
+
                         </div>
                         <div class="col-md-6">
                             <jcms:module:menu-right/>
@@ -69,7 +72,7 @@
                             <jcms:site:logo/>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-9">
                          <jcms:module:res-menu/>
                     </div>
@@ -79,32 +82,24 @@
         <!-- Header Bottom End -->
     </div>
     <!-- Site Header End -->
-   
+
     <!-- Site Main -->
     <div class="site-main">
         <!-- Section Slider -->
-        <div class="section">
-            <div class="widget-slider">
-                <div class="wrapper-full">
-                    <!-- Slideshow module -->
-                    <jcms:module:slideshow/>
-                    
-                    <!-- Slider Booking -->
-                    <!--<div class="slider-booking">
-                    <!--    <div class="wrapper">-->
-                    <!--        <h5>BOOK YOUR HOTEL</h5>-->
-                    <!--        <jcms:module:booking-form/>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!-- Slider Booking End -->
-                </div>
-            </div>
-        </div>
+        <div class="header-video">
+			<div id="hero_video" class="embed-responsive embed-responsive-16by9">
+	            <!-- <iframe src="https://www.youtube.com/embed/hUpU-FWvqCg?autoplay=1&mute=1&controls=0&loop=1&start=5&end=120" title="YouTube video player" frameborder="0"></iframe> -->
+	            <video loading="lazy" preload="none" autoplay="" height="auto" id="video1" loop="" muted="" width="100%" poster="template/web/assets/img/video_poster.webp">
+					<source src="assets/img/river.mp4" type="video/mp4"> does not support
+				</video>
+			</div>
+		</div>
+
         <!-- Section Slider End -->
-        
+
         <!-- Section About Promo -->
         <jcms:module:home_article/>
-    
+
         <!-- Section Rooms -->
         <div class="section room-home">
             <div class="container">
@@ -120,34 +115,45 @@
                 </div>
             </div>
         </div>
-        
-        <div class="header-video">
-			<div id="hero_video">
-	            <!-- <iframe src="https://www.youtube.com/embed/hUpU-FWvqCg?autoplay=1&mute=1&controls=0&loop=1&start=5&end=120" title="YouTube video player" frameborder="0"></iframe> -->
-	            <video loading="lazy" preload="none" autoplay="" height="auto" id="video1" loop="" muted="" width="100%" poster="template/web/assets/img/video_poster.webp">
-					<source src="assets/img/river.mp4" type="video/mp4"> does not support 
-				</video>
-			</div>
-		</div>
-    
+
+
+                <!-- Section Slider -->
+        <div class="section">
+            <div class="widget-slider">
+                <div class="wrapper-full">
+                    <!-- Slideshow module -->
+                  <jcms:module:slideshow/>
+
+                    <!-- Slider Booking -->
+                    <!--<div class="slider-booking">
+
+                     <jcms:module:booking-form/>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!-- Slider Booking End -->
+                </div>
+            </div>
+        </div>
+        <!-- Section Slider End -->
+
         <!-- Section Features -->
         <jcms:module:home-packagelist/>
         <!-- Section Features End -->
-        
+
         <!-- Section Gallery -->
         <div class="section">
             <div class="widget-gallery-carousel">
                 <div class="wrapper-full-inner">
-                    
+
                     <!-- Gallery Title -->
                     <div class="widget-title">
                         <h5>JOURNEY FROM VILLAS TO NATURE, ADVENTURE AND EXPERIENCES</h5>
-                        <h3>Create Your Own Story with 
+                        <h3>Create Your Own Story with
                         River Bank Jungle Resort</h3>
                     </div>
                     <!-- Gallery Title End -->
                     <!-- Gallery module -->
-                    <jcms:module:galleryHome/>                
+                    <jcms:module:galleryHome/>
                 </div>
             </div>
         </div>
@@ -156,7 +162,7 @@
         <!-- Section Features -->
         <jcms:module:home-mainservice/>
         <!-- Section Features End -->
-        
+
         <!--enivornment-->
         <div class="sustaiability_parallex">
             <div class="susta_text">
@@ -180,10 +186,10 @@
                         <!-- Testimonials Title -->
                         <div class="widget-title">
                             <h5>TESTIMONIALS</h5>
-                            <h3>Our Happy Clients</h3>                    
+                            <h3>Our Happy Clients</h3>
                         </div>
                         <!-- Testimonials Title End -->
-                        
+
                         <!-- Testimonials module -->
                         <jcms:module:testimonialList/>
                     </div>
@@ -197,28 +203,45 @@
         <!--Floating Facebook Widget END-->
     </div>
     <!-- Site Main End -->
-    <div class="award-book">
-        <img src="assets/img/award/award.jpeg" alt="award_external">
-    </div>
+     <!-- blog section -->
+    <jcms:module:combinednews:home-blog/>
+     <!-- blog section end -->
+      <div class="logo-section">
+        <div class="container">
+            <div class="row d-flex flex-wrap justify-content-center">
+                <div class="col-md-4 mb-5">
+                    <img src="assets/img/award/expedia.jpeg" alt="Expedia" width="100%" >
+                </div>
+                <div class="col-md-4 mb-5"><a href=""><img src="assets/img/award/trip.jpg" alt="Trip" width="100%" ></a></div>
+                <div class="col-md-3 mb-5"><a href="https://www.booking.com/hotel/np/river-bank-jungle-resort.en-gb.html?aid=356980&label=gog235jc-1DCAsoqwFCGHJpdmVyLWJhbmstanVuZ2xlLXJlc29ydEgzWANoqwGIAQGYAQm4ARfIAQzYAQPoAQGIAgGoAgO4Apu7lbQGwAIB0gIkMGVmZTNiOTgtNzYwMC00MjNmLTljYzMtMjlkZGQ2ZDY3NDdk2AIE4AIB&sid=278d1014ff7613d58fce5893f8065fc4&dist=0&keep_landing=1&sb_price_type=total&type=total&#tab-main" target="_blank" rel="noopener"><img src="assets/img/award/booking.png" alt="Booking.com" width="100%" ></a></div>
+
+                <div class="col-md-3 mb-5"><a href="" target="_blank" rel="noopener"><img src="assets/img/award/hotel.jpeg" alt="Hotel" width="100%" ></a></div>
+                <div class="col-md-4 mb-5">        <div id="TA_rated40" class="TA_rated"><ul id="QzsKCt" class="TA_links q6ZSD1HVT"><li id="GIfVMlFLj" class="6Lo2uRpW5y6O"><a target="_blank" href='https://www.tripadvisor.com/Hotel_Review-g2407100-d27121850-Reviews-River_Bank_Jungle_Resort-Bharatpur_Chitwan_District_Narayani_Zone_Central_Region.html'><img src='https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif' alt="TripAdvisor"/></a></li></ul></div><script async src='https://www.jscache.com/wejs?wtype=rated&amp;uniq=40&amp;locationId=27121850&amp;lang=en_US&amp;display_version=2' data-loadtrk onload="this.loadtrk=true"></script></div>
+            </div>
+        </div>
+      </div>
+
     <!-- Site Footer -->
     <div class="site-footer">
-        <div class="footer-bottom">    
+        <div class="footer-bottom">
             <!-- Location module -->
             <jcms:module:footer-location/>
         </div>
     </div>
-   
+
     <!-- Site Footer End -->
-    
-    <!-- STYLE SWITCHER  ======= --> 
+
+    <!-- STYLE SWITCHER  ======= -->
     <jcms:module:booking-form/>
     <!-- STYLE SWITCHER END ==== -->
-    
+
     <jcms:module:popup />
     <jcms:module:offer_homepopup/>
-    
+
+
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
+
     <!--<script src="assets/js/jquery.js"></script>-->
     <!--<script src="assets/js/jquery-ui.min.js"></script>-->
     <script src="assets/js/jquery.fitvids.js"></script>
@@ -229,13 +252,13 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src='https://unpkg.com/swiper/swiper-bundle.min.js'></script>
     <script src="assets/js/bootstrap-date.js"></script>
-     
+
     <!--Floating Facebook Widget by START-->
     <script type="text/javascript"> /*<![CDATA[*/ jQuery(document).ready(function() {jQuery(".theblogwidgets").hover(function() {jQuery(this).stop().animate({right: "0"}, "medium");}, function() {jQuery(this).stop().animate({right: "-255"}, "medium");}, 500);}); /*]]>*/ </script>
 
-    <style type="text/css"> 
+    <style type="text/css">
         .theblogwidgets{
-            background: url("images/facebook.jpg") no-repeat scroll left center transparent !important; 
+            background: url("images/facebook.jpg") no-repeat scroll left center transparent !important;
             float: right;
             height: 350px;
             padding: 0 5px 0 34px;
@@ -244,13 +267,13 @@
             position:fixed;
             right:-255px;
             top:40%;
-        } 
-        .theblogwidgets div{ 
-            padding: 0; 
-            margin-right:-8px; 
-            border:4px solid  #3b5998; 
+        }
+        .theblogwidgets div{
+            padding: 0;
+            margin-right:-8px;
+            border:4px solid  #3b5998;
             background:#fafafa;
-        } 
+        }
         .theblogwidgets span{
             bottom: 4px;
             font: 8px "lucida grande",tahoma,verdana,arial,sans-serif;
@@ -258,16 +281,16 @@
             right: 6px;
             text-align: right;
             z-index: 99999;
-        } 
+        }
         .theblogwidgets span a{
             color: gray;
             text-decoration:none;
-        } 
+        }
         .theblogwidgets span a:hover{
             text-decoration:underline;
-        } 
-        </style> 
- 
+        }
+        </style>
+
 
     <!-- Custom Scripts -->
     <script src="assets/js/jquery.validate.min.js"></script>
@@ -275,10 +298,10 @@
     <script>jQuery(".header-nav > ul > li > a").eq(0).addClass("active");</script>
 
     <jcms:footer:script/>
-    
+
     <jcms:site:promocode/>
-    
-   
+
+
 
         <style>
 .splashbg{position:fixed;top:0;left:0;z-index:99999;background:rgba(0,0,0,.85);width:100%;height:100%}.cstm_modal{position:absolute;width:730px;max-width:100%;left:0;right:0;margin:auto;background:#fff;border-radius:4px;display:block;top:50%;transform:translateY(-50%)}.cstm_modal img{width:auto}.close{positionbackground:#333;border-radius:100%;padding:5px 10px;color:#fff;display:block;position:absolute;right:20px;top:20px;opacity:1;z-index:999;}
@@ -287,27 +310,27 @@ video{margin-top: -1px;}
 
 <script>
  jQuery(function($){
-     
+
         $('.splashbg').toggleClass('hidden');
         if($(window).width()>$(window).height()){
             $('.cstm_modal').height('730px');
              $('.cstm_modal img').css({height:'100%'});
-            
+
         }else{
             $('.cstm_modal').width($(window).width()-15);
              $('.cstm_modal img').css({width:'100%'});
         }
-        
+
         $('.closepop, .splashbg').on('click', function(){
             $('.splashbg').remove();
         })
             });
         </script>
-    
-   
+
+
 
     <script>
-    
+
     $(document).ready(function () {
     let isShowingMore = false;
 
@@ -331,8 +354,8 @@ video{margin-top: -1px;}
         isShowingMore = !isShowingMore;
     });
 });
-   
-  
+
+
 
 
 		function myFunction() {
@@ -342,11 +365,11 @@ video{margin-top: -1px;}
 
 		  if (dots.style.display === "none") {
 		    dots.style.display = "inline";
-		    btnText.innerHTML = "Load More"; 
+		    btnText.innerHTML = "Load More";
 		    moreText.style.display = "none";
 		  } else {
 		    dots.style.display = "none";
-		    btnText.innerHTML = "Load Less"; 
+		    btnText.innerHTML = "Load Less";
 		    moreText.style.display = "inline";
 		  }
 		}
@@ -359,7 +382,7 @@ video{margin-top: -1px;}
             $('#popup-popup-image').modal('hide');
         }
     </script>
-    
+
     <script>
 $(document).ready(function () {
   // Init carousels
@@ -407,6 +430,11 @@ $(document).ready(function () {
     //<![CDATA[
     jQuery(document).ready(function(){jQuery(function(o){o(".nd_booking_alert_msg").is(":hidden")&&o(".nd_booking_alert_msg").delay(3e3).fadeIn(1e3),o(".nd_booking_alert_msg").click(function(){var n=o(this).data("url");n&&window.open(n,"_blank")}),o(".on_close").click(function(n){n.stopPropagation(),o(this).closest(".nd_booking_alert_msg").fadeOut("slow")})})});
     //]]>
+</script>
+<script>
+    $(document).ready(function(){
+        $(".nav-left li a").removeClass("active");
+    })
 </script>
 
 </body>
