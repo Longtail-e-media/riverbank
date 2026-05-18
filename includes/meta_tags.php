@@ -323,7 +323,7 @@ function MetaTagsFor_SEO()
     // In both cases we output the raw block only when the field is non-empty.
     $staticSchemaMap = [
         'index'   => 2, // /  or  /home
-        'offer'   => 6, // /offer-list
+        'offers'   => 6, // /offer-list
         'gallery' => 4, // /gallery-list
         'contact' => 3, // /contact-us
         'blog'     => 7, // /blog

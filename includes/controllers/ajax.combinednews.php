@@ -19,6 +19,7 @@
 			$record->author 	= $_REQUEST['author'];	
 //			$record->brief 		= $_REQUEST['brief'];
 			$record->content	= $_REQUEST['content'];
+            $record->schema_code    = $_REQUEST['schema_code'] ?? '';
 //			$record->type 		= $_REQUEST['type'];
 			/*if($_REQUEST['type']==1){
 				$record->image		= serialize(array_values(array_filter($_REQUEST['imageArrayname'])));
@@ -62,6 +63,7 @@
 			$record->author 	= $_REQUEST['author'];	
 //			$record->brief 		= $_REQUEST['brief'];
 			$record->content	= $_REQUEST['content'];
+            $record->schema_code    = $_REQUEST['schema_code'] ?? '';
 //			$record->type 		= $_REQUEST['type'];
 			/*if($_REQUEST['type']==1){
 				$record->image		= serialize(array_values(array_filter($_REQUEST['imageArrayname'])));

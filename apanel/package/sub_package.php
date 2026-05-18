@@ -306,7 +306,19 @@ endif;
                         <textarea name="detail" id="detail" class="medium-textarea"><?php echo !empty($subpackageInfo->detail)?$subpackageInfo->detail:"";?></textarea>
                     </div>                    
                 </div>            
-            </div> 
+            </div>
+
+            <div class="form-row">
+                <div class="form-label col-md-2">
+                    <label for="">
+                        Schema Code :
+                    </label>
+                </div>
+                <div class="form-input col-md-6">
+                        <textarea placeholder="Schema Code" name="schema_code" id="schema_code"
+                                  class="large-textarea"><?php echo !empty($subpackageInfo->schema_code) ? $subpackageInfo->schema_code : ""; ?></textarea>
+                </div>
+            </div>
             
             <?php $pkg = Package::find_by_id($pid); 
             if($pkg->type==1) { ?> 

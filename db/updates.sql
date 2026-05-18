@@ -23,3 +23,8 @@ INSERT INTO `tbl_schemas` (`id`, `title`, `schema_code`, `status`, `sortorder`, 
 (7, 'Blog', '', 1, 1, '', '', '', '2026-05-18 15:17:34', '2026-05-18 15:17:34');
 ALTER TABLE `tbl_schemas`ADD PRIMARY KEY (`id`);
 ALTER TABLE `tbl_schemas` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `tbl_articles` ADD `schema_code` TEXT NOT NULL AFTER `category`;
+ALTER TABLE `tbl_package` ADD `schema_code` TEXT NOT NULL AFTER `type`;
+ALTER TABLE `tbl_package_sub` ADD `schema_code` TEXT NOT NULL AFTER `type`;
+ALTER TABLE `tbl_offers` ADD `schema_code` TEXT NOT NULL AFTER `meta_description`;
+ALTER TABLE `tbl_conbined_news` ADD `schema_code` TEXT NOT NULL AFTER `fb_upload`;

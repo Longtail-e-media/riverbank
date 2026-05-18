@@ -1,250 +1,279 @@
 <?php
-class Package extends DatabaseObject {
 
-	protected static $table_name = "tbl_package";
-	protected static $db_fields = array('id', 'slug', 'image', 'header_image', 'fb_upload','banner_image', 'title', 'sub_title', 'status', 'sortorder', 'detail', 'content', 'meta_title', 'meta_keywords', 'meta_description', 'type', 'added_date');
+class Package extends DatabaseObject
+{
 
-	var $id;
-	var $slug;
-	var $image;
-	var $fb_upload;
-	var $header_image;
-	var $banner_image;
-	var $title;
-	var $sub_title;
-	var $status;
-	var $sortorder;
-	var $detail;
-	var $content;
-	var $meta_title;
-	var $meta_keywords;
-	var $meta_description;
-	var $type;
-	var $added_date;
+    protected static $table_name = "tbl_package";
+    protected static $db_fields = array(
+        'id', 'slug', 'image', 'header_image', 'fb_upload', 'banner_image', 'title', 'sub_title', 'status', 'sortorder', 'detail', 'content', 'meta_title',
+        'meta_keywords', 'meta_description', 'type', 'added_date', 'schema_code'
+    );
 
-	public static function get_accommodationId()
-	{
-		global $db;
-		$sql="SELECT id FROM ".self::$table_name." WHERE status='1' AND type='1' ORDER BY sortorder DESC LIMIT 1 ";
-		$result = $db->query($sql);
-		$return = $db->fetch_array($result);
-		return ($return) ? $return['id'] : '0';
-	}
+    var $id;
+    var $slug;
+    var $image;
+    var $fb_upload;
+    var $header_image;
+    var $banner_image;
+    var $title;
+    var $sub_title;
+    var $status;
+    var $sortorder;
+    var $detail;
+    var $content;
+    var $meta_title;
+    var $meta_keywords;
+    var $meta_description;
+    var $type;
+    var $added_date;
+    var $schema_code;
 
-	//Find a single row in the database where slug is provided.
-	public static function find_by_slug($slug=0){
-		global $db;
-		$sql = "SELECT * FROM ".self::$table_name." WHERE slug='$slug' LIMIT 1";
-		$result_array = self::find_by_sql($sql);
-		return !empty($result_array) ? array_shift($result_array) : false;
-	}
+    public static function get_accommodationId()
+    {
+        global $db;
+        $sql = "SELECT id FROM " . self::$table_name . " WHERE status='1' AND type='1' ORDER BY sortorder DESC LIMIT 1 ";
+        $result = $db->query($sql);
+        $return = $db->fetch_array($result);
+        return ($return) ? $return['id'] : '0';
+    }
 
-	// view package Front.
-	static function getPackage($limit=''){
-		global $db;
-		$cond = !empty($limit)?' LIMIT '.$limit :'';
-		$sql = "SELECT * FROM ".self::$table_name." WHERE status=1 ORDER BY sortorder DESC $cond";
-		return self::find_by_sql($sql);
-	}
+    //Find a single row in the database where slug is provided.
+    public static function find_by_slug($slug = 0)
+    {
+        global $db;
+        $sql = "SELECT * FROM " . self::$table_name . " WHERE slug='$slug' LIMIT 1";
+        $result_array = self::find_by_sql($sql);
+        return !empty($result_array) ? array_shift($result_array) : false;
+    }
 
-	public static function checkDupliTitle($title='')
-	{
-		global $db;
-		$query = $db->query("SELECT title FROM ".self::$table_name." WHERE title='$title' LIMIT 1");
-		$result= $db->num_rows($query);
-		if($result>0) {return true;}
-	}
+    // view package Front.
+    static function getPackage($limit = '')
+    {
+        global $db;
+        $cond = !empty($limit) ? ' LIMIT ' . $limit : '';
+        $sql = "SELECT * FROM " . self::$table_name . " WHERE status=1 ORDER BY sortorder DESC $cond";
+        return self::find_by_sql($sql);
+    }
 
-	static function getTotalImages($id=0){
-		global $db;
-		$sql = "SELECT id FROM ".self::$table_name." WHERE status=1";
-		return @$db->num_rows($db->query($sql));
-	}
+    public static function checkDupliTitle($title = '')
+    {
+        global $db;
+        $query = $db->query("SELECT title FROM " . self::$table_name . " WHERE title='$title' LIMIT 1");
+        $result = $db->num_rows($query);
+        if ($result > 0) {
+            return true;
+        }
+    }
 
-	/************************** Package link  by me ***************************/
-	public static function get_internal_link($Lsel='',$LType=0)
-	{
-		global $db;
-		$sql = "SELECT id, slug, title, type FROM ".self::$table_name." WHERE status='1' ORDER BY sortorder ASC";
-		$pages = self::find_by_sql($sql);
-		$linkpageDis = ($Lsel==1)?'hide':'';
+    static function getTotalImages($id = 0)
+    {
+        global $db;
+        $sql = "SELECT id FROM " . self::$table_name . " WHERE status=1";
+        return @$db->num_rows($db->query($sql));
+    }
 
-		$result='';
-		if($pages):
-		$result.='<optgroup label="Package">';
-			foreach($pages as $pageRow):
-				$chkChild  = Subpackage::getTotalSub($pageRow->type);
-				$sel = ($Lsel==($pageRow->slug)) ?'selected':'';
-				$result.='<option value="'.$pageRow->slug.'" '.$sel.'>&nbsp;&nbsp;'.$pageRow->title.'</option>';
+    /************************** Package link  by me ***************************/
+    public static function get_internal_link($Lsel = '', $LType = 0)
+    {
+        global $db;
+        $sql = "SELECT id, slug, title, type FROM " . self::$table_name . " WHERE status='1' ORDER BY sortorder ASC";
+        $pages = self::find_by_sql($sql);
+        $linkpageDis = ($Lsel == 1) ? 'hide' : '';
 
-				// Sub package list
-				$subRec = Subpackage::getPackage_limit($pageRow->id);
-				if($subRec){
-					foreach($subRec as $Nrow){
-						$sel = ($Lsel==$Nrow->slug) ?'selected':'';
-						$result.='<option value="'.$Nrow->slug.'" '.$sel.'>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;'.$Nrow->title.'</option>';
-					}
-				}
+        $result = '';
+        if ($pages):
+            $result .= '<optgroup label="Package">';
+            foreach ($pages as $pageRow):
+                $chkChild = Subpackage::getTotalSub($pageRow->type);
+                $sel = ($Lsel == ($pageRow->slug)) ? 'selected' : '';
+                $result .= '<option value="' . $pageRow->slug . '" ' . $sel . '>&nbsp;&nbsp;' . $pageRow->title . '</option>';
 
-			endforeach;
-		$result.='</optgroup>';
-		endif;
-		return $result;
-	}
+                // Sub package list
+                $subRec = Subpackage::getPackage_limit($pageRow->id);
+                if ($subRec) {
+                    foreach ($subRec as $Nrow) {
+                        $sel = ($Lsel == $Nrow->slug) ? 'selected' : '';
+                        $result .= '<option value="' . $Nrow->slug . '" ' . $sel . '>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;' . $Nrow->title . '</option>';
+                    }
+                }
 
-	// view package of the nos provided.
-	static function getPackageList($total=5, $offset=0){
-		global $db;
-		return self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE status=1 ORDER BY sortorder ASC LIMIT {$total} OFFSET {$offset}");
-	}
+            endforeach;
+            $result .= '</optgroup>';
+        endif;
+        return $result;
+    }
 
-	//FIND THE HIGHEST MAX NUMBER.
-	static function find_maximum($field="sortorder"){
-		global $db;
-		$result = $db->query("SELECT MAX({$field}) AS maximum FROM ".self::$table_name);
-		$return = $db->fetch_array($result);
-		return ($return) ? ($return['maximum']+1) : 1 ;
-	}
+    // view package of the nos provided.
+    static function getPackageList($total = 5, $offset = 0)
+    {
+        global $db;
+        return self::find_by_sql("SELECT * FROM " . self::$table_name . " WHERE status=1 ORDER BY sortorder ASC LIMIT {$total} OFFSET {$offset}");
+    }
 
-	// get the package name from it's id
-	static function getPackageName($id=0){
-		global $db;
-		$result = $db->query("SELECT title FROM ".self::$table_name." WHERE id='{$id}'");
-		$return = $db->fetch_array($result);
-		return ($return) ? $return['title'] : '' ;
-	}
+    //FIND THE HIGHEST MAX NUMBER.
+    static function find_maximum($field = "sortorder")
+    {
+        global $db;
+        $result = $db->query("SELECT MAX({$field}) AS maximum FROM " . self::$table_name);
+        $return = $db->fetch_array($result);
+        return ($return) ? ($return['maximum'] + 1) : 1;
+    }
 
-	//Find all the rows in the current database table.
-	static function find_all(){
-		global $db;
-		return self::find_by_sql("SELECT * FROM ".self::$table_name." ORDER BY sortorder DESC");
-	}
+    // get the package name from it's id
+    static function getPackageName($id = 0)
+    {
+        global $db;
+        $result = $db->query("SELECT title FROM " . self::$table_name . " WHERE id='{$id}'");
+        $return = $db->fetch_array($result);
+        return ($return) ? $return['title'] : '';
+    }
 
-	//Find all the rows in the current database table.
-	static function get_all(){
-		global $db;
-		$sql="SELECT id,title FROM ".self::$table_name." WHERE status=1 ORDER BY sortorder ASC";
-		return self::find_by_sql($sql);
-	}
+    //Find all the rows in the current database table.
+    static function find_all()
+    {
+        global $db;
+        return self::find_by_sql("SELECT * FROM " . self::$table_name . " ORDER BY sortorder DESC");
+    }
 
-	public static function getTotalparent(){
-		global $db;
-		$query = "SELECT COUNT(id) AS tot FROM ".self::$table_name." WHERE status=1 ";
-		$sql = $db->query($query);
-		$ret = $db->fetch_array($sql);
-		return $ret['tot'];
-	}
+    //Find all the rows in the current database table.
+    static function get_all()
+    {
+        global $db;
+        $sql = "SELECT id,title FROM " . self::$table_name . " WHERE status=1 ORDER BY sortorder ASC";
+        return self::find_by_sql($sql);
+    }
 
-	//Find a single row in the database where id is provided.
-	static function find_by_id($id=0){
-		global $db;
-		$result_array = self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE id={$id} LIMIT 1");
-		return !empty($result_array) ? array_shift($result_array) : false;
-	}
+    public static function getTotalparent()
+    {
+        global $db;
+        $query = "SELECT COUNT(id) AS tot FROM " . self::$table_name . " WHERE status=1 ";
+        $sql = $db->query($query);
+        $ret = $db->fetch_array($sql);
+        return $ret['tot'];
+    }
 
-	public static function field_by_id($id=0,$fields=""){
-		global $db;
-		$sql = "SELECT $fields FROM ".self::$table_name." WHERE id={$id} LIMIT 1";
-		$result = $db->query($sql);
-		$return = $db->fetch_array($result);
-		return ($return) ? $return[$fields] : '' ;
-	}
+    //Find a single row in the database where id is provided.
+    static function find_by_id($id = 0)
+    {
+        global $db;
+        $result_array = self::find_by_sql("SELECT * FROM " . self::$table_name . " WHERE id={$id} LIMIT 1");
+        return !empty($result_array) ? array_shift($result_array) : false;
+    }
 
-	public static function type_by_id($type=1){
-		global $db;
-		$sql = "SELECT id FROM ".self::$table_name." WHERE type={$type} LIMIT 1";
-		$result = $db->query($sql);
-		$return = $db->fetch_array($result);
-		return ($return)? $return['id'] : 0;
-	}
+    public static function field_by_id($id = 0, $fields = "")
+    {
+        global $db;
+        $sql = "SELECT $fields FROM " . self::$table_name . " WHERE id={$id} LIMIT 1";
+        $result = $db->query($sql);
+        $return = $db->fetch_array($result);
+        return ($return) ? $return[$fields] : '';
+    }
 
-	//Find rows from the database provided the SQL statement.
-	static function find_by_sql($sql=""){
-		global $db;
-		$result_set = $db->query($sql);
-		$object_array = array();
-		while($row = $db->fetch_array($result_set)){
-			$object_array[] = self::instantiate($row);
-		}
-		return $object_array;
-	}
+    public static function type_by_id($type = 1)
+    {
+        global $db;
+        $sql = "SELECT id FROM " . self::$table_name . " WHERE type={$type} LIMIT 1";
+        $result = $db->query($sql);
+        $return = $db->fetch_array($result);
+        return ($return) ? $return['id'] : 0;
+    }
 
-	//Instantiate all the attributes of the Class.
-	static function instantiate($record){
-		$object  = new self;
-		foreach($record as $attribute=>$value){
-			if($object->has_attribute($attribute)){
-				$object->$attribute = $value;
-			}
-		}
-		return $object;
-	}
+    //Find rows from the database provided the SQL statement.
+    static function find_by_sql($sql = "")
+    {
+        global $db;
+        $result_set = $db->query($sql);
+        $object_array = array();
+        while ($row = $db->fetch_array($result_set)) {
+            $object_array[] = self::instantiate($row);
+        }
+        return $object_array;
+    }
 
-	//Check if the attribute exists in the class.
-	function has_attribute($attribute){
-		$object_vars = $this->attributes();
-		return array_key_exists($attribute, $object_vars);
-	}
+    //Instantiate all the attributes of the Class.
+    static function instantiate($record)
+    {
+        $object = new self;
+        foreach ($record as $attribute => $value) {
+            if ($object->has_attribute($attribute)) {
+                $object->$attribute = $value;
+            }
+        }
+        return $object;
+    }
 
-	//Return an array of attribute keys and thier values.
-	protected function attributes(){
-		$attributes = array();
-		foreach(self::$db_fields as $field):
-			if(property_exists($this, $field)){
-				$attributes[$field] = $this->$field;
-			}
-		endforeach;
-		return $attributes;
-	}
+    //Check if the attribute exists in the class.
+    function has_attribute($attribute)
+    {
+        $object_vars = $this->attributes();
+        return array_key_exists($attribute, $object_vars);
+    }
 
-	//Prepare attributes for database.
-	protected function sanitized_attributes(){
-		global $db;
-		$clean_attributes = array();
-		foreach($this->attributes() as $key=>$value):
-			$clean_attributes[$key] = $db->escape_value($value);
-		endforeach;
-		return $clean_attributes;
-	}
+    //Return an array of attribute keys and thier values.
+    protected function attributes()
+    {
+        $attributes = array();
+        foreach (self::$db_fields as $field):
+            if (property_exists($this, $field)) {
+                $attributes[$field] = $this->$field;
+            }
+        endforeach;
+        return $attributes;
+    }
 
-	//Save the changes.
-	function save(){
-		return isset($this->id) ? $this->update() : $this->create();
-	}
+    //Prepare attributes for database.
+    protected function sanitized_attributes()
+    {
+        global $db;
+        $clean_attributes = array();
+        foreach ($this->attributes() as $key => $value):
+            $clean_attributes[$key] = $db->escape_value($value);
+        endforeach;
+        return $clean_attributes;
+    }
 
-	//Add  New Row to the database
-	function create(){
-		global $db;
-		$attributes = $this->sanitized_attributes();
-		$sql = "INSERT INTO ".self::$table_name."(";
-		$sql.= join(", ", array_keys($attributes));
-		$sql.= ") VALUES ('";
-		$sql.= join("', '", array_values($attributes));
-		$sql.= "')";
-		if($db->query($sql)){
-			$this->id = $db->insert_id();
-			return true;
-		} else {
-			return false;
-		}
-	}
+    //Save the changes.
+    function save()
+    {
+        return isset($this->id) ? $this->update() : $this->create();
+    }
 
-	//Update a row in the database.
-	function update(){
-		global $db;
-		$attributes = $this->sanitized_attributes();
-		$attribute_pairs = array();
+    //Add  New Row to the database
+    function create()
+    {
+        global $db;
+        $attributes = $this->sanitized_attributes();
+        $sql = "INSERT INTO " . self::$table_name . "(";
+        $sql .= join(", ", array_keys($attributes));
+        $sql .= ") VALUES ('";
+        $sql .= join("', '", array_values($attributes));
+        $sql .= "')";
+        if ($db->query($sql)) {
+            $this->id = $db->insert_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-		foreach($attributes as $key=>$value):
-			$attribute_pairs[] = "{$key}='{$value}'";
-		endforeach;
+    //Update a row in the database.
+    function update()
+    {
+        global $db;
+        $attributes = $this->sanitized_attributes();
+        $attribute_pairs = array();
 
-		$sql = "UPDATE ".self::$table_name." SET ";
-		$sql.= join(", ", array_values($attribute_pairs));
-		$sql.= " WHERE id=".$db->escape_value($this->id);
-		$db->query($sql);
-		return ($db->affected_rows()==1) ? true : false;
-		//return true;
-	}
+        foreach ($attributes as $key => $value):
+            $attribute_pairs[] = "{$key}='{$value}'";
+        endforeach;
+
+        $sql = "UPDATE " . self::$table_name . " SET ";
+        $sql .= join(", ", array_values($attribute_pairs));
+        $sql .= " WHERE id=" . $db->escape_value($this->id);
+        $db->query($sql);
+        return ($db->affected_rows() == 1) ? true : false;
+        //return true;
+    }
 }
+
 ?>

@@ -36,6 +36,7 @@
 			$record->image		= serialize(array_values(array_filter($_REQUEST['imageArrayname'])));		
 			$record->linksrc 	= $_REQUEST['linksrc'];
 			$record->linktype 	= $_REQUEST['linktype'];
+            $record->schema_code = $_REQUEST['schema_code'] ?? '';
 			$record->content	= $_REQUEST['content'];
 			$record->status		= $_REQUEST['status'];
 			$record->homepage	= $_REQUEST['homepage'];
@@ -83,6 +84,7 @@
 			$record->linksrc 	= $_REQUEST['linksrc'];
 			$record->linktype 	= $_REQUEST['linktype'];
 			$record->content	= $_REQUEST['content'];
+            $record->schema_code = $_REQUEST['schema_code'] ?? '';
 			$record->status		= $_REQUEST['status'];
 			$record->homepage	= $_REQUEST['homepage'];
 			$record->meta_title		= $_REQUEST['meta_title'];

@@ -33,6 +33,7 @@ switch ($action) {
 		$record->currency		= $_REQUEST['currency'];
 		$record->offerpopup 		= $_REQUEST['offerpopup'];
 		$record->status			= $_REQUEST['status'];
+        $record->schema_code    = $_REQUEST['schema_code'] ?? '';
 
 		$record->sortorder		= Offers::find_maximum();
 		$record->added_date 	= registered();
@@ -116,6 +117,7 @@ switch ($action) {
 		//            $record->children		= $_REQUEST['children'];
 		$record->type 		= $_REQUEST['type'];
 		$record->status			= $_REQUEST['status'];
+        $record->schema_code    = $_REQUEST['schema_code'] ?? '';
 		$record->list_image 		    = !empty($_REQUEST['imageArrayname3'])?$_REQUEST['imageArrayname3']:'';
 		$record->fb_upload      = !empty($_REQUEST['imageArrayname4']) ? $_REQUEST['imageArrayname4'] : '';
 		$record->image 		    = !empty($_REQUEST['imageArrayname'])?$_REQUEST['imageArrayname']:'';
