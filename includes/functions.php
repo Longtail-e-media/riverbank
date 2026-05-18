@@ -449,6 +449,7 @@ function getMenuList($caption="", $link="", $type=0, $class="",$nicon=""){
 
 	$idLink 	= ($id == '') ? '' : ' id="'.$id.'"';
 	$linkType	= ($type == 0) ? '' : ' target="_blank"';
+    $linkhref	= ($type == 0) ? BASE_URL.$linkhref : $linkhref;
 	return "<a href=\"".$linkhref."\" ".$classLink.$idLink.$linkType.$dropclass." >".$caption.$nicon."</a>";
 }
 
