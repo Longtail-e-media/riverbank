@@ -6,8 +6,8 @@ if (defined('BLOG_PAGE')) {
     $linkTarget='';
     $pagelink='';
     if (!empty($record)) {
-        
-        
+
+
             $bl .= '
             <!--================ Breadcrumb ================-->
         <div class="mad-breadcrumb with-bg-img with-overlay" data-bg-image-src="'. BASE_URL .'template/web/images/123456789.jpg">
@@ -21,11 +21,11 @@ if (defined('BLOG_PAGE')) {
             <h2>Blog list</h2>
         </div>
 
-        
+
                 ';
-        
+
             foreach ($record as $homebl) {
-            
+
            if(!empty($homebl->linksrc)){
             // $pagelink = ($homebl->linktype == 1) ? ' target="_blank" ' : '';
             $linkTarget = ($homebl->linktype == 1) ? ' target="_blank" ' : '';
@@ -52,13 +52,13 @@ if (defined('BLOG_PAGE')) {
                                 <div class="news-one__bottom">
                                     <a href="'.$linksrc.'" target="_blank" class="news-one__more"> <i
                                             class="fa fa-arrow-right"></i> Read More</a>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                  
+
            ';
         }
         $bl.='</div>
@@ -75,9 +75,9 @@ if (defined('HOME_PAGE')) {
     $homeblog = Blog:: get_latestblog_by(3);
     // $homeblogs = Blog:: get_latestblog_by(3);
     if (!empty($homeblog)) {
-        
+
         foreach ($homeblog as $homebl) {
-            
+
            if(!empty($homebl->linksrc)){
             // $pagelink = ($homebl->linktype == 1) ? ' target="_blank" ' : '';
             $linkTarget = ($homebl->linktype == 1) ? ' target="_blank" ' : '';
@@ -99,7 +99,7 @@ if (defined('HOME_PAGE')) {
                                     <div class="mad-entity-inner">
                                         <h4 class="mad-entity-title">' . $homebl->title . '</h4>
                                         <p>
-                                        ' . $homebl->brief . '   
+                                        ' . $homebl->brief . '
                                         </p>
                                         <div class="mad-entity-footer">
                                             <a href="'.$linksrc.'" '.$linkTarget.' class="btn btn-big">View More</a>
@@ -109,8 +109,8 @@ if (defined('HOME_PAGE')) {
                             </article>
                             <!--================ End of Entity ================-->
                         </div>
-           
-                  
+
+
            ';
         }
         $homeblogs='<div class="mad-title-wrap align-center">
@@ -124,7 +124,7 @@ if (defined('HOME_PAGE')) {
     <div class="mad-section no-pt mad-section-pb-mobile mad-section--stretched-content-no-px mad-colorizer--scheme-color-2">
     <div class="mad-entities mad-owl-center mad-pricing type-3 with-img-border mad-grid owl-carousel mad-owl-moving mad-grid--cols-2 nav-size-2 no-dots">
         <!-- owl item -->
-                
+
                 '.$homebloglist.'
                 <!-- / owl item -->
                 </div>
@@ -140,7 +140,7 @@ if (defined("BLOG_PAGE") ) {
     $slug = !empty($_REQUEST['slug']) ? $_REQUEST['slug'] : '';
     $Blogs = Blog::find_by_slug($slug);
     //pr($Blogs);
-   
+
 
     if (!empty($slug)) {
         $blog_detail .= '
@@ -154,10 +154,10 @@ if (defined("BLOG_PAGE") ) {
                 </nav>
             </div>
         </div>
-       
-        
+
+
                ';
-        
+
         $blog_detail .= '
         <div class="mad-content no-pd">
             <div class="container">
@@ -177,15 +177,15 @@ if (defined("BLOG_PAGE") ) {
                                 </div>
                             <br/>
                             <div class="news-details__pagenation-box">
-	                        
+
                             </div>
-                            
+
                         </div>
                     </div>
-                    
+
 
    ';
-                                
+
 
         $recents = Blog::get_latestblog_by(3);
         if (!empty($recents)) {
@@ -197,8 +197,8 @@ if (defined("BLOG_PAGE") ) {
             foreach ($recents as $recent) {
                 if ($recent->title != $Blogs->title) {
                     $blog_detail .= '
-                    
-                                    
+
+
                                     <li>
                                         <div class="sidebar__post-image">
                                             <img src="' . IMAGE_PATH . 'blog/' . $recent->image . '" alt="' . $recent->title . '">
@@ -207,29 +207,29 @@ if (defined("BLOG_PAGE") ) {
                                             <P><i
                                                 class="fas fa-calendar"></i>' . date("d M Y", strtotime($homebl->blog_date)) . '<P>
                                             <h5>
-                                                
+
                                                 <a href="' . BASE_URL . 'blog/' . $recent->slug . '">' . $recent->title . '</a>
                                             </h5>
                                         </div>
                                     </li>
-                                
-                    
+
+
                  ';
                 }
-                
+
             }
             $blog_detail .= '
-            
+
             </ul>
                             </div>
                         </div>
                     </div>
-                    
+
             </div>
         </div>
         </div>
     </div>
-    </div>';       
+    </div>';
         }
     } else {
         $blog_detail .= '
@@ -243,7 +243,7 @@ if (defined("BLOG_PAGE") ) {
                 </nav>
             </div>
         </div>
-        
+
         <div class="mad-title-wrap align-center">
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
@@ -252,16 +252,16 @@ if (defined("BLOG_PAGE") ) {
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <div class="mad-section no-pt mad-section-pb-mobile mad-section--stretched-content-no-px mad__colorizer--scheme-color-2">
                 <div class="mad-entities mad-owl-center mad-pricing type-3 with-img-border mad-grid owl__carousel mad-owl__moving mad-grid--cols-2 nav-size-2 no-dots d-flex flex-wrap">
-                  
+
                 ';
         $Blogs = Blog::get_allblog();
         //pr($Blogs);
          foreach ($Blogs as $homebl) {
-            
+
            if(!empty($homebl->linksrc)){
             // $pagelink = ($homebl->linktype == 1) ? ' target="_blank" ' : '';
             $linkTarget = ($homebl->linktype == 1) ? ' target="_blank" ' : '';
@@ -299,10 +299,10 @@ if (defined("BLOG_PAGE") ) {
     }
     $blog_detail .='
     </div>
-    
+
                 </div>
             ';
-    
+
     }
 }
 

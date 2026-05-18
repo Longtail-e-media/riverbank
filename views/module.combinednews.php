@@ -55,7 +55,7 @@ if (defined("HOME_PAGE")) {
                            <a href="' . BASE_URL . 'blog/' . $blog->slug . '"> <img src="' . $img . '" class="img-responsive" alt="' . $blog->title . '"></a>
                             <div class="author-date">
                                 <small>Posted: ' . date('F d, Y', strtotime($blog->event_stdate)) . '</small>
-                                <small><a href="">Author: '.$blog->author.'</a></small>
+                                <small><a href="' . BASE_URL . 'blog/' . $blog->slug . '">Author: '.$blog->author.'</a></small>
                             </div>
 
                         </div>
@@ -67,7 +67,7 @@ if (defined("HOME_PAGE")) {
                                 </p>
                             </div>
                         </div>
-                        <div class="panel-footer">
+                        <div class="panel--blog-link">
                             <a href="' . BASE_URL . 'blog/' . $blog->slug . '" class="btn btn-primary btn-sm">Read More</a>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ if (defined("HOME_PAGE")) {
         ';
 
     }
-              $home_blog .= '<div class="col-md-12 text-center mt-5 mb-5">
+              $home_blog .= '<div class=" col-sm-12 col-md-12 text-center mt-5 mb-5">
                     <a href="blog" class="btn-blog btn">View All Blog</a>
                 </div>
             </div>
@@ -105,7 +105,7 @@ if (defined("BLOG_PAGE")) {
                 </div>
             </div>
             '.$breadcumb_blog.'
-            
+
     ';
 
     $page = (isset($_REQUEST["pageno"]) and !empty($_REQUEST["pageno"])) ? $_REQUEST["pageno"] : 1;
@@ -128,7 +128,7 @@ if (defined("BLOG_PAGE")) {
             }
             $brief = substr(strip_tags($blog->content),'0','80').'...';
             $blog_list .= '
-                                <div class="col-md-4">
+                                <div class="col-sm-5 col-lg-4">
                     <div class="panel panel-default blog-card">
                         <div class="image-blog">
                            <a href="' . BASE_URL . 'blog/' . $blog->slug . '"> <img src="' . $img . '" class="img-responsive" alt="' . $blog->title . '"></a>
@@ -166,12 +166,13 @@ $jVars["module:combinednews:blog-list-list"] = $blog_list;
 
 $blog_detail = $blog_breadcrumb = $recent_blogs = $gallery_section = '';
 if (defined("BLOG_PAGE")) {
-    
-    
-    
-    
+
+
+
+
     $slug = (isset($_REQUEST["slug"]) and !empty($_REQUEST["slug"])) ? $_REQUEST["slug"] : '';
     $blogRec = CombinedNews::find_by_slug($slug);
+
     if (!empty($blogRec)) {
         $banner_img = IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload;
         if (!empty($blogRec->banner_image)) {
@@ -180,7 +181,6 @@ if (defined("BLOG_PAGE")) {
                 $banner_img = IMAGE_PATH . "combinednews/banner/" . $blogRec->banner_image;
             }
         }
-
         $img = BASE_URL . "template/web/image/bg-image.png";
         if (!empty($blogRec->banner_image)) {
             $file_path = SITE_ROOT . "images/combinednews/banner/" . $blogRec->banner_image;
@@ -188,7 +188,7 @@ if (defined("BLOG_PAGE")) {
                 $blog_detail_image = IMAGE_PATH . 'combinednews/banner/' . $blogRec->banner_image ;
             }
         }
-        
+
                $breadcumb_blog2 .= '<ol class="breadcrumb text-center">
               <li><a href="'.BASE_URL.'">Home</a></li>
                <li><a href="'.BASE_URL.'blog">Blog</a></li>
@@ -196,7 +196,7 @@ if (defined("BLOG_PAGE")) {
             </ol>';
 
 
-        
+
                 $blog_breadcrumb .= '
 
             <div class="banner-header section-padding valign bg-img innerpage2" data-background="'.$blog_detail_image.'">
@@ -209,9 +209,9 @@ if (defined("BLOG_PAGE")) {
                 </div>
             </div>
             '.$breadcumb_blog2.'
- 
+
         ';
-        
+
 
 
         $blog_detail .= '

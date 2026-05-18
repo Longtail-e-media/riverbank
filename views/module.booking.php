@@ -34,37 +34,8 @@ if($booking_type==1) {
 
 // Nepalhotel
 if($booking_type==2) {
-    $resbking.='
-    <!-- <div class="styleswitcher widget-slider">
-        <div class="switcher-btn-bx">
-            <a class="switch-btn">
-                Book Now
-            </a>
-        </div>
 
-        <div class="styleswitcher-inner slider-booking">
-            <h6 class="switcher-title">Book Your Hotel</h6>
-            <form action="result.php" id="default-form" target="_blank" rel="noopener noreferrer" novalidate="novalidate">
-            <input type="hidden" name="hotel_code" value="'.$booking_code.'" />
-                <ul>
-                    <li>
-                        <i class="fa fa-calendar-plus-o"></i>
-                        <input name="hotel_check_in" type="text" id="checkin" class="input-control hasDatepicker" placeholder="Check In" >
-                    </li>
-                    <li>
-                        <i class="fa fa-calendar-plus-o"></i>
-                        <input name="hotel_check_out" type="text" id="checkout" class="input-control hasDatepicker" placeholder="Check Out">
-                    </li>
-                    <li>
-                        <button id="submitButton" class="btn btn-large btn-darkbrown">Book Now</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    </div> -->
-    ';
-
-     $resbking.='<a href="'.BASE_URL.'result.php?hotel_code='.$booking_code.'" target="_blank" class="btn-medium btn-darkbrown riverbank-booknow" target="_blank">Book now</a>';
+     $resbking.='<a href="'.BASE_URL.'result.php?hotel_code='.$booking_code.'" target="_blank" class="btn-medium riverbank-booknow" target="_blank">Book now</a>';
 }
 
 // Fastbooking

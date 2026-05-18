@@ -72,9 +72,7 @@ $tpres .= '
         </div>
       </div>
        <div class="popup-messages"><ul>
-        <li>hi,</li>
-        <li>For More Information</li>
-        <li>For Hotel Booking</li>
+        <li>Hi River Bank, I would like to enquire about...</li>
     </ul></div>
       <div class="chatArea">
 
@@ -117,8 +115,8 @@ $tpres .= '
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row footer-row">
+        <div class="col-lg-4 col-sm-6 contact--footer">
             <h4>Contact Address</h4>
             <div class="footer-contact">
                 <ul>
@@ -131,7 +129,7 @@ $tpres .= '
             ' . $jVars['module:socilaLinkbtm'] . '
 
           <!-- Newsletter Subscribe Form -->
-        <div class="newsletter-form mt-5">
+        <div class="newsletter-form mt-5 col-sm-12 col-md-10">
             <h4 class="mb-20">Subscribe for Newsletter</h4>
         <form action="https://riverbankjungleresort.us19.list-manage.com/subscribe/post?u=5b5bc5738b6946540eac13de5&amp;id=67a8b5ef77&amp;f_id=008c1de7f0" method="post" target="_blank" id="subscribe-form">
                 <div class="input-group bg-white p-2 rounded-3">
@@ -147,7 +145,7 @@ $tpres .= '
         </div>
 
 
-        <div class="col-md-5 d-flex justify-content-center">
+        <div class="col-lg-5 col-sm-6 riverbank-flex custom-mt-5">
             <div class="sales__office">
                             <h4>Sales Office</h4>
             <div class="footer-contact">
@@ -159,7 +157,7 @@ $tpres .= '
             </div>
 
 
-        <div class="online-reservation mt-5">
+        <div class="online-reservation custom-mt-5">
             <h4 class="mb-20">Online Reservations</h4>
             <div class="row">
                 <div class="col-md-12">
@@ -174,40 +172,17 @@ $tpres .= '
             </div>
         </div>
 
-
             </div>
 
         </div>
-
-        <div class="col-md-3">
-     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61555768349361&tabs=timeline&width=250&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1651547328419060" frameborder="0" scrolling="yes" style="border: white; overflow: hidden; height: 350px; width: 250px; max-width:100%;background:#fafafa;color:000;" class="fb-iframe pull-right"  ></iframe>
-
-
-
-
-        </div>
-
-
-
-        <div class="col-md-12 mt-5">
+        <div class="col-lg-3 custom-mt-5 facebook_iframe">
+     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61555768349361&tabs=timeline&width=250&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1651547328419060" frameborder="0" scrolling="yes" style="border: white; overflow: hidden; height: 350px; width: 250px; max-width:100%;background:#fafafa;color:000;" class="fb-iframe"  ></iframe>
+       </div>
+    </div>
+    <div class="footer-section mt-5">
             <div class="devBy">
                 <p>' . $jVars['site:copyright'] . ' Developed By <a target="blank" rel="noopener noreferrer" href="http://longtail.info/">Longtail e-media</a></p>
             </div>
-        </div>
-
-        <!--<div class="col-sm-9">
-            <div class="footer-copyright">
-                <p>' . strtoupper($jVars['site:copyright']) . '</p>
-            </div>
-
-            <div class="footer-contact">
-                <ul>
-                    <li><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Hotel+Ambassador,+Lazimpat/@27.719019,85.317721,17z/data=!4m5!3m4!1s0x0:0xa6547a5c10ff5032!8m2!3d27.7190189!4d85.317721?hl=en-US"><i class="fa fa-map-marker"></i> ' . strtoupper($configRec->fiscal_address) . '</a></li>
-                    <li><a ><i class="fa fa-phone"></i> ' . strtoupper($configRec->contact_info) . '</a></li>
-                    <li><a href="mailto:' . $emlAddress . '"><i class="fa fa-paper-plane"></i> ' . strtoupper($emlAddress) . '</a></li>
-                </ul>
-            </div>
-        </div>-->
     </div>
 </div>
 

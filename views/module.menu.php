@@ -39,7 +39,9 @@ if(!empty($lmenuRec)) {
         	}
         $resml.='</li>';
     }
-    $resml.='</ul>';
+    $resml.='</ul>
+				'.$resbking.'
+	';
 
 }
 
@@ -78,9 +80,8 @@ if(!empty($lmenuRec)) {
 //     }
 //     $resmr.='</ul>';
 // }
-$resmr.='<div class="pull-right">';
-$resmr .= $resbking;
-$resmr .= '</div>';
+
+
 $jVars['module:menu-left'] = $resml;
 $jVars['module:menu-right'] = $resmr;
 
@@ -182,6 +183,7 @@ $ret='';
 // Any mobile device.
 
             $ret.='<div id="menuArea">
+			'.$resbking.'
 				  <input type="checkbox" id="menuToggle"></input>
 
 				<label for="menuToggle" class="menuOpen">

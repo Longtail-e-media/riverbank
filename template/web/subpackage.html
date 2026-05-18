@@ -29,56 +29,43 @@
 </div>
 <!-- Site Back Top End -->
 
-<!-- Site Header -->
-<div class="site-header">
+    <!-- Site Header -->
+    <div class="site-header">
         <!-- Header Top -->
-        <div class="header-top">
-            <div class="header-contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            
-                        </div>
-                        <div class="col-md-6">
-                            <jcms:module:menu-right/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="header-bottom">
             <div class="container">
-                <div class="row">
+                <div class="row custom--flex">
                     <div class="col-md-3">
                         <div class="header-logo">
                             <!-- Module -->
                             <jcms:site:logo/>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-9">
-                         <jcms:module:res-menu/>
+                        <jcms:module:res-menu/>
+                        <jcms:module:menu-right/>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Header Bottom End -->
     </div>
-<!-- Site Header End -->
+    <!-- Site Header End -->
 
 <!-- Site Main -->
 <div class="site-main site-main-white">
-   
+
     <!-- Package module -->
     <jcms:module:sub-package-detail/>
-    
+
 </div>
 <!-- Site Main End -->
 
 <!-- Site Footer -->
 <div class="site-footer">
     <!-- Footer Top -->
-    <div class="footer-bottom">    
+    <div class="footer-bottom">
         <!-- Location module -->
         <jcms:module:footer-location/>
 
@@ -107,7 +94,7 @@
     $(document).ready(function() {
         var checkinDate = $('#checkin');
         var checkoutDate = $('#checkout');
-  
+
         // Initialize the datepickers
         checkinDate.datepicker({
           format: 'yyyy-mm-dd',
@@ -115,20 +102,20 @@
           autoclose: true,
           todayHighlight: true
         }).datepicker('setDate', 'today');
-  
+
         checkoutDate.datepicker({
-          format: 'yyyy-mm-dd',   
+          format: 'yyyy-mm-dd',
                  startDate: 'tomorrow',
           autoclose: true,
           todayHighlight: true
         }).datepicker('setDate', '+1d');
-  
+
         // Set the minimum date for checkout based on the selected check-in date
         checkinDate.on('changeDate', function() {
           var selectedDate = new Date(checkinDate.datepicker('getDate'));
           selectedDate.setDate(selectedDate.getDate() + 1); // Add one day
           checkoutDate.datepicker('setStartDate', selectedDate);
-  
+
           // Check if the current selected date in checkout is before the new minimum date
           var checkoutSelectedDate = new Date(checkoutDate.datepicker('getDate'));
           if (checkoutSelectedDate < selectedDate) {
@@ -137,18 +124,18 @@
         });
       });
        </script>
-       
+
    <script type="text/javascript">
-       <jcms:module:sub-package-detail-script-var/>                                              
-       
+       <jcms:module:sub-package-detail-script-var/>
+
        function onLoad() {
-            <jcms:module:sub-package-detail-script-onload/>                                              
+            <jcms:module:sub-package-detail-script-onload/>
         }
- 
+
          <jcms:module:sub-package-detail-script/>
- 
+
     </script>
- 
+
 </body>
 
 </html>

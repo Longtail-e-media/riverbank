@@ -409,7 +409,8 @@ function MetaTagsFor_SEO()
                         $folderMap = [
                             'Article' => 'articles',
                             'Package' => 'package',
-                            'Subpackage' => 'subpackage'
+                            'Subpackage' => 'subpackage',
+                            'CombinedNews' => 'combinednews'
                         ];
 
                         if (isset($folderMap[$classname])) {
@@ -419,9 +420,9 @@ function MetaTagsFor_SEO()
                 }
                 break;
 
-            case 'Blog':
-                $blog = Blog::find_by_slug($slug);
-                $imagePath = getContentImagePath($blog, 'blog');
+            case 'CombinedNews':
+                $CombinedNews = CombinedNews::find_by_slug($slug);
+                $imagePath = getContentImagePath($CombinedNews, 'combinednews');
                 break;
 
             case 'Services':

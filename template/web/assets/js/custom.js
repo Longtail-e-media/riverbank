@@ -50,34 +50,34 @@ $(document).on("scroll", function(){
     }
 })
 
-$(document).ready(function() {
-    const $fbIframe = $('.fb-iframe');
-    const fbSrc = $fbIframe.data('src');
+// $(document).ready(function() {
+//     const $fbIframe = $('.fb-iframe');
+//     const fbSrc = $fbIframe.data('src');
 
-    // Function to set iframe src
-    function loadFacebook() {
-        if (!$fbIframe.attr('src')) {
-            $fbIframe.attr('src', fbSrc);
-        }
-    }
+//     // Function to set iframe src
+//     function loadFacebook() {
+//         if (!$fbIframe.attr('src')) {
+//             $fbIframe.attr('src', fbSrc);
+//         }
+//     }
 
-    // Handle based on window width
-    function handleFacebook() {
-        if ($(window).width() > 1299) {
-            // Load iframe on hover
-            $fbIframe.off('mouseenter').on('mouseenter', loadFacebook);
-        } else {
-            // Load immediately for smaller screens
-            loadFacebook();
-        }
-    }
+//     // Handle based on window width
+//     function handleFacebook() {
+//         if ($(window).width() > 1299) {
+//             // Load iframe on hover
+//             $fbIframe.off('mouseenter').on('mouseenter', loadFacebook);
+//         } else {
+//             // Load immediately for smaller screens
+//             loadFacebook();
+//         }
+//     }
 
-    // Initial setup
-    handleFacebook();
+//     // Initial setup
+//     handleFacebook();
 
-    // Update behavior on window resize
-    $(window).on('resize', handleFacebook);
-});
+//     // Update behavior on window resize
+//     $(window).on('resize', handleFacebook);
+// });
 
 var base_url = jQuery('base').attr('url');
 ! function(e) {
@@ -136,7 +136,7 @@ var base_url = jQuery('base').attr('url');
             animateOut: "fadeOut",
             animateIn: "fadeIn",
             onInitialized: function() {
-                e(".site-header").addClass("header-over"), e(".widget-rooms-carousel.top-over").length && e(".widget-slider").addClass("has-rooms")
+                e(".widget-rooms-carousel.top-over").length && e(".widget-slider").addClass("has-rooms")
             }
         }), e(".widget-gallery-grid").length && e(".widget-gallery-grid .gallery-item a").imagesLoaded({
             background: !0
@@ -181,7 +181,7 @@ var base_url = jQuery('base').attr('url');
                 0: {
                     items: 1
                 },
-                768: {
+                1024: {
                     items: 2
                 },
                 1200: {

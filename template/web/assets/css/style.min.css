@@ -329,12 +329,21 @@ io {
     -ms-border-radius: 0;
     -o-border-radius: 0;
     border-radius: 0;
-    font-size: 12px
+    font-size: 12px;
+    &:focus{
+        outline: none;
+        border: none;
+    }
 }
 .riverbank-booknow{
-      background: #d1a625;
-    padding: 1rem 2rem;
-    display: block;
+background: #d1a625;
+padding: 20px 27px;
+line-height: 0;
+align-self: center;
+display: flex;
+align-items: center;
+color: #fff;
+
 }
 
 .btn:active,
@@ -3360,12 +3369,13 @@ io {
 }
 
 .wrapper-inner {
-    padding: 76px 0
+    padding: 4rem 0;
 }
 
 .wrapper-full {
     max-width: 100%
 }
+
 
 .wrapper-full-inner {
     padding-top: 80px;
@@ -3409,7 +3419,10 @@ io {
     z-index: 999;
     width: 100%
 }
-
+.row.custom--flex{
+    display: flex;
+    align-items: center;
+}
 .site-header .header-top {
     padding-top: 11px;
     padding-bottom: 0;
@@ -3417,8 +3430,10 @@ io {
     font-size: 15px;
     letter-spacing: 1px;
     color: #fff;
-    background: rgba(255, 255, 255, 0)
+    background: rgba(255, 255, 255, 0);
+
 }
+
 
 .site-footer .footer-bottom,
 .site-header .header-bottom .header-nav ul li a {
@@ -3428,7 +3443,7 @@ io {
 
 .site-header .header-top a {
     color: #fff;
-    text-transform: capitalize
+    text-transform: capitalize;
 }
 
 .site-header .header-top .header-contact ul li:hover a,
@@ -3479,15 +3494,6 @@ io {
     margin-right: 0
 }
 
-.site-header .header-bottom {
-    position: relative
-}
-
-.site-header .header-bottom .header-logo img {
-    width: 100%;
-    padding-bottom: 1.4rem
-}
-
 .site-header .header-bottom .header-nav {
     text-align: center
 }
@@ -3522,7 +3528,8 @@ io {
 }
 
 .site-header .header-bottom .header-nav>ul>li {
-    float: left
+    float: left;
+    padding-block: 0.9rem;
 }
 
 .site-header .header-bottom .header-nav>ul>li:not(:last-child) {
@@ -3586,7 +3593,6 @@ io {
 
 .site-header .header-bottom .header-nav>ul.nav-left {
     padding-right: 0;
-    float: right;
     margin-top: 0
 }
 
@@ -3832,7 +3838,8 @@ img.form-control {
 .dropdown.open {
     width: auto;
     height: auto;
-    background-color: rgba(255, 255, 255, 0)
+    background-color: rgba(255, 255, 255, 0);
+    top:-4px;
 }
 
 .dropdown.open:before {
@@ -3939,13 +3946,6 @@ img.form-control {
     font-size: 18px
 }
 
-.menu ul li a:hover {
-    color: #ff8702
-}
-
-.menu ul li:hover {
-    background: #fff
-}
 
 .menuEffects {
     opacity: 0;
@@ -4257,25 +4257,25 @@ img.form-control {
     position: fixed;
   background: #191a1aa1 !important;
   top: 0;
-    /* position: fixed;
-    background-color: #20292d87;
-    backdrop-filter: blur(19px);
-    top: 0 */
+    @media (min-width: 767px) and (max-width: 1024px) {
+             padding-block: 8px;
+
+    }
+  .header-logo a {
+    width: 100px;
+}
 }
 
 .header-logo a {
-    width: 136px;
+       width: 150px;
+    height: 100%;
+    img{
+        height: 100%;
+    }
+    @media (max-width: 767px) {
+          width: 100px;
+    }
 
-}
-
-.site-header.scroll-fixed .header-bottom .header-logo img {
- width: 100%;
- aspect-ratio: 1 / 1;
-}
-
-.site-header.scroll-fixed .header-bottom {
-    position: relative;
-    min-height: 35px
 }
 
 .datepicker-days,
@@ -4428,7 +4428,7 @@ img.form-control {
     width: 206px;
     height: 108px;
     z-index: 3;
-    bottom: 180px;
+    bottom: 45px;
     border-radius: 4px;
     left: 20px;
     cursor: pointer
@@ -4475,7 +4475,7 @@ img.form-control {
 }
 
 .menu ul li:hover a {
-    color: #d77b5d
+    color: #e7e7e7;
 }
 
 .widget-gallery-carousel .widget-carousel .owl-stage-outer {
@@ -4507,7 +4507,8 @@ img.form-control {
 .heading-resort-title {
     font-size: 16px;
     text-align: center;
-    margin-bottom: 2rem
+    margin-bottom: 2rem;
+    line-height: 1.5;
 }
 
 .widget-about-promo.hoempage_about_promo {
@@ -4519,6 +4520,13 @@ img.form-control {
     margin-inline: auto;
     width: 100%;
     height: auto
+}
+@media (min-width: 1200px) {
+  .header-nav{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
 }
 
 @media (min-width:767px) {
@@ -4535,7 +4543,8 @@ img.form-control {
 
 @media (min-width:768px) {
     .site-header {
-        position: absolute
+        position: absolute;
+        top: 16px;
     }
 
     .hall_inquiry_form .modal-dialog {
@@ -4570,10 +4579,6 @@ img.form-control {
 }
 
 @media (min-width:1200px) {
-    .header-logo {
-        position: absolute;
-        top: -35px
-    }
 
     .sustainability_text_wrapper .row .sustainability-bg-white {
         height: 130px
@@ -4619,9 +4624,6 @@ img.form-control {
 }
 
 @media (max-width:1023.9px) {
-    .site-footer .footer-bottom h4 {
-        margin-bottom: 1.5rem
-    }
 
     .site-footer .footer-bottom .footer-contact,
     .site-footer .footer-bottom .footer-copyright,
@@ -4740,13 +4742,6 @@ img.form-control {
         gap: 1rem
     }
 
-    .header-logo a {
-        width: 85px;
-    }
-      .header-logo a img {
-        height: 100%;
-    }
-
     .facilities--list .etm img {
         height: 70px
     }
@@ -4767,9 +4762,6 @@ img.form-control {
         margin-bottom: 50px
     }
 
-    .menu ul li a {
-        padding: 14px 0
-    }
 }
 
 @media (max-width:512px) {
@@ -4782,20 +4774,6 @@ img.form-control {
     }
 }
 
-@media (max-width:430px) {
-
-    .dropdown.open ul.dropdown-menu li a,
-    .menu ul li a {
-        padding: 8px 0;
-        font-size: 14px
-    }
-}
-
-@media (max-width:414px) {
-    .menu ul li a {
-        padding: 11px 0
-    }
-}
 
 @media (min-width: 1600px) {
     .widget-gallery-carousel .widget-carousel .owl-stage-outer {
@@ -5013,6 +4991,9 @@ img.form-control {
     width: 100%;
     font-size: 18px !important;
 }
+.newsletter-form{
+    padding-inline:0;
+}
 .newsletter-form input {
     height: 4rem;
 }
@@ -5060,10 +5041,20 @@ img.form-control {
         }
     }
     h2{
-        font-size: 20px;
-        border-bottom: 1px solid rgb(224,215,215);
-        padding-bottom:1.5rem;
-
+        font-size: 16px;
+        border-bottom: 1px solid rgb(224, 215, 215);
+        padding-bottom: 52px;
+        height: 20px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+    }
+    @media (max-width: 767px) {
+          padding-block: 3rem 5rem;
+    }
     }
     p.excerpt{
            display: -webkit-box;
@@ -5229,6 +5220,14 @@ img.form-control {
         .blog-details-wrapper .recent-post-content h4 a{
             color: #222;
             text-decoration: none;
+            font-size: 13px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+            font-weight: 500;
         }
 
         .blog-details-wrapper .recent-post-content h4 a:hover{
@@ -5289,3 +5288,45 @@ img.form-control {
 .logo-section{
     margin-block:10rem;
 }
+
+.riverbank-flex{
+display:flex;
+justify-content: center;
+}
+@media (max-width: 1199px) {
+  .riverbank-flex {
+    justify-content: flex-start;
+}
+}
+@media (max-width: 767px) {
+  .logo-section .justify-content-center{
+    justify-content: flex-start;
+}
+.logo-section {
+    margin-bottom: 18rem;
+}
+.custom-mt-5{
+    margin-top:4rem;
+}
+}
+
+.fb-iframe{
+    float:right;
+    @media (max-width: 1199px) {
+      float:left;
+          margin-top: 4rem;
+    }
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+}
+@media (max-width: 991px) {
+  .fb-iframe{
+    float:left;
+}
+}
+.panel--blog-link{
+    margin: 0 10px 10px;
+}
+
+

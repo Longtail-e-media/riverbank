@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext' rel="stylesheet" type="text/css">    
-    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin,latin-ext' rel="stylesheet" type="text/css">        
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext' rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin,latin-ext' rel="stylesheet" type="text/css">
 </head>
 <body>
   <jcms:site:googleframe/>
@@ -28,49 +28,36 @@
 </div>
 <!-- Site Back Top End -->
 
-<!-- Site Header -->
-<div class="site-header">
+    <!-- Site Header -->
+    <div class="site-header">
         <!-- Header Top -->
-        <div class="header-top">
-            <div class="header-contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            
-                        </div>
-                        <div class="col-md-6">
-                            <jcms:module:menu-right/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="header-bottom">
             <div class="container">
-                <div class="row">
+                <div class="row custom--flex">
                     <div class="col-md-3">
                         <div class="header-logo">
                             <!-- Module -->
                             <jcms:site:logo/>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-9">
-                         <jcms:module:res-menu/>
+                        <jcms:module:res-menu/>
+                        <jcms:module:menu-right/>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Header Bottom End -->
     </div>
-<!-- Site Header End -->
+    <!-- Site Header End -->
 
 <!-- Site Main -->
 <div class="site-main">
     <!-- Section Page Title -->
     <div class="section">
         <div class="widget-page-title">
-            <div class="container">             
+            <div class="container">
                 <!-- Breadcrumb -->
                 <div class="widget-breadcrumb">
                     <ul>
@@ -85,21 +72,21 @@
     <div class="section">
         <div class="wrapper-inner">
             <div class="widget-inner">
-                <div class="row">                    
+                <div class="row">
                     <!-- Reservation module -->
                     <jcms:module:reservationform/>
 
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 <!-- Site Main End -->
 
 <!-- Site Footer -->
 <div class="site-footer">
     <!-- Footer Top -->
-    <div class="footer-bottom">    
+    <div class="footer-bottom">
         <!-- Location module -->
         <jcms:module:footer-location/>
 
