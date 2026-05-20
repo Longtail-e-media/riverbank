@@ -26,7 +26,7 @@ $home_blog = '';
 if (defined("HOME_PAGE")) {
     $blogs = CombinedNews::find_all(3);
 
-        if(!empty($blogs)){
+    if(!empty($blogs)){
 
 
 
@@ -40,15 +40,15 @@ if (defined("HOME_PAGE")) {
                                     </div>
                                     </div>';
 
-    foreach ($blogs as $blog) {
-        $img = BASE_URL . "template/web/images/image_2.jpg";
-        if (!empty($blog->home_image)) {
-            $file_path = SITE_ROOT . "images/combinednews/home/" . $blog->home_image;
-            if (file_exists($file_path)) {
-                $img = IMAGE_PATH . "combinednews/home/" . $blog->home_image;
+        foreach ($blogs as $blog) {
+            $img = BASE_URL . "template/web/images/image_2.jpg";
+            if (!empty($blog->home_image)) {
+                $file_path = SITE_ROOT . "images/combinednews/home/" . $blog->home_image;
+                if (file_exists($file_path)) {
+                    $img = IMAGE_PATH . "combinednews/home/" . $blog->home_image;
+                }
             }
-        }
-        $home_blog .= '
+            $home_blog .= '
                 <div class="col-md-4">
                     <div class="panel panel-default blog-card">
                         <div class="image-blog">
@@ -74,16 +74,16 @@ if (defined("HOME_PAGE")) {
                 </div>
         ';
 
-    }
-              $home_blog .= '<div class=" col-sm-12 col-md-12 text-center mt-5 mb-5">
+        }
+        $home_blog .= '<div class=" col-sm-12 col-md-12 text-center mt-5 mb-5">
                     <a href="blog" class="btn-blog btn">View All Blog</a>
                 </div>
             </div>
 
         </div>
       </div> ';
+    }
 }
-     }
 $jVars["module:combinednews:home-blog"] = $home_blog;
 
 
@@ -95,7 +95,7 @@ if (defined("BLOG_PAGE")) {
     $img = IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload;
 
     $blog_list_breadcrumb .= '
-        <div class="banner-header section-padding valign bg-img innerpage2" data-background="'.BASE_URL.'images/static/contact-banner.jpg">
+        <div class="banner-header banner-inner-overlay section-padding valign bg-img innerpage2" data-background="'.BASE_URL.'images/static/contact-banner.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 caption">
@@ -105,7 +105,7 @@ if (defined("BLOG_PAGE")) {
                 </div>
             </div>
             '.$breadcumb_blog.'
-
+            
     ';
 
     $page = (isset($_REQUEST["pageno"]) and !empty($_REQUEST["pageno"])) ? $_REQUEST["pageno"] : 1;
@@ -172,7 +172,6 @@ if (defined("BLOG_PAGE")) {
 
     $slug = (isset($_REQUEST["slug"]) and !empty($_REQUEST["slug"])) ? $_REQUEST["slug"] : '';
     $blogRec = CombinedNews::find_by_slug($slug);
-
     if (!empty($blogRec)) {
         $banner_img = IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload;
         if (!empty($blogRec->banner_image)) {
@@ -181,6 +180,7 @@ if (defined("BLOG_PAGE")) {
                 $banner_img = IMAGE_PATH . "combinednews/banner/" . $blogRec->banner_image;
             }
         }
+
         $img = BASE_URL . "template/web/image/bg-image.png";
         if (!empty($blogRec->banner_image)) {
             $file_path = SITE_ROOT . "images/combinednews/banner/" . $blogRec->banner_image;
@@ -189,7 +189,7 @@ if (defined("BLOG_PAGE")) {
             }
         }
 
-               $breadcumb_blog2 .= '<ol class="breadcrumb text-center">
+        $breadcumb_blog2 .= '<ol class="breadcrumb text-center">
               <li><a href="'.BASE_URL.'">Home</a></li>
                <li><a href="'.BASE_URL.'blog">Blog</a></li>
               <li class="active"><a href="javascript:void(0);">'.$blogRec->title.'</a></li>
@@ -197,9 +197,9 @@ if (defined("BLOG_PAGE")) {
 
 
 
-                $blog_breadcrumb .= '
+        $blog_breadcrumb .= '
 
-            <div class="banner-header section-padding valign bg-img innerpage2" data-background="'.$blog_detail_image.'">
+            <div class="banner-header banner-inner-overlay section-padding valign bg-img innerpage2" data-background="'.$blog_detail_image.'">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 caption">
@@ -209,7 +209,7 @@ if (defined("BLOG_PAGE")) {
                 </div>
             </div>
             '.$breadcumb_blog2.'
-
+ 
         ';
 
 
@@ -255,7 +255,7 @@ if (defined("BLOG_PAGE")) {
                 </div>
             </div>
             <!-- Sidebar -->
-            <div class="col-md-4">
+            <div class="col-md-4 sidebar--sticky">
                 <div class="sidebar">
                     <h3 class="sidebar-title">
                         Recent Blog Posts
@@ -289,7 +289,7 @@ if (defined("BLOG_PAGE")) {
                 ';
             }
         }
-         $blog_detail .= '
+        $blog_detail .= '
                </div>
             </div>
         </div>

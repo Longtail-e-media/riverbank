@@ -328,12 +328,12 @@ function SerclearImages($tablename="", $folder="", $field="image"){
 	//$result = Subpackage::find_by_sql($query);
 	$query = $db->query($sql);
 	while($row = $db->fetch_array($query)){
-		// $record = unserialize($row['image']);
-		// if($record){
-		// 	foreach($record as $imgName){
-		// 		$dbArr[] = $imgName;
-		// 	}
-		// }
+		 $record = unserialize($row[$field]);
+		 if($record){
+		 	foreach($record as $imgName){
+		 		$dbArr[] = $imgName;
+		 	}
+		 }
 	}
 
 	$final = array_diff($FolderArr,$dbArr);

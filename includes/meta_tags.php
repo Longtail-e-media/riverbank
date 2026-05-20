@@ -17,6 +17,7 @@ function className_metatags()
         return $className;
         exit;
     endif;
+
     if ($fileName == 'blog-detail'):
         $className = 'CombinedNews';
         return $className;
@@ -28,6 +29,7 @@ function className_metatags()
         return $className;
         exit;
     endif;
+
     if ($fileName == 'conference_detail'):
         $className = 'Subpackage';
         return $className;
@@ -39,11 +41,13 @@ function className_metatags()
         return $className;
         exit;
     endif;
+
     if ($fileName == 'dining_list'):
         $className = 'Dining';
         return $className;
         exit;
     endif;
+    
     if ($fileName == 'book'):
         $className = 'Offers';
         return $className;
@@ -323,25 +327,25 @@ function MetaTagsFor_SEO()
     // Dynamic pages (Article, Package, Subpackage) carry schema_code on their own record.
     // In both cases we output the raw block only when the field is non-empty.
     $staticSchemaMap = [
-        'index'   => 2, // /  or  /home
-        'offers'   => 6, // /offer-list
+        'index' => 2, // /  or  /home
+        'offers' => 6, // /offer-list
         'gallery' => 4, // /gallery-list
         'contact' => 3, // /contact-us
-        'blog'     => 7, // /blog
-        'facilities'  => 5, // /facilities-list
+        'blog' => 7, // /blog
+        'facilities' => 5, // /facilities-list
     ];
 
     $schemaCode = '';
 
     if (isset($staticSchemaMap[$chk])) {
         // Static route — pull the pre-authored schema from its dedicated Article row.
-        $staticArticle = Schema::find_by_id((int) $staticSchemaMap[$chk]);
-        if (!empty($staticArticle) && !empty(trim((string) ($staticArticle->schema_code ?? '')))) {
-            $schemaCode = trim((string) $staticArticle->schema_code);
+        $staticArticle = Schema::find_by_id((int)$staticSchemaMap[$chk]);
+        if (!empty($staticArticle) && !empty(trim((string)($staticArticle->schema_code ?? '')))) {
+            $schemaCode = trim((string)$staticArticle->schema_code);
         }
-    } elseif (!empty($rec) && !empty(trim((string) ($rec->schema_code ?? '')))) {
+    } elseif (!empty($rec) && !empty(trim((string)($rec->schema_code ?? '')))) {
         // Dynamic route — Article / Package / Subpackage record already resolved above.
-        $schemaCode = trim((string) $rec->schema_code);
+        $schemaCode = trim((string)$rec->schema_code);
     }
 
     if (!empty($schemaCode)) {
@@ -364,7 +368,7 @@ function MetaTagsFor_SEO()
         $jsonBody = $schemaCode;
         if (stripos($jsonBody, '<script') !== false) {
             $jsonBody = preg_replace('#<script[^>]*>#i', '', $jsonBody);
-            $jsonBody = preg_replace('#</script>#i',     '', $jsonBody);
+            $jsonBody = preg_replace('#</script>#i', '', $jsonBody);
             $jsonBody = trim($jsonBody);
         }
 

@@ -22,81 +22,102 @@
 </head>
 
 <body>
-      <jcms:site:googleframe/>
-    <!-- Site Back Top -->
-    <div class="site-backtop" title="Back to top">
-    	<i class="fa fa-angle-up"></i>
-    </div>
-    <!-- Site Header -->
-    <div class="site-header">
-        <!-- Header Top -->
-        <div class="header-bottom">
-            <div class="container">
-                <div class="row custom--flex">
-                    <div class="col-md-3">
-                        <div class="header-logo">
-                            <!-- Module -->
-                            <jcms:site:logo/>
-                        </div>
+<jcms:site:googleframe/>
+<!-- Site Back Top -->
+<div class="site-backtop" title="Back to top">
+    <i class="fa fa-angle-up"></i>
+</div>
+<!-- Site Header -->
+<div class="site-header">
+    <!-- Header Top -->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="row custom--flex">
+                <div class="col-md-3">
+                    <div class="header-logo">
+                        <!-- Module -->
+                        <jcms:site:logo/>
                     </div>
+                </div>
 
-                    <div class="col-md-9">
-                        <jcms:module:res-menu/>
-                        <jcms:module:menu-right/>
-                    </div>
+                <div class="col-md-9">
+                    <jcms:module:res-menu/>
+                    <jcms:module:menu-right/>
                 </div>
             </div>
         </div>
-        <!-- Header Bottom End -->
     </div>
-    <!-- Site Header End -->
+    <!-- Header Bottom End -->
+</div>
+<!-- Site Header End -->
 
 
 
 
-    <!-- Site Main -->
-    <div class="site-main site-main-white">
-        <!-- Article module -->
-        <jcms:module:inner_detail/>
+<!-- Site Main -->
+<div class="site-main site-main-white">
+    <!-- Article module -->
+    <jcms:module:inner_detail/>
+</div>
+<!-- Site Main End -->
+
+<!-- Site Footer -->
+<div class="site-footer">
+    <!-- Footer Top -->
+    <div class="footer-bottom">
+        <!-- Location module -->
+        <jcms:module:footer-location/>
     </div>
-    <!-- Site Main End -->
+    <!-- Footer Top End -->
+</div>
+<!-- Site Footer End -->
 
-    <!-- Site Footer -->
-    <div class="site-footer">
-        <!-- Footer Top -->
-        <div class="footer-bottom">
-            <!-- Location module -->
-            <jcms:module:footer-location/>
-        </div>
-        <!-- Footer Top End -->
-    </div>
-    <!-- Site Footer End -->
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery-ui.min.js"></script>
-    <script src="assets/js/jquery.fitvids.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/magnific.popup.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/booking.form.js"></script>
-    <script src="assets/js/contact.form.js"></script>
-    <script src="assets/js/jquery.validate.min.js"></script>
-    <script src='https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js'></script>
-    <script type="text/javascript">
-        $('.main-carousel').flickity({
-      // options
-      cellAlign: 'right',
-      contain: true,
-      pageDots:true,
-      prevNextButtons: false,
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/jquery.fitvids.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/magnific.popup.min.js"></script>
+<script src="assets/js/imagesloaded.pkgd.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/booking.form.js"></script>
+<script src="assets/js/contact.form.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+<script src='https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js'></script>
+<script type="text/javascript">
+    $('.main-carousel').flickity({
+        // options
+        cellAlign: 'right',
+        contain: true,
+        pageDots:true,
+        prevNextButtons: false,
     });
 
-    </script>
+</script>
 
-    <!-- Custom Scripts -->
-    <script src="assets/js/custom.js"></script>
+<!-- Custom Scripts -->
+<script src="assets/js/custom.js"></script>
+<script>
+    window.onload = function () {
+
+        const params = new URLSearchParams(window.location.search);
+        const section = params.get('section');
+
+        if(section){
+
+            const target = document.getElementById(section);
+
+            if(target){
+
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+    };
+</script>
 </body>
 </html>

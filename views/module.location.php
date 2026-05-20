@@ -128,24 +128,10 @@ $tpres .= '
             </div>
             ' . $jVars['module:socilaLinkbtm'] . '
 
-          <!-- Newsletter Subscribe Form -->
-        <div class="newsletter-form mt-5 col-sm-12 col-md-10">
-            <h4 class="mb-20">Subscribe for Newsletter</h4>
-        <form action="https://riverbankjungleresort.us19.list-manage.com/subscribe/post?u=5b5bc5738b6946540eac13de5&amp;id=67a8b5ef77&amp;f_id=008c1de7f0" method="post" target="_blank" id="subscribe-form">
-                <div class="input-group bg-white p-2 rounded-3">
-                  <input type="email" name="EMAIL" class="form-control rounded-start-2" placeholder="Enter your email" id="mce-EMAIL" value="" required>
-                   <span class="input-group-btn"> <button class="btn btn--rocket" type="submit" aria-label="Subscribe" >
-                    Submit
-                  </button></span>
-                </div>
-              </form>
         </div>
 
 
-        </div>
-
-
-        <div class="col-lg-5 col-sm-6 riverbank-flex custom-mt-5">
+        <div class="col-lg-4 col-sm-6 riverbank-flex custom-mt-5">
             <div class="sales__office">
                             <h4>Sales Office</h4>
             <div class="footer-contact">
@@ -157,7 +143,7 @@ $tpres .= '
             </div>
 
 
-        <div class="online-reservation custom-mt-5">
+        <div class="online-reservation custom-mt-5 mt-5">
             <h4 class="mb-20">Online Reservations</h4>
             <div class="row">
                 <div class="col-md-12">
@@ -172,11 +158,23 @@ $tpres .= '
             </div>
         </div>
 
+
             </div>
 
         </div>
-        <div class="col-lg-3 custom-mt-5 facebook_iframe">
-     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61555768349361&tabs=timeline&width=250&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1651547328419060" frameborder="0" scrolling="yes" style="border: white; overflow: hidden; height: 350px; width: 250px; max-width:100%;background:#fafafa;color:000;" class="fb-iframe"  ></iframe>
+        <div class="col-lg-4 custom-mt-5 col-sm-5">
+                      <!-- Newsletter Subscribe Form -->
+        <div class="newsletter-form">
+            <h4 class="mb-20">Subscribe for Newsletter</h4>
+        <form action="https://riverbankjungleresort.us19.list-manage.com/subscribe/post?u=5b5bc5738b6946540eac13de5&amp;id=67a8b5ef77&amp;f_id=008c1de7f0" method="post" target="_blank" id="subscribe-form">
+                <div class="input-group bg-white p-2 rounded-3">
+                  <input type="email" name="EMAIL" class="form-control rounded-start-2" placeholder="Enter your email" id="mce-EMAIL" value="" required>
+                   <span class="input-group-btn"> <button class="btn btn--rocket" type="submit" aria-label="Subscribe" >
+                    Submit
+                  </button></span>
+                </div>
+              </form>
+        </div>
        </div>
     </div>
     <div class="footer-section mt-5">
