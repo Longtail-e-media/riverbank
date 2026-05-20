@@ -281,6 +281,18 @@ endif;
             </div>
 
             <div class="form-row">
+                <div class="form-label col-md-2">
+                    <label for="">
+                        Schema Code :
+                    </label>
+                </div>
+                <div class="form-input col-md-6">
+                        <textarea placeholder="Schema Code" name="schema_code" id="schema_code"
+                                  class="large-textarea"><?php echo !empty($packageInfo->schema_code) ? $packageInfo->schema_code : ""; ?></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-label col-md-12">
                     <label for="">
                         Content :

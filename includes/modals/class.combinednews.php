@@ -4,7 +4,10 @@ class CombinedNews extends DatabaseObject
 {
 
     protected static $table_name = "tbl_conbined_news";
-    protected static $db_fields = array('id', 'slug', 'title', 'brief', 'content', 'image', 'home_image', 'gallery', 'status', 'sortorder', 'added_date', 'meta_keywords', 'display', 'event_stdate', 'event_endate', 'type', 'author', 'banner_image', 'source', 'meta_description');
+    protected static $db_fields = array(
+        'id', 'slug', 'title', 'brief', 'content', 'image', 'home_image', 'gallery', 'status', 'sortorder', 'added_date', 'meta_keywords', 'display', 'event_stdate',
+        'event_endate', 'type', 'author', 'banner_image', 'source', 'meta_description', 'schema_code'
+    );
 
     public $id;
     public $slug;
@@ -27,6 +30,7 @@ class CombinedNews extends DatabaseObject
     public $banner_image;
     public $source;
     public $meta_description;
+    public $schema_code;
 
     //Find a single row in the database where slug is provided.
     public static function find_by_slug($slug = 0)

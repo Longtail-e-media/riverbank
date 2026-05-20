@@ -17,7 +17,7 @@ function className_metatags()
         return $className;
         exit;
     endif;
-        if ($fileName == 'blog-detail'):
+    if ($fileName == 'blog-detail'):
         $className = 'CombinedNews';
         return $className;
         exit;
@@ -44,11 +44,11 @@ function className_metatags()
         return $className;
         exit;
     endif;
-    if($fileName=='book'):
-		$className = 'Offers';
-		return $className;
-		exit;
-	endif;
+    if ($fileName == 'book'):
+        $className = 'Offers';
+        return $className;
+        exit;
+    endif;
 
     if ($fileName != 'index'):
         $className = ucfirst(strtolower($fileName));
@@ -113,11 +113,11 @@ function MetaTagsFor_SEO()
     $addsep = !empty($addtitle) ? ' - ' : '';
 
     $sluglink = $rec->slug ?? '';
-     $site_keyword = (!empty($keywords)) ? $keywords : $config->site_keywords;
-     $site_description = (!empty($description)) ? $description : $config->site_description;
-     $site_title = (!empty($rec->meta_title)) ?  $rec->meta_title . ' | ' . $config->sitename  : $config->meta_title;
+    $site_keyword = (!empty($keywords)) ? $keywords : $config->site_keywords;
+    $site_description = (!empty($description)) ? $description : $config->site_description;
+    $site_title = (!empty($rec->meta_title)) ? $rec->meta_title . ' | ' . $config->sitename : $config->meta_title;
 
-     // === Dynamic JSON-LD builder for PHP 7.4 ===
+    // === Dynamic JSON-LD builder for PHP 7.4 ===
 
     // Helper: PHP 7.4 safe str_contains
     function str_contains_74($haystack, $needle)
@@ -239,27 +239,19 @@ function MetaTagsFor_SEO()
         //Article
         if (file_exists(SITE_ROOT . 'images/articles/social/' . $rec->fb_upload)) {
             $imageUrl = IMAGE_PATH . 'article/social/' . $rec->fb_upload;
-        }
-
-        //Subpackage
+        } //Subpackage
         elseif (file_exists(SITE_ROOT . 'images/subpackage/social/' . $rec->fb_upload)) {
             $imageUrl = IMAGE_PATH . 'subpackage/social/' . $rec->fb_upload;
-        }
-
-        //Offer
+        } //Offer
         elseif (file_exists(SITE_ROOT . 'images/offers/social/' . $rec->fb_upload)) {
             $imageUrl = IMAGE_PATH . 'offers/social/' . $rec->fb_upload;
         }
-    }
-
-    elseif (!empty($rec->banner_image)) {
+    } elseif (!empty($rec->banner_image)) {
         $imgs = @unserialize($rec->banner_image);
         if ($imgs && !empty($imgs[0]) && file_exists(SITE_ROOT . 'images/package/banner/' . $imgs[0])) {
             $imageUrl = IMAGE_PATH . 'package/banner/' . $imgs[0];
         }
-    }
-
-    elseif (!empty($rec->image)) {
+    } elseif (!empty($rec->image)) {
         $imgs = @unserialize($rec->image);
         if ($imgs && !empty($imgs[0])) {
             if (file_exists(SITE_ROOT . 'images/articles/' . $imgs[0])) {
@@ -268,9 +260,7 @@ function MetaTagsFor_SEO()
                 $imageUrl = IMAGE_PATH . 'subpackage/' . $imgs[0];
             }
         }
-    }
-
-    elseif (!empty($rec->list_image) && file_exists(SITE_ROOT . 'images/offers/listimage/' . $rec->list_image)) {
+    } elseif (!empty($rec->list_image) && file_exists(SITE_ROOT . 'images/offers/listimage/' . $rec->list_image)) {
         $imageUrl = IMAGE_PATH . 'offers/listimage/' . $rec->list_image;
     }
 
@@ -300,8 +290,7 @@ function MetaTagsFor_SEO()
         }
 
         $schemaGraph[] = array_filter($pageObj, fn($v) => $v !== null && $v !== '');
-    }
-    elseif ($pageKind === 'listing') {
+    } elseif ($pageKind === 'listing') {
         $schemaGraph[] = [
             "@type" => "CollectionPage",
             "@id" => rtrim(BASE_URL, '/') . "#webpage",
@@ -309,8 +298,7 @@ function MetaTagsFor_SEO()
             "description" => $description,
             "url" => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI']
         ];
-    }
-    else {
+    } else {
         $schemaGraph[] = [
             "@type" => "WebPage",
             "@id" => rtrim(BASE_URL, '/') . "#webpage",
@@ -328,6 +316,75 @@ function MetaTagsFor_SEO()
         ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) .
         "\n</script>";
     // End Schema Graph
+
+    // === schema_code injection ===
+    // Static pages have no slug/record; their schema lives in Article rows with article_type=2.
+    // Dynamic pages (Article, Package, Subpackage) carry schema_code on their own record.
+    // In both cases we output the raw block only when the field is non-empty.
+    $staticSchemaMap = [
+        'index'   => 2, // /  or  /home
+        'offers'   => 6, // /offer-list
+        'gallery' => 4, // /gallery-list
+        'contact' => 3, // /contact-us
+        'blog'     => 7, // /blog
+        'facilities'  => 5, // /facilities-list
+    ];
+
+    $schemaCode = '';
+
+    if (isset($staticSchemaMap[$chk])) {
+        // Static route — pull the pre-authored schema from its dedicated Article row.
+        $staticArticle = Schema::find_by_id((int) $staticSchemaMap[$chk]);
+        if (!empty($staticArticle) && !empty(trim((string) ($staticArticle->schema_code ?? '')))) {
+            $schemaCode = trim((string) $staticArticle->schema_code);
+        }
+    } elseif (!empty($rec) && !empty(trim((string) ($rec->schema_code ?? '')))) {
+        // Dynamic route — Article / Package / Subpackage record already resolved above.
+        $schemaCode = trim((string) $rec->schema_code);
+    }
+
+    if (!empty($schemaCode)) {
+        // Security: NEVER echo schema_code as raw HTML.
+        //
+        // Even though this field is admin-only, a compromised or rogue account
+        // could store arbitrary <script> tags. The safe pipeline is:
+        //
+        //   1. Strip any <script> wrapper the admin may have typed — we only
+        //      want the JSON body, and we will supply our own controlled tag.
+        //   2. Validate the result with json_decode(). Invalid JSON → silent skip
+        //      (nothing broken, nothing injected).
+        //   3. Re-encode through json_encode() with JSON_HEX_TAG, which converts
+        //      '<' → < and '>' → > inside every JSON string value.
+        //      This neutralises the "</script>" early-close injection vector.
+        //   4. Emit inside <script type="application/ld+json"> — browsers never
+        //      execute this MIME type as JavaScript regardless.
+
+        // Step 1 — strip <script ...> ... </script> wrapper if present
+        $jsonBody = $schemaCode;
+        if (stripos($jsonBody, '<script') !== false) {
+            $jsonBody = preg_replace('#<script[^>]*>#i', '', $jsonBody);
+            $jsonBody = preg_replace('#</script>#i',     '', $jsonBody);
+            $jsonBody = trim($jsonBody);
+        }
+
+        // Step 2 — validate JSON
+        $decoded = json_decode($jsonBody);
+        if (json_last_error() === JSON_ERROR_NONE && $decoded !== null) {
+
+            // Step 3 & 4 — re-encode safely and emit
+            $schema .= "\n" . '<script type="application/ld+json">' . "\n"
+                . json_encode(
+                    $decoded,
+                    JSON_UNESCAPED_SLASHES
+                    | JSON_PRETTY_PRINT
+                    | JSON_UNESCAPED_UNICODE
+                    | JSON_HEX_TAG        // <  →  < , >  →  >
+                )
+                . "\n</script>";
+        }
+        // Invalid JSON → no output, no error exposed to the browser
+    }
+    // === end schema_code injection ===
 
 
     $seoSources = '<title>' . $addtitle . $addsep . $sitetitle . '</title>' . "\n";

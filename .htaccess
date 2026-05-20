@@ -64,9 +64,6 @@ RewriteRule ^blog/?$ blog.php [L]
 # RewriteRule ^blog/page/([0-9]+)?$ blog.php?pageno=$1 [L]
 RewriteRule ^blog/([a-zA-Z0-9-=]+)$ blog-detail.php?slug=$1 [L]
 
-#For  testimonial pages.
-RewriteRule ^reviews/?$ testimonial.php [L]
-
 #For reservation pages.
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
@@ -92,7 +89,7 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ 
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
-RewriteRule ^reviews-list/?$ reviews.php [L]
+RewriteRule ^reviews-list/?$ testimonial.php [L]
 
 #faq page
 RewriteRule ^faq/?$ faq.php [L]
@@ -139,10 +136,6 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
 RewriteRule ^([a-zA-Z0-9-=]+)/?$ global.php?slug=$1 [L]
 
 ## SEO ##
-#blog
-#For BLOG pages.
-
-
 
 # Use PHP5.3 as default
 #AddHandler application/x-httpd-php54 .php

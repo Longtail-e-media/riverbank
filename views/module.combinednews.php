@@ -36,7 +36,7 @@ if (defined("HOME_PAGE")) {
                                     <div class="col-md-12">
                                      <div class="widget-title mb-5">
                                     <h5 class="text-uppercase">Our Blog</h5>
-                                    <h3>Lorem ipsum dolor sit.</h3>
+                                    <h3>Stories from the River Bank</h3>
                                     </div>
                                     </div>';
 

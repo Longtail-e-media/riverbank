@@ -35,6 +35,7 @@
 			$Package->title    		= $_REQUEST['title'];	
 			$Package->sub_title    	= $_REQUEST['sub_title'];	
 			$Package->content   	= $_REQUEST['content'];
+            $Package->schema_code    = $_REQUEST['schema_code'] ?? '';
 			$Package->type 		= $_REQUEST['type'];	
 			$Package->meta_title		= $_REQUEST['meta_title'];
 			$Package->meta_keywords		= $_REQUEST['meta_keywords'];
@@ -82,7 +83,8 @@
 		$Package->image	= serialize(array_values(array_filter($_REQUEST['imageArrayname7'])));
 		$Package->slug 	   = $_REQUEST['slug'];
 		$Package->title    = $_REQUEST['title'];	
-		$Package->sub_title = $_REQUEST['sub_title'];	
+		$Package->sub_title = $_REQUEST['sub_title'];
+        $Package->schema_code    = $_REQUEST['schema_code'] ?? '';
 		$Package->content  = $_REQUEST['content'];	
 		$Package->status   = $_REQUEST['status'];	
 		$Package->type 		= $_REQUEST['type'];
@@ -188,7 +190,8 @@
 			$record->image2			= !empty($_REQUEST['imageArrayname2'])?$_REQUEST['imageArrayname2']:'';
 			$record->image 			= !empty($_REQUEST['imageArrayname'])? serialize(array_values(array_filter($_REQUEST['imageArrayname']))):'';
 			$record->fb_upload      = !empty($_REQUEST['imageArrayname7']) ? $_REQUEST['imageArrayname7'] : '';
-			$record->feature		= serialize($newArr);	
+			$record->feature		= serialize($newArr);
+            $record->schema_code    = $_REQUEST['schema_code'] ?? '';
 			$record->content 		= $_REQUEST['content'];			
 			$record->status			= $_REQUEST['status'];
 			$record->number_room    = !empty($_REQUEST['number_room'])?$_REQUEST['number_room']:'';
@@ -261,6 +264,7 @@
 			$record->image 			= !empty($_REQUEST['imageArrayname'])? serialize(array_values(array_filter($_REQUEST['imageArrayname']))):'';
 			$record->fb_upload      = !empty($_REQUEST['imageArrayname7']) ? $_REQUEST['imageArrayname7'] : '';
 			$record->feature		= serialize($newArr);
+            $record->schema_code    = $_REQUEST['schema_code'] ?? '';
 			$record->content 		= $_REQUEST['content'];
 			$record->status			= $_REQUEST['status'];						
 			$record->number_room    = !empty($_REQUEST['number_room'])?$_REQUEST['number_room']:'';
