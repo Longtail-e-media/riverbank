@@ -30,6 +30,7 @@
 			//$record->display 	= $_REQUEST['display'];
 			// $record->linksrc 	= $_REQUEST['linksrc'];
 			// $record->linktype 	= $_REQUEST['linktype'];
+            $record->fb_upload  = (!empty($_REQUEST['imageArrayname4']) ? $_REQUEST['imageArrayname4'] : "");
 			$record->banner_image = $_REQUEST['imageArrayname2'];
 			$record->event_stdate 	= $_REQUEST['event_stdate'];
 //			$record->event_endate 	= $_REQUEST['event_endate'];
@@ -64,6 +65,7 @@
 //			$record->brief 		= $_REQUEST['brief'];
 			$record->content	= $_REQUEST['content'];
             $record->schema_code    = $_REQUEST['schema_code'] ?? '';
+            $record->fb_upload  = (!empty($_REQUEST['imageArrayname4']) ? $_REQUEST['imageArrayname4'] : "");
 //			$record->type 		= $_REQUEST['type'];
 			/*if($_REQUEST['type']==1){
 				$record->image		= serialize(array_values(array_filter($_REQUEST['imageArrayname'])));

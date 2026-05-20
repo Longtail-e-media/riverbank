@@ -201,6 +201,7 @@ function MetaTagsFor_SEO()
     // Map table
     $schemaMap = [
         'blog' => ['type' => 'BlogPosting', 'kind' => 'detail'],
+        'combinednews' => ['type' => 'BlogPosting', 'kind' => 'detail'],
         'article' => ['type' => 'Article', 'kind' => 'detail'],
         'news' => ['type' => 'NewsArticle', 'kind' => 'detail'],
 
@@ -466,8 +467,7 @@ function MetaTagsFor_SEO()
                         $folderMap = [
                             'Article' => 'articles',
                             'Package' => 'package',
-                            'Subpackage' => 'subpackage',
-                            'CombinedNews' => 'combinednews'
+                            'Subpackage' => 'subpackage'
                         ];
 
                         if (isset($folderMap[$classname])) {

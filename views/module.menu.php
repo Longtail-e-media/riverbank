@@ -82,9 +82,6 @@ if (!empty($lmenuRec)) {
 // }
 
 
-$resmr .= '<div class="pull-right">';
-$resmr .= $resbking;
-$resmr .= '</div>';
 $jVars['module:menu-left'] = $resml;
 $jVars['module:menu-right'] = $resmr;
 
