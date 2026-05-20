@@ -590,6 +590,9 @@ if (isset($_GET['page']) && $_GET['page'] == "offers" && isset($_GET['mode']) &&
                     <div class="form-input col-md-8">
                         <textarea name="content" id="content"
                                   class="large-textarea"><?php echo !empty($advInfo->content) ? $advInfo->content : ""; ?></textarea>
+                        <a class="btn medium bg-orange mrg5T hide" title="Read More" id="readMore" href="javascript:void(0);">
+                            <span class="button-content">Read More</span>
+                        </a>
                     </div>
                 </div>
 
