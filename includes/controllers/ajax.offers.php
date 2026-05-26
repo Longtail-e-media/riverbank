@@ -8,6 +8,37 @@ header("Pragma: no-cache");
 // Load necessary files then...
 require_once('../initialize.php');
 
+/**
+ * Build the faq_schema JSON string from paired form arrays.
+ *
+ * Expects $_REQUEST['faq_questions'][] and $_REQUEST['faq_answers'][].
+ * Filters out any pair where either the question or the answer is blank.
+ * Returns a compact JSON string, or '' when no valid pairs exist.
+ *
+ * @param array $req  Typically $_REQUEST
+ * @return string
+ */
+function buildFaqSchema(array $req)
+{
+    $questions = isset($req['faq_questions']) && is_array($req['faq_questions'])
+        ? array_values($req['faq_questions']) : [];
+    $answers   = isset($req['faq_answers'])   && is_array($req['faq_answers'])
+        ? array_values($req['faq_answers'])   : [];
+
+    $items = [];
+    foreach ($questions as $i => $q) {
+        $q = trim((string)($q ?? ''));
+        $a = trim((string)($answers[$i] ?? ''));
+        if ($q !== '' && $a !== '') {
+            $items[] = ['q' => $q, 'a' => $a];
+        }
+    }
+
+    return !empty($items)
+        ? json_encode($items, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+        : '';
+}
+
 $action = $_REQUEST['action'];
 
 switch ($action) {
@@ -34,6 +65,7 @@ switch ($action) {
 		$record->offerpopup 		= $_REQUEST['offerpopup'];
 		$record->status			= $_REQUEST['status'];
         $record->schema_code    = $_REQUEST['schema_code'] ?? '';
+        $record->faq_schema     = buildFaqSchema($_REQUEST);
 
 		$record->sortorder		= Offers::find_maximum();
 		$record->added_date 	= registered();
@@ -118,6 +150,7 @@ switch ($action) {
 		$record->type 		= $_REQUEST['type'];
 		$record->status			= $_REQUEST['status'];
         $record->schema_code    = $_REQUEST['schema_code'] ?? '';
+        $record->faq_schema     = buildFaqSchema($_REQUEST);
 		$record->list_image 		    = !empty($_REQUEST['imageArrayname3'])?$_REQUEST['imageArrayname3']:'';
 		$record->fb_upload      = !empty($_REQUEST['imageArrayname4']) ? $_REQUEST['imageArrayname4'] : '';
 		$record->image 		    = !empty($_REQUEST['imageArrayname'])?$_REQUEST['imageArrayname']:'';

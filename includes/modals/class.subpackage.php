@@ -7,7 +7,7 @@ class Subpackage extends DatabaseObject
     protected static $db_fields = array(
         'id', 'slug', 'title', 'sub_title', 'detail', 'facility_title', 'feature', 'image', 'header_image', 'image2', 'image3', 'fb_upload', 'content', 'number_room',
         'extra_bed', 'currency', 'discount', 'people_qnty', 'onep_price', 'twop_price', 'threep_price', 'oneb_price', 'twob_price', 'threeb_price', 'meta_title',
-        'meta_keywords', 'meta_description', 'status', 'sortorder', 'added_date', 'type', 'schema_code'
+        'meta_keywords', 'meta_description', 'status', 'sortorder', 'added_date', 'type', 'schema_code', 'faq_schema'
     );
 
     public $id;
@@ -42,6 +42,7 @@ class Subpackage extends DatabaseObject
     public $added_date;
     public $type;
     public $schema_code;
+    public $faq_schema;
 
 
     //Get Facility Ttle

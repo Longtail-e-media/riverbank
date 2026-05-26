@@ -6,7 +6,7 @@ class Article extends DatabaseObject
     protected static $table_name = "tbl_articles";
     protected static $db_fields = array(
         'id', 'parent_id', 'slug', 'title', 'sub_title', 'fb_upload', 'linksrc', 'linktype', 'content', 'status', 'sortorder', 'meta_title', 'meta_keywords',
-        'meta_description', 'type', 'added_date', 'homepage', 'image', 'schema_code'
+        'meta_description', 'type', 'added_date', 'homepage', 'image', 'schema_code', 'faq_schema'
     );
 
     public $id;
@@ -28,6 +28,7 @@ class Article extends DatabaseObject
     public $homepage;
     public $image;
     public $schema_code;
+    public $faq_schema;
 
     public static function checkDupliName($title = '')
     {

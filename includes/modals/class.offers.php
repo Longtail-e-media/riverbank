@@ -6,7 +6,7 @@ class Offers extends DatabaseObject
     protected static $table_name = "tbl_offers";
     protected static $db_fields = array(
         'id', 'slug', 'title', 'image', 'offer_date', 'start_date', 'linksrc', 'linktype', 'rate', 'discount', 'brief', 'content', 'adults', 'children', 'currency',
-        'status', 'added_date', 'sortorder', 'type', 'offerpopup', 'list_image', 'fb_upload', 'meta_title', 'meta_keywords', 'meta_description', 'schema_code'
+        'status', 'added_date', 'sortorder', 'type', 'offerpopup', 'list_image', 'fb_upload', 'meta_title', 'meta_keywords', 'meta_description', 'schema_code', 'faq_schema'
     );
 
     public $id;
@@ -35,6 +35,7 @@ class Offers extends DatabaseObject
     public $meta_keywords;
     public $meta_description;
     public $schema_code;
+    public $faq_schema;
 
     //Find all published rows in the current database table.
     public static function get_offer_by($limit = '')

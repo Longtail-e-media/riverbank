@@ -5,10 +5,10 @@ class Schema extends DatabaseObject
 
     protected static $table_name = "tbl_schemas";
     protected static $db_fields = array(
-        'id', 'title', 'schema_code', 'status', 'sortorder', 'meta_title', 'meta_keywords', 'meta_description', 'added_date', 'modified_date'
+        'id', 'title', 'schema_code', 'faq_schema', 'status', 'sortorder', 'meta_title', 'meta_keywords', 'meta_description', 'added_date', 'modified_date'
     );
 
-    public $id, $title, $schema_code, $status, $sortorder, $meta_title, $meta_keywords, $meta_description, $added_date, $modified_date;
+    public $id, $title, $schema_code, $faq_schema, $status, $sortorder, $meta_title, $meta_keywords, $meta_description, $added_date, $modified_date;
 
 
     public static function checkDupliName($title = '')

@@ -7,6 +7,37 @@
 
 	// Load necessary files then...
 	require_once('../initialize.php');
+
+/**
+ * Build the faq_schema JSON string from paired form arrays.
+ *
+ * Expects $_REQUEST['faq_questions'][] and $_REQUEST['faq_answers'][].
+ * Filters out any pair where either the question or the answer is blank.
+ * Returns a compact JSON string, or '' when no valid pairs exist.
+ *
+ * @param array $req  Typically $_REQUEST
+ * @return string
+ */
+function buildFaqSchema(array $req)
+{
+    $questions = isset($req['faq_questions']) && is_array($req['faq_questions'])
+        ? array_values($req['faq_questions']) : [];
+    $answers   = isset($req['faq_answers'])   && is_array($req['faq_answers'])
+        ? array_values($req['faq_answers'])   : [];
+
+    $items = [];
+    foreach ($questions as $i => $q) {
+        $q = trim((string)($q ?? ''));
+        $a = trim((string)($answers[$i] ?? ''));
+        if ($q !== '' && $a !== '') {
+            $items[] = ['q' => $q, 'a' => $a];
+        }
+    }
+
+    return !empty($items)
+        ? json_encode($items, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+        : '';
+}
 	
 	$action = $_REQUEST['action'];
 	
@@ -35,7 +66,8 @@
 			$Package->title    		= $_REQUEST['title'];	
 			$Package->sub_title    	= $_REQUEST['sub_title'];	
 			$Package->content   	= $_REQUEST['content'];
-            $Package->schema_code    = $_REQUEST['schema_code'] ?? '';
+            $Package->schema_code   = $_REQUEST['schema_code'] ?? '';
+            $Package->faq_schema    = buildFaqSchema($_REQUEST);
 			$Package->type 		= $_REQUEST['type'];	
 			$Package->meta_title		= $_REQUEST['meta_title'];
 			$Package->meta_keywords		= $_REQUEST['meta_keywords'];
@@ -84,7 +116,8 @@
 		$Package->slug 	   = $_REQUEST['slug'];
 		$Package->title    = $_REQUEST['title'];	
 		$Package->sub_title = $_REQUEST['sub_title'];
-        $Package->schema_code    = $_REQUEST['schema_code'] ?? '';
+        $Package->schema_code   = $_REQUEST['schema_code'] ?? '';
+        $Package->faq_schema    = buildFaqSchema($_REQUEST);
 		$Package->content  = $_REQUEST['content'];	
 		$Package->status   = $_REQUEST['status'];	
 		$Package->type 		= $_REQUEST['type'];
@@ -192,6 +225,7 @@
 			$record->fb_upload      = !empty($_REQUEST['imageArrayname7']) ? $_REQUEST['imageArrayname7'] : '';
 			$record->feature		= serialize($newArr);
             $record->schema_code    = $_REQUEST['schema_code'] ?? '';
+            $record->faq_schema     = buildFaqSchema($_REQUEST);
 			$record->content 		= $_REQUEST['content'];			
 			$record->status			= $_REQUEST['status'];
 			$record->number_room    = !empty($_REQUEST['number_room'])?$_REQUEST['number_room']:'';
@@ -265,6 +299,7 @@
 			$record->fb_upload      = !empty($_REQUEST['imageArrayname7']) ? $_REQUEST['imageArrayname7'] : '';
 			$record->feature		= serialize($newArr);
             $record->schema_code    = $_REQUEST['schema_code'] ?? '';
+            $record->faq_schema     = buildFaqSchema($_REQUEST);
 			$record->content 		= $_REQUEST['content'];
 			$record->status			= $_REQUEST['status'];						
 			$record->number_room    = !empty($_REQUEST['number_room'])?$_REQUEST['number_room']:'';

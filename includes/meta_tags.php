@@ -47,7 +47,7 @@ function className_metatags()
         return $className;
         exit;
     endif;
-    
+
     if ($fileName == 'book'):
         $className = 'Offers';
         return $className;
@@ -66,15 +66,15 @@ function className_metatags()
 function MetaTagsFor_SEO()
 {
 
-    $c_url = pathinfo($_SERVER["PHP_SELF"]);
-    $chk = $c_url['filename'];
-    $config = Config::find_by_id(1);
-    $sitetitle = (!empty($config->meta_title) and $chk == 'index') ? $config->meta_title : $config->sitetitle;
-    $keywords = $config->site_keywords;
+    $c_url      = pathinfo($_SERVER["PHP_SELF"]);
+    $chk        = $c_url['filename'];
+    $config     = Config::find_by_id(1);
+    $sitetitle  = (!empty($config->meta_title) and $chk == 'index') ? $config->meta_title : $config->sitetitle;
+    $keywords   = $config->site_keywords;
     $description = $config->site_description;
 
-    $addtitle = '';
-    $class = className_metatags();
+    $addtitle   = '';
+    $class      = className_metatags();
 
     // Transaction start
     if (isset($_REQUEST['slug']) and !empty($_REQUEST['slug'])) {
@@ -112,14 +112,14 @@ function MetaTagsFor_SEO()
         }
     }
 
-    $altclass = !empty($class) ? $class : '';
-    $addtitle = !empty($addtitle) ? $addtitle : $altclass;
-    $addsep = !empty($addtitle) ? ' - ' : '';
+    $altclass   = !empty($class) ? $class : '';
+    $addtitle   = !empty($addtitle) ? $addtitle : $altclass;
+    $addsep     = !empty($addtitle) ? ' - ' : '';
 
-    $sluglink = $rec->slug ?? '';
-    $site_keyword = (!empty($keywords)) ? $keywords : $config->site_keywords;
+    $sluglink       = $rec->slug ?? '';
+    $site_keyword   = (!empty($keywords)) ? $keywords : $config->site_keywords;
     $site_description = (!empty($description)) ? $description : $config->site_description;
-    $site_title = (!empty($rec->meta_title)) ? $rec->meta_title . ' | ' . $config->sitename : $config->meta_title;
+    $site_title     = (!empty($rec->meta_title)) ? $rec->meta_title . ' | ' . $config->sitename : $config->meta_title;
 
     // === Dynamic JSON-LD builder for PHP 7.4 ===
 
@@ -134,7 +134,6 @@ function MetaTagsFor_SEO()
     {
         $title = strtolower($rec->title ?? '');
         $desc = strtolower($rec->content ?? $rec->description ?? '');
-
 
         if (str_contains_74($title, 'board meeting room')) return 'EventVenue';
         if (str_contains_74($title, 'room')) return 'Room';
@@ -154,9 +153,9 @@ function MetaTagsFor_SEO()
     // 1) WebSite
     $schemaGraph[] = [
         "@type" => "WebSite",
-        "@id" => rtrim(BASE_URL, '/') . "#website",
-        "url" => BASE_URL,
-        "name" => $config->sitename
+        "@id"   => rtrim(BASE_URL, '/') . "#website",
+        "url"   => BASE_URL,
+        "name"  => $config->sitename
     ];
 
     // 2) Hotel / Organization
@@ -168,10 +167,10 @@ function MetaTagsFor_SEO()
 
     $hotelEntity = [
         "@type" => "Resort",
-        "@id" => rtrim(BASE_URL, '/') . "#resort",
-        "name" => $config->sitename,
-        "url" => BASE_URL,
-        "logo" => IMAGE_PATH . 'preference/' . $config->logo_upload
+        "@id"   => rtrim(BASE_URL, '/') . "#resort",
+        "name"  => $config->sitename,
+        "url"   => BASE_URL,
+        "logo"  => IMAGE_PATH . 'preference/' . $config->logo_upload
     ];
 
     if (!empty($sameAs)) {
@@ -198,38 +197,38 @@ function MetaTagsFor_SEO()
     }
 
     // 4) Map class to schema type and page kind
-    $mc = strtolower($mainClass);
+    $mc         = strtolower($mainClass);
     $schemaType = 'WebPage';
-    $pageKind = 'general';
+    $pageKind   = 'general';
 
     // Map table
     $schemaMap = [
-        'blog' => ['type' => 'BlogPosting', 'kind' => 'detail'],
-        'combinednews' => ['type' => 'BlogPosting', 'kind' => 'detail'],
-        'article' => ['type' => 'Article', 'kind' => 'detail'],
-        'news' => ['type' => 'NewsArticle', 'kind' => 'detail'],
+        'blog'          => ['type' => 'BlogPosting', 'kind' => 'detail'],
+        'combinednews'  => ['type' => 'BlogPosting', 'kind' => 'detail'],
+        'article'       => ['type' => 'Article', 'kind' => 'detail'],
+        'news'          => ['type' => 'NewsArticle', 'kind' => 'detail'],
 
-        'room' => ['type' => 'Room', 'kind' => 'detail'],
-        'rooms' => ['type' => 'CollectionPage', 'kind' => 'listing'],
+        'room'      => ['type' => 'Room', 'kind' => 'detail'],
+        'rooms'     => ['type' => 'CollectionPage', 'kind' => 'listing'],
 
-        'dining' => ['type' => 'Restaurant', 'kind' => 'detail'],
-        'hall' => ['type' => 'EventVenue', 'kind' => 'detail'],
+        'dining'    => ['type' => 'Restaurant', 'kind' => 'detail'],
+        'hall'      => ['type' => 'EventVenue', 'kind' => 'detail'],
         'subpackage' => ['type' => 'AUTO', 'kind' => 'detail'],
 
-        'services' => ['type' => 'Service', 'kind' => 'detail'],
+        'services'  => ['type' => 'Service', 'kind' => 'detail'],
         'facilities' => ['type' => 'CollectionPage', 'kind' => 'listing'],
-        'offers' => ['type' => 'CollectionPage', 'kind' => 'listing'],
-        'gallery' => ['type' => 'CollectionPage', 'kind' => 'listing'],
+        'offers'    => ['type' => 'CollectionPage', 'kind' => 'listing'],
+        'gallery'   => ['type' => 'CollectionPage', 'kind' => 'listing'],
 
-        'faq' => ['type' => 'FAQPage', 'kind' => 'detail'],
-        'contact' => ['type' => 'ContactPage', 'kind' => 'general'],
-        'about' => ['type' => 'AboutPage', 'kind' => 'general'],
+        'faq'       => ['type' => 'FAQPage', 'kind' => 'detail'],
+        'contact'   => ['type' => 'ContactPage', 'kind' => 'general'],
+        'about'     => ['type' => 'AboutPage', 'kind' => 'general'],
         'virtual-tour' => ['type' => 'WebPage', 'kind' => 'general']
     ];
 
     if (isset($schemaMap[$mc])) {
         $schemaType = $schemaMap[$mc]['type'];
-        $pageKind = $schemaMap[$mc]['kind'];
+        $pageKind   = $schemaMap[$mc]['kind'];
 
         if ($schemaType === 'AUTO' && !empty($rec)) {
             $schemaType = detectSubpackageSchema($rec);
@@ -272,14 +271,14 @@ function MetaTagsFor_SEO()
     // 6) Page-level schema
     if ($pageKind === 'detail' && !empty($rec)) {
         $pageObj = [
-            "@type" => $schemaType,
-            "@id" => rtrim(BASE_URL, '/') . "#primary-entity",
-            "name" => $rec->title ?? $addtitle ?? $config->sitename,
+            "@type"     => $schemaType,
+            "@id"       => rtrim(BASE_URL, '/') . "#primary-entity",
+            "name"      => $rec->title ?? $addtitle ?? $config->sitename,
             "description" => $rec->meta_description ?? $description,
-            "image" => [$imageUrl],
-            "url" => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI'],
+            "image"     => [$imageUrl],
+            "url"       => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI'],
             "containedInPlace" => [
-                "@id" => rtrim(BASE_URL, '/') . "#resort"
+                "@id"   => rtrim(BASE_URL, '/') . "#resort"
             ]
         ];
 
@@ -297,19 +296,19 @@ function MetaTagsFor_SEO()
         $schemaGraph[] = array_filter($pageObj, fn($v) => $v !== null && $v !== '');
     } elseif ($pageKind === 'listing') {
         $schemaGraph[] = [
-            "@type" => "CollectionPage",
-            "@id" => rtrim(BASE_URL, '/') . "#webpage",
-            "name" => $addtitle ?: $config->sitename,
+            "@type"     => "CollectionPage",
+            "@id"       => rtrim(BASE_URL, '/') . "#webpage",
+            "name"      => $addtitle ?: $config->sitename,
             "description" => $description,
-            "url" => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI']
+            "url"       => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI']
         ];
     } else {
         $schemaGraph[] = [
-            "@type" => "WebPage",
-            "@id" => rtrim(BASE_URL, '/') . "#webpage",
-            "name" => $addtitle ?: $config->sitename,
+            "@type"     => "WebPage",
+            "@id"       => rtrim(BASE_URL, '/') . "#webpage",
+            "name"      => $addtitle ?: $config->sitename,
             "description" => $description,
-            "url" => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI']
+            "url"       => rtrim(BASE_URL, '/') . $_SERVER['REQUEST_URI']
         ];
     }
 
@@ -327,11 +326,11 @@ function MetaTagsFor_SEO()
     // Dynamic pages (Article, Package, Subpackage) carry schema_code on their own record.
     // In both cases we output the raw block only when the field is non-empty.
     $staticSchemaMap = [
-        'index' => 2, // /  or  /home
-        'offers' => 6, // /offer-list
-        'gallery' => 4, // /gallery-list
-        'contact' => 3, // /contact-us
-        'blog' => 7, // /blog
+        'index'     => 2, // /  or  /home
+        'offers'    => 6, // /offer-list
+        'gallery'   => 4, // /gallery-list
+        'contact'   => 3, // /contact-us
+        'blog'      => 7, // /blog
         'facilities' => 5, // /facilities-list
     ];
 
@@ -377,7 +376,7 @@ function MetaTagsFor_SEO()
         if (json_last_error() === JSON_ERROR_NONE && $decoded !== null) {
 
             // Step 3 & 4 — re-encode safely and emit
-            $schema .= "\n" . '<script type="application/ld+json">' . "\n"
+            $schema = "\n" . '<script type="application/ld+json">' . "\n"
                 . json_encode(
                     $decoded,
                     JSON_UNESCAPED_SLASHES
@@ -390,6 +389,58 @@ function MetaTagsFor_SEO()
         // Invalid JSON → no output, no error exposed to the browser
     }
     // === end schema_code injection ===
+
+    // === FAQ schema injection ===
+    // Reads faq_schema (structured Q&A stored as JSON array by the FAQ builder).
+    // Reuses $staticArticle if the schema_code block already fetched it — no extra query.
+    // Emits a FAQPage JSON-LD block only when there is at least one valid Q&A pair.
+    $faqRaw = '';
+    if (isset($staticSchemaMap[$chk])) {
+        // Static route — $staticArticle may already be set above; fetch only if needed.
+        if (!isset($staticArticle)) {
+            $staticArticle = Article::find_by_id((int) $staticSchemaMap[$chk]);
+        }
+        $faqRaw = isset($staticArticle->faq_schema) ? trim((string) $staticArticle->faq_schema) : '';
+    } elseif (!empty($rec)) {
+        $faqRaw = isset($rec->faq_schema) ? trim((string) $rec->faq_schema) : '';
+    }
+
+    if ($faqRaw !== '') {
+        $faqItems = json_decode($faqRaw, true);
+
+        if (json_last_error() === JSON_ERROR_NONE && is_array($faqItems) && count($faqItems) > 0) {
+            $mainEntity = [];
+            foreach ($faqItems as $faqItem) {
+                // Guard: skip malformed entries (missing/empty q or a)
+                $q = isset($faqItem['q']) ? trim((string) $faqItem['q']) : '';
+                $a = isset($faqItem['a']) ? trim((string) $faqItem['a']) : '';
+                if ($q === '' || $a === '') continue;
+
+                $mainEntity[] = [
+                    '@type'          => 'Question',
+                    'name'           => $q,
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => $a],
+                ];
+            }
+
+            if (!empty($mainEntity)) {
+                $schema .= "\n" . '<script type="application/ld+json">' . "\n"
+                    . json_encode(
+                        [
+                            '@context'   => 'https://schema.org',
+                            '@type'      => 'FAQPage',
+                            'mainEntity' => $mainEntity,
+                        ],
+                        JSON_UNESCAPED_SLASHES
+                        | JSON_PRETTY_PRINT
+                        | JSON_UNESCAPED_UNICODE
+                        | JSON_HEX_TAG
+                    )
+                    . "\n</script>";
+            }
+        }
+    }
+    // === end FAQ schema injection ===
 
 
     $seoSources = '<title>' . $addtitle . $addsep . $sitetitle . '</title>' . "\n";

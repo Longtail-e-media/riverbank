@@ -287,10 +287,70 @@ endif;
                     </label>
                 </div>
                 <div class="form-input col-md-6">
-                        <textarea placeholder="Schema Code" name="schema_code" id="schema_code"
+                    <?php $siteRegular = Config::find_by_id(1);
+                    $schema_placeholder = '<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "' . BASE_URL . '#website",
+            "url": "' . BASE_URL . '",
+            "name": "' . $siteRegular->sitetitle . '"
+        },
+        {
+            "@type": "Hotel",
+            "@id": "' . BASE_URL . '#hotel",
+            "name": "' . $siteRegular->sitetitle . '",
+            "url": "' . BASE_URL . '",
+            "logo": "' . BASE_URL . 'images/preference/mBlyc-logo.webp",
+        },
+        {
+            "@type": "WebPage",
+            "@id": "' . BASE_URL . '#webpage",
+            "name": "' . $siteRegular->sitetitle . '",
+            "description": "' . $siteRegular->site_description . '",
+            "url": "' . BASE_URL . '/clubhimalaya/"
+        }
+    ]
+}
+</script>';?>
+                        <textarea placeholder="<?= htmlentities($schema_placeholder) ?>" name="schema_code" id="schema_code"
                                   class="large-textarea"><?php echo !empty($packageInfo->schema_code) ? $packageInfo->schema_code : ""; ?></textarea>
                 </div>
             </div>
+
+            <!-- ======== FAQ Schema Builder ======== -->
+            <div class="form-row">
+                <div class="form-label col-md-2">
+                    <label>FAQ Schema :</label>
+                </div>
+                <div class="col-md-10">
+                    <div id="faq-fields-container" style="display:flex;flex-wrap:wrap;"></div>
+                    <a href="javascript:void(0);"
+                       class="btn medium bg-blue tooltip-button"
+                       style="margin-top:6px;"
+                       title="Add FAQ row"
+                       onclick="addFaqRow();">
+                        <i class="glyph-icon icon-plus-square mrg10R"></i>
+                        <span class="button-content"> Add FAQ </span>
+                    </a>
+                </div>
+            </div>
+            <?php
+            // Output existing FAQ data as a safe JS literal so the builder can pre-populate rows.
+            // json_encode with JSON_HEX_TAG prevents </script> injection.
+            $_faqRaw = isset($packageInfo->faq_schema) ? trim((string)$packageInfo->faq_schema) : '';
+            if ($_faqRaw !== '') {
+                $_faqArr = json_decode($_faqRaw, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($_faqArr) && count($_faqArr) > 0) {
+                    echo '<script>window._existingFaqData='
+                        . json_encode($_faqArr, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES)
+                        . ';</script>' . "\n";
+                }
+            }
+            ?>
+            <!-- ======== end FAQ Schema Builder ======== -->
 
             <div class="form-row">
                 <div class="form-label col-md-12">

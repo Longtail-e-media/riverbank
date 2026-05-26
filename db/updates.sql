@@ -28,3 +28,11 @@ ALTER TABLE `tbl_package` ADD `schema_code` TEXT NOT NULL AFTER `type`;
 ALTER TABLE `tbl_package_sub` ADD `schema_code` TEXT NOT NULL AFTER `type`;
 ALTER TABLE `tbl_offers` ADD `schema_code` TEXT NOT NULL AFTER `meta_description`;
 ALTER TABLE `tbl_conbined_news` ADD `schema_code` TEXT NOT NULL AFTER `fb_upload`;
+
+-- 2026-05-26 [SMS] FAQ Schema Builder
+ALTER TABLE `tbl_schemas`       ADD `faq_schema` TEXT NOT NULL DEFAULT '' AFTER `schema_code`;
+ALTER TABLE `tbl_articles`      ADD `faq_schema` TEXT NOT NULL DEFAULT '' AFTER `schema_code`;
+ALTER TABLE `tbl_package`       ADD `faq_schema` TEXT NOT NULL DEFAULT '' AFTER `schema_code`;
+ALTER TABLE `tbl_package_sub`   ADD `faq_schema` TEXT NOT NULL DEFAULT '' AFTER `schema_code`;
+ALTER TABLE `tbl_offers`        ADD `faq_schema` TEXT NOT NULL DEFAULT '' AFTER `schema_code`;
+ALTER TABLE `tbl_conbined_news` ADD `faq_schema` TEXT NOT NULL DEFAULT '' AFTER `schema_code`;

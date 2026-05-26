@@ -6,7 +6,7 @@ class Package extends DatabaseObject
     protected static $table_name = "tbl_package";
     protected static $db_fields = array(
         'id', 'slug', 'image', 'header_image', 'fb_upload', 'banner_image', 'title', 'sub_title', 'status', 'sortorder', 'detail', 'content', 'meta_title',
-        'meta_keywords', 'meta_description', 'type', 'added_date', 'schema_code'
+        'meta_keywords', 'meta_description', 'type', 'added_date', 'schema_code', 'faq_schema'
     );
 
     var $id;
@@ -27,6 +27,7 @@ class Package extends DatabaseObject
     var $type;
     var $added_date;
     var $schema_code;
+    var $faq_schema;
 
     public static function get_accommodationId()
     {
