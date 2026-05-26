@@ -398,7 +398,7 @@ function MetaTagsFor_SEO()
     if (isset($staticSchemaMap[$chk])) {
         // Static route — $staticArticle may already be set above; fetch only if needed.
         if (!isset($staticArticle)) {
-            $staticArticle = Article::find_by_id((int) $staticSchemaMap[$chk]);
+            $staticArticle = Schema::find_by_id((int) $staticSchemaMap[$chk]);
         }
         $faqRaw = isset($staticArticle->faq_schema) ? trim((string) $staticArticle->faq_schema) : '';
     } elseif (!empty($rec)) {
