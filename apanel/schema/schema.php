@@ -8,7 +8,7 @@ if (isset($_GET['page']) && $_GET['page'] == "schema" && isset($_GET['mode']) &&
     <h3>
         List Schema
         <?php if ($session->get('u_id') == 2) { ?>
-            <a class="loadingbar-demo btn medium bg-blue-alt float-right" href="javascript:void(0);"
+            <a class="loadingbar-demo btn medium bg-blue-alt float-right hide" href="javascript:void(0);"
                onClick="addNewSchema();">
                 <span class="glyph-icon icon-separator"><i class="glyph-icon icon-plus-square"></i></span>
                 <span class="button-content"> Add New </span>
