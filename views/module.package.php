@@ -5,9 +5,6 @@
 $reshmpkg = $breadcumb_package = '';
 
 
-
-
-
 $booking_code = Config::getField('hotel_code', true);
 if (defined('HOME_PAGE')) {
     $acid = Package::get_accommodationId();
@@ -22,7 +19,7 @@ if (defined('HOME_PAGE')) {
                     $reshmpkg .= '<div class="rooms-item">
                         <div class="item-inner">
                             <div class="item-photo">
-                                <a href="' . BASE_URL . $subRow->slug . '" data-background="'  . resizeUrl('subpackage/image/'.$subRow->image2, 800) . '"></a>
+                                <a href="' . BASE_URL . $subRow->slug . '" data-background="' . resizeUrl('subpackage/image/' . $subRow->image2, 800) . '"></a>
                             </div>
                             <div class="item-desc">
                                 <h2><a href="' . BASE_URL . $subRow->slug . '">' . $subRow->title . '</a></h2>
@@ -66,22 +63,22 @@ if (defined('HOME_PAGE')) {
     $pkgRec = Package::getPackage();
 // 	pr($pkgRec);
     //if (!empty($pkgRec) && isset($pkgRec->status) && $pkgRec->status == 1) {
-        $reshplist .= '<ul class="property-container col-sm-12">';
-        foreach ($pkgRec as $pkgRow) {
-            $imgpath = '';
-            if ($pkgRow->image != 'a:0:{}') {
-                $innimg = unserialize($pkgRow->image);
-                // if(!empty($innimg)){
-                // $img_rand = array_rand($innimg);
-                $imgpath .= IMAGE_PATH . 'package/' . $innimg[0];
+    $reshplist .= '<ul class="property-container col-sm-12">';
+    foreach ($pkgRec as $pkgRow) {
+        $imgpath = '';
+        if ($pkgRow->image != 'a:0:{}') {
+            $innimg = unserialize($pkgRow->image);
+            // if(!empty($innimg)){
+            // $img_rand = array_rand($innimg);
+            $imgpath .= IMAGE_PATH . 'package/' . $innimg[0];
 // 			}
-            } else {
-                $imgpath .= IMAGE_PATH . 'images/package.jpg';
-            }
-            $reshplist .= '
+        } else {
+            $imgpath .= IMAGE_PATH . 'images/package.jpg';
+        }
+        $reshplist .= '
 
 			<div class="col-lg-4 col-sm-6">
-                                    <div class="features-item" data-background="'. resizeUrl('package/'.$innimg[0], 800) .'">
+                                    <div class="features-item" data-background="' . resizeUrl('package/' . $innimg[0], 800) . '">
                                         <a href="' . BASE_URL . $pkgRow->slug . '">
                                             <h3>' . $pkgRow->title . '</h3>
                                             <p>' . $pkgRow->sub_title . '</p>
@@ -90,8 +87,8 @@ if (defined('HOME_PAGE')) {
                                 </div>
 
 							';
-        }
-        $reshplist .= '</div>
+    }
+    $reshplist .= '</div>
                         </div>
                         <!-- Features Content End -->
                     </div>
@@ -101,7 +98,7 @@ if (defined('HOME_PAGE')) {
         <!-- Section Features End -->';
     //}
     //else {
-     //   redirect_to(BASE_URL.'404');
+    //   redirect_to(BASE_URL.'404');
     //}
 }
 
@@ -119,7 +116,6 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
     if (!empty($pkgRec) && isset($pkgRec->status) && $pkgRec->status == 1) {
 
 
-
         $imglink = '';
         $pkgRowImg = $pkgRec->banner_image;
         if ($pkgRowImg != "a:0:{}") {
@@ -133,10 +129,10 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
             }
         }
 
-              $breadcumb_package.= '<ol class="breadcrumb text-center">
-            <li><a href="'.BASE_URL.'">Home</a></li>
-            <li><a href="'.BASE_URL.''.$pkgRec->slug.'">'.$pkgRec->title.'</a></li>
-            <li class="active"><a href="'.BASE_URL.''.$pkgRec->slug.'">' . $pkgRec->title . '</a></li>
+        $breadcumb_package .= '<ol class="breadcrumb text-center">
+            <li><a href="' . BASE_URL . '">Home</a></li>
+            <li><a href="' . BASE_URL . '' . $pkgRec->slug . '">' . $pkgRec->title . '</a></li>
+            <li class="active"><a href="' . BASE_URL . '' . $pkgRec->slug . '">' . $pkgRec->title . '</a></li>
             </ol>';
         // Package detail
         $respkgDetail .= '<!-- Section Page Title -->
@@ -164,7 +160,7 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                 </div>
             </div>
         </div>
-        '. $breadcumb_package.'
+        ' . $breadcumb_package . '
 
 
 	    <!-- Section Rooms -->
@@ -185,7 +181,7 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                     $respkgDetail .= '<div class="rooms-item">
 		                		<div class="item-photo">
 			                        <a href="' . BASE_URL . $subRow->slug . '" data-background="' . IMAGE_PATH . 'subpackage/image/' . $subRow->image2 . '"></a>';
-    $respkgDetail .= '     </div>
+                    $respkgDetail .= '     </div>
 			                    <div class="item-desc">
 			                        <h2><a href="' . BASE_URL . $subRow->slug . '">' . $subRow->title . '</a></h2>
 			                        <p>' . strip_tags($subRow->detail) . '</p>
@@ -219,11 +215,11 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                     }
                     $respkgDetail .= '</div>';
 
-                                                                                        if ($pkgRec->type == 1) {
+                    if ($pkgRec->type == 1) {
                         $respkgDetail .= '<div class="item-price">
                              <div class="price-inner">
                               <a href="' . BASE_URL . $subRow->slug . '" class="btn" style="margin-right:20px;">ROOM DETAIL</a>
-                              <a href="' . BASE_URL . '/result.php?hotel_code='.$booking_code.'" target="_blank" class="btn">BOOK NOW</a>
+                              <a href="' . BASE_URL . '/result.php?hotel_code=' . $booking_code . '" target="_blank" class="btn">BOOK NOW</a>
                               </div>
                           </div>';
                     }
@@ -244,9 +240,8 @@ if (defined('PACKAGE_PAGE') and isset($_REQUEST['slug'])) {
         $respkgDetail .= '</div>
 	    </div>
 	    </div>';
-    }
-    else{
-        redirect_to(BASE_URL.'404');
+    } else {
+        redirect_to(BASE_URL . '404');
     }
 }
 
@@ -263,9 +258,9 @@ $resubpkgDetailScript = $resubpkgDetailScriptOnload = $resubpkgDetailScriptVar =
 if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
     $slug = !empty($_REQUEST['slug']) ? addslashes($_REQUEST['slug']) : '';
     $subpkgRec = Subpackage::find_by_slug($slug);
-        $pkgRec = Package::find_by_id($subpkgRec->type);
+    $pkgRec = Package::find_by_id($subpkgRec->type);
 
-    if (!empty($subpkgRec) && $subpkgRec->status ==1) {
+    if (!empty($subpkgRec) && $subpkgRec->status == 1) {
         $pkgRec = Package::find_by_id($subpkgRec->type);
         $imglink = BASE_URL . 'images/static/subpackage-banner.jpg';
         $pkgRowList = $subpkgRec->header_image;
@@ -279,10 +274,10 @@ if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
             }
         }
 
-                    $breadcumb_package.= '<ol class="breadcrumb text-center">
-            <li><a href="'.BASE_URL.'">Home</a></li>
-            <li><a href="'.BASE_URL.''.$pkgRec->slug.'">'.$pkgRec->title.'</a></li>
-            <li class="active"><a href="'.BASE_URL.''.$subpkgRec->slug.'">' . $subpkgRec->title . '</a></li>
+        $breadcumb_package .= '<ol class="breadcrumb text-center">
+            <li><a href="' . BASE_URL . '">Home</a></li>
+            <li><a href="' . BASE_URL . '' . $pkgRec->slug . '">' . $pkgRec->title . '</a></li>
+            <li class="active"><a href="' . BASE_URL . '' . $subpkgRec->slug . '">' . $subpkgRec->title . '</a></li>
             </ol>';
 
         $resubpkgDetail .= '<!-- Section Page Title -->
@@ -310,7 +305,7 @@ if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
                     </div>
                 </div>
             </div>
-                    '.$breadcumb_package.'
+                    ' . $breadcumb_package . '
 
 	    <!-- Section Rooms Detail -->
 	    <div class="section">
@@ -561,9 +556,8 @@ if (defined('SUBPACKAGE_PAGE') and isset($_REQUEST['slug'])) {
 	        </div>
 	        </div>
 	    </div>';
-    }
-    else {
-        redirect_to(BASE_URL.'404');
+    } else {
+        redirect_to(BASE_URL . '404');
     }
 }
 
@@ -580,12 +574,76 @@ $facility = '';
 
 if (defined('FACILITIES_PAGE')) {
 
-    //$slug = !empty($_REQUEST['slug'])? addslashes($_REQUEST['slug']) : '';
     $subpkgRec = services::find_all();
-
 
     if (!empty($subpkgRec)) {
         $fpkgRec = features::find_all_byparnt(0);
+
+        // FAQ Schema
+        $faqHtml = '';
+        $facilitySchema = Schema::find_by_id(5);
+        $faqs = isset($facilitySchema->faq_schema) ? trim((string)$facilitySchema->faq_schema) : '';
+
+        if (!empty($faqs)) {
+            $faqHtml .= '
+            <style>
+                .panel-heading .accordion-toggle:after {
+                    /* symbol for "opening" panels */
+                    font-family: "Glyphicons Halflings";  /* essential for enabling glyphicon */
+                    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+                    float: right;        /* adjust as needed */
+                    color: grey;         /* adjust as needed */
+                }
+                .panel-heading .accordion-toggle.collapsed:after {
+                    /* symbol for "collapsed" panels */
+                    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+                }
+            </style>
+            <div class="section-bg">
+                <div class="container">
+                    <div class="wrapper-inner">
+                        <div class="widget-title">
+                            <h5>FAQs</h5>
+                            <h3>Everything you need to know</h3>
+                        </div>
+                        <div class="panel-group" id="accordion">
+        ';
+
+            $faqItems = json_decode($faqs, true);
+
+            foreach ($faqItems as $i => $faqItem) {
+                $q = isset($faqItem['q']) ? trim((string)$faqItem['q']) : '';
+                $a = isset($faqItem['a']) ? trim((string)$faqItem['a']) : '';
+                if ($q === '' || $a === '') continue;
+
+                $collapsed = ($i == 0) ? '' : 'collapsed';
+                $show = ($i == 0) ? 'in' : '';
+
+                $faqHtml .= '
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle ' . $collapsed . '" data-toggle="collapse" data-parent="#accordion" href="#collapse' . $i . '">
+                                    ' . $q . '
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse' . $i . '" class="panel-collapse collapse ' . $show . '">
+                            <div class="panel-body">
+                                ' . $a . '
+                            </div>
+                        </div>
+                    </div>
+                ';
+            }
+
+            $faqHtml .= '
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ';
+        }
 
         $facility .= '<!-- Section Page Title -->
 	    <!--<div class="section">
@@ -614,25 +672,22 @@ if (defined('FACILITIES_PAGE')) {
 
         foreach ($subpkgRec as $k => $v) {
             $img_nm = unserialize($v->image);
-
             $facility .= '<div class="col-lg-3 col-sm-4 col-xs-6"><div class="etm">
 	                    		 <div class="text-center"><img src="' . IMAGE_PATH . '/services/' . $img_nm[0] . '"/></div>
 	                    		 <div class="text-center text--title">' . $v->title . '</div>
 	                    		 </div></div>';
         }
 
-
-        $facility .= '';
-
-
         $facility .= '
 
-	                    </div>
-	                </div>
-	            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 	        </div>
-	        </div>
-	    </div>';
+	    </div>
+	    ' . $faqHtml . '
+	    ';
     }
 }
 

@@ -3,7 +3,7 @@
 /**
  * Display Blogs in Homepage
  **/
-$dataUrl = $breadcumb_blog = $breadcumb_blog2='';
+$dataUrl = $breadcumb_blog = $breadcumb_blog2 = '';
 $current_url = $_SERVER["REQUEST_URI"];
 $data = explode('/', $current_url);
 $last = trim(end($data), '/');
@@ -11,23 +11,16 @@ $last = strtok($last, '?');
 $dataUrl .= $last;
 
 $breadcumb_blog .= '<ol class="breadcrumb text-center">
-  <li><a href="'.BASE_URL.'">Home</a></li>
-  <li class="active"><a href="'.BASE_URL.''.$dataUrl.'">Blog</a></li>
+  <li><a href="' . BASE_URL . '">Home</a></li>
+  <li class="active"><a href="' . BASE_URL . '' . $dataUrl . '">Blog</a></li>
 </ol>';
-
-
-
-
-
-
 
 
 $home_blog = '';
 if (defined("HOME_PAGE")) {
     $blogs = CombinedNews::find_all(3);
 
-    if(!empty($blogs)){
-
+    if (!empty($blogs)) {
 
 
         $home_blog .= ' <div class="blog-section">
@@ -55,7 +48,7 @@ if (defined("HOME_PAGE")) {
                            <a href="' . BASE_URL . 'blog/' . $blog->slug . '"> <img src="' . $img . '" class="img-responsive" alt="' . $blog->title . '"></a>
                             <div class="author-date">
                                 <small>Posted: ' . date('F d, Y', strtotime($blog->event_stdate)) . '</small>
-                                <small><a href="' . BASE_URL . 'blog/' . $blog->slug . '">Author: '.$blog->author.'</a></small>
+                                <small><a href="' . BASE_URL . 'blog/' . $blog->slug . '">Author: ' . $blog->author . '</a></small>
                             </div>
 
                         </div>
@@ -91,11 +84,12 @@ $jVars["module:combinednews:home-blog"] = $home_blog;
  * Blog listing page
  **/
 $blog_list = $blog_list_breadcrumb = '';
+
 if (defined("BLOG_PAGE")) {
     $img = IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload;
 
     $blog_list_breadcrumb .= '
-        <div class="banner-header banner-inner-overlay section-padding valign bg-img innerpage2" data-background="'.BASE_URL.'images/static/contact-banner.jpg">
+        <div class="banner-header banner-inner-overlay section-padding valign bg-img innerpage2" data-background="' . BASE_URL . 'images/static/contact-banner.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 caption">
@@ -104,7 +98,7 @@ if (defined("BLOG_PAGE")) {
                     </div>
                 </div>
             </div>
-            '.$breadcumb_blog.'
+            ' . $breadcumb_blog . '
             
     ';
 
@@ -126,7 +120,7 @@ if (defined("BLOG_PAGE")) {
                     $img = IMAGE_PATH . "combinednews/home/" . $blog->home_image;
                 }
             }
-            $brief = substr(strip_tags($blog->content),'0','80').'...';
+            $brief = substr(strip_tags($blog->content), '0', '80') . '...';
             $blog_list .= '
                                 <div class="col-sm-5 col-lg-4">
                     <div class="panel panel-default blog-card">
@@ -134,7 +128,7 @@ if (defined("BLOG_PAGE")) {
                            <a href="' . BASE_URL . 'blog/' . $blog->slug . '"> <img src="' . $img . '" class="img-responsive" alt="' . $blog->title . '"></a>
                             <div class="author-date">
                                 <small>Posted: ' . date('F d, Y', strtotime($blog->event_stdate)) . '</small>
-                                <small><a href="">Author: '.$blog->author.'</a></small>
+                                <small><a href="">Author: ' . $blog->author . '</a></small>
                             </div>
 
                         </div>
@@ -154,6 +148,74 @@ if (defined("BLOG_PAGE")) {
             ';
         }
     }
+
+    // FAQ Schema
+    $faqHtml = '';
+
+    $gallerySchema = Schema::find_by_id(7);
+    $faqs = isset($gallerySchema->faq_schema) ? trim((string)$gallerySchema->faq_schema) : '';
+
+    if (!empty($faqs)) {
+        $faqHtml .= '
+            <style>
+                .panel-heading .accordion-toggle:after {
+                    /* symbol for "opening" panels */
+                    font-family: "Glyphicons Halflings";  /* essential for enabling glyphicon */
+                    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+                    float: right;        /* adjust as needed */
+                    color: grey;         /* adjust as needed */
+                }
+                .panel-heading .accordion-toggle.collapsed:after {
+                    /* symbol for "collapsed" panels */
+                    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+                }
+            </style>
+            <div class="col-sm-12">
+                <div class="">
+                    <div class="wrapper-inner">
+                        <div class="widget-title">
+                            <h5>FAQs</h5>
+                            <h3>Everything you need to know</h3>
+                        </div>
+                        <div class="panel-group" id="accordion">
+        ';
+
+        $faqItems = json_decode($faqs, true);
+
+        foreach ($faqItems as $i => $faqItem) {
+            $q = isset($faqItem['q']) ? trim((string)$faqItem['q']) : '';
+            $a = isset($faqItem['a']) ? trim((string)$faqItem['a']) : '';
+            if ($q === '' || $a === '') continue;
+
+            $collapsed = ($i == 0) ? '' : 'collapsed';
+            $show = ($i == 0) ? 'in' : '';
+
+            $faqHtml .= '
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle ' . $collapsed . '" data-toggle="collapse" data-parent="#accordion" href="#collapse' . $i . '">
+                                ' . $q . '
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse' . $i . '" class="panel-collapse collapse ' . $show . '">
+                        <div class="panel-body">
+                            ' . $a . '
+                        </div>
+                    </div>
+                </div>
+            ';
+        }
+
+        $faqHtml .= '
+                    </div>
+                </div>
+            </div>
+        </div>
+        ';
+    }
+    $blog_list .= $faqHtml;
 }
 
 $jVars["module:combinednews:blog-list-breadcrumb"] = $blog_list_breadcrumb;
@@ -166,8 +228,6 @@ $jVars["module:combinednews:blog-list-list"] = $blog_list;
 
 $blog_detail = $blog_breadcrumb = $recent_blogs = $gallery_section = '';
 if (defined("BLOG_PAGE")) {
-
-
 
 
     $slug = (isset($_REQUEST["slug"]) and !empty($_REQUEST["slug"])) ? $_REQUEST["slug"] : '';
@@ -185,21 +245,20 @@ if (defined("BLOG_PAGE")) {
         if (!empty($blogRec->banner_image)) {
             $file_path = SITE_ROOT . "images/combinednews/banner/" . $blogRec->banner_image;
             if (file_exists($file_path)) {
-                $blog_detail_image = IMAGE_PATH . 'combinednews/banner/' . $blogRec->banner_image ;
+                $blog_detail_image = IMAGE_PATH . 'combinednews/banner/' . $blogRec->banner_image;
             }
         }
 
         $breadcumb_blog2 .= '<ol class="breadcrumb text-center">
-              <li><a href="'.BASE_URL.'">Home</a></li>
-               <li><a href="'.BASE_URL.'blog">Blog</a></li>
-              <li class="active"><a href="javascript:void(0);">'.$blogRec->title.'</a></li>
+              <li><a href="' . BASE_URL . '">Home</a></li>
+               <li><a href="' . BASE_URL . 'blog">Blog</a></li>
+              <li class="active"><a href="javascript:void(0);">' . $blogRec->title . '</a></li>
             </ol>';
-
 
 
         $blog_breadcrumb .= '
 
-            <div class="banner-header banner-inner-overlay section-padding valign bg-img innerpage2" data-background="'.$blog_detail_image.'">
+            <div class="banner-header banner-inner-overlay section-padding valign bg-img innerpage2" data-background="' . $blog_detail_image . '">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 caption">
@@ -208,10 +267,9 @@ if (defined("BLOG_PAGE")) {
                     </div>
                 </div>
             </div>
-            '.$breadcumb_blog2.'
+            ' . $breadcumb_blog2 . '
  
         ';
-
 
 
         $blog_detail .= '
@@ -295,8 +353,7 @@ if (defined("BLOG_PAGE")) {
         </div>
          ';
 
-    }
-    else {
+    } else {
         //  redirect_to(BASE_URL . 'blog');
     }
 }
